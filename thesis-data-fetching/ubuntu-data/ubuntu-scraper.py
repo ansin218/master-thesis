@@ -12,8 +12,8 @@ db = pymysql.connect(host='localhost', user='root', password='password', db='mas
 cursor = db.cursor()
 
 x = 0
-for x in range(0, 6151, 75):
-    link = "https://bugs.launchpad.net/ubuntu/+bugs?search=Search&field.importance=High&field.status=New&field.status=Incomplete&field.status=Confirmed&field.status=Triaged&field.status=In%20Progress&field.status=Fix%20Committed&orderby=-importance&memo=" + str(x) + "&start=" + str(x)
+for x in range(0, 132809, 75):
+    link = "https://bugs.launchpad.net/ubuntu/+bugs?orderby=-importance&memo=" + str(x) + "&start=" + str(x)
     print("\nMAIN LINK: Scraping and parsing data from: ", link, "\n")
 
     page = requests.get(link)
@@ -41,19 +41,39 @@ for x in range(0, 6151, 75):
         inner_page = requests.get(to_scrape)
         print("SUB LINK ", i+1, ": Scraping and parsing data from: ", to_scrape)
         inner_soup = BeautifulSoup(inner_page.content, 'html.parser')
-        title = inner_soup.find_all('span', class_='ellipsis')[0].get_text()
-        title = title.replace(" ", "")
-        title = title.replace("\n", "")
+        try:
+            title = inner_soup.find_all('span', class_='ellipsis')[0].get_text()
+        #title = title.replace(" ", "")
+        #title = title.replace("\n", "")
         #print("Title: ", title)
-        reporter = inner_soup.find_all('a', class_='person')[0].get_text()
-        reporter = reporter.replace(" ", "")
-        reporter = reporter.replace("\n", "")
+        except IndexError:
+            title = 'Unknown'
+        except:
+            title = 'Unknown'
+        try:
+            reporter = inner_soup.find_all('a', class_='person')[0].get_text()
+            reporter = reporter.replace(" ", "")
+            reporter = reporter.replace("\n", "")
+        except IndexError:
+            reporter = 'Unknown'
+        except:
+            reporter = 'Unknown'
         #print("Reporter: ", reporter)
-        assignee = inner_soup.find_all('span', class_='yui3-activator-data-box')[1].get_text()
-        assignee = assignee.replace(" ", "")
-        assignee = assignee.replace("\n", "")
+        try:
+            assignee = inner_soup.find_all('span', class_='yui3-activator-data-box')[1].get_text()
+            assignee = assignee.replace(" ", "")
+            assignee = assignee.replace("\n", "")
+        except IndexError:
+            assignee = 'Unassigned'
+        except:
+            assignee = 'Unassigned'
         #print("Assignee: ", assignee)
-        description = inner_soup.find_all('div', class_='yui3-editable_text-text')[0].get_text()
+        try:
+            description = inner_soup.find_all('div', class_='yui3-editable_text-text')[0].get_text()
+        except IndexError:
+            description = 'Unknown'
+        except:
+            description = 'Unknown'
         #print("Description: ", description)
         comment_len = len(inner_soup.find_all('div', class_='comment-text'))
         j = 0
