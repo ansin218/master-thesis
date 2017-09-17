@@ -173,21 +173,30 @@
 
 %------- chapter 4 -------
 
-\chapter{Requirements Analysis}
+\chapter{Data Collection}
 
-\textit{Note: This chapter follows the Requirements Analysis Document Template in \cite{bruegge2004object}. 
-\textbf{Important:} Make sure that the whole chapter is independent of the chosen technology and development platform. The idea is that you illustrate concepts, taxonomies and relationships of the application domain independent of the solution domain!
-Cite \cite{bruegge2004object} several times in this chapter.}
+This chapter describes the datasets used to carry out the research and the collection of data from the three sources: Apache Lucene, Mozilla Thunderbird and Ubuntu. All three sources mentioned use different issue trackers. Apache Lucene uses JIRA owned by Atlassian Inc., Mozilla Thunderbird uses Bugzilla developed by Mozilla Foundation and Ubuntu uses Launchpad created by Canonical Ltd. 
 
-\section{Overview}
+\section{Data Scraping and Parsing}
 
-\textit{Note: Provide a short overview about the purpose, scope, objectives and success criteria of the system that you like to develop.}
+In this section, we explore how the data was scraped from each of the three sources: Apache Lucene, Mozilla Thunderbird and Ubuntu. 
 
-\section{Current System}
+\subsection{Apache Lucene}
+Apache Lucene is an open sourced high performance text search engine written in Java by Doug Cutting in 1999. The project was donated to Apache Foundation in the year 2001. To develop and maintain the software, the issue tracker called JIRA developed by Atlassian is used. At the time of conducting this research, the total number of issues were 7940. However, only 7932 issues were fetched since some issues could have been deleted by the moderators, contained non-English characters or had no comments.
 
-\textit{Note: This section is only required if the proposed system (i.e. the system that you develop in the thesis) should replace an existing system.}
+In JIRA, each issue gives us an option to export all the data needed for the research in XML, JSON or Word. However, JIRA also provides a link to get all these information needed for upto 1000 issues in XML. This link was altered 8 times to cover 7932 issues. The XML data from the links were saved locally as XML files. The XML ElementTree API available for Python was used to parse the XML files and extract the necessary data. 
 
-\section{Proposed System}
+\subsection{Mozilla Thunderbird}
+Mozilla Thunderbird is an open sourced cross platform email client developed by Mozilla Foundation with initial release dating back to 2003. The issue tracker used by Mozilla Thunderbird is Bugzilla which was developed by Mozilla Foundation itself. The oldest issue, however, dates back to June 2007 and the number of issues fetched were 4367. Like Apache Lucene, issues with no comments were ignored. 
+
+As mentioned earlier, JIRA gave us the option to get all the data needed for upto 1000 issues on each request. However, Bugzilla did not have any option that was similar. In the case of Bugzilla, data for each issue had to be accessed individually. Another drawback of Bugzilla when compared to JIRA was that the data when exported did not have the comments for the relevant issues. Hence, all the necessary data, including the comments, for the issues in Bugzilla were scraped using BeautifulSoup, a library for Python to scrape data from the web. 
+
+\subsection{Ubuntu}
+Ubuntu is an open sourced operating system developed by Canonical Ltd. in the year 2004. The same team is also responsible for having their own issue tracking system known as Launchpad which also houses the issues of Ubuntu. The number of issues fetched since the beginning of the project are 28,429. Issues with no comments were not scraped, just like in the case of Apache Lucene and Mozilla Thunderbird. Additionally, a major problem faced while scraping data from Launchpad was that there were abundant number of downlinks. When these links were accessed manually, they kept loading until getting timed out and returned 404 error while scraping.
+
+Launchpad did not have its export option to fetch mass number of issues and its comments. Hence, each and every issue had to be scraped one at a time. In addition, not all the issues had the same HTML tags and attributes for the comments section. Launchpad provides individual link for each of the comment of the pertinent issue and hence, the comments were scraped by obtaining the individual links for comments. All the links were request and the necessary data was retrieved using BeautifulSoup, the library mentioned in the previous section.
+
+\section{Data Storage}
 
 \textit{Note: If you leave out the section ``Current system'', you can rename this section into ``Requirements''.}
 
