@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import nltk
 from nltk import tokenize
 from time import time
+import re
 
 start_time = time()
 
@@ -25,17 +26,23 @@ final_list = lucene_rs_list[:50]
 for i in range(len(final_list)):
     print("PRINTING ISSUE NUMBER: ", i+1)
     current_title = final_list[i]
-    query = "SELECT title, comment FROM lucene_try WHERE title = %s"
+    query = "SELECT title, comment, id, description, author, reporter, assignee, tagged FROM lucene_try WHERE title = %s"
     cursor.execute(query, final_list[i])
     for row in cursor:
         root_comment = BeautifulSoup(row[1], "lxml").text
+        issue_id = row[2]
+        author = row[4]
+        reporter = row[5]
+        assignee = row[6]
+        tagged = row[7]
         print("Root Title: ", current_title)
-        print("Root Comment: ", root_comment)
+        #print("Description: ", description)
+        #print("Root Comment: ", root_comment)
         cleancomment = tokenize.sent_tokenize(root_comment)
         for j in range(len(cleancomment)):
-            print("Sub Comment: ", cleancomment[j])
+            #print("Sub Comment: ", cleancomment[j])
             try:
-                cursor2.execute("""INSERT INTO lucene_rs (title, root_comment, comment) VALUES ("%s", "%s", "%s")""" % (current_title, root_comment, cleancomment[j]))
+                cursor2.execute("""INSERT INTO lucene_rs (issue_id, title, root_comment, comment, author, reporter, assignee, tagged) VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")""" % (issue_id, current_title, root_comment, cleancomment[j], author, reporter, assignee, tagged))
             except:
                 print()
         print("\n")
