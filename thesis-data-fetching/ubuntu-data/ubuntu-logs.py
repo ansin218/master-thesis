@@ -12,7 +12,7 @@ start_time = time()
 db = pymysql.connect(host='localhost', user='root', password='password', db='master_thesis', autocommit=True, use_unicode=True, charset="utf8")
 cursor = db.cursor()
 
-for index_num in range(103000,  214051, 1000):
+for index_num in range(185000,  214051, 500):
     link = "https://code.launchpad.net/ubuntu/+code?field.lifecycle=DEVELOPMENT&field.lifecycle-empty-marker=1&field.sort_by=most+recently+changed+first&field.sort_by-empty-marker=1&memo=" + str(index_num) + "&start=" + str(index_num)
     page = requests.get(link)
     soup = BeautifulSoup(page.content, 'html.parser')
