@@ -54,3 +54,8 @@ for x in range(len(msg_list)):
     except:
         db.rollback()
         print("Failed to insert!")
+
+end_time = time()
+time_taken = end_time - start_time
+
+print("Total time taken in seconds: ", time_taken)
