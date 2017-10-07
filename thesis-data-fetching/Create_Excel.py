@@ -13,7 +13,7 @@ column_num=0
 
 
 # connect to the database
-database = pymysql.connect(host='localhost', user='password', password='root', db='master_thesis')
+database = pymysql.connect(host='localhost', user='root', password='password', db='master_thesis')
 cursor = database.cursor()
 
 
@@ -25,7 +25,7 @@ issue_description=[]
 issue_reporter=[]
 issue_assignee=[]
 
-cursor.execute("SELECT issue_id, title, description, reporter, assignee FROM first_trial_issues")
+cursor.execute("SELECT id, title, description, reporter, assignee FROM ubuntu_try")
 for row in cursor:
     issue_id.append(row[0])
     issue_title.append(row[1])
@@ -53,12 +53,12 @@ for i in range(0,issues_len):
     column_num += 1
     ws.write(row_num, column_num, issue_assignee[i])
     column_num += 1
-    wb.save('First_Trial.xls')
+    wb.save('Second_Trial_Ub.xls')
 
 
 
     # Retrieve its comments and insert them into the excel sheet
-    cursor.execute("SELECT  author, tagged, root_comment, comment FROM first_trial_comments WHERE issue_id="+str(issue_id[i]))
+    cursor.execute("SELECT  author, tagged, root_comment, comment FROM ubuntu_rs WHERE comment_id="+str(issue_id[i]))
     for row in cursor:
         column_num=5
         ws.write(row_num, column_num, row[0])
@@ -72,7 +72,7 @@ for i in range(0,issues_len):
 
 
     column_num=0
-    wb.save('First_Trial.xls')
+    wb.save('Second_Trial_Ub.xls')
 
 
 
