@@ -53,8 +53,10 @@ for i in range(0,issues_len):
     column_num += 1
     ws.write(row_num, column_num, issue_assignee[i])
     column_num += 1
-    wb.save('Second_Trial_Ub.xls')
-
+    try:
+        wb.save('Second_Trial_Ub.xls')
+    except:
+        print(issue_id[i])
 
 
     # Retrieve its comments and insert them into the excel sheet
@@ -72,8 +74,10 @@ for i in range(0,issues_len):
 
 
     column_num=0
-    wb.save('Second_Trial_Ub.xls')
-
+    try:
+        wb.save('Second_Trial_Ub.xls')
+    except:
+        print(issue_id[i])
 
 
 
