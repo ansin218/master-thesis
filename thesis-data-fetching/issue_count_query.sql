@@ -4,6 +4,12 @@ GROUP BY title
 HAVING ( COUNT(title) >= 1 )
 ORDER BY count DESC;
 
+SELECT title AS title, count(*) AS count
+FROM lucene_try
+WHERE id < 53960
+GROUP BY title
+HAVING ( COUNT(title) >= 1 )
+ORDER BY count DESC;
 
 
 SELECT title AS title, count(*) AS count
