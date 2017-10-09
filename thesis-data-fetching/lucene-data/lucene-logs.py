@@ -33,7 +33,7 @@ with open('commit.txt') as f:
             date_list.append(commit_date)
         elif text.startswith('commit '):
             commit = text.split("commit ", 1)
-            commit_msg = 'https://github.com/apache/lucene-solr/tree/' + commit[0]
+            commit_msg = 'https://github.com/apache/lucene-solr/tree/' + commit[1]
             com_list.append(commit_msg)
         else:
             if 'git-svn' in text:
