@@ -12,7 +12,7 @@ cursor = db.cursor()
 
 start_time = time()
 
-page = requests.get("https://bugzilla.mozilla.org/buglist.cgi?product=Thunderbird&component=Account%20Manager&resolution=---")
+page = requests.get("https://bugzilla.mozilla.org/buglist.cgi?product=Thunderbird&component=Security&resolution=---")
 soup = BeautifulSoup(page.content, 'html.parser')
 i = 0
 a_len = len(soup.find_all('a'))
