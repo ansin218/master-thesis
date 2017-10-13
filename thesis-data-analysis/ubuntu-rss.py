@@ -77,11 +77,11 @@ for i in range(len(final_list_1)):
         current_title = current_title.strip()
         print("Root Title: ", current_title)
         cleancomment = tokenize.sent_tokenize(root_comment)
-        #for j in range(len(cleancomment)):
-        #    try:
-        #        insert_cursor_1.execute("""INSERT INTO ubuntu_rss (comment_id, title, root_comment, comment, author, reporter, assignee, tagged) VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")""" % (issue_id, current_title, root_comment, cleancomment[j], author, reporter, assignee, tagged))
-        #    except:
-        #        print()
+        for j in range(len(cleancomment)):
+            try:
+                insert_cursor_1.execute("""INSERT INTO ubuntu_rss (comment_id, title, root_comment, comment, author, reporter, assignee, tagged) VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")""" % (issue_id, current_title, root_comment, cleancomment[j], author, reporter, assignee, tagged))
+            except:
+                print()
         print("\n")
 
 random.shuffle(ubuntu_rs_list_2)
@@ -102,11 +102,11 @@ for i in range(len(final_list_2)):
         current_title = current_title.strip()
         print("Root Title: ", current_title)
         cleancomment = tokenize.sent_tokenize(root_comment)
-        #for j in range(len(cleancomment)):
-        #    try:
-        #        insert_cursor_2.execute("""INSERT INTO ubuntu_rss (comment_id, title, root_comment, comment, author, reporter, assignee, tagged) VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")""" % (issue_id, current_title, root_comment, cleancomment[j], author, reporter, assignee, tagged))
-        #    except:
-        #        print()
+        for j in range(len(cleancomment)):
+            try:
+                insert_cursor_2.execute("""INSERT INTO ubuntu_rss (comment_id, title, root_comment, comment, author, reporter, assignee, tagged) VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")""" % (issue_id, current_title, root_comment, cleancomment[j], author, reporter, assignee, tagged))
+            except:
+                print()
         print("\n")
 
 random.shuffle(ubuntu_rs_list_3)
@@ -127,11 +127,11 @@ for i in range(len(final_list_3)):
         current_title = current_title.strip()
         print("Root Title: ", current_title)
         cleancomment = tokenize.sent_tokenize(root_comment)
-        #for j in range(len(cleancomment)):
-        #    try:
-        #        insert_cursor_3.execute("""INSERT INTO ubuntu_rss (comment_id, title, root_comment, comment, author, reporter, assignee, tagged) VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")""" % (issue_id, current_title, root_comment, cleancomment[j], author, reporter, assignee, tagged))
-        #    except:
-        #        print()
+        for j in range(len(cleancomment)):
+            try:
+                insert_cursor_3.execute("""INSERT INTO ubuntu_rss (comment_id, title, root_comment, comment, author, reporter, assignee, tagged) VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")""" % (issue_id, current_title, root_comment, cleancomment[j], author, reporter, assignee, tagged))
+            except:
+                print()
         print("\n")
 
 random.shuffle(ubuntu_rs_list_4)
@@ -152,11 +152,11 @@ for i in range(len(final_list_4)):
         current_title = current_title.strip()
         print("Root Title: ", current_title)
         cleancomment = tokenize.sent_tokenize(root_comment)
-        #for j in range(len(cleancomment)):
-        #    try:
-        #        insert_cursor_4.execute("""INSERT INTO ubuntu_rss (comment_id, title, root_comment, comment, author, reporter, assignee, tagged) VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")""" % (issue_id, current_title, root_comment, cleancomment[j], author, reporter, assignee, tagged))
-        #    except:
-        #        print()
+        for j in range(len(cleancomment)):
+            try:
+                insert_cursor_4.execute("""INSERT INTO ubuntu_rss (comment_id, title, root_comment, comment, author, reporter, assignee, tagged) VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")""" % (issue_id, current_title, root_comment, cleancomment[j], author, reporter, assignee, tagged))
+            except:
+                print()
         print("\n")
 
 random.shuffle(ubuntu_rs_list_5)
@@ -177,11 +177,11 @@ for i in range(len(final_list_5)):
         current_title = current_title.strip()
         print("Root Title: ", current_title)
         cleancomment = tokenize.sent_tokenize(root_comment)
-        #for j in range(len(cleancomment)):
-        #    try:
-        #        insert_cursor_5.execute("""INSERT INTO ubuntu_rss (comment_id, title, root_comment, comment, author, reporter, assignee, tagged) VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")""" % (issue_id, current_title, root_comment, cleancomment[j], author, reporter, assignee, tagged))
-        #    except:
-        #        print()
+        for j in range(len(cleancomment)):
+            try:
+                insert_cursor_5.execute("""INSERT INTO ubuntu_rss (comment_id, title, root_comment, comment, author, reporter, assignee, tagged) VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")""" % (issue_id, current_title, root_comment, cleancomment[j], author, reporter, assignee, tagged))
+            except:
+                print()
         print("\n")
 
 conn.close()
