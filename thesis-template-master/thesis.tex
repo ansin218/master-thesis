@@ -211,7 +211,7 @@ This section scrutinizes how the data of commit messages were obtained for Apach
 Apache Lucene uses Git for its version control, which was developed by Linus Torvald and released in 2005. Apache Lucene along with SOLR is hosted together within the same repository on GitHub. The repository was cloned to local environment in the system to retrieve the commit logs. Git allows the logs of the repository to be exported in TXT format and this is the method that has been used to get all the logs for Apache Lucene. However, a parsing script was additionally written in Python to obtain all the commit id, author, date and commit message respectively. These information was later stored in a MySQL database. 
 
 \subsubsection{Mozilla Thunderbird}
-Mozilla Thunderbird uses Mercurial for its version control, which was developed by Matt Mackall and released in 2005. 
+Mozilla Thunderbird uses Mercurial for its version control, which was developed by Matt Mackall and released in 2005. The Mozilla Thunderbird project in a repository owned by Mozilla. This repository was cloned to the system to extract the commit logs. Like Git, Mercurial also offers users an option to extract the entire commit log history in TXT format. This data was parsed using a script written in Python to retrieve all the commit id, author, date and commit message respectively. The retrieved information was eventually stored in a MySQL database. 
 
 \subsubsection{Ubuntu}
 Something about ubuntu
