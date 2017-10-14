@@ -231,63 +231,20 @@ An imperative step after performing machine learning experiements is to measure 
 
 \begin{itemize}
 \item \textbf{Issue:} the problem to be solved, or a feature to be implemented
-\item \textbf{Alternatives:} the feasible solutions that could address the issue
+\item \textbf{Alternative:} the feasible solutions that could address the issue
 \item \textbf{Pro-Argument:} the argument put across in favor of a particular alternative
 \item \textbf{Con-Argument:} the argument put across against a particular alternative
 \item \textbf{Decision:} the final conclusions made to resolve the issue
 \end{itemize}
 
-Therefore, for the main content analysis, two annotators individually read through XXXX number of individual sentences from XXXX comments comprising of 100 issues from each of the three projects. Although the number of issues fetched for each of them were much higher, only 100 of them were attained for each project using random stratified sampling due to time constraints of the research. 
-
 \section{Random Stratified Sampling}
+For the main content analysis, two annotators individually read through XXXX number of individual sentences from XXXX comments spanning 100 issues from each of the three projects. Although the number of issues fetched for each of them were much higher, only 100 of them were attained for each project using random stratified sampling due to time constraints of the research. Random stratified sampling can be of two types: proportionate random stratified sampling and disproportionate random stratified sampling. In proportionate random stratified sampling, the parent dataset is divided into multiple strata and the child dataset sampled randomly must have the strata in the same proportion as the parent dataset. Contrary to proportionate random stratified sampling, the case of disproportionate random stratified sampling has the parent dataset divided into multiple strate but the child dataset sampled randomly may not have its strata in the same proportion as the parent dataset. There are, however, three steps carried out sequentially to obtain the sample which are as follows.
 
-
-
-%------- chapter 5 -------
-
-\chapter{System design}
-
-\textit{Note: This chapter follows the System Design Document Template in \cite{bruegge2004object}. 
-You describe in this chapter how you map the concepts of the application domain to the solution domain. Some sections are optional, if they do not apply to your problem.
-Cite \cite{bruegge2004object} several times in this chapter.}
-
-\section{Overview}
-
-\textit{Note: Provide a brief overview of the software architecture and references to other chapters (e.g. requirements analysis), references to existing systems, constraints impacting the software architecture.}
-
-\section{Design Goals}
-
-\textit{Note: Derive design goals from your nonfunctional requirements, prioritize them (as they might conflict with each other) and describe the rationale of your prioritization. Any trade-offs between design goals (e.g., build vs. buy, memory space vs. response time),
-and the rationale behind the specific solution should be described in this section}
-
-\section{Subsystem Decomposition}
-
-\textit{Note: Describe the architecture of your system by decomposing it into subsystems and the services provided by each subsystem. Use UML class diagrams including packages / components for each subsystem.}
-
-\section{Hardware Software Mapping}
-
-\textit{Note: This section describes how the subsystems are mapped onto existing hardware and software components. The description is accompanied by a UML deployment diagram. The existing components are often off-the-shelf components. If the components are distributed on different nodes, the network infrastructure and the protocols are also described.}
-
-\section{Persistent Data Management}
-
-\textit{Note: Optional section that describes how data is saved over the lifetime of the system and which data. Usually this is either done by saving data in structured files or in databases. If this is applicable for the thesis, describe the approach for persisting data here and show a UML class diagram how the entity objects are mapped to persistent storage.
-It contains a rationale of the selected storage scheme, file system or database, a description of the selected database and database administration issues.}
-
-\section{Access Control}
-
-\textit{Note: Optional section describing the access control and security issues based on the nonfunctional requirements in the requirements analysis. It also describes the implementation of the access matrix based on capabilities or access control lists, the selection of  authentication mechanisms and the use of encryption algorithms.}
-
-\section{Global Software Control}
-
-\textit{Note: Optional section describing describing the control flow of the system, in particular, whether a monolithic, event-driven control flow or concurrent processes have been selected, how requests are initiated and specific synchronization issues}
-
-
-\section{Boundary Conditions}
-
-\textit{Note: Optional section describing the use cases how to start up the separate components of the system, how to shut them down, and what to do if a component or the system fails.}
-
-
-
+\begin{itemize}
+\item {Step 1:} Filter the dataset by discarding issues that do not fall under the required date range. This is to make sure the comments from issue trackers are from the same duration as messages from IRC. 
+\item {Step 2:} In the next step, count the number of comments for each issue that are under the required date range but only consider issues that have between 5 and 30 comments, and divide them into 5 groups: 6-10 comments, 11-15 comments, 16-20 comments, 21-25 comments and 26-30 comments. We wish to avoid issues with too few comments (less than 5) or way too many comments (greater than 30). 
+\item {Step 3:} Perform proportionate random stratified sampling to obtain 100 random issues from the filtered dataset in step 2 for each of the three projects.
+\end{itemize}
 
 
 %------- chapter 6 -------
