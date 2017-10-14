@@ -216,63 +216,30 @@ Mozilla Thunderbird uses Mercurial for its version control, which was developed 
 \subsubsection{Ubuntu}
 Ubuntu makes use of Bazaar primarily for its version control, which was developed by Martin Pool in 2005 and maintained by Canonical Ltd. The Ubuntu project is hosted on Launchpad platform using Bazaar. Due to too numerous repositories, the entire Ubuntu project could not be cloned individually. However, a script in Python was written using the BeautifulSoup library; similar to the script used for fetching data from issue trackers for Ubuntu. Identical problems of many downlinks were encountered and hence, only those that were up were fetched automatically. A MySQL database was used to store all of these information. 
 
-\section{Data Storage}
+\section{IRC Messages Dataset}
 
-\textit{Note: If you leave out the section ``Current system'', you can rename this section into ``Requirements''.}
+This section explores how data was obtained from IRC messages for Apache Lucene, Mozilla Thunderbird and Ubuntu. 
 
-\subsection{Functional Requirements}
+%------- chapter 5 -------
 
-\textit{Note: List and describe all functional requirements of your system. Also mention requirements that you were not able to realize. The short title should be in the form ``verb objective''}
+\chapter{Manual Content Analysis}
 
-\begin{itemize}
-\item [FR1] \textbf{Short Title}: Short Description.
-\item [FR2] \textbf{Short Title}: Short Description.
-\item [FR3] \textbf{Short Title}: Short Description.
-\end{itemize}
+This chapter dives into the procedure of manual content analysis and the formation of ground truth for machine learning experiments to be carried out later. In addition, this chapter also gives insights on how the sample data for the experiements to be performed were obtained from the initial raw dataset. 
 
-\subsection{Nonfunctional Requirements}
-
-\textit{Note: List and describe all nonfunctional requirements of your system. Also mention requirements that you were not able to realize. Categorize them using the FURPS+ model described in \cite{bruegge2004object} without the category \textbf{functionality} that was already covered with the functional requirements.}
+\section{Ground Truth Dataset}
+An imperative step after performing machine learning experiements is to measure characteristics such as accuracy, precision, recall and F1 score. This, in turn, means one needs to have a reliable dataset for ground truth. Messages from the issue trackers have no pre-defined structure as to whether they contain any kind of rationale or not. To have similar understanding, be on the same page and reduce the number of disagreements later, both the annotators randomly went through a few sentences. The annotators marked rationale for each of them if applicable, classified them appropriately, and shared their perspectives before concluding on mutual agreements as to how to go about in the main manual content analysis experiment.  Some of the examples are mentioned in detail in the coding guide for manual content analysis. There were two kinds of classification performed in this stage: binary and multi-class classification. Binary classification was done to check if the sentence contains any kind of rationale or not. Multi-class classification was done to classify the sentence, if rationale is found, into five categories: issue, alternatives, pro-arguments, con-arguments and decision, which are explained as follows.
 
 \begin{itemize}
-\item [NFR1] \textbf{Category}: Short Description.
-\item [NFR2] \textbf{Category}: Short Description.
-\item [NFR3] \textbf{Category}: Short Description.
+\item \textbf{Issue:} the problem to be solved, or a feature to be implemented
+\item \textbf{Alternatives:} the feasible solutions that could address the issue
+\item \textbf{Pro-Argument:} the argument put across in favor of a particular alternative
+\item \textbf{Con-Argument:} the argument put across against a particular alternative
+\item \textbf{Decision:} the final conclusions made to resolve the issue
 \end{itemize}
 
-\section{System Models}
+Therefore, for the main content analysis, two annotators individually read through XXXX number of individual sentences from XXXX comments comprising of 100 issues from each of the three projects. Although the number of issues fetched for each of them were much higher, only 100 of them were attained for each project using random stratified sampling due to time constraints of the research. 
 
-\textit{Note: This section includes important system models for the requirements analysis.}
-
-\subsection{Scenarios}
-
-\textit{Note: If you do not distinguish between visionary and demo scenarios, you can remove the two subsubsections below and list all scenarios here.}
-
-\subsubsection{Visionary Scenarios}
-
-\textit{Note: Describe 1-2 visionary scenario here, i.e. a scenario that would perfectly solve your problem, even if it might not be realizable. use our scenario description template in form of a table.}
-
-\subsubsection{Demo Scenarios}
-
-\textit{Note: Describe 1-2 demo scenario here, i.e. a scenario that you can implement and demonstrate until the end of your thesis. use our scenario description template in form of a table.}
-
-\subsection{Use Case Model}
-
-\textit{Note: This subsection should contain a UML Use Case Diagram including roles and their use cases. You can use colors to indicate priorities. Think about splitting the diagram into multiple ones if you have more than 10 use cases.
-\textbf{Important:} Make sure to describe the most important use cases using the use case table template. Also describe the rationale of the use case model, i.e. why you modeled it like you show it in the diagram.}
-
-\subsection{Analysis Object Model}
-
-\textit{Note: This subsection should contain a UML Class Diagram showing the most important objects, attributes, methods and relations of your application domain including taxonomies using specification inheritance (see \cite{bruegge2004object}). Do not insert objects, attributes or methods of the solution domain.
-\textbf{Important:} Make sure to describe the analysis object model thoroughly in the text so that readers are able to understand the diagram. Also write about the rationale how and why you modeled the concepts like this.}
-
-\subsection{Dynamic Model}
-
-\textit{Note: This subsection should contain dynamic UML diagrams. These can be a UML state diagrams, UML communication diagrams or UML activity diagrams.\textbf{Important:} Make sure to describe the diagram and its rationale in the text. \textbf{Do not use UML sequence diagrams.}}
-
-\subsection{User Interface}
-
-\textit{Note: Show mockups of the user interface of the software you develop and their connections / transitions. You can also create a storyboard. \textbf{Important:} Describe the mockups and their rationale in the text.}
+\section{Random Stratified Sampling}
 
 
 
