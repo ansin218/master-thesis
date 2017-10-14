@@ -186,11 +186,12 @@ This chapter describes the datasets used to carry out the research and the colle
 
 In this section, we explore how the data was scraped for issues trackers and commit logs from each of the three sources: Apache Lucene, Mozilla Thunderbird and Ubuntu. 
 
-\subsection{Issue Trackers}
+\subsection{Issue Trackers Dataset}
 This section investigates how data was obtained from issue trackers of Apache Lucene, Mozilla Thunderbird and Ubuntu. 
 
 \subsubsection{Apache Lucene}
 Apache Lucene is an open sourced high performance text search engine written in Java by Doug Cutting in 1999. The project was donated to Apache Foundation in the year 2001. To develop and maintain the software, the issue tracker called JIRA developed by Atlassian is used. At the time of conducting this research, the total number of issues were 7940. However, only 7932 issues were fetched since some issues could have been deleted by the moderators, contained non-English characters or had no comments.
+
 In JIRA, each issue gives us an option to export all the data needed for the research in XML, JSON or Word. However, JIRA also provides a link to get all these information needed for upto 1000 issues in XML. This link was altered 8 times to cover 7932 issues. The XML data from the links were saved locally as XML files. The XML ElementTree API available for Python was used to parse the XML files and extract the necessary data. 
 
 \subsubsection{Mozilla Thunderbird}
@@ -202,6 +203,18 @@ As mentioned earlier, JIRA gave us the option to get all the data needed for upt
 Ubuntu is an open sourced operating system developed by Canonical Ltd. in the year 2004. The same team is also responsible for having their own issue tracking system known as Launchpad which also houses the issues of Ubuntu. The number of issues fetched since the beginning of the project are 28,429. Issues with no comments were not scraped, just like in the case of Apache Lucene and Mozilla Thunderbird. Additionally, a major problem faced while scraping data from Launchpad was that there were abundant number of downlinks. When these links were accessed manually, they kept loading until getting timed out and returned 404 error while scraping.
 
 Launchpad did not have its export option to fetch mass number of issues and its comments. Hence, each and every issue had to be scraped one at a time. In addition, not all the issues had the same HTML tags and attributes for the comments section. Launchpad provides individual link for each of the comment of the pertinent issue and hence, the comments were scraped by obtaining the individual links for comments. All the links were request and the necessary data was retrieved using BeautifulSoup, the library mentioned in the previous section.
+
+\subsection{Commit Logs Dataset}
+This section scrutinizes how the data of commit messages were obtained for Apache Lucene, Mozilla Thunderbird and Ubuntu.
+
+\subsubsection{Apache Lucene}
+Apache Lucene uses Git for its version control, which was developed by Linus Torvald and released in 2005. Apache Lucene along with SOLR is hosted together within the same repository on GitHub. The repository was cloned to local environment in the system to retrieve the commit logs. Git allows the logs of the repository to be exported in TXT format and this is the method that has been used to get all the logs for Apache Lucene. However, a parsing script was additionally written in Python to obtain all the commit id, author, date and commit message respectively. These information was later stored in a MySQL database. 
+
+\subsubsection{Mozilla Thunderbird}
+Mozilla Thunderbird uses Mercurial for its version control, which was developed by Matt Mackall and released in 2005. 
+
+\subsubsection{Ubuntu}
+Something about ubuntu
 
 \section{Data Storage}
 
