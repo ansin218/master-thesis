@@ -13,7 +13,7 @@ column_num=0
 
 
 # connect to the database
-database = pymysql.connect(host='localhost', user='root', password='password', db='master_thesis')
+database = pymysql.connect(host='localhost', user='root', password='password', db='Issue_Trackers')
 cursor = database.cursor()
 
 
@@ -21,17 +21,16 @@ cursor = database.cursor()
 
 issue_id=[]
 issue_title=[]
-issue_description=[]
+#issue_description=[]
 issue_reporter=[]
 issue_assignee=[]
 
-cursor.execute("SELECT id, title, description, reporter, assignee FROM ubuntu_try")
+cursor.execute("SELECT issue_id, title, reporter, assignee FROM thunderbird_rss_issues")
 for row in cursor:
     issue_id.append(row[0])
     issue_title.append(row[1])
-    issue_description.append(row[2])
-    issue_reporter.append(row[3])
-    issue_assignee.append(row[4])
+    issue_reporter.append(row[2])
+    issue_assignee.append(row[3])
 
 
 # for each issue:
@@ -47,20 +46,18 @@ for i in range(0,issues_len):
     column_num+=1
     ws.write(row_num, column_num, issue_title[i])
     column_num += 1
-    ws.write(row_num, column_num, issue_description[i])
-    column_num += 1
+    #ws.write(row_num, column_num, issue_description[i])
+    #column_num += 1
     ws.write(row_num, column_num, issue_reporter[i])
     column_num += 1
     ws.write(row_num, column_num, issue_assignee[i])
     column_num += 1
-    try:
-        wb.save('Second_Trial_Ub.xls')
-    except:
-        print(issue_id[i])
+    wb.save('First_Trial.xls')
+
 
 
     # Retrieve its comments and insert them into the excel sheet
-    cursor.execute("SELECT  author, tagged, root_comment, comment FROM ubuntu_rs WHERE comment_id="+str(issue_id[i]))
+    cursor.execute("SELECT  author, tagged, comment, sentence FROM thunderbird_rss_comments WHERE issue_id="+str(issue_id[i]))
     for row in cursor:
         column_num=5
         ws.write(row_num, column_num, row[0])
@@ -74,10 +71,8 @@ for i in range(0,issues_len):
 
 
     column_num=0
-    try:
-        wb.save('Second_Trial_Ub.xls')
-    except:
-        print(issue_id[i])
+    wb.save('First_Trial.xls')
+
 
 
 
