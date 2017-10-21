@@ -72,7 +72,6 @@ for i in range(len(final_list_1)):
     current_title = final_list_1[i]
     query = "SELECT * FROM thunderbird_issues_new, thunderbird_comments_new WHERE thunderbird_issues_new.issue_id = thunderbird_comments_new.issue_id AND title = %s"
     cursor_1.execute(query, final_list_1[i])
-    print(cursor_1.rowcount)
     for row in cursor_1:
         root_comment = BeautifulSoup(row[8], "lxml").text
         issue_id = row[7]
