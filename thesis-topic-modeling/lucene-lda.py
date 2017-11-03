@@ -3,6 +3,9 @@ from stop_words import get_stop_words
 from nltk.stem.porter import PorterStemmer
 from gensim import corpora, models
 import gensim
+from time import time
+
+start_time = time()
 
 tokenizer = RegexpTokenizer(r'\w+')
 en_stop = get_stop_words('en')
@@ -31,3 +34,8 @@ corpus = [dictionary.doc2bow(text) for text in texts]
 ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics=2, id2word = dictionary, passes=20)
 
 print(ldamodel.print_topics(20))
+
+end_time = time()
+time_taken = end_time - start_time
+
+print("Total time taken in seconds: ", time_taken)
