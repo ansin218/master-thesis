@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+import pymysql
+import pymysql.cursors
 from nltk.tokenize import RegexpTokenizer
 from stop_words import get_stop_words
 from nltk.stem.porter import PorterStemmer
@@ -7,17 +10,21 @@ from time import time
 
 start_time = time()
 
+conn = pymysql.connect(host='localhost', user='root', password='password', db='Issue_Trackers', autocommit=True, use_unicode=True, charset="utf8")
+
+cursor_1 = conn.cursor()
+cursor_1.execute("SELECT * FROM lucene_rss_comments")
+
+lucene_rss_list = list()
+
+for row in cursor_1:
+    lucene_rss_list.append(row[4])
+
 tokenizer = RegexpTokenizer(r'\w+')
 en_stop = get_stop_words('en')
 p_stemmer = PorterStemmer()
 
-doc_a = "Brocolli is good to eat. My brother likes to eat good brocolli, but not my mother."
-doc_b = "My mother spends a lot of time driving my brother around to baseball practice."
-doc_c = "Some health experts suggest that driving may cause increased tension and blood pressure."
-doc_d = "I often feel pressure to perform well at school, but my mother never seems to drive my brother to do better."
-doc_e = "Health professionals say that brocolli is good for your health."
-
-doc_set = [doc_a, doc_b, doc_c, doc_d, doc_e]
+doc_set = lucene_rss_list
 
 texts = []
 
