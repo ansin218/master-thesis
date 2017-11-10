@@ -3,6 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import Pipeline
+from sklearn.cross_validation import KFold
+from sklearn.metrics import confusion_matrix, f1_score
 
 data = pd.read_csv("lucene_Ankur.csv")
 
@@ -32,3 +35,11 @@ examples = ["+1", "Nice"]
 example_counts = count_vectorizer.transform(examples)
 predictions = classifier.predict(example_counts)
 print(predictions)
+
+pipeline = Pipeline([
+    ('vectorizer', CountVectorizer()),
+    ('classifier', MultinomialNB())
+])
+
+pipeline.fit(texts, labels)
+print(pipeline.predict(examples))
