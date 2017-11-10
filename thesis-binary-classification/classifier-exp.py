@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
-from sklearn.cross_validation import KFold
+from sklearn.model_selection import KFold
 from sklearn.metrics import confusion_matrix, f1_score
 
 data = pd.read_csv("lucene_Ankur.csv")
@@ -37,18 +37,18 @@ classifier.fit(counts, targets)
 #print(predictions)
 
 pipeline = Pipeline([
-    ('vectorizer', CountVectorizer()),
+    ('vectorizer', CountVectorizer(ngram_range = (1,2))),
     ('classifier', MultinomialNB())
 ])
 
 #pipeline.fit(texts, labels)
 #pipeline.predict(examples)
 
-k_fold = KFold(n = len(data), n_folds = 10)
+k_fold = KFold(n_splits = 10)
 scores = []
 conf_mat = np.array([[0, 0], [0, 0]])
 
-for train_indices, test_indices in k_fold:
+for train_indices, test_indices in k_fold.split(data):
 
     train_text = data.iloc[train_indices]['sentence'].values
     train_y = data.iloc[train_indices]['isRelevant'].values
