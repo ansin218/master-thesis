@@ -31,15 +31,39 @@ classifier = MultinomialNB()
 targets = labels
 classifier.fit(counts, targets)
 
-examples = ["+1", "Nice"]
-example_counts = count_vectorizer.transform(examples)
-predictions = classifier.predict(example_counts)
-print(predictions)
+#examples = ["+1", "Nice"]
+#example_counts = count_vectorizer.transform(examples)
+#predictions = classifier.predict(example_counts)
+#print(predictions)
 
 pipeline = Pipeline([
     ('vectorizer', CountVectorizer()),
     ('classifier', MultinomialNB())
 ])
 
-pipeline.fit(texts, labels)
-print(pipeline.predict(examples))
+#pipeline.fit(texts, labels)
+#pipeline.predict(examples)
+
+k_fold = KFold(n = len(data), n_folds = 10)
+scores = []
+conf_mat = np.array([[0, 0], [0, 0]])
+
+for train_indices, test_indices in k_fold:
+
+    train_text = data.iloc[train_indices]['sentence'].values
+    train_y = data.iloc[train_indices]['isRelevant'].values
+
+    test_text = data.iloc[test_indices]['sentence'].values
+    test_y = data.iloc[test_indices]['isRelevant'].values
+
+    pipeline.fit(train_text, train_y)
+    predictions = pipeline.predict(test_text)
+
+    conf_mat += confusion_matrix(test_y, predictions)
+    score = f1_score(test_y, predictions)
+    scores.append(score)
+
+print("Comments Classified: ", len(data))
+print("Accuracy Score: ", sum(scores)/len(scores))
+print("Confusion Matrix: ")
+print(conf_mat)
