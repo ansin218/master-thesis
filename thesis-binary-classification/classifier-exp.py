@@ -37,7 +37,7 @@ classifier.fit(counts, targets)
 #print(predictions)
 
 pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(ngram_range = (1,2))),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 10))),
     ('classifier', MultinomialNB())
 ])
 
