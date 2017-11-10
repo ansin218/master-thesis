@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import KFold
@@ -38,6 +39,7 @@ classifier.fit(counts, targets)
 
 pipeline = Pipeline([
     ('vectorizer', CountVectorizer(ngram_range = (1, 10))),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', MultinomialNB())
 ])
 
