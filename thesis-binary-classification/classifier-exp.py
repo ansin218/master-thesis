@@ -220,8 +220,40 @@ for train_indices, test_indices in k_fold.split(data):
     score = f1_score(test_y, predictions)
     sgdc_scores.append(score)
 
-print("\nPrinting Results for Stoachastic Gradient Descent Model...")
+print("\nPrinting Results for Stochastic Gradient Descent Model...")
 print("Comments Classified: ", len(data))
 print("Accuracy Score: ", sum(sgdc_scores)/len(sgdc_scores))
 print("Confusion Matrix: ")
 print(sgdc_conf_mat)
+
+######### PERCEPTRON MODEL #########
+
+perceptron_pipeline = Pipeline([
+    ('vectorizer', CountVectorizer(ngram_range = (1, 10))),
+    ('tfidf_transformer', TfidfTransformer()),
+    ('classifier', Perceptron())
+])
+
+perceptron_scores = []
+perceptron_conf_mat = np.array([[0, 0], [0, 0]])
+
+for train_indices, test_indices in k_fold.split(data):
+
+    train_text = data.iloc[train_indices]['sentence'].values
+    train_y = data.iloc[train_indices]['isRelevant'].values
+
+    test_text = data.iloc[test_indices]['sentence'].values
+    test_y = data.iloc[test_indices]['isRelevant'].values
+
+    perceptron_pipeline.fit(train_text, train_y)
+    predictions = perceptron_pipeline.predict(test_text)
+
+    perceptron_conf_mat += confusion_matrix(test_y, predictions)
+    score = f1_score(test_y, predictions)
+    perceptron_scores.append(score)
+
+print("\nPrinting Results for Perceptron Model...")
+print("Comments Classified: ", len(data))
+print("Accuracy Score: ", sum(perceptron_scores)/len(perceptron_scores))
+print("Confusion Matrix: ")
+print(perceptron_conf_mat)
