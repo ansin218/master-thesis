@@ -5,6 +5,13 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.linear_model import Perceptron
+from sklearn.linear_model import SGDClassifier
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import KFold
 from sklearn.metrics import confusion_matrix, f1_score
@@ -24,19 +31,10 @@ for i, label in enumerate(data['isRelevant']):
 texts = np.asarray(texts)
 labels = np.asarray(labels)
 
+print("Printing Label Ratio...")
 print(np.bincount(labels))
 
-count_vectorizer = CountVectorizer()
-counts = count_vectorizer.fit_transform(texts)
-
-classifier = MultinomialNB()
-targets = labels
-classifier.fit(counts, targets)
-
-#examples = ["+1", "Nice"]
-#example_counts = count_vectorizer.transform(examples)
-#predictions = classifier.predict(example_counts)
-#print(predictions)
+######### NAIVE BAYES MODEL #########
 
 nb_pipeline = Pipeline([
     ('vectorizer', CountVectorizer(ngram_range = (1, 10))),
@@ -44,12 +42,9 @@ nb_pipeline = Pipeline([
     ('classifier', MultinomialNB())
 ])
 
-#pipeline.fit(texts, labels)
-#pipeline.predict(examples)
-
 k_fold = KFold(n_splits = 10)
 nb_scores = []
-#conf_mat = np.array([[0, 0], [0, 0]])
+nb_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
 
@@ -62,14 +57,17 @@ for train_indices, test_indices in k_fold.split(data):
     nb_pipeline.fit(train_text, train_y)
     predictions = nb_pipeline.predict(test_text)
 
-    #conf_mat += confusion_matrix(test_y, predictions)
+    nb_conf_mat += confusion_matrix(test_y, predictions)
     score = f1_score(test_y, predictions)
     nb_scores.append(score)
 
+print("\nPrinting Results for Naive Bayes Model...")
 print("Comments Classified: ", len(data))
 print("Accuracy Score: ", sum(nb_scores)/len(nb_scores))
-#print("Confusion Matrix: ")
-#print(conf_mat)
+print("Confusion Matrix: ")
+print(nb_conf_mat)
+
+######### LOGISTIC REGRESSION MODEL #########
 
 logit_pipeline = Pipeline([
     ('vectorizer', CountVectorizer(ngram_range = (1, 10))),
@@ -78,6 +76,7 @@ logit_pipeline = Pipeline([
 ])
 
 logit_scores = []
+logit_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
 
@@ -90,9 +89,44 @@ for train_indices, test_indices in k_fold.split(data):
     logit_pipeline.fit(train_text, train_y)
     predictions = logit_pipeline.predict(test_text)
 
-    #conf_mat += confusion_matrix(test_y, predictions)
+    logit_conf_mat += confusion_matrix(test_y, predictions)
     score = f1_score(test_y, predictions)
     logit_scores.append(score)
 
+print("\nPrinting Results for Logistic Regression Model...")
 print("Comments Classified: ", len(data))
 print("Accuracy Score: ", sum(logit_scores)/len(logit_scores))
+print("Confusion Matrix: ")
+print(logit_conf_mat)
+
+######### SUPPORT VECTOR MACHINES MODEL #########
+
+svc_pipeline = Pipeline([
+    ('vectorizer', CountVectorizer(ngram_range = (1, 10))),
+    ('tfidf_transformer', TfidfTransformer()),
+    ('classifier', SVC())
+])
+
+svc_scores = []
+svc_conf_mat = np.array([[0, 0], [0, 0]])
+
+for train_indices, test_indices in k_fold.split(data):
+
+    train_text = data.iloc[train_indices]['sentence'].values
+    train_y = data.iloc[train_indices]['isRelevant'].values
+
+    test_text = data.iloc[test_indices]['sentence'].values
+    test_y = data.iloc[test_indices]['isRelevant'].values
+
+    svc_pipeline.fit(train_text, train_y)
+    predictions = svc_pipeline.predict(test_text)
+
+    svc_conf_mat += confusion_matrix(test_y, predictions)
+    score = f1_score(test_y, predictions)
+    svc_scores.append(score)
+
+print("\nPrinting Results for Support Vector Machines Model...")
+print("Comments Classified: ", len(data))
+print("Accuracy Score: ", sum(svc_scores)/len(svc_scores))
+print("Confusion Matrix: ")
+print(svc_conf_mat)
