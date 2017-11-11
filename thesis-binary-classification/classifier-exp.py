@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+from time import time
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
@@ -13,7 +13,9 @@ from sklearn.linear_model import SGDClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import KFold
-from sklearn.metrics import confusion_matrix, f1_score
+from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, precision_score, recall_score
+
+start_time = time()
 
 data = pd.read_csv("lucene_Ankur.csv")
 
@@ -284,8 +286,13 @@ for train_indices, test_indices in k_fold.split(data):
     score = f1_score(test_y, predictions)
     knn_scores.append(score)
 
-print("\nPrinting Results for Perceptron Model...")
+print("\nPrinting Results for K-Neighbors Classifier Model...")
 print("Comments Classified: ", len(data))
 print("Accuracy Score: ", sum(knn_scores)/len(knn_scores))
 print("Confusion Matrix: ")
 print(knn_conf_mat)
+
+end_time = time()
+time_taken = end_time - start_time
+
+print("Total time taken in seconds: ", time_taken)
