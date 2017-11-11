@@ -162,3 +162,35 @@ print("Comments Classified: ", len(data))
 print("Accuracy Score: ", sum(rf_scores)/len(rf_scores))
 print("Confusion Matrix: ")
 print(rf_conf_mat)
+
+######### DECISION TREE MODEL #########
+
+dt_pipeline = Pipeline([
+    ('vectorizer', CountVectorizer(ngram_range = (1, 10))),
+    ('tfidf_transformer', TfidfTransformer()),
+    ('classifier', RandomForestClassifier())
+])
+
+dt_scores = []
+dt_conf_mat = np.array([[0, 0], [0, 0]])
+
+for train_indices, test_indices in k_fold.split(data):
+
+    train_text = data.iloc[train_indices]['sentence'].values
+    train_y = data.iloc[train_indices]['isRelevant'].values
+
+    test_text = data.iloc[test_indices]['sentence'].values
+    test_y = data.iloc[test_indices]['isRelevant'].values
+
+    dt_pipeline.fit(train_text, train_y)
+    predictions = dt_pipeline.predict(test_text)
+
+    dt_conf_mat += confusion_matrix(test_y, predictions)
+    score = f1_score(test_y, predictions)
+    dt_scores.append(score)
+
+print("\nPrinting Results for Decision Tree Model...")
+print("Comments Classified: ", len(data))
+print("Accuracy Score: ", sum(dt_scores)/len(dt_scores))
+print("Confusion Matrix: ")
+print(dt_conf_mat)
