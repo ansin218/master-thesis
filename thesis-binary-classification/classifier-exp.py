@@ -44,7 +44,10 @@ nb_pipeline = Pipeline([
 ])
 
 k_fold = KFold(n_splits = 10)
-nb_scores = []
+nb_f1_scores = []
+nb_ac_scores = []
+nb_pr_scores = []
+nb_re_scores = []
 nb_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
@@ -59,12 +62,21 @@ for train_indices, test_indices in k_fold.split(data):
     predictions = nb_pipeline.predict(test_text)
 
     nb_conf_mat += confusion_matrix(test_y, predictions)
-    score = f1_score(test_y, predictions)
-    nb_scores.append(score)
+    score1 = f1_score(test_y, predictions)
+    nb_f1_scores.append(score1)
+    score2 = accuracy_score(test_y, predictions)
+    nb_ac_scores.append(score2)
+    score3 = precision_score(test_y, predictions)
+    nb_pr_scores.append(score3)
+    score4 = recall_score(test_y, predictions)
+    nb_re_scores.append(score4)
 
 print("\nPrinting Results for Naive Bayes Model...")
 print("Comments Classified: ", len(data))
-print("Accuracy Score: ", sum(nb_scores)/len(nb_scores))
+print("F1 Score: ", sum(nb_f1_scores)/len(nb_f1_scores))
+print("Accuracy Score: ", sum(nb_ac_scores)/len(nb_ac_scores))
+print("Precision Score: ", sum(nb_pr_scores)/len(nb_pr_scores))
+print("Recall Score: ", sum(nb_re_scores)/len(nb_re_scores))
 print("Confusion Matrix: ")
 print(nb_conf_mat)
 
@@ -76,7 +88,10 @@ logit_pipeline = Pipeline([
     ('classifier', LogisticRegression())
 ])
 
-logit_scores = []
+logit_f1_scores = []
+logit_ac_scores = []
+logit_pr_scores = []
+logit_re_scores = []
 logit_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
@@ -91,12 +106,21 @@ for train_indices, test_indices in k_fold.split(data):
     predictions = logit_pipeline.predict(test_text)
 
     logit_conf_mat += confusion_matrix(test_y, predictions)
-    score = f1_score(test_y, predictions)
-    logit_scores.append(score)
+    score1 = f1_score(test_y, predictions)
+    logit_f1_scores.append(score1)
+    score2 = accuracy_score(test_y, predictions)
+    logit_ac_scores.append(score2)
+    score3 = precision_score(test_y, predictions)
+    logit_pr_scores.append(score3)
+    score4 = recall_score(test_y, predictions)
+    logit_re_scores.append(score4)
 
 print("\nPrinting Results for Logistic Regression Model...")
 print("Comments Classified: ", len(data))
-print("Accuracy Score: ", sum(logit_scores)/len(logit_scores))
+print("F1 Score: ", sum(logit_f1_scores)/len(logit_f1_scores))
+print("Accuracy Score: ", sum(logit_ac_scores)/len(logit_ac_scores))
+print("Precision Score: ", sum(logit_pr_scores)/len(logit_pr_scores))
+print("Recall Score: ", sum(logit_re_scores)/len(logit_re_scores))
 print("Confusion Matrix: ")
 print(logit_conf_mat)
 
@@ -108,7 +132,10 @@ svc_pipeline = Pipeline([
     ('classifier', SVC())
 ])
 
-svc_scores = []
+svc_f1_scores = []
+svc_ac_scores = []
+svc_pr_scores = []
+svc_re_scores = []
 svc_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
@@ -123,12 +150,21 @@ for train_indices, test_indices in k_fold.split(data):
     predictions = svc_pipeline.predict(test_text)
 
     svc_conf_mat += confusion_matrix(test_y, predictions)
-    score = f1_score(test_y, predictions)
-    svc_scores.append(score)
+    score1 = f1_score(test_y, predictions)
+    svc_f1_scores.append(score1)
+    score2 = accuracy_score(test_y, predictions)
+    svc_ac_scores.append(score2)
+    score3 = precision_score(test_y, predictions)
+    svc_pr_scores.append(score3)
+    score4 = recall_score(test_y, predictions)
+    svc_re_scores.append(score4)
 
 print("\nPrinting Results for Support Vector Machines Model...")
 print("Comments Classified: ", len(data))
-print("Accuracy Score: ", sum(svc_scores)/len(svc_scores))
+print("F1 Score: ", sum(svc_f1_scores)/len(svc_f1_scores))
+print("Accuracy Score: ", sum(svc_ac_scores)/len(svc_ac_scores))
+print("Precision Score: ", sum(svc_pr_scores)/len(svc_pr_scores))
+print("Recall Score: ", sum(svc_re_scores)/len(svc_re_scores))
 print("Confusion Matrix: ")
 print(svc_conf_mat)
 
@@ -140,7 +176,10 @@ rf_pipeline = Pipeline([
     ('classifier', RandomForestClassifier())
 ])
 
-rf_scores = []
+rf_f1_scores = []
+rf_ac_scores = []
+rf_pr_scores = []
+rf_re_scores = []
 rf_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
@@ -155,12 +194,21 @@ for train_indices, test_indices in k_fold.split(data):
     predictions = rf_pipeline.predict(test_text)
 
     rf_conf_mat += confusion_matrix(test_y, predictions)
-    score = f1_score(test_y, predictions)
-    rf_scores.append(score)
+    score1 = f1_score(test_y, predictions)
+    rf_f1_scores.append(score1)
+    score2 = accuracy_score(test_y, predictions)
+    rf_ac_scores.append(score2)
+    score3 = precision_score(test_y, predictions)
+    rf_pr_scores.append(score3)
+    score4 = recall_score(test_y, predictions)
+    rf_re_scores.append(score4)
 
 print("\nPrinting Results for Random Forest Model...")
 print("Comments Classified: ", len(data))
-print("Accuracy Score: ", sum(rf_scores)/len(rf_scores))
+print("F1 Score: ", sum(rf_f1_scores)/len(rf_f1_scores))
+print("Accuracy Score: ", sum(rf_ac_scores)/len(rf_ac_scores))
+print("Precision Score: ", sum(rf_pr_scores)/len(rf_pr_scores))
+print("Recall Score: ", sum(rf_re_scores)/len(rf_re_scores))
 print("Confusion Matrix: ")
 print(rf_conf_mat)
 
@@ -172,7 +220,10 @@ dt_pipeline = Pipeline([
     ('classifier', RandomForestClassifier())
 ])
 
-dt_scores = []
+dt_f1_scores = []
+dt_ac_scores = []
+dt_pr_scores = []
+dt_re_scores = []
 dt_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
@@ -187,12 +238,21 @@ for train_indices, test_indices in k_fold.split(data):
     predictions = dt_pipeline.predict(test_text)
 
     dt_conf_mat += confusion_matrix(test_y, predictions)
-    score = f1_score(test_y, predictions)
-    dt_scores.append(score)
+    score1 = f1_score(test_y, predictions)
+    dt_f1_scores.append(score1)
+    score2 = accuracy_score(test_y, predictions)
+    dt_ac_scores.append(score2)
+    score3 = precision_score(test_y, predictions)
+    dt_pr_scores.append(score3)
+    score4 = recall_score(test_y, predictions)
+    dt_re_scores.append(score4)
 
 print("\nPrinting Results for Decision Tree Model...")
 print("Comments Classified: ", len(data))
-print("Accuracy Score: ", sum(dt_scores)/len(dt_scores))
+print("F1 Score: ", sum(dt_f1_scores)/len(dt_f1_scores))
+print("Accuracy Score: ", sum(dt_ac_scores)/len(dt_ac_scores))
+print("Precision Score: ", sum(dt_pr_scores)/len(dt_pr_scores))
+print("Recall Score: ", sum(dt_re_scores)/len(dt_re_scores))
 print("Confusion Matrix: ")
 print(dt_conf_mat)
 
@@ -204,7 +264,10 @@ sgdc_pipeline = Pipeline([
     ('classifier', SGDClassifier())
 ])
 
-sgdc_scores = []
+sgdc_f1_scores = []
+sgdc_ac_scores = []
+sgdc_pr_scores = []
+sgdc_re_scores = []
 sgdc_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
@@ -219,12 +282,21 @@ for train_indices, test_indices in k_fold.split(data):
     predictions = sgdc_pipeline.predict(test_text)
 
     sgdc_conf_mat += confusion_matrix(test_y, predictions)
-    score = f1_score(test_y, predictions)
-    sgdc_scores.append(score)
+    score1 = f1_score(test_y, predictions)
+    sgdc_f1_scores.append(score1)
+    score2 = accuracy_score(test_y, predictions)
+    sgdc_ac_scores.append(score2)
+    score3 = precision_score(test_y, predictions)
+    sgdc_pr_scores.append(score3)
+    score4 = recall_score(test_y, predictions)
+    sgdc_re_scores.append(score4)
 
 print("\nPrinting Results for Stochastic Gradient Descent Model...")
 print("Comments Classified: ", len(data))
-print("Accuracy Score: ", sum(sgdc_scores)/len(sgdc_scores))
+print("F1 Score: ", sum(sgdc_f1_scores)/len(sgdc_f1_scores))
+print("Accuracy Score: ", sum(sgdc_ac_scores)/len(sgdc_ac_scores))
+print("Precision Score: ", sum(sgdc_pr_scores)/len(sgdc_pr_scores))
+print("Recall Score: ", sum(sgdc_re_scores)/len(sgdc_re_scores))
 print("Confusion Matrix: ")
 print(sgdc_conf_mat)
 
@@ -236,7 +308,10 @@ perceptron_pipeline = Pipeline([
     ('classifier', Perceptron())
 ])
 
-perceptron_scores = []
+perceptron_f1_scores = []
+perceptron_ac_scores = []
+perceptron_pr_scores = []
+perceptron_re_scores = []
 perceptron_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
@@ -251,12 +326,21 @@ for train_indices, test_indices in k_fold.split(data):
     predictions = perceptron_pipeline.predict(test_text)
 
     perceptron_conf_mat += confusion_matrix(test_y, predictions)
-    score = f1_score(test_y, predictions)
-    perceptron_scores.append(score)
+    score1 = f1_score(test_y, predictions)
+    perceptron_f1_scores.append(score1)
+    score2 = accuracy_score(test_y, predictions)
+    perceptron_ac_scores.append(score2)
+    score3 = precision_score(test_y, predictions)
+    perceptron_pr_scores.append(score3)
+    score4 = recall_score(test_y, predictions)
+    perceptron_re_scores.append(score4)
 
 print("\nPrinting Results for Perceptron Model...")
 print("Comments Classified: ", len(data))
-print("Accuracy Score: ", sum(perceptron_scores)/len(perceptron_scores))
+print("F1 Score: ", sum(perceptron_f1_scores)/len(perceptron_f1_scores))
+print("Accuracy Score: ", sum(perceptron_ac_scores)/len(perceptron_ac_scores))
+print("Precision Score: ", sum(perceptron_pr_scores)/len(perceptron_pr_scores))
+print("Recall Score: ", sum(perceptron_re_scores)/len(perceptron_re_scores))
 print("Confusion Matrix: ")
 print(perceptron_conf_mat)
 
@@ -268,7 +352,10 @@ knn_pipeline = Pipeline([
     ('classifier', KNeighborsClassifier())
 ])
 
-knn_scores = []
+knn_f1_scores = []
+knn_ac_scores = []
+knn_pr_scores = []
+knn_re_scores = []
 knn_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
@@ -283,12 +370,21 @@ for train_indices, test_indices in k_fold.split(data):
     predictions = knn_pipeline.predict(test_text)
 
     knn_conf_mat += confusion_matrix(test_y, predictions)
-    score = f1_score(test_y, predictions)
-    knn_scores.append(score)
+    score1 = f1_score(test_y, predictions)
+    knn_f1_scores.append(score1)
+    score2 = accuracy_score(test_y, predictions)
+    knn_ac_scores.append(score2)
+    score3 = precision_score(test_y, predictions)
+    knn_pr_scores.append(score3)
+    score4 = recall_score(test_y, predictions)
+    knn_re_scores.append(score4)
 
 print("\nPrinting Results for K-Neighbors Classifier Model...")
 print("Comments Classified: ", len(data))
-print("Accuracy Score: ", sum(knn_scores)/len(knn_scores))
+print("F1 Score: ", sum(knn_f1_scores)/len(knn_f1_scores))
+print("Accuracy Score: ", sum(knn_ac_scores)/len(knn_ac_scores))
+print("Precision Score: ", sum(knn_pr_scores)/len(knn_pr_scores))
+print("Recall Score: ", sum(knn_re_scores)/len(knn_re_scores))
 print("Confusion Matrix: ")
 print(knn_conf_mat)
 
