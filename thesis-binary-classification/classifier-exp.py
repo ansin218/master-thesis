@@ -130,3 +130,35 @@ print("Comments Classified: ", len(data))
 print("Accuracy Score: ", sum(svc_scores)/len(svc_scores))
 print("Confusion Matrix: ")
 print(svc_conf_mat)
+
+######### RANDOM FOREST MODEL #########
+
+rf_pipeline = Pipeline([
+    ('vectorizer', CountVectorizer(ngram_range = (1, 10))),
+    ('tfidf_transformer', TfidfTransformer()),
+    ('classifier', RandomForestClassifier())
+])
+
+rf_scores = []
+rf_conf_mat = np.array([[0, 0], [0, 0]])
+
+for train_indices, test_indices in k_fold.split(data):
+
+    train_text = data.iloc[train_indices]['sentence'].values
+    train_y = data.iloc[train_indices]['isRelevant'].values
+
+    test_text = data.iloc[test_indices]['sentence'].values
+    test_y = data.iloc[test_indices]['isRelevant'].values
+
+    rf_pipeline.fit(train_text, train_y)
+    predictions = rf_pipeline.predict(test_text)
+
+    rf_conf_mat += confusion_matrix(test_y, predictions)
+    score = f1_score(test_y, predictions)
+    rf_scores.append(score)
+
+print("\nPrinting Results for Random Forest Model...")
+print("Comments Classified: ", len(data))
+print("Accuracy Score: ", sum(rf_scores)/len(rf_scores))
+print("Confusion Matrix: ")
+print(rf_conf_mat)
