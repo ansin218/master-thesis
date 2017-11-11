@@ -5,7 +5,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
-from sklearn.svm import LinearSVC
+from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import Perceptron
@@ -103,7 +103,7 @@ print(logit_conf_mat)
 svc_pipeline = Pipeline([
     ('vectorizer', CountVectorizer(ngram_range = (1, 10))),
     ('tfidf_transformer', TfidfTransformer()),
-    ('classifier', LinearSVC())
+    ('classifier', SVC())
 ])
 
 svc_scores = []
@@ -257,3 +257,35 @@ print("Comments Classified: ", len(data))
 print("Accuracy Score: ", sum(perceptron_scores)/len(perceptron_scores))
 print("Confusion Matrix: ")
 print(perceptron_conf_mat)
+
+######### K-NEIGHBORS CLASSIFIER MODEL #########
+
+knn_pipeline = Pipeline([
+    ('vectorizer', CountVectorizer(ngram_range = (1, 10))),
+    ('tfidf_transformer', TfidfTransformer()),
+    ('classifier', KNeighborsClassifier())
+])
+
+knn_scores = []
+knn_conf_mat = np.array([[0, 0], [0, 0]])
+
+for train_indices, test_indices in k_fold.split(data):
+
+    train_text = data.iloc[train_indices]['sentence'].values
+    train_y = data.iloc[train_indices]['isRelevant'].values
+
+    test_text = data.iloc[test_indices]['sentence'].values
+    test_y = data.iloc[test_indices]['isRelevant'].values
+
+    knn_pipeline.fit(train_text, train_y)
+    predictions = knn_pipeline.predict(test_text)
+
+    knn_conf_mat += confusion_matrix(test_y, predictions)
+    score = f1_score(test_y, predictions)
+    knn_scores.append(score)
+
+print("\nPrinting Results for Perceptron Model...")
+print("Comments Classified: ", len(data))
+print("Accuracy Score: ", sum(knn_scores)/len(knn_scores))
+print("Confusion Matrix: ")
+print(knn_conf_mat)
