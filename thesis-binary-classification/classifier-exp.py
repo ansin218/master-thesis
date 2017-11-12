@@ -14,6 +14,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import KFold
 from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, precision_score, recall_score
+from imblearn.over_sampling import SMOTE
 
 start_time = time()
 
@@ -57,6 +58,9 @@ for train_indices, test_indices in k_fold.split(data):
 
     test_text = data.iloc[test_indices]['sentence'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
+
+    sm = SMOTE(ratio = 1.0)
+    train_text_res, train_y_res = sm.fit_sample(train_text, train_y)
 
     nb_pipeline.fit(train_text, train_y)
     predictions = nb_pipeline.predict(test_text)
