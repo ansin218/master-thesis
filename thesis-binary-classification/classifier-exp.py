@@ -24,8 +24,7 @@ data = pd.read_csv("lucene_Ankur.csv")
 
 nb_pipeline = Pipeline([
     ('vectorizer', CountVectorizer(ngram_range = (1, 10))),
-    ('tfidf_transformer', TfidfTransformer()),
-    ('classifier', MultinomialNB())
+    ('tfidf_transformer', TfidfTransformer())
 ])
 
 k_fold = KFold(n_splits = 10)
@@ -43,11 +42,14 @@ for train_indices, test_indices in k_fold.split(data):
     test_text = data.iloc[test_indices]['sentence'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
 
-    #sm = SMOTE(ratio = 1.0)
-    #train_text_res, train_y_res = sm.fit_sample(train_text, train_y)
+    vectorized_text = nb_pipeline.fit_transform(train_text)
 
-    nb_pipeline.fit(train_text, train_y)
-    predictions = nb_pipeline.predict(test_text)
+    sm = SMOTE(ratio = 1.0)
+    train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
+
+    clf = MultinomialNB()
+    clf.fit(train_text_res, train_y_res)
+    predictions = clf.predict(nb_pipeline.transform(test_text))
 
     nb_conf_mat += confusion_matrix(test_y, predictions)
     score1 = f1_score(test_y, predictions)
