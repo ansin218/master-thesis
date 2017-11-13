@@ -20,22 +20,6 @@ start_time = time()
 
 data = pd.read_csv("lucene_Ankur.csv")
 
-texts = []
-labels = []
-
-for i, label in enumerate(data['isRelevant']):
-    texts.append(data['sentence'][i])
-    if label == 0:
-        labels.append(0)
-    else:
-        labels.append(1)
-
-texts = np.asarray(texts)
-labels = np.asarray(labels)
-
-print("Printing Label Ratio...")
-print(np.bincount(labels))
-
 ######### NAIVE BAYES MODEL #########
 
 nb_pipeline = Pipeline([
@@ -59,8 +43,8 @@ for train_indices, test_indices in k_fold.split(data):
     test_text = data.iloc[test_indices]['sentence'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
 
-    sm = SMOTE(ratio = 1.0)
-    train_text_res, train_y_res = sm.fit_sample(train_text, train_y)
+    #sm = SMOTE(ratio = 1.0)
+    #train_text_res, train_y_res = sm.fit_sample(train_text, train_y)
 
     nb_pipeline.fit(train_text, train_y)
     predictions = nb_pipeline.predict(test_text)
