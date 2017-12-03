@@ -38,33 +38,34 @@ logit_re_scores = []
 logit_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
-    try:
-        train_text = data.iloc[train_indices]['sentence'].values
-        train_y = data.iloc[train_indices]['isRelevant'].values
 
-        test_text = data.iloc[test_indices]['sentence'].values
-        test_y = data.iloc[test_indices]['isRelevant'].values
+    train_text = data.iloc[train_indices]['sentence'].values
+    train_y = data.iloc[train_indices]['isRelevant'].values
 
-        vectorized_text = logit_pipeline.fit_transform(train_text)
+    test_text = data.iloc[test_indices]['sentence'].values
+    test_y = data.iloc[test_indices]['isRelevant'].values
 
-        sm = RandomUnderSampler(ratio = 1.0)
-        train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
+    vectorized_text = logit_pipeline.fit_transform(train_text)
 
-        clf = LogisticRegression()
-        clf.fit(train_text_res, train_y_res)
-        predictions = clf.predict(logit_pipeline.transform(test_text))
+    sm = SMOTE(ratio = 1.0)
+    train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
-        logit_conf_mat += confusion_matrix(test_y, predictions)
-        score1 = f1_score(test_y, predictions)
-        logit_f1_scores.append(score1)
-        score2 = accuracy_score(test_y, predictions)
-        logit_ac_scores.append(score2)
-        score3 = precision_score(test_y, predictions)
-        logit_pr_scores.append(score3)
-        score4 = recall_score(test_y, predictions)
-        logit_re_scores.append(score4)
-    except:
-        print("Skipping Corrupt Lines")
+    sm = RandomUnderSampler(ratio = 1.0)
+    train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
+
+    clf = LogisticRegression()
+    clf.fit(train_text_res, train_y_res)
+    predictions = clf.predict(logit_pipeline.transform(test_text))
+
+    logit_conf_mat += confusion_matrix(test_y, predictions)
+    score1 = f1_score(test_y, predictions)
+    logit_f1_scores.append(score1)
+    score2 = accuracy_score(test_y, predictions)
+    logit_ac_scores.append(score2)
+    score3 = precision_score(test_y, predictions)
+    logit_pr_scores.append(score3)
+    score4 = recall_score(test_y, predictions)
+    logit_re_scores.append(score4)
 
 print("\nPrinting Results for Logistic Regression Model...")
 print("Comments Classified: ", len(data))
@@ -99,8 +100,11 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = nb_pipeline.fit_transform(train_text)
 
-    sm = RandomUnderSampler(ratio = 1.0)
+    sm = SMOTE(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
+
+    sm = RandomUnderSampler(ratio = 1.0)
+    train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
 
     clf = MultinomialNB()
     clf.fit(train_text_res, train_y_res)
@@ -149,8 +153,11 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = svc_pipeline.fit_transform(train_text)
 
-    sm = RandomUnderSampler(ratio = 1.0)
+    sm = SMOTE(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
+
+    sm = RandomUnderSampler(ratio = 1.0)
+    train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
 
     clf = SVC()
     clf.fit(train_text_res, train_y_res)
@@ -199,8 +206,11 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = rf_pipeline.fit_transform(train_text)
 
-    sm = RandomUnderSampler(ratio = 1.0)
+    sm = SMOTE(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
+
+    sm = RandomUnderSampler(ratio = 1.0)
+    train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
 
     clf = RandomForestClassifier()
     clf.fit(train_text_res, train_y_res)
@@ -249,8 +259,11 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = dt_pipeline.fit_transform(train_text)
 
-    sm = RandomUnderSampler(ratio = 1.0)
+    sm = SMOTE(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
+
+    sm = RandomUnderSampler(ratio = 1.0)
+    train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
 
     clf = DecisionTreeClassifier()
     clf.fit(train_text_res, train_y_res)
