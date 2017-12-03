@@ -26,7 +26,7 @@ data = pd.read_csv("a_lucene_results.csv")
 ######### LOGISTIC REGRESSION MODEL #########
 
 logit_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3), stop_words = 'english')),
     ('tfidf_transformer', TfidfTransformer())
 ])
 
@@ -47,10 +47,10 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = logit_pipeline.fit_transform(train_text)
 
-    sm = SMOTE(ratio = 1.0)
+    sm = RandomUnderSampler(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
-    sm = RandomUnderSampler(ratio = 1.0)
+    sm = SMOTE(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
 
     clf = LogisticRegression()
@@ -79,7 +79,7 @@ print(logit_conf_mat)
 ######### NAIVE BAYES MODEL #########
 
 nb_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3), stop_words = 'english')),
     ('tfidf_transformer', TfidfTransformer())
 ])
 
@@ -100,10 +100,10 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = nb_pipeline.fit_transform(train_text)
 
-    sm = SMOTE(ratio = 1.0)
+    sm = RandomUnderSampler(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
-    sm = RandomUnderSampler(ratio = 1.0)
+    sm = SMOTE(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
 
     clf = MultinomialNB()
@@ -132,7 +132,7 @@ print(nb_conf_mat)
 ######### SUPPORT VECTOR MACHINES MODEL #########
 
 svc_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3), stop_words = 'english')),
     ('tfidf_transformer', TfidfTransformer())
 ])
 
@@ -153,10 +153,10 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = svc_pipeline.fit_transform(train_text)
 
-    sm = SMOTE(ratio = 1.0)
+    sm = RandomUnderSampler(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
-    sm = RandomUnderSampler(ratio = 1.0)
+    sm = SMOTE(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
 
     clf = SVC()
@@ -185,7 +185,7 @@ print(svc_conf_mat)
 ######### RANDOM FOREST MODEL #########
 
 rf_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3), stop_words = 'english')),
     ('tfidf_transformer', TfidfTransformer())
 ])
 
@@ -206,10 +206,10 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = rf_pipeline.fit_transform(train_text)
 
-    sm = SMOTE(ratio = 1.0)
+    sm = RandomUnderSampler(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
-    sm = RandomUnderSampler(ratio = 1.0)
+    sm = SMOTE(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
 
     clf = RandomForestClassifier()
@@ -238,7 +238,7 @@ print(rf_conf_mat)
 ######### DECISION TREE MODEL #########
 
 dt_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3), stop_words = 'english')),
     ('tfidf_transformer', TfidfTransformer())
 ])
 
@@ -259,10 +259,10 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = dt_pipeline.fit_transform(train_text)
 
-    sm = SMOTE(ratio = 1.0)
+    sm = RandomUnderSampler(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
-    sm = RandomUnderSampler(ratio = 1.0)
+    sm = SMOTE(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
 
     clf = DecisionTreeClassifier()
