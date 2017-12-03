@@ -19,10 +19,10 @@ start_time = time()
 data = pd.read_csv("a_lucene_results.csv")
 
 ######### LOGISTIC REGRESSION MODEL #########
-#ngram_range = (1, 10)
+
 logit_pipeline = Pipeline([
     ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', LogisticRegression())
 ])
 
@@ -69,7 +69,7 @@ print(logit_conf_mat)
 
 nb_pipeline = Pipeline([
     ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', MultinomialNB())
 ])
 
@@ -114,7 +114,7 @@ print(nb_conf_mat)
 
 svc_pipeline = Pipeline([
     ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', SVC())
 ])
 
@@ -159,7 +159,7 @@ print(svc_conf_mat)
 
 rf_pipeline = Pipeline([
     ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', RandomForestClassifier())
 ])
 
@@ -204,7 +204,7 @@ print(rf_conf_mat)
 
 dt_pipeline = Pipeline([
     ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', RandomForestClassifier())
 ])
 
