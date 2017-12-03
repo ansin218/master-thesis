@@ -10,12 +10,17 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS as stopwords
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import KFold
+from sklearn.base import TransformerMixin
 from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, precision_score, recall_score
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 import warnings
+import string
+import spacy
+import en_core_web_sm
 
 warnings.filterwarnings("ignore")
 
@@ -23,10 +28,33 @@ start_time = time()
 
 data = pd.read_csv("a_lucene_results.csv")
 
+punctuations = string.punctuation
+
+parser = en_core_web_sm.load()
+
+# Custom transformer using spaCy
+class predictors(TransformerMixin):
+    def transform(self, X, **transform_params):
+        return [clean_text(text) for text in X]
+    def fit(self, X, y=None, **fit_params):
+        return self
+    def get_params(self, deep=True):
+        return {}
+
+# Basic utility function to clean the text
+def clean_text(text):
+    return text.strip().lower()
+
+def spacy_tokenizer(sentence):
+    tokens = parser(sentence)
+    tokens = [tok.lemma_.lower().strip() if tok.lemma_ != "-PRON-" else tok.lower_ for tok in tokens]
+    tokens = [tok for tok in tokens if (tok not in stopwords and tok not in punctuations)]
+    return tokens
+
 ######### LOGISTIC REGRESSION MODEL #########
 
 logit_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(ngram_range = (1, 3), stop_words = 'english')),
+    ('vectorizer', CountVectorizer(tokenizer = spacy_tokenizer, ngram_range = (1, 3), stop_words = 'english')),
     ('tfidf_transformer', TfidfTransformer())
 ])
 
@@ -47,10 +75,10 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = logit_pipeline.fit_transform(train_text)
 
-    sm = RandomUnderSampler(ratio = 1.0)
+    sm = SMOTE(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
-    sm = SMOTE(ratio = 1.0)
+    sm = RandomUnderSampler(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
 
     clf = LogisticRegression()
@@ -79,7 +107,7 @@ print(logit_conf_mat)
 ######### NAIVE BAYES MODEL #########
 
 nb_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(ngram_range = (1, 3), stop_words = 'english')),
+    ('vectorizer', CountVectorizer(tokenizer = spacy_tokenizer, ngram_range = (1, 3), stop_words = 'english')),
     ('tfidf_transformer', TfidfTransformer())
 ])
 
@@ -100,10 +128,10 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = nb_pipeline.fit_transform(train_text)
 
-    sm = RandomUnderSampler(ratio = 1.0)
+    sm = SMOTE(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
-    sm = SMOTE(ratio = 1.0)
+    sm = RandomUnderSampler(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
 
     clf = MultinomialNB()
@@ -132,7 +160,7 @@ print(nb_conf_mat)
 ######### SUPPORT VECTOR MACHINES MODEL #########
 
 svc_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(ngram_range = (1, 3), stop_words = 'english')),
+    ('vectorizer', CountVectorizer(tokenizer = spacy_tokenizer, ngram_range = (1, 3), stop_words = 'english')),
     ('tfidf_transformer', TfidfTransformer())
 ])
 
@@ -153,10 +181,10 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = svc_pipeline.fit_transform(train_text)
 
-    sm = RandomUnderSampler(ratio = 1.0)
+    sm = SMOTE(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
-    sm = SMOTE(ratio = 1.0)
+    sm = RandomUnderSampler(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
 
     clf = SVC()
@@ -185,7 +213,7 @@ print(svc_conf_mat)
 ######### RANDOM FOREST MODEL #########
 
 rf_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(ngram_range = (1, 3), stop_words = 'english')),
+    ('vectorizer', CountVectorizer(tokenizer = spacy_tokenizer, ngram_range = (1, 3), stop_words = 'english')),
     ('tfidf_transformer', TfidfTransformer())
 ])
 
@@ -206,10 +234,10 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = rf_pipeline.fit_transform(train_text)
 
-    sm = RandomUnderSampler(ratio = 1.0)
+    sm = SMOTE(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
-    sm = SMOTE(ratio = 1.0)
+    sm = RandomUnderSampler(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
 
     clf = RandomForestClassifier()
@@ -238,7 +266,7 @@ print(rf_conf_mat)
 ######### DECISION TREE MODEL #########
 
 dt_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(ngram_range = (1, 3), stop_words = 'english')),
+    ('vectorizer', CountVectorizer(tokenizer = spacy_tokenizer, ngram_range = (1, 3), stop_words = 'english')),
     ('tfidf_transformer', TfidfTransformer())
 ])
 
@@ -259,12 +287,12 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = dt_pipeline.fit_transform(train_text)
 
-    sm = RandomUnderSampler(ratio = 1.0)
+    sm = SMOTE(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
-    sm = SMOTE(ratio = 1.0)
+    sm = RandomUnderSampler(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(train_text_res, train_y_res)
-
+    
     clf = DecisionTreeClassifier()
     clf.fit(train_text_res, train_y_res)
     predictions = clf.predict(dt_pipeline.transform(test_text))
