@@ -13,6 +13,10 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import KFold
 from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, precision_score, recall_score
+from imblearn.over_sampling import SMOTE
+import warnings
+
+warnings.filterwarnings("ignore")
 
 start_time = time()
 
@@ -22,8 +26,7 @@ data = pd.read_csv("a_lucene_results.csv")
 
 logit_pipeline = Pipeline([
     ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
-    ('tfidf_transformer', TfidfTransformer()),
-    ('classifier', LogisticRegression())
+    ('tfidf_transformer', TfidfTransformer())
 ])
 
 k_fold = KFold(n_splits = 10)
@@ -41,8 +44,14 @@ for train_indices, test_indices in k_fold.split(data):
         test_text = data.iloc[test_indices]['sentence'].values
         test_y = data.iloc[test_indices]['isRelevant'].values
 
-        logit_pipeline.fit(train_text, train_y)
-        predictions = logit_pipeline.predict(test_text)
+        vectorized_text = logit_pipeline.fit_transform(train_text)
+
+        sm = SMOTE(ratio = 1.0)
+        train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
+
+        clf = LogisticRegression()
+        clf.fit(train_text_res, train_y_res)
+        predictions = clf.predict(logit_pipeline.transform(test_text))
 
         logit_conf_mat += confusion_matrix(test_y, predictions)
         score1 = f1_score(test_y, predictions)
@@ -69,8 +78,7 @@ print(logit_conf_mat)
 
 nb_pipeline = Pipeline([
     ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
-    ('tfidf_transformer', TfidfTransformer()),
-    ('classifier', MultinomialNB())
+    ('tfidf_transformer', TfidfTransformer())
 ])
 
 k_fold = KFold(n_splits = 10)
@@ -88,8 +96,14 @@ for train_indices, test_indices in k_fold.split(data):
     test_text = data.iloc[test_indices]['sentence'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
 
-    nb_pipeline.fit(train_text, train_y)
-    predictions = nb_pipeline.predict(test_text)
+    vectorized_text = nb_pipeline.fit_transform(train_text)
+
+    sm = SMOTE(ratio = 1.0)
+    train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
+
+    clf = MultinomialNB()
+    clf.fit(train_text_res, train_y_res)
+    predictions = clf.predict(nb_pipeline.transform(test_text))
 
     nb_conf_mat += confusion_matrix(test_y, predictions)
     score1 = f1_score(test_y, predictions)
@@ -114,8 +128,7 @@ print(nb_conf_mat)
 
 svc_pipeline = Pipeline([
     ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
-    ('tfidf_transformer', TfidfTransformer()),
-    ('classifier', SVC())
+    ('tfidf_transformer', TfidfTransformer())
 ])
 
 k_fold = KFold(n_splits = 10)
@@ -133,8 +146,14 @@ for train_indices, test_indices in k_fold.split(data):
     test_text = data.iloc[test_indices]['sentence'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
 
-    svc_pipeline.fit(train_text, train_y)
-    predictions = svc_pipeline.predict(test_text)
+    vectorized_text = svc_pipeline.fit_transform(train_text)
+
+    sm = SMOTE(ratio = 1.0)
+    train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
+
+    clf = SVC()
+    clf.fit(train_text_res, train_y_res)
+    predictions = clf.predict(svc_pipeline.transform(test_text))
 
     svc_conf_mat += confusion_matrix(test_y, predictions)
     score1 = f1_score(test_y, predictions)
@@ -159,8 +178,7 @@ print(svc_conf_mat)
 
 rf_pipeline = Pipeline([
     ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
-    ('tfidf_transformer', TfidfTransformer()),
-    ('classifier', RandomForestClassifier())
+    ('tfidf_transformer', TfidfTransformer())
 ])
 
 k_fold = KFold(n_splits = 10)
@@ -178,8 +196,14 @@ for train_indices, test_indices in k_fold.split(data):
     test_text = data.iloc[test_indices]['sentence'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
 
-    rf_pipeline.fit(train_text, train_y)
-    predictions = rf_pipeline.predict(test_text)
+    vectorized_text = rf_pipeline.fit_transform(train_text)
+
+    sm = SMOTE(ratio = 1.0)
+    train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
+
+    clf = RandomForestClassifier()
+    clf.fit(train_text_res, train_y_res)
+    predictions = clf.predict(rf_pipeline.transform(test_text))
 
     rf_conf_mat += confusion_matrix(test_y, predictions)
     score1 = f1_score(test_y, predictions)
@@ -204,8 +228,7 @@ print(rf_conf_mat)
 
 dt_pipeline = Pipeline([
     ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
-    ('tfidf_transformer', TfidfTransformer()),
-    ('classifier', RandomForestClassifier())
+    ('tfidf_transformer', TfidfTransformer())
 ])
 
 k_fold = KFold(n_splits = 10)
@@ -223,8 +246,14 @@ for train_indices, test_indices in k_fold.split(data):
     test_text = data.iloc[test_indices]['sentence'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
 
-    dt_pipeline.fit(train_text, train_y)
-    predictions = dt_pipeline.predict(test_text)
+    vectorized_text = dt_pipeline.fit_transform(train_text)
+
+    sm = SMOTE(ratio = 1.0)
+    train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
+
+    clf = DecisionTreeClassifier()
+    clf.fit(train_text_res, train_y_res)
+    predictions = clf.predict(dt_pipeline.transform(test_text))
 
     dt_conf_mat += confusion_matrix(test_y, predictions)
     score1 = f1_score(test_y, predictions)
