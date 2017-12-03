@@ -14,6 +14,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.model_selection import KFold
 from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, precision_score, recall_score
 from imblearn.over_sampling import SMOTE
+from imblearn.under_sampling import RandomUnderSampler
 import warnings
 
 warnings.filterwarnings("ignore")
@@ -46,7 +47,7 @@ for train_indices, test_indices in k_fold.split(data):
 
         vectorized_text = logit_pipeline.fit_transform(train_text)
 
-        sm = SMOTE(ratio = 1.0)
+        sm = RandomUnderSampler(ratio = 1.0)
         train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
         clf = LogisticRegression()
@@ -98,7 +99,7 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = nb_pipeline.fit_transform(train_text)
 
-    sm = SMOTE(ratio = 1.0)
+    sm = RandomUnderSampler(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
     clf = MultinomialNB()
@@ -148,7 +149,7 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = svc_pipeline.fit_transform(train_text)
 
-    sm = SMOTE(ratio = 1.0)
+    sm = RandomUnderSampler(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
     clf = SVC()
@@ -198,7 +199,7 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = rf_pipeline.fit_transform(train_text)
 
-    sm = SMOTE(ratio = 1.0)
+    sm = RandomUnderSampler(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
     clf = RandomForestClassifier()
@@ -248,7 +249,7 @@ for train_indices, test_indices in k_fold.split(data):
 
     vectorized_text = dt_pipeline.fit_transform(train_text)
 
-    sm = SMOTE(ratio = 1.0)
+    sm = RandomUnderSampler(ratio = 1.0)
     train_text_res, train_y_res = sm.fit_sample(vectorized_text, train_y)
 
     clf = DecisionTreeClassifier()
