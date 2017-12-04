@@ -26,7 +26,7 @@ warnings.filterwarnings("ignore")
 
 start_time = time()
 
-data = pd.read_csv("a_lucene_results.csv")
+data = pd.read_csv("c_thunderbird_results.csv")
 
 nlp = en_core_web_sm.load()
 
@@ -255,7 +255,7 @@ print(rf_conf_mat)
 dt_pipeline = Pipeline([
     ('vectorizer', CountVectorizer(tokenizer = spacy_tokenizer, ngram_range = (1, 1), stop_words = 'english')),
     ('tfidf_transformer', TfidfTransformer()),
-    ('classifier', DecisionTreeClassifier())
+    ('classifier', RandomForestClassifier())
 ])
 
 k_fold = KFold(n_splits = 10)

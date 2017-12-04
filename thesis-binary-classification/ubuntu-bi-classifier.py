@@ -10,19 +10,69 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS as stopwords
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import KFold
+from sklearn.base import TransformerMixin
 from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, precision_score, recall_score
+from imblearn.over_sampling import SMOTE
+from imblearn.under_sampling import RandomUnderSampler
+import warnings
+import string
+import spacy
+import en_core_web_sm
+
+warnings.filterwarnings("ignore")
 
 start_time = time()
 
 data = pd.read_csv("b_ubuntu_results.csv")
 
+nlp = en_core_web_sm.load()
+
+sentenceList = data['sentence'].tolist()
+posSentenceList = list()
+
+for i in range(len(sentenceList)):
+    doc = nlp(sentenceList[i])
+    outStr = ''
+    for token in doc:
+        combine = token.orth_ + "_" + token.tag_
+        outStr = outStr + ' ' + combine
+    posSentenceList.append(outStr)
+
+se = pd.Series(posSentenceList)
+data['pos_tag'] = se.values
+
+punctuations = string.punctuation
+
+parser = en_core_web_sm.load()
+
+# Custom transformer using spaCy
+class predictors(TransformerMixin):
+    def transform(self, X, **transform_params):
+        return [clean_text(text) for text in X]
+    def fit(self, X, y=None, **fit_params):
+        return self
+    def get_params(self, deep=True):
+        return {}
+
+# Basic utility function to clean the text
+def clean_text(text):
+    return text.strip().lower()
+
+def spacy_tokenizer(sentence):
+    tokens = parser(sentence)
+    tokens = [tok.lemma_.lower().strip() if tok.lemma_ != "-PRON-" else tok.lower_ for tok in tokens]
+    tokens = [tok for tok in tokens if (tok not in stopwords and tok not in punctuations)]
+    return tokens
+
+
 ######### LOGISTIC REGRESSION MODEL #########
-#ngram_range = (1, 10)
+
 logit_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', LogisticRegression())
 ])
 
@@ -35,10 +85,10 @@ logit_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
     try:
-        train_text = data.iloc[train_indices]['sentence'].values
+        train_text = data.iloc[train_indices]['pos_tag'].values
         train_y = data.iloc[train_indices]['isRelevant'].values
 
-        test_text = data.iloc[test_indices]['sentence'].values
+        test_text = data.iloc[test_indices]['pos_tag'].values
         test_y = data.iloc[test_indices]['isRelevant'].values
 
         logit_pipeline.fit(train_text, train_y)
@@ -68,8 +118,8 @@ print(logit_conf_mat)
 ######### NAIVE BAYES MODEL #########
 
 nb_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', MultinomialNB())
 ])
 
@@ -82,10 +132,10 @@ nb_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
 
-    train_text = data.iloc[train_indices]['sentence'].values
+    train_text = data.iloc[train_indices]['pos_tag'].values
     train_y = data.iloc[train_indices]['isRelevant'].values
 
-    test_text = data.iloc[test_indices]['sentence'].values
+    test_text = data.iloc[test_indices]['pos_tag'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
 
     nb_pipeline.fit(train_text, train_y)
@@ -113,8 +163,8 @@ print(nb_conf_mat)
 ######### SUPPORT VECTOR MACHINES MODEL #########
 
 svc_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', SVC())
 ])
 
@@ -127,10 +177,10 @@ svc_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
 
-    train_text = data.iloc[train_indices]['sentence'].values
+    train_text = data.iloc[train_indices]['pos_tag'].values
     train_y = data.iloc[train_indices]['isRelevant'].values
 
-    test_text = data.iloc[test_indices]['sentence'].values
+    test_text = data.iloc[test_indices]['pos_tag'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
 
     svc_pipeline.fit(train_text, train_y)
@@ -158,8 +208,8 @@ print(svc_conf_mat)
 ######### RANDOM FOREST MODEL #########
 
 rf_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', RandomForestClassifier())
 ])
 
@@ -172,10 +222,10 @@ rf_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
 
-    train_text = data.iloc[train_indices]['sentence'].values
+    train_text = data.iloc[train_indices]['pos_tag'].values
     train_y = data.iloc[train_indices]['isRelevant'].values
 
-    test_text = data.iloc[test_indices]['sentence'].values
+    test_text = data.iloc[test_indices]['pos_tag'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
 
     rf_pipeline.fit(train_text, train_y)
@@ -203,9 +253,9 @@ print(rf_conf_mat)
 ######### DECISION TREE MODEL #########
 
 dt_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
-    ('classifier', RandomForestClassifier())
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('tfidf_transformer', TfidfTransformer()),
+    ('classifier', DecisionTreeClassifier())
 ])
 
 k_fold = KFold(n_splits = 10)
@@ -217,10 +267,10 @@ dt_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
 
-    train_text = data.iloc[train_indices]['sentence'].values
+    train_text = data.iloc[train_indices]['pos_tag'].values
     train_y = data.iloc[train_indices]['isRelevant'].values
 
-    test_text = data.iloc[test_indices]['sentence'].values
+    test_text = data.iloc[test_indices]['pos_tag'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
 
     dt_pipeline.fit(train_text, train_y)
