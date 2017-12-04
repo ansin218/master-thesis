@@ -69,9 +69,9 @@ def spacy_tokenizer(sentence):
 
 
 ######### LOGISTIC REGRESSION MODEL #########
-
+#tokenizer = spacy_tokenizer, ngram_range = (1, 1), stop_words = 'english'
 logit_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(tokenizer = spacy_tokenizer, ngram_range = (1, 1), stop_words = 'english')),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 1))),
     ('tfidf_transformer', TfidfTransformer()),
     ('classifier', LogisticRegression())
 ])
@@ -85,10 +85,10 @@ logit_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
     try:
-        train_text = data.iloc[train_indices]['sentence'].values
+        train_text = data.iloc[train_indices]['pos_tag'].values
         train_y = data.iloc[train_indices]['isRelevant'].values
 
-        test_text = data.iloc[test_indices]['sentence'].values
+        test_text = data.iloc[test_indices]['pos_tag'].values
         test_y = data.iloc[test_indices]['isRelevant'].values
 
         logit_pipeline.fit(train_text, train_y)
@@ -118,7 +118,7 @@ print(logit_conf_mat)
 ######### NAIVE BAYES MODEL #########
 
 nb_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(tokenizer = spacy_tokenizer, ngram_range = (1, 1), stop_words = 'english')),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 1))),
     ('tfidf_transformer', TfidfTransformer()),
     ('classifier', MultinomialNB())
 ])
@@ -132,10 +132,10 @@ nb_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
 
-    train_text = data.iloc[train_indices]['sentence'].values
+    train_text = data.iloc[train_indices]['pos_tag'].values
     train_y = data.iloc[train_indices]['isRelevant'].values
 
-    test_text = data.iloc[test_indices]['sentence'].values
+    test_text = data.iloc[test_indices]['pos_tag'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
 
     nb_pipeline.fit(train_text, train_y)
@@ -163,7 +163,7 @@ print(nb_conf_mat)
 ######### SUPPORT VECTOR MACHINES MODEL #########
 
 svc_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(tokenizer = spacy_tokenizer, ngram_range = (1, 1), stop_words = 'english')),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 1))),
     ('tfidf_transformer', TfidfTransformer()),
     ('classifier', SVC())
 ])
@@ -177,10 +177,10 @@ svc_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
 
-    train_text = data.iloc[train_indices]['sentence'].values
+    train_text = data.iloc[train_indices]['pos_tag'].values
     train_y = data.iloc[train_indices]['isRelevant'].values
 
-    test_text = data.iloc[test_indices]['sentence'].values
+    test_text = data.iloc[test_indices]['pos_tag'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
 
     svc_pipeline.fit(train_text, train_y)
@@ -208,7 +208,7 @@ print(svc_conf_mat)
 ######### RANDOM FOREST MODEL #########
 
 rf_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(tokenizer = spacy_tokenizer, ngram_range = (1, 1), stop_words = 'english')),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 1))),
     ('tfidf_transformer', TfidfTransformer()),
     ('classifier', RandomForestClassifier())
 ])
@@ -222,10 +222,10 @@ rf_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
 
-    train_text = data.iloc[train_indices]['sentence'].values
+    train_text = data.iloc[train_indices]['pos_tag'].values
     train_y = data.iloc[train_indices]['isRelevant'].values
 
-    test_text = data.iloc[test_indices]['sentence'].values
+    test_text = data.iloc[test_indices]['pos_tag'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
 
     rf_pipeline.fit(train_text, train_y)
@@ -253,9 +253,9 @@ print(rf_conf_mat)
 ######### DECISION TREE MODEL #########
 
 dt_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer(tokenizer = spacy_tokenizer, ngram_range = (1, 1), stop_words = 'english')),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 1))),
     ('tfidf_transformer', TfidfTransformer()),
-    ('classifier', RandomForestClassifier())
+    ('classifier', DecisionTreeClassifier())
 ])
 
 k_fold = KFold(n_splits = 10)
@@ -267,10 +267,10 @@ dt_conf_mat = np.array([[0, 0], [0, 0]])
 
 for train_indices, test_indices in k_fold.split(data):
 
-    train_text = data.iloc[train_indices]['sentence'].values
+    train_text = data.iloc[train_indices]['pos_tag'].values
     train_y = data.iloc[train_indices]['isRelevant'].values
 
-    test_text = data.iloc[test_indices]['sentence'].values
+    test_text = data.iloc[test_indices]['pos_tag'].values
     test_y = data.iloc[test_indices]['isRelevant'].values
 
     dt_pipeline.fit(train_text, train_y)
