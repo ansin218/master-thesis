@@ -72,8 +72,8 @@ data['isRelevant'] = data['isRelevant'].map({0: 1, 1: 0})
 ######### LOGISTIC REGRESSION MODEL #########
 #tokenizer = spacy_tokenizer, ngram_range = (1, 1), stop_words = 'english'
 logit_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', LogisticRegression())
 ])
 
@@ -119,8 +119,8 @@ print(logit_conf_mat)
 ######### NAIVE BAYES MODEL #########
 
 nb_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', MultinomialNB())
 ])
 
@@ -164,8 +164,8 @@ print(nb_conf_mat)
 ######### SUPPORT VECTOR MACHINES MODEL #########
 
 svc_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', SVC())
 ])
 
@@ -209,8 +209,8 @@ print(svc_conf_mat)
 ######### RANDOM FOREST MODEL #########
 
 rf_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', RandomForestClassifier())
 ])
 
@@ -254,8 +254,8 @@ print(rf_conf_mat)
 ######### DECISION TREE MODEL #########
 
 dt_pipeline = Pipeline([
-    ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('vectorizer', CountVectorizer(ngram_range = (1, 3))),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', DecisionTreeClassifier())
 ])
 
