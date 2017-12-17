@@ -62,7 +62,7 @@
 \mbox{}
 
 \chapter*{Acknowledgements}
-
+To write.
 
 \pagenumbering{roman}
 
@@ -107,7 +107,23 @@ Rationales Wissen ist besonders wichtig während der Softwarewartung und evoluti
 \clearpage
 
 \begin{acronym}
-\acro{GUI}{Graphical User Interface}
+
+\acro{MNB}{Multinomial Naive Bayes}
+\acro{DT}{Decision Tree}
+\acro{RF}{Random Forest}
+\acro{LR}{Logistic Regression}
+\acro{SVM}{Support Vector Machines}
+\acro{HTML}{Hypertext Markup Language}
+\acro{TXT}{Text}
+\acro{SQL}{Structured Query Language}
+\acro{NLP}{Natural Language Processing}
+\acro{POS}{Parts-of-Speech}
+\acro{SOLR}{Need to look up}
+\acro{SGD}{Stochastic Gradient Descent}
+\acro{GATE}{Need to look up}
+\acro{WEKA}{Need to look up}
+\acro{MEKA}{Need to look up}
+\acro{NER}{Named Entity Recognition}
 
 \end{acronym}
 
@@ -201,15 +217,68 @@ Synonymous to the classification mentioned earlier, Alkadhi et al. performed cla
 Bachelli et al. used a dataset of around 1,500 emails from mailing lists. They then tried to classify the contents of the emails into 5 categories. The categories into which they were classified automatically were natural language, junk, patch, stack trace and source code, using Naive Bayes classifier. 
 
 \subsection{Generating Categories using Topic Modeling}
-In the past, research has been carried out to automatically extract rationale from issue trackers.
+In the past, research has been carried out to generate categories using Topic Modeling techniques such as LDA. 
 
 \section{Natural Language Processing}
 
-\textit{Note: This section would summarize the architectural style Representational State Transfer (REST) using definitions, historical overviews and pointing out the most important aspects of the architecture.}
+Natural Language Processing (NLP) is a popular branch of computer science using which one can perform text classification or categorization. In addition, some of the methodologies under NLP can also be used for data preprocessing while performing machine learning tasks. Some of the most popular methods and techniques from NLP and their pertinent works are discussed below. 
+
+\subsection{Preprocessing Steps}
+The following section explores different preprocessing steps that can be applied for text classification. 
+
+\subsubsection{Stopwords Removal}
+A sentence usually is comprised of different parts-of-speech. However, there may be some words that are very common across all sentences and thereby does not contribute to learning about specific features or keywords. In such a scenario, researchers deploy stopword removal mechanism to filter out words that are of less or no interest to them. An exhaustive list of stopwords has been published by the Information Retrieval Group, School of Computing, University of Glasgow. In addition, one can also create their own stopwords list if specific information or keywords are being looked for. 
+
+Given a sentence, 
+Munich is a really beautiful city with a cosmopolitan crowd. 
+
+After applying stopwords removal, the sentence would then look like,
+Munich really beautiful city cosmopolitan crowd.
+
+Rogers et al. carried out an experiment to identify rationale from documents using linguistic features such as stopwords removal to conclude that it resulted in better precision but lower recall. Kurtanovic et al. also performed stopwords removal in their data preprocessing step while retrieving rationale from software reviews. Guzman et al. used stopwords removal in all of her works which included obtaining information from tweets as well as chat messages.
+
+\subsubsection{Stemming}
+abc
+
+\subsubsection{Lemmatization}
+abc
+
+\subsubsection{Bag-of-Words}
+abc
+
+\subsubsection{n-gram Tokenization}
+abc
+
+\subsubsection{tf-idf}
+abc
+
+\subsection{Topic Modeling}
+abc
+
+\subsection{Parts-of-Speech Tagging}
+abc
+
+\subsection{Named Entity Recognition}
+abc
+
 
 \section{Machine Learning}
 
 \textit{Note: This section would summarize the agile method Scrum using definitions, historical overviews and pointing out the most important aspects of Scrum.}
+
+\subsection{Techniques}
+Supervised and unsupervised. 
+
+\subsection{Pipeline}
+Training, testing, cross-validation.
+
+\subsection{Algorithms}
+Algorithms - SVM, LR, RF, DT, MNB
+
+\subsection{Performance Metrics}
+Accuracy, recall, precision, F1, hamming loss. 
+
+\section{Tools}
 
 %------- chapter 3 -------
 
