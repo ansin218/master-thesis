@@ -255,9 +255,24 @@ Stemming is a popular preprocessing technique of mapping similar words with diff
 Another preprocessing technique, but rather a better replacement of stemming, is lemmatization. In this technique, words of different variations are not truncated but rather are mapped to a root word. This root word is identical to a word found in the dictionary. Toman et al. state that lemmatization is a difficult and expensive process but is more beneficial. An example of lemmatization would be that words like is and are would be mapped to be, which is an actual word found in the dictionary. Some other works that were mentioned earlier also have lemmatization done for preprocessing the data. 
 
 \subsubsection{Bag-of-Words}
-abc
+Given a corpus of N documents, each document may contain many words. A bag of words can thus be formed by counting the frequency of every unique word occuring across N documents. However, to form a vocabulary pertaining to the text dataset, techniques such as stopwords removal, punctuations removal, stemming and lemmatization, can be applied to prune on commonly occuring words and different variations of the same word.
 
-\subsubsection{n-gram Tokenization}
+Sentence 1: I went to Munich
+
+Sentence 2: Munich is a very beautiful place compared to Berlin
+
+Sentence 3: Berlin has more startups than Munich
+
+Applying the preprocessing techniques such as stopwords removal, punctuations removal (Although no punctuations occur in the three given sentences), stemming and lemmatization, the bag-of-words would look like:
+
+Munich: 3
+Berlin: 2
+beautiful: 1
+compared: 1
+startups: 1
+place: 1
+
+\subsubsection{N-Gram Tokenization}
 abc
 
 \subsubsection{tf-idf}
@@ -373,6 +388,10 @@ For the main content analysis, two annotators individually read through XXXX num
 \textit{Note: Describe the design / methodology of the evaluation and why you did it like that. E.g. what kind of evaluation have you done (e.g. questionnaire, personal interviews, simulation, quantitative analysis of metrics, what kind of participants, what kind of questions, what was the procedure?}
 
 \section{Parts of Speech Tagging}
+
+\textit{Note: Derive concrete objectives / hypotheses for this evaluation from the general ones in the introduction.}
+
+\section{Named Entity Recognition}
 
 \textit{Note: Derive concrete objectives / hypotheses for this evaluation from the general ones in the introduction.}
 
