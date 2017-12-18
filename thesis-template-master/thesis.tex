@@ -272,8 +272,22 @@ compared: 1
 startups: 1
 place: 1
 
+NOTE: To write about previous works. 
+
 \subsubsection{N-Gram Tokenization}
-abc
+Bag-of-words takes one word at a time and counts them. However, n-gram tokenization is a method were multiple words appearing continuously can be grouped as one term. This approach helps in extracting better meaning if multiple words occuring together make better sense than their individual counterparts. These terms of n-grams or n-tokens groupped together can then be used as a feature while running the classifier. 
+
+An example sentence without any kind of preprocessing applied: Linux is a robust operating system
+
+Result of 1-gram (unigram) tokenization: Linux, is, a, robust, operating, system 
+
+Result of 2-gram (bigram) tokenization: Linux is, is a, a robust, robust operating, operating system
+
+Result of 3-gram (trigram) tokenization: Linux is a, is a robust, a robust operating, robust operating system
+
+It can be seen clearly that the results of 2-gram or 3-gram tokenization add more value in terms of using it as features when compared to 1-gram tokenization.
+
+NOTE: To write about previous works. 
 
 \subsubsection{tf-idf}
 abc
