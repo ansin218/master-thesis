@@ -330,7 +330,19 @@ abc
 Many algorithms exist in the domain of machine learning to perform different kinds of classification. The scope of this thesis, however, is text classification using supervised learning techniques. The algorithms that will be looked into are mentioned in this section.
 
 \subsubsection{Logistic Regression}
-Write about Logistic Regression here
+Given a set of independent variables, x1, x2, .. , xn, logistic regression is an algorithm that predicts the outcome, y, that is a binary or categorical variable. It is a special form of linear regression except that probability is calculated by using the ratio of logarithm of odds. The data is fit into a logit function for the prediction of outcomes. Binary logistic model predicts the outcomes of two classes, Class A (0) and Class B (1), whereas multinomial logistic regression model is capable of predicting more than two classes, for example, Class A, Class B and Class C. 
+
+Log of odds ratio is given as:
+
+log(Y/(1-Y)) = a + bx1
+
+where b is the co-efficient of x1 and a is the bias term.
+
+Transforming the above log of odds ratio to get the value of Y, 
+
+Y = exp(a + bx1) / 1 + exp(a + bx1) 
+
+NOTE: Mention previous works where this was applied
 
 \subsubsection{Multinomial Naive Bayes}
 Write about Multinomial Naive Bayes here
