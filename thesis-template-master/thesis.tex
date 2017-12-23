@@ -328,7 +328,7 @@ For an algorithm to make predictions, it must first learn and train itself using
 After having trained the data on a bulk portion of the entire dataset, the model must be tested by running the classifier on the minor portion of the dataset known as the test dataset. The metrics from the test dataset are the ones taken into account when evaluating the performance of the classifier. The metrics are explained in Section X.Y.Z. 
 
 \subsubsection{Cross-Validation} 
-
+Models may be biased if they are being tested on a specific set of data. To improve fairness, k-fold cross validation technique is followed. In this method, the dataset is divided into k-folds, with k-1 folds for training and 1-fold for testing. This procedure is iterated over the entire dataset such that each portion k of the dataset would have been the testing dataset at some point across different iterations. This thesis uses a 10-fold cross validation approach. An example of 10-fold cross validation approach is illustrated in the figure as follows. 
 
 \subsection{Transformation Methods}
 
