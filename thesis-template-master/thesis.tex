@@ -297,6 +297,25 @@ Topic modeling is an approach in the domain of NLP to extract a specific number 
 
 Mathematically, topic modeling is a kind of a Bayesian inference model where every document in the text corpus is associated with a probability distribution over topics and these topics are nothing but probability distribution over words. Many topic modeling algorithms exists such as LSA, p-LSA, LDA, and HDP to mention a few. This thesis performs topic modeling using LDA as it is widely used in the academia domain for working with text corpora. NOTE: Mention some works using which rationale data was worked with.
 
+\subsubsection{Latent Dirichlet Allocation}
+Latent Dirichilet Allocation (LDA) is a topic modeling algorithm where topics are formed using a generative process. The algorithm is described as follows:
+
+1. Let the number of words in the document, D, be n.
+
+2. Let the number of topics that can contribute to a document be k.
+
+3. Let the number of documents in the corpora be M.
+
+4. Dirichlet distribution with parameter vector alpha of length k is chosen for k different topic distributions and parameter vector beta of length M is chosen for M documents in the corpora.
+
+6. Repeat until M documents, for a given document D belonging to corpora:
+
+(a) It samples a multinomial distribution of topics from the dirichlet distribution with parameter vector alpha chosen earlier and for each topic, it samples a multinomial distribution of words in that topic from the dirichlet distribution with parameter vector beta chosen earlier.
+
+(b) Repeat until n words, for a given word w in the document:
+
+i. It picks one topic from the multinomial topic distribution sampled above and then generates word from the multinomial word distribution of the chosen topic and add that word to the document.
+
 \subsection{Parts-of-Speech Tagging}
 abc
 
