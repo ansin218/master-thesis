@@ -414,7 +414,25 @@ In real world, datasets can rarely be linearly separable. In such a scenario, ke
 NOTE: Mention previous works where this was applied
 
 \subsubsection{Decision Trees}
-Write about Decision Trees here
+Decision tools predominantly used for classification and regression are decision trees. At the top most level, there exists one node from where decision needs to be made at every level going downwards based on some rules pertaining to the attribute in consideration, until the final goal is reached. 
+
+At every level, for each node, there exists an attribute that is chosen to split into their pertinent classes based on the samples provided. This split is done using a goodness function; some of them are information gain, information gain ratio and gini index, to mention a few. 
+
+The condition for an attribute to be chosen is the one that gives the smallest tree and hence, an attribute that gives the purest node is chosen. A typical criteria for computing impurity is information gain which increases as the average value of purity of the relevant subsets an attribute produces. Attribute that results in highest information gain is therefore chosen finally. 
+
+Information Gain = (information before split)–(information after split)
+
+To compute the information required, the entropy is computed; entropy describes the randomness of a given system. 
+
+NOTE: Entropy formula goes here
+
+The highest information gain is chosen after computing the information gain for each of the attribute.
+
+NOTE: Gain formula goes here
+
+Splitting process occurs repeatedly until the scenario where data cannot be split any further. Later, from the bottom, pruning of the tree takes place to make it shorter and avoid overfitting of any kind. 
+
+NOTE: Add algorithm maybe?
 
 \subsubsection{Random Forest}
 Write about Random Forest here
