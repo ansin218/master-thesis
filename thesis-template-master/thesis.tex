@@ -31,6 +31,7 @@
 \setlength{\evensidemargin}{22pt}
 \setlength{\oddsidemargin}{22pt}
 
+
 \def\doctype{Master's Thesis}
 \def\faculty{Informatik}
 \def\title{Mining Rationale from Issue Tracking Systems}		%TODO add title in German
@@ -169,11 +170,11 @@ Rationales Wissen ist besonders wichtig während der Softwarewartung und evoluti
 \section{Rationale Management}
 
 During different stages such as planning, designing, developing, testing and maintenance, individuals responsible come together to tackle any particular issue. Such a discussion includes the numerous ways in which the problem can be solved. A problem, however, cannot be solved just by proposing a possible solution. Different team members come together to show their support or go against it by pointing the demerits of a suggested implementation. Finally, they come together towards a mutual conclusion and decide to go ahead with a particular suggestion. Rationale can thus be defined as the logical reasoning behind a particular act or statement. In the context of software engineering, rationale is the reasoning behind the decision taken with respect to some task in hand during various phases of software development. 
-
+\bigbreak
 Conversations between developers can take place in person or across digital medium. Digital medium may include emails, chat messengers and issue trackers to name a few. While discussions taking place in person cannot be captured, technological advancements have made it possible to extract rationale from the aforementioned digital medium. Capturing these vital information from different artifcats and managing these rationale can therefore be of great benefit for other developers. This helps them in a way such that one does not have to go through the entire conversation history which would include a lot of irrelevant, petty, or off-topic comments; concentrating and focusing only on the pertinent messages can be made possible through rationale management. 
-
+\bigbreak
 The problems or issues to be tackled, more often than not, do not have path towards a solution or a concrete end point. Such problems are popularly described as wicked problems. With respect to computer science, wicked problems do not have any concrete algorithm or predefined point to solve a problem. The term wicked problem was introduced first by Professor Horst Rittel and Webber from the Architecture Department at the University of California, Berkely. He described such problems as those which are not formulated properly. In addition, he stated that such problems are solved by multiple decision makers. This is very synonymous to the fact that, in software engineering, such a situation has become a commonplace. C. West Churchman of the same university mentioned in a couple of sentences earlier had written a guest editorial echoing similar views. In the year 2014, Marcelo, George and Tero, proposed the Massive Open Online Research, which is claimed to be a framework to deal with wicked problems. 
-
+\bigbreak
 Taking a leaf out of Bruegge and Dutoit, five types of rationale elements are taken into consideration for this research. They are: issues, alternatives, pro-arguments, con-arguments and decision.
  
 \subsubsection{Issues}
@@ -198,22 +199,22 @@ In this section, we look at all the works relevant to this thesis done by others
 
 \subsection{Mining Sentiments from Development Artifacts}
 In the past, research has been carried out to retrieve different kinds of elements from issue tracking systems. Marco et al. published their work on extracting emotions and sentiments of developers from JIRA issue trackers of four different open source projects.  Sentiments such as love, joy, surprise, anger, sadness and fear were mined from 2,000 issue comments spanning 4,000 sentences from the JIRA issue tracking system of open source communities namely, Apache, Spring, CodeHaus and JBoss. This was a smaller version of a project where Marco et. al. carried out similar research with a dataset that spanned 700,000 reports of issues and 2 million comments. In another work of Marco et al., it has been concluded that being polite helped in fixing the issue in lesser amount of time. 
-
+\bigbreak
 Marshall et al. demonstrated the outcomes of emotions from the forum posts of agile teams. Their dataset contained more than 1,300 forum posts from five teams. The posts from the forums were classified into unemotional, positive, negative and neutral. It was discovered that members of the team showing less emotions performed better than others. In addition, such individuals were evaluated more positively by their cohorts. 
-
+\bigbreak
 A study was conducted by Souza and Silva where they performed sentiment analysis on Travis Continuous Integration builds. They carried out empirical assessment of 1,262 projects hosted on GitHub having more than 609,000 builds using Travis CI. It was found out that negative sentiments from developers leads to build breakage in continuous integration processes, although the influence is small. 
-
+\bigbreak
 Sentiments about software development can also be mined from social media. One such research was conducted by Alkadhi et al. where they extracted more than 10 million tweets of 30 different mobile and desktop software applications from Twitter. Their study demonstrated the type of content present in tweets with respect to the concerned software application. The tweets were categorized into 25 groups; some of which are praises, complaints, service, shortcomings and others, from general public. In addition to manual content analysis, supervised machine learning techniques were used to classify the tweets into different categories. 
 
 \subsection{Automatic Classification of Rationale Elements}
 Like mining and classifying sentiments, rationale elements were also extracted in some works. Kurtanovic et al. conducted research similar to that of Alkadhi et al. mentioned in the previous section. They performed manual content analysis and automatic classification of rationale from more than 52,000 user reviews of 52 software applications from the Amazon Store. Reviews and its pertinent sentences were classified using SVM, MNB and LR into the following: issue, alternative, criteria, decision and justification.  
-
+\bigbreak
 Fan et al. performed a study on a dataset obtained from GitHub spanning 80 projects and more than 252,000 issue reports. The goal was to classify them into bug or non-bug related sentences by running algorithms such as SVM, LR, MNB and RF using a two-fold approach. The first step included the computing probability to find out whether a sentence was bug-prone related or not. This was later used as an input in the second step coupled with other factors such as characteristics of the person who made the comment, their contributions, and others, to finally classify the sentence as bug-prone or not. 
-
+\bigbreak
 Rogers et al. carried out manual and automatic classification of rationale on 200 Chrome bug reports using GATE and WEKA. While the binary classification was conducted to see if a sentence contained rationale or not, fine-grained classification was also performed to check if a sentence had the following kinds of rationale: requirements, decisions, alternatives, arguments, assumptions, questions, answers, and procedures. The automatic extraction of rationale elements was carried out using machine learning techniques such as SGD, RF and MNB. 
-
+\bigbreak
 Synonymous to the classification mentioned earlier, Alkadhi et al. performed classification of rationale elements where the dataset included more than 8,700 chat messages from 3 software development teams. Apart from the binary classification of extracting if there was any rationale in a sentence or not, fine-grained classification was also performed to extract issues, alternatives, pro-arguments, con-arguments and decisions using MNB and SVM machine learning algorithms. 
-
+\bigbreak
 Bachelli et al. used a dataset of around 1,500 emails from mailing lists. They then tried to classify the contents of the emails into 5 categories. The categories into which they were classified automatically were natural language, junk, patch, stack trace and source code, using Naive Bayes classifier. 
 
 \subsection{Generating Categories using Topic Modeling}
@@ -228,24 +229,24 @@ The following section explores different preprocessing steps that can be applied
 
 \subsubsection{Stopwords Removal}
 A sentence usually is comprised of different parts-of-speech. However, there may be some words that are very common across all sentences and thereby does not contribute to learning about specific features or keywords. In such a scenario, researchers deploy stopword removal mechanism to filter out words that are of less or no interest to them. An exhaustive list of stopwords has been published by the Information Retrieval Group, School of Computing, University of Glasgow. In addition, one can also create their own stopwords list if specific information or keywords are being looked for. 
-
+\bigbreak
 Given a sentence, 
 Munich is a really beautiful city with a cosmopolitan crowd. 
-
+\bigbreak
 After applying stopwords removal, the sentence would then look like,
 Munich really beautiful city cosmopolitan crowd.
-
+\bigbreak
 Rogers et al. carried out an experiment to identify rationale from documents using linguistic features such as stopwords removal to conclude that it resulted in better precision but lower recall. Kurtanovic et al. also performed stopwords removal in their data preprocessing step while retrieving rationale from software reviews. Guzman et al. used stopwords removal in all of her works which included obtaining information from tweets as well as chat messages.
 
 \subsubsection{Punctuations Removal}
 Similar to words, punctuations are different parts of speech that can be removed from text after which the filtered data can be fed to the classifier. Some commonly witnessed punctuations include fullstop (.), comma (,), colon (:), semi-colon (;) amongst others. 
-
+\bigbreak
 Given a sentence, 
 Munich has many kinds of people living here such as: Indians, Chinese, Americans. 
-
+\bigbreak
 After applying punctuation removal, the sentence would then look like,
 Munich has many kinds of people living here such as Indians Chinese Americans
-
+\bigbreak
 Bacchelli et al. got rid of punctuations in the data preprocessing step for classifying contents of emails. Like stopwords removal, Kurtanovic et al. also performed punctuation removal as well for retrieving rationale from software reviews. Guzman et al. used removed punctuations from the dataset to carry out sentiment analysis on app reviews. 
 
 \subsubsection{Stemming}
@@ -256,88 +257,143 @@ Another preprocessing technique, but rather a better replacement of stemming, is
 
 \subsubsection{Bag-of-Words}
 Given a corpus of N documents, each document may contain many words. A bag of words can thus be formed by counting the frequency of every unique word occuring across N documents. However, to form a vocabulary pertaining to the text dataset, techniques such as stopwords removal, punctuations removal, stemming and lemmatization, can be applied to prune on commonly occuring words and different variations of the same word.
-
+\bigbreak
 Sentence 1: I went to Munich
-
+\bigbreak
 Sentence 2: Munich is a very beautiful place compared to Berlin
-
+\bigbreak
 Sentence 3: Berlin has more startups than Munich
-
+\bigbreak
 Applying the preprocessing techniques such as stopwords removal, punctuations removal (Although no punctuations occur in the three given sentences), stemming and lemmatization, the bag-of-words would look like:
-
+\bigbreak
 Munich: 3
 Berlin: 2
 beautiful: 1
 compared: 1
 startups: 1
 place: 1
-
+\bigbreak
 NOTE: To write about previous works. 
 
 \subsubsection{N-Gram Tokenization}
 Bag-of-words takes one word at a time and counts them. However, n-gram tokenization is a method were multiple words appearing continuously can be grouped as one term. This approach helps in extracting better meaning if multiple words occuring together make better sense than their individual counterparts. These terms of n-grams or n-tokens groupped together can then be used as a feature while running the classifier. 
-
+\bigbreak
 An example sentence without any kind of preprocessing applied: Linux is a robust operating system
-
+\bigbreak
 Result of 1-gram (unigram) tokenization: Linux, is, a, robust, operating, system 
-
+\bigbreak
 Result of 2-gram (bigram) tokenization: Linux is, is a, a robust, robust operating, operating system
-
+\bigbreak
 Result of 3-gram (trigram) tokenization: Linux is a, is a robust, a robust operating, robust operating system
-
+\bigbreak
 It can be seen clearly that the results of 2-gram or 3-gram tokenization add more value in terms of using it as features when compared to 1-gram tokenization.
-
+\bigbreak
 NOTE: To write about previous works. 
 
 \subsubsection{Term Frequency - Inverse Document Frequency}
-abc
+Document Term Matrix converts the entire dataset in the form of individual words occurring in a comment column wise and the document, in this case, the comment itself, in a row wise fashion. A simple example illustrating the DTM for three comments listed below.
+\newline
+
+Comment 1: I learn machine learning 
+
+Comment 2: You learn machine learning 
+
+Comment 3: We love machine learning 
+\begin{table}[h]
+\caption{Document Term Matrix for the sample comments }
+\captionsetup{width=6cm}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+          & I & learn & machine & learning & we & you & love \\ \hline
+Comment 1 & 1 & 1     & 1    & 0         & 0  & 0   & 0    \\ \hline
+Comment 2 & 0 & 1     & 1    & 1         & 0  & 1   & 0    \\ \hline
+Comment 3 & 0 & 0     & 1    & 1         & 1  & 0   & 1    \\ \hline
+\end{tabular}
+\end{table}
+\bigbreak
+After having obtained the DTM for the set of comments, constraints are applied to the same. To do so, only words existing in the English dictionary are taken into consideration. The next step is to consider the part of speech in English. The parts of speech consists of: nouns, verbs, pronouns, prepositions, adverbs, article, adjectives, conjunctions and interjections. Out of the nine entities, only certain nouns and verbs are of primary interest. Tf-idf is the product of two values: term frequency and inverse document frequency; it is illustrated as follows:
+\begin{equation}
+\label{eq:et}
+    tfidf(t,d,D) = tf(t,d).idf(t,D)
+\label{eq:efferent_neural_signal_1}
+\end{equation}
+Term frequency can be defined as the number of times a term occurs in a document. On the other hand, inverse document frequency looks for strength of frequency for a given word, whether it is common or not. It can also be defined as the logarithmically scaled inverse fraction of the documents that contain the word, obtained by dividing the total number of documents by the number of documents containing the particular pertinent term, and then taking the logarithm (base 10) of that quotient. Consider the example used earlier in this section to form the dtm, to find out the tf-idf of the word "learn":
+The formula for tf is as follows:
+\begin{equation}
+\label{eq:et}
+    tf(t,d) = n
+    \label{eq:efferent_neural_signal_1}
+\end{equation}
+Since the word "learn" occurs twice across the comments, 
+\begin{equation}
+\label{eq:et}
+    tf(learn,d) = 2
+    \label{eq:efferent_neural_signal_1}
+\end{equation}
+The formula for idf is as follows:
+\begin{equation}
+\label{eq:et}
+    idf(t,D) = log\frac{N}{|\{d \in D : t \in D\}|}
+    \label{eq:efferent_neural_signal_1}
+\end{equation}
+The idf for the word "learn" will be:
+\begin{equation}
+\label{eq:et}
+    idf(learn,D) = log\frac{3}{2} = 0.18
+    \label{eq:efferent_neural_signal_1}
+\end{equation}
+Therefore, the tfidf is:
+\begin{equation}
+\label{eq:et}
+    tfidf(learn,d,D) = 3\times0.18 = 0.54
+    \label{eq:efferent_neural_signal_1}
+\end{equation}
+This tfidf is one of the constraints used to obtain the final matrix using which the word cloud is formed. The final matrix comprises of the terms and their respective count. Based on number of words to be chosen for the word cloud, the top \textit{n} number of words are taken into account for forming the cloud.
 
 \subsection{Topic Modeling}
 Topic modeling is an approach in the domain of NLP to extract a specific number of topics from a large text corpus. The topics are retrieved by computing the probabilities of frequently occurring words that constitute the text corpus. Preprocessing techniques mentioned earlier can be applied before generating all the topics depending on the insights being looked for to make the final results more meaningful. It is to be noted that the name of the topics are not given by the algorithm but the end users themselves; the algorithm will only give the frequently occurred words for every given topic.
-
+\bigbreak
 Mathematically, topic modeling is a kind of a Bayesian inference model where every document in the text corpus is associated with a probability distribution over topics and these topics are nothing but probability distribution over words. Many topic modeling algorithms exists such as LSA, p-LSA, LDA, and HDP to mention a few. This thesis performs topic modeling using LDA as it is widely used in the academia domain for working with text corpora. NOTE: Mention some works using which rationale data was worked with.
 
 \subsubsection{Latent Dirichlet Allocation}
 Latent Dirichilet Allocation (LDA) is a topic modeling algorithm where topics are formed using a generative process. The algorithm is described as follows:
-
+\bigbreak
 1. Let the number of words in the document, D, be n.
-
+\bigbreak
 2. Let the number of topics that can contribute to a document be k.
-
+\bigbreak
 3. Let the number of documents in the corpora be M.
-
+\bigbreak
 4. Dirichlet distribution with parameter vector alpha of length k is chosen for k different topic distributions and parameter vector beta of length M is chosen for M documents in the corpora.
-
+\bigbreak
 6. Repeat until M documents, for a given document D belonging to corpora:
-
+\bigbreak
 (a) It samples a multinomial distribution of topics from the dirichlet distribution with parameter vector alpha chosen earlier and for each topic, it samples a multinomial distribution of words in that topic from the dirichlet distribution with parameter vector beta chosen earlier.
-
+\bigbreak
 (b) Repeat until n words, for a given word w in the document:
-
+\bigbreak
 i. It picks one topic from the multinomial topic distribution sampled above and then generates word from the multinomial word distribution of the chosen topic and add that word to the document.
 
 \subsection{Parts-of-Speech Tagging}
 Parts-of-Speech tagging, also known as PoS tagging, is a NLP technique where a sentence is broken into individual components and the PoS for each of those components are assigned. A sentence may contain words as well as punctuations. PoS tagging technique can also be used as a preprocessing technique for classification where features would be extracted based on the pattern and types of PoS used in every sentence. It is to be noted that this tagging can be coarse grained such as noun, verb, adjective, and others, or even fine grained where the tagging could be something like comparative adjective or superlative adjective, personal pronoun, past tense or past participle. This thesis uses the Penn Treebank Project from the University of Pennsylvania, for its PoS tagging related experiments.
-
+\bigbreak
 Note: List out all the works where PoS tagging was used as any kind of main step or preprocessing step. 
 
 \subsection{Named Entity Recognition}
 Named Entity Recognition (NER) is a technique to extract information from textual content. Unlike PoS which gives information about each and every word, NER extracts specific information from text such as name, organization, location, time and monetary values. NER can thus be helpful for retrieving specific entities to give fine grained insights about each comment.
-
+\bigbreak
 An example of NER would be as follows:
-
+\bigbreak
 Brad will leave Munich after 10 PM. 
-
+\bigbreak
 Brad - Name
-
+\bigbreak
 Munich - Location
-
+\bigbreak
 10 PM - Time
-
+\bigbreak
 Note: List out all the works for NER
-
-
-
 
 \section{Machine Learning}
 
@@ -378,106 +434,107 @@ Many algorithms exist in the domain of machine learning to perform different kin
 
 \subsubsection{Logistic Regression}
 Given a set of independent variables, x1, x2, .. , xn, logistic regression is an algorithm that predicts the outcome, y, that is a binary or categorical variable. It is a special form of linear regression except that probability is calculated by using the ratio of logarithm of odds. The data is fit into a logit function for the prediction of outcomes. Binary logistic model predicts the outcomes of two classes, Class A (0) and Class B (1), whereas multinomial logistic regression model is capable of predicting more than two classes, for example, Class A, Class B and Class C. 
-
+\bigbreak
 Log of odds ratio is given as:
-
+\bigbreak
 log(Y/(1-Y)) = a + bx1
-
+\bigbreak
 where b is the co-efficient of x1 and a is the bias term.
-
+\bigbreak
 Transforming the above log of odds ratio to get the value of Y, 
-
-Y = exp(a + bx1) / 1 + exp(a + bx1) 
-
+\bigbreak
+Y =  exp(a + bx1) / 1 + exp(a + bx1)
+ 
+\bigbreak
 NOTE: Mention previous works where this was applied
 
 \subsubsection{Multinomial Naive Bayes}
 Naive Bayes belongs to the class of algorithms that are predominantly based on the Bayes Theorem. Algorithms of this group have a common notion that features that contribute to the predicition of an outcome are all independent of each other. However, in real world, this assumption contradict the hypothesis based on which these algorithms function. Naive Bayes, though, is considered to be easy, fast and efficient. 
-
+\bigbreak
 Given two events A and B, the Bayes Theorem formula, for computing the probability of event A given that B has occured, can be defined as: 
-
+\bigbreak
 P(A|B) = P(B|A) x P(A) / P(B)
-
+\bigbreak
 MacCullum and Nigam published their research on a variant of Naive Bayes, popularly known as the Multinomial Naive Bayes (MNB) model. Unlike the simple Naive Bayes model, MNB uses multinomial distribution for each of the attribute features. In addition, for tasks like text classification, MNB takes the frequency of word counts, or sequences of word counts, or n-gram tokens independently into account when compared to NB model which only tries to predict the presence or absense of individual words. 
-
+\bigbreak
 Formulate MNB here
-
+\bigbreak
 NOTE: Mention previous works where this was applied
 
 \subsubsection{Support Vector Machines}
 Support Vector Machine (SVM) is a popular supervised machine learning algorithm that can be used for regression as well as classification. SVM has been used rigorously in the past for various text classification projects. In SVM, items from a dataset are plotted as points in an n-dimensional space where n equals the number of features in consideration to perform the classification. The value of each feature corresponds to the value of coordinate. A hyperplane is then used to segregate the classes into two. To increase the confidence of correctly classifying a data point to the right class, the margin between the hyperplane and the data point must not be close; more the distance between them better the likelihood of proper classification. 
-
+\bigbreak
 NOTE: Add picture here! 
-
+\bigbreak
 In real world, datasets can rarely be linearly separable. In such a scenario, kernels come to rescue when more than two dimensions are involved. To separate the classes, the low dimensional input dimensional space is therefore mapped to a higher dimensional space. The demerit of this approach, although inevitable, is that is results in longer training time while running the classifier. 
-
+\bigbreak
 NOTE: Mention previous works where this was applied
 
 \subsubsection{Decision Trees}
 Decision tools predominantly used for classification and regression are decision trees. At the top most level, there exists one node from where decision needs to be made at every level going downwards based on some rules pertaining to the attribute in consideration, until the final goal is reached. 
-
+\bigbreak
 At every level, for each node, there exists an attribute that is chosen to split into their pertinent classes based on the samples provided. This split is done using a goodness function; some of them are information gain, information gain ratio and gini index, to mention a few. The condition for an attribute to be chosen is the one that gives the smallest tree and hence, an attribute that gives the purest node is chosen. A typical criteria for computing impurity is information gain which increases as the average value of purity of the relevant subsets an attribute produces. Attribute that results in highest information gain is therefore chosen finally. 
-
+\bigbreak
 Information Gain = (information before split)–(information after split)
-
+\bigbreak
 To compute the information required, the entropy is computed; entropy describes the randomness of a given system. 
-
+\bigbreak
 NOTE: Entropy formula goes here
-
+\bigbreak
 The highest information gain is chosen after computing the information gain for each of the attribute.
-
+\bigbreak
 NOTE: Gain formula goes here
-
+\bigbreak
 Splitting process occurs repeatedly until the scenario where data cannot be split any further. Later, from the bottom, pruning of the tree takes place to make it shorter and avoid overfitting of any kind. 
-
+\bigbreak
 NOTE: Add algorithm maybe?
 
 \subsubsection{Random Forest}
 Random forests belong to a special class of learning algorithms known as the ensemble learning algorithm. This methodology believes individual classifiers are weak and are not having high accuracy. Hence, random forests use techniques such as bagging to overcome this limitation. Random forests thus creates different subsets from the dataset and decision tree classifier is run on each of these subsets. Bagging is then used to combine the results of all the individual classifier run on different subsets to perform the final classification; it decreases the test error by lowering the variance of prediction. 
-
+\bigbreak
 Due to their nature of running the same algorithm multiple times over different subsets, random forests can be completely parallelized as well. Random forests have more advantages since it aggregates many weak classifiers to make the final classification. Thanks to its ensemble learning approach, it prevents overfitting and gives better accuracy. In addition to handling data without any kinds of preprocessing, random forests are also considered to be resitant to outliers and over-training. 
-
+\bigbreak
 Note: Add algorithm may be?
-
+\bigbreak
 Note: Add previous works
-
+\bigbreak
 Note: Add image may be?
+
 \subsection{Performance Metrics}
 Performance metrics of a classifier is imperative to know how accurate the model is. A confusion matrix can hence be plotted which comprises of True Positive (TP), True Negative (TN), False Positive (FP) and False Negative (FN) as depicted in Figure (insert figure).
-
+\bigbreak
 Given a positive class, CP, and a negative class, CN, the following can be defined:
-
+\bigbreak
 True Positive Rate is the proportion of correctly classified positive class, CP
-
+\bigbreak
 True Negative Rate is the proportion of correctly classified negative class, CN
-
+\bigbreak
 False Positive Rate is the proportion of incorrectly classified negative class, CN, classified as CP
-
+\bigbreak
 False Negative Rate is the proportion of incorrectly classified positive class, CP, classified as CN
-
+\bigbreak
 The four components of the confusion matrix defined earlier can now be used to define the following subsections.
 
 \subsubsection{Accuracy} 
 Accuracy is the ratio of sum of TP and TN to the entire number of samples in the dataset
+\bigbreak
 
-Accuracy = TP + TN / TP + TN + FP + FN
+Accuracy = TP + TN/TP + TN + FP + FN
 
 \subsubsection{Precision} 
 Precision is the ratio of TP to the sum of TP and FP
-
+\bigbreak
 Precision = TP / TP + FP
 
 \subsubsection{Recall} 
 Recall is the ratio of TP to the sum of TP and FN. Recall is also known as hit rate, True Positive Rate (TPR) or sensitivity
-
+\bigbreak
 Recall = TP / TP +FN
 
 \subsubsection{F1} 
 F1 is the harmonic mean of recall and precision
-
+\bigbreak
 F1 = 2 TP / 2 TP + FP + FN
-
-\section{Tools}
 
 %------- chapter 3 -------
 
@@ -494,17 +551,17 @@ This section investigates how data was obtained from issue trackers of Apache Lu
 
 \subsubsection{Apache Lucene}
 Apache Lucene is an open sourced high performance text search engine written in Java by Doug Cutting in 1999. The project was donated to Apache Foundation in the year 2001. To develop and maintain the software, the issue tracker called JIRA developed by Atlassian is used. At the time of conducting this research, the total number of issues were 7940. However, only 7932 issues were fetched since some issues could have been deleted by the moderators, contained non-English characters or had no comments.
-
+\bigbreak
 In JIRA, each issue gives us an option to export all the data needed for the research in XML, JSON or Word. However, JIRA also provides a link to get all these information needed for upto 1000 issues in XML. This link was altered 8 times to cover 7932 issues. The XML data from the links were saved locally as XML files. The XML ElementTree API available for Python was used to parse the XML files and extract the necessary data. 
 
 \subsubsection{Mozilla Thunderbird}
 Mozilla Thunderbird is an open sourced cross platform email client developed by Mozilla Foundation with initial release dating back to 2003. The issue tracker used by Mozilla Thunderbird is Bugzilla which was developed by Mozilla Foundation itself. The oldest issue, however, dates back to June 2007 and the number of issues fetched were 4367. Like Apache Lucene, issues with no comments were ignored. 
-
+\bigbreak
 As mentioned earlier, JIRA gave us the option to get all the data needed for upto 1000 issues on each request. However, Bugzilla did not have any option that was similar. In the case of Bugzilla, data for each issue had to be accessed individually. Another drawback of Bugzilla when compared to JIRA was that the data when exported did not have the comments for the relevant issues. Hence, all the necessary data, including the comments, for the issues in Bugzilla were scraped using BeautifulSoup, a library for Python to scrape data from the web. 
 
 \subsubsection{Ubuntu}
 Ubuntu is an open sourced operating system developed by Canonical Ltd. in the year 2004. The same team is also responsible for having their own issue tracking system known as Launchpad which also houses the issues of Ubuntu. The number of issues fetched since the beginning of the project are 28,429. Issues with no comments were not scraped, just like in the case of Apache Lucene and Mozilla Thunderbird. Additionally, a major problem faced while scraping data from Launchpad was that there were abundant number of downlinks. When these links were accessed manually, they kept loading until getting timed out and returned 404 error while scraping.
-
+\bigbreak
 Launchpad did not have its export option to fetch mass number of issues and its comments. Hence, each and every issue had to be scraped one at a time. In addition, not all the issues had the same HTML tags and attributes for the comments section. Launchpad provides individual link for each of the comment of the pertinent issue and hence, the comments were scraped by obtaining the individual links for comments. All the links were requested and the necessary data was retrieved using BeautifulSoup, the library mentioned in the previous section.
 
 \subsection{Commit Logs Dataset}
