@@ -54,7 +54,8 @@ dictionary = corpora.Dictionary(texts)
 corpus = [dictionary.doc2bow(text) for text in texts]
 ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics = 10, id2word = dictionary, passes = 5)
 
-print(ldamodel.print_topics(10))
+for i in  ldamodel.show_topics():
+    print(i[0], i[1])
 
 end_time = time()
 time_taken = end_time - start_time
