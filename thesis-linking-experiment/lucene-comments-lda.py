@@ -17,12 +17,13 @@ cursor_1 = conn.cursor()
 cursor_1.execute("SELECT DISTINCT(comment), comment_id, issue_id FROM `lucene_rss_comments` WHERE 1")
 
 lucene_rss_list = list()
+keywords_list = list()
 
 for row in cursor_1:
     lucene_rss_list.append(row[0])
 
 for x in range(len(lucene_rss_list)):
-	print('Comment: ', x + 1)
+	#print('Comment: ', x + 1)
 
 	tokenizer = RegexpTokenizer(r'\w+')
 	en_stop = get_stop_words('en')
@@ -69,9 +70,13 @@ for x in range(len(lucene_rss_list)):
 				else:
 					keywords = keywords + rawTopics[0] + ', '
 				rawTopics = rawTopics[1]
-			print(keywords)
+		keywords_list.append(keywords)
 	except ValueError:
-		print('Insufficient Data')
+		keyword = 'Insufficient Data'
+		keywords_list.append(keyword)
+
+for a in range(len(lucene_rss_list)):
+	print('Comment ', a + 1, ' has ', keywords_list[a])
 
 end_time = time()
 time_taken = end_time - start_time

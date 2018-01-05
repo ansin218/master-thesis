@@ -1,0 +1,40 @@
+LUCENE TOPIC MODELING LDA RESULTS - 10 TOPICS
+---------------------------------------------
+
+0 0.055*"branch" + 0.046*"commit" + 0.040*"http" + 0.032*"svn" + 0.029*"dev" + 0.026*"trunk" + 0.014*"merge" + 0.013*"mccandless" + 0.012*"michael" + 0.012*"solr"
+1 0.017*"solr" + 0.016*"factory" + 0.013*"patch" + 0.013*"pull" + 0.013*"github" + 0.011*"issue" + 0.010*"nexus" + 0.008*"request" + 0.008*"removed" + 0.008*"work"
+2 0.216*"forbidden" + 0.152*"apis" + 0.115*"java" + 0.066*"lang" + 0.045*"field" + 0.033*"benchmark" + 0.020*"bytask" + 0.014*"index" + 0.009*"searchfiles" + 0.009*"pulsingpostingswriter"
+3 0.144*"system" + 0.140*"access" + 0.116*"java" + 0.068*"forbidden" + 0.067*"field" + 0.035*"lang" + 0.031*"apis" + 0.031*"checkindex" + 0.009*"index" + 0.009*"en"
+4 0.054*"err" + 0.014*"test" + 0.011*"param" + 0.009*"maven" + 0.008*"system" + 0.007*"search" + 0.007*"artifact" + 0.006*"correctly" + 0.006*"pom" + 0.006*"pulled"
+5 0.015*"id" + 0.013*"doc" + 0.012*"junit" + 0.011*"bug" + 0.010*"file" + 0.010*"deleted" + 0.009*"rule" + 0.009*"test" + 0.008*"added" + 0.008*"docid"
+6 0.040*"analysis" + 0.018*"utils" + 0.016*"access" + 0.014*"case" + 0.012*"system" + 0.012*"demo" + 0.012*"merge" + 0.011*"release" + 0.010*"one" + 0.009*"thread"
+7 0.026*"name" + 0.017*"docvaluesformat" + 0.017*"test" + 0.017*"value" + 0.016*"patch" + 0.011*"case" + 0.011*"time" + 0.010*"term" + 0.008*"query" + 0.008*"lucene70"
+8 0.033*"lat" + 0.029*"point" + 0.021*"planetmodel" + 0.013*"false" + 0.012*"junit4" + 0.012*"required" + 0.011*"hole" + 0.011*"true" + 0.010*"internaledges" + 0.010*"wgs84"
+9 0.037*"task" + 0.037*"patch" + 0.017*"snapshot" + 0.017*"issue" + 0.015*"term" + 0.011*"fix" + 0.010*"test" + 0.009*"one" + 0.009*"class" + 0.008*"really"
+
+UBUNTU TOPIC MODELING LDA RESULTS - 10 TOPICS
+---------------------------------------------
+
+0 0.079*"bug" + 0.022*"kernel" + 0.022*"status" + 0.019*"report" + 0.018*"confirmed" + 0.016*"upstream" + 0.015*"changed" + 0.014*"affect" + 0.014*"user" + 0.014*"mozilla"
+1 0.044*"linux" + 0.025*"tool" + 0.014*"package" + 0.013*"ubuntu" + 0.013*"lp" + 0.011*"common" + 0.010*"grub" + 0.009*"gke" + 0.009*"aws" + 0.009*"install"
+2 0.016*"amd64" + 0.016*"device" + 0.013*"ubuntu" + 0.012*"mir" + 0.011*"printer" + 0.010*"01" + 0.010*"20" + 0.009*"udev" + 0.009*"linux" + 0.009*"17"
+3 0.025*"cx18" + 0.011*"problem" + 0.010*"phablet" + 0.009*"tveeprom" + 0.008*"file" + 0.008*"log" + 0.008*"ir" + 0.007*"turn" + 0.007*"ubuntu" + 0.007*"i2c"
+4 0.040*"ubuntu" + 0.020*"issue" + 0.013*"application" + 0.011*"icon" + 0.011*"one" + 0.010*"http" + 0.009*"setting" + 0.009*"bug" + 0.008*"problem" + 0.008*"system"
+5 0.020*"bug" + 0.016*"ubuntu" + 0.013*"http" + 0.010*"new" + 0.010*"message" + 0.010*"net" + 0.009*"launchpad" + 0.009*"driver" + 0.009*"fix" + 0.008*"card"
+6 0.016*"patch" + 0.010*"http" + 0.009*"upstart" + 0.009*"xmir" + 0.009*"setting" + 0.008*"bug" + 0.007*"etc" + 0.007*"v3" + 0.007*"text" + 0.007*"fix"
+7 0.039*"dev" + 0.020*"information" + 0.019*"mdadm" + 0.018*"miral" + 0.014*"apport" + 0.013*"management" + 0.012*"window" + 0.012*"name" + 0.011*"firefox" + 0.010*"state"
+8 0.028*"kernel" + 0.022*"oct" + 0.022*"htpc" + 0.014*"array" + 0.014*"byte" + 0.009*"md" + 0.009*"dvb" + 0.008*"cx18" + 0.008*"block" + 0.008*"device"
+9 0.021*"firefox" + 0.020*"controller" + 0.016*"rev" + 0.015*"intel" + 0.015*"corporation" + 0.013*"menu" + 0.009*"bus" + 0.009*"window" + 0.009*"device" + 0.009*"usb"
+
+THUNDERBIRD TOPIC MODELING LDA RESULTS - 10 TOPICS
+--------------------------------------------------
+0 0.023*"mozilla" + 0.020*"central" + 0.019*"http" + 0.017*"comm" + 0.011*"chrome" + 0.011*"messenger" + 0.010*"string" + 0.010*"j" + 0.010*"content" + 0.009*"gmail"
+1 0.024*"thunderbird" + 0.022*"account" + 0.016*"mail" + 0.014*"folder" + 0.012*"problem" + 0.010*"new" + 0.010*"time" + 0.009*"gloda" + 0.009*"tb" + 0.008*"disable"
+2 0.019*"mozmill" + 0.018*"bug" + 0.013*"test" + 0.012*"change" + 0.011*"line" + 0.011*"manager" + 0.010*"one" + 0.008*"really" + 0.008*"good" + 0.006*"please"
+3 0.047*"bug" + 0.028*"j" + 0.026*"test" + 0.015*"duplicate" + 0.014*"marked" + 0.013*"06" + 0.011*"tabmail" + 0.010*"11" + 0.010*"info" + 0.009*"07"
+4 0.032*"reply" + 0.031*"comment" + 0.012*"server" + 0.011*"setting" + 0.011*"version" + 0.010*"message" + 0.010*"bug" + 0.010*"imap" + 0.009*"client" + 0.009*"user"
+5 0.026*"thunderbird" + 0.015*"email" + 0.015*"mode" + 0.014*"address" + 0.013*"http" + 0.013*"message" + 0.013*"problem" + 0.012*"bug" + 0.010*"issue" + 0.010*"safe"
+6 0.014*"thunderbird" + 0.011*"text" + 0.011*"brain" + 0.011*"mozilla" + 0.009*"html" + 0.008*"line" + 0.008*"mail" + 0.008*"message" + 0.008*"reproduce" + 0.007*"input"
+7 0.026*"visible" + 0.024*"mail" + 0.023*"ordinal" + 0.019*"false" + 0.018*"2013" + 0.017*"25" + 0.011*"true" + 0.011*"inbox" + 0.008*"26" + 0.008*"zfn"
+8 0.046*"attachment" + 0.038*"created" + 0.027*"patch" + 0.012*"http" + 0.011*"calendar" + 0.011*"message" + 0.009*"mozilla" + 0.008*"people" + 0.008*"comment" + 0.007*"error"
+9 0.017*"wizard" + 0.016*"info" + 0.015*"window" + 0.014*"error" + 0.013*"message" + 0.013*"test" + 0.013*"09" + 0.012*"bit" + 0.011*"view" + 0.011*"may"
