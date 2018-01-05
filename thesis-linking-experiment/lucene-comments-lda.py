@@ -32,7 +32,7 @@ for x in range(len(lucene_rss_list)):
 	customList2 = ['just', 'know', 'branch_3x', 'make', 'better', 'like', 'got', 'will', 've', 'see', 'afor', 'yes']
 	customList3 = ['don', 'maybe', 'never', 'also', 'many', 'look', 'll', 'com', 'done', 'think', 'thank', 'might']
 	customList4 = ['now', 'lon', 'method', 'much', 'need', 'sure', 'thanks', 'doesn', 'used', 'get', 'ok', '023']
-	customList5 = ['well', 'since', 'using', 'rice', '64', 'havent', 'still', 'thats']
+	customList5 = ['well', 'since', 'using', 'rice', '64', 'havent', 'still', 'thats', '021', '128', 'hi', 'tell', 'say']
 	en_stop = en_stop + alphaList + numList + customList1 + customList2 + customList3 + customList4 + customList5
 
 	p_stemmer = PorterStemmer()
@@ -57,7 +57,19 @@ for x in range(len(lucene_rss_list)):
 	corpus = [dictionary.doc2bow(text) for text in texts]
 	try:
 		ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics = 1, id2word = dictionary, passes = 2)
-		print(ldamodel.print_topics(1))
+		for i in ldamodel.show_topics():
+			rawTopics = i[1]
+			lenTopics = rawTopics.count('+') + 1
+			keywords = ''
+			for j in range(lenTopics):
+				rawTopics = rawTopics.split('"', 1)
+				rawTopics = rawTopics[1].split('"', 1)
+				if(j == lenTopics-1):
+					keywords = keywords + rawTopics[0]
+				else:
+					keywords = keywords + rawTopics[0] + ', '
+				rawTopics = rawTopics[1]
+			print(keywords)
 	except ValueError:
 		print('Insufficient Data')
 
