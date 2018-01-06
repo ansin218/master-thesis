@@ -14,27 +14,33 @@ start_time = time()
 conn = pymysql.connect(host='localhost', user='root', password='password', db='Issue_Trackers', autocommit=True, use_unicode=True, charset="utf8")
 
 cursor_1 = conn.cursor()
+cursor_2 = conn.cursor()
 cursor_1.execute("SELECT DISTINCT(comment), comment_id, issue_id FROM `lucene_rss_comments` WHERE 1")
 
 lucene_rss_list = list()
 keywords_list = list()
+comment_id_list = list()
+issue_id_list = list()
 
 for row in cursor_1:
     lucene_rss_list.append(row[0])
+    comment_id_list.append(row[1])
+    issue_id_list.append(row[2])
 
 for x in range(len(lucene_rss_list)):
-	#print('Comment: ', x + 1)
 
 	tokenizer = RegexpTokenizer(r'\w+')
 	en_stop = get_stop_words('en')
 	alphaList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 	numList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-	customList1 = ['can', 'due', 'jira', 'lucene', 'instead', 'org', 'apache', 'hole', 'probably', 'use', 'another']
+	customList1 = ['can', 'due', 'jira', 'lucene', 'instead', 'org', 'apache', 'hole', 'probably', 'use', 'another', 'looks', 'look', 'good']
 	customList2 = ['just', 'know', 'branch_3x', 'make', 'better', 'like', 'got', 'will', 've', 'see', 'afor', 'yes']
-	customList3 = ['don', 'maybe', 'never', 'also', 'many', 'look', 'll', 'com', 'done', 'think', 'thank', 'might']
-	customList4 = ['now', 'lon', 'method', 'much', 'need', 'sure', 'thanks', 'doesn', 'used', 'get', 'ok', '023']
+	customList3 = ['don', 'maybe', 'never', 'also', 'many', 'look', 'll', 'com', 'done', 'think', 'thank', 'might', 'including', 'patch']
+	customList4 = ['now', 'lon', 'method', 'much', 'need', 'sure', 'thanks', 'doesn', 'used', 'get', 'ok', '023', 'issue', 'issues','git']
 	customList5 = ['well', 'since', 'using', 'rice', '64', 'havent', 'still', 'thats', '021', '128', 'hi', 'tell', 'say']
-	en_stop = en_stop + alphaList + numList + customList1 + customList2 + customList3 + customList4 + customList5
+	customList6 = ['example', 'thinking', 'data', 'dataset', 'move', 'branch', 'code', 'test', 'debug', 'debugging', 'ready']
+	customList7 = ['yeah', 'sorry', 'commit', 'push', 'merge', 'fix', 'issue', 'release', 'bulk', 'close', 'correctly', 'dynamically']
+	en_stop = en_stop + alphaList + numList + customList1 + customList2 + customList3 + customList4 + customList5 + customList6 + customList7
 
 	p_stemmer = PorterStemmer()
 	lmtzr = WordNetLemmatizer()
@@ -68,7 +74,7 @@ for x in range(len(lucene_rss_list)):
 				if(j == lenTopics-1):
 					keywords = keywords + rawTopics[0]
 				else:
-					keywords = keywords + rawTopics[0] + ', '
+					keywords = keywords + rawTopics[0] + ' '
 				rawTopics = rawTopics[1]
 		keywords_list.append(keywords)
 	except ValueError:
@@ -76,7 +82,11 @@ for x in range(len(lucene_rss_list)):
 		keywords_list.append(keyword)
 
 for a in range(len(lucene_rss_list)):
-	print('Comment ', a + 1, ' has ', keywords_list[a])
+	print('Comment ', a + 1, ' with issue_id ', issue_id_list[a], ' and comment_id ' , comment_id_list[a],' has ', keywords_list[a])
+	try:
+	    cursor_2.execute("""INSERT INTO lucene_issues_keywords_lda (comment_id, issue_id, comment, keywords) VALUES ("%s", "%s", "%s", "%s")""" % (comment_id_list[a], issue_id_list[a], lucene_rss_list[a], keywords_list[a]))
+	except:
+	    conn.rollback()
 
 end_time = time()
 time_taken = end_time - start_time
