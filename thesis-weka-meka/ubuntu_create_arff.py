@@ -1,5 +1,25 @@
-from pandas2arff import *
-import pandas as pd
+_author_ = 'Ankur'
 
-df = pd.read_csv("b_ubuntu_results.csv")
-pandas2arff(df,"ubuntu_finegrained.arff", cleanstringdata=True, cleannan=True)
+# generate arff file for working with Meka
+
+import arff
+import pymysql
+
+# connect to the database
+
+db = pymysql.connect(host='localhost', user='root', password='password', db='Issue_Trackers', autocommit=True, use_unicode=True, charset="utf8")
+cursor = db.cursor()
+
+cursor.execute('SELECT * FROM b_ubuntu_results')
+messages = cursor.fetchall()
+
+data = []
+
+# make data vector for each tagged msg
+for i, msg in enumerate(messages):
+    data.append([msg[5], msg[10], msg[11], msg[12], msg[13], msg[14]])
+
+arff.dump('ubuntu_finegrained.arff', data, relation='rationale', names=['sentence','isIssue','isAlternative','isPro','isCon','isDecision'])
+
+cursor.close()
+db.close()
