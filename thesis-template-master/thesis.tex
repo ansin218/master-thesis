@@ -21,9 +21,11 @@
 \usepackage{array}
 \usepackage{longtable}
 \usepackage{listings}
-\usepackage[utf8]{inputenc}
+\usepackage[utf8x]{inputenc}
 \usepackage[capitalize, noabbrev]{cleveref}
 \usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{adjustbox}
 
 % Path for graphics
 \graphicspath{{figures/}}
@@ -223,129 +225,158 @@ Bachelli et al.\cite{Bacchelli2012} used a dataset of around 1,500 emails from m
 
 \section{Natural Language Processing}
 
-Natural Language Processing (NLP) is a popular branch of computer science using which one can perform text classification or categorization. In addition, some of the methodologies under NLP can also be used for data preprocessing while performing machine learning tasks. Some of the most popular methods and techniques from NLP and their pertinent works are discussed below. 
+Natural Language Processing (NLP) is a popular branch of computer science to extract meaningful features from natural language texts that are comprehensible to humans \cite{Al-ghamdi2017} \cite{Suhaimin2017}. Categorization and classification of natural language texts can also be done using NLP based algorithms. In the past, NLP has been used for various purposes in numerous domains. Malware detection studies has been conducted using NLP based approaches by Karbab et al. \cite{Karbab2017} and Tran et al.\cite{Tran2017}. Sentiment classification of twitter texts and hotel reviews were carried out by Kanakaraj et al.\cite{Kanakaraj2015} and Ghorpade et al.\cite{Ghorpade2012} respectively. The branch of NLP and its algorithms have grown astoundingly and are being implemented in many languages such as Persian\cite{Ri}, Arabic\cite{Abuleil2007}, Chinese\cite{Liu2008}, German\cite{Metzmacher2017} and Italian\cite{Damiano2017}. 
+\bigbreak
+In addition, some methodologies under NLP can also be used for data preprocessing while performing machine learning tasks. Some of the most popular methods and techniques from NLP and their pertinent works are discussed below. 
 
 \subsection{Preprocessing Steps}
 The following section explores different preprocessing steps that can be applied for text classification. 
 
 \subsubsection{Stopwords Removal}
-A sentence usually is comprised of different parts-of-speech. However, there may be some words that are very common across all sentences and thereby does not contribute to learning about specific features or keywords. In such a scenario, researchers deploy stopword removal mechanism to filter out words that are of less or no interest to them. An exhaustive list of stopwords has been published by the Information Retrieval Group, School of Computing, University of Glasgow. In addition, one can also create their own stopwords list if specific information or keywords are being looked for. 
+A sentence usually is comprised of different parts-of-speech. However, there may be some words that are very common across all sentences and thereby does not contribute to learning about specific features or keywords. In such a scenario, researchers deploy stopword removal mechanism to filter out words that are of less or no interest to them. An exhaustive list of stopwords has been published by the Information Retrieval Group, School of Computing, University of Glasgow\footnote{\url{http://ir.dcs.gla.ac.uk/resources/linguistic_utils/stop_words}}. In addition, one can also create their own stopwords list if specific information or keywords are being looked for or to be omitted. 
 \bigbreak
-Given a sentence, 
-Munich is a really beautiful city with a cosmopolitan crowd. 
+Given a sentence: \textit{Munich is a really beautiful city with a cosmopolitan crowd.} 
 \bigbreak
-After applying stopwords removal, the sentence would then look like,
-Munich really beautiful city cosmopolitan crowd.
+After applying stopwords removal, the sentence would then look like: \textit{Munich really beautiful city cosmopolitan crowd.} 
 \bigbreak
-Rogers et al. carried out an experiment to identify rationale from documents using linguistic features such as stopwords removal to conclude that it resulted in better precision but lower recall. Kurtanovic et al. also performed stopwords removal in their data preprocessing step while retrieving rationale from software reviews. Guzman et al. used stopwords removal in all of her works which included obtaining information from tweets as well as chat messages.
+Rogers et al.\cite{Rogers2012} carried out an experiment to identify rationale from documents using linguistic features such as stopwords removal to conclude that it resulted in better precision but lower recall. Kurtanovic et al.\cite{Kurtanovic2017} also performed stopwords removal in their data preprocessing step while retrieving rationale from software reviews. Guzman et al.\cite{Guzman2017}\cite{Guzman2017a}\cite{Guzman2016}\cite{Guzman2014} used stopwords removal in many of their works extensively.
 
 \subsubsection{Punctuations Removal}
 Similar to words, punctuations are different parts of speech that can be removed from text after which the filtered data can be fed to the classifier. Some commonly witnessed punctuations include fullstop (.), comma (,), colon (:), semi-colon (;) amongst others. 
 \bigbreak
-Given a sentence, 
-Munich has many kinds of people living here such as: Indians, Chinese, Americans. 
+Given a sentence: \textit{Munich has many kinds of people living here such as: Indians, Chinese, Americans.}
 \bigbreak
-After applying punctuation removal, the sentence would then look like,
-Munich has many kinds of people living here such as Indians Chinese Americans
+After applying punctuations removal, the sentence would then look like: \textit{Munich has many kinds of people living here such as Indians Chinese Americans}
 \bigbreak
-Bacchelli et al. got rid of punctuations in the data preprocessing step for classifying contents of emails. Like stopwords removal, Kurtanovic et al. also performed punctuation removal as well for retrieving rationale from software reviews. Guzman et al. used removed punctuations from the dataset to carry out sentiment analysis on app reviews. 
+Like stopwords removal, Kurtanovic et al.\cite{Kurtanovic2017} also performed punctuation removal as well for retrieving rationale from software reviews. However, Bacchelli et al.\cite{Bacchelli2012} and Guzman\cite{Guzman2015} used the emphasis of punctuations for their research. 
 
 \subsubsection{Stemming}
-Stemming is a popular preprocessing technique of mapping similar words with different variations to one single word by truncation. One of the most popular stemmers out there in the field of research is the Porter Stemmer. IR Book Stanford NLP states that stemming increases recall but harms precision. An example of stemming would be that words like operational, operative, operations would all get mapped to operate. However, there are cases were words also get mapped to a single word which may not have an exact dictionary meaning. An example of such a case can be calculation, calculative getting mapped to calculat instead of calculate. Stemming has been used as a preprocessing step in the following works. 
+Stemming is a popular preprocessing technique of mapping similar words with different variations to one single word by truncation. One of the most popular stemmers out there in the field of research is the Porter Stemmer \cite{Porter}. Manning et al.\cite{Manning2009} state that stemming increases recall but harms precision. An example of stemming would be that words like \textit{operational, operative, operations} would all get mapped to \textit{operate}. However, there are cases were words also get mapped to a single word which may not have an exact dictionary meaning. An example of such a case can be \textit{calculation, calculative} getting mapped to \textit{calculat} instead of \textit{calculate}\cite{Toman2006}. Stemming has been used as a preprocessing step in the works of Fan et al.\cite{Fan2017}, Murgia et al.\cite{Murgia2016} and Panichela et al.\cite{Panichella2014a} to mention a few.
 
 \subsubsection{Lemmatization}
-Another preprocessing technique, but rather a better replacement of stemming, is lemmatization. In this technique, words of different variations are not truncated but rather are mapped to a root word. This root word is identical to a word found in the dictionary. Toman et al. state that lemmatization is a difficult and expensive process but is more beneficial. An example of lemmatization would be that words like is and are would be mapped to be, which is an actual word found in the dictionary. Some other works that were mentioned earlier also have lemmatization done for preprocessing the data. 
+Another preprocessing technique, but rather a better replacement of stemming, is lemmatization. In this technique, words of different variations are not truncated but rather are mapped to a root word. This root word is identical to a word found in the dictionary. Toman et al.\cite{Toman2006} state that lemmatization is a difficult and expensive process but is more beneficial. An example of lemmatization would be that words like \textit{is} and \textit{are} would be mapped to \textit{be}, which is an actual word found in the dictionary. Lemmatization has been performed by Guzman et al.\cite{Guzman2014}, Toman et al. \cite{Toman2006} and Kurtanovic et al.\cite{Kurtanovic2017} as part of preprocessing technique in their research. 
 
 \subsubsection{Bag-of-Words}
-Given a corpus of N documents, each document may contain many words. A bag of words can thus be formed by counting the frequency of every unique word occuring across N documents. However, to form a vocabulary pertaining to the text dataset, techniques such as stopwords removal, punctuations removal, stemming and lemmatization, can be applied to prune on commonly occuring words and different variations of the same word.
+Given a corpus of \textit{N} documents, each document may contain many words. A Bag-of-Words (BoW) can thus be formed by counting the frequency of every unique word occuring across N documents. However, to form a vocabulary pertaining to the text dataset, techniques such as stopwords removal, punctuations removal, stemming and lemmatization, can be applied to prune on commonly occuring words and different variations of the same word. An example would be as follows.
 \bigbreak
-Sentence 1: I went to Munich
+Sentence 1: \textit{I went to Munich.}
 \bigbreak
-Sentence 2: Munich is a very beautiful place compared to Berlin
+Sentence 2: \textit{Munich is a very beautiful place compared to Berlin.}
 \bigbreak
-Sentence 3: Berlin has more startups than Munich
+Sentence 3: \textit{Berlin has more startups than Munich}
 \bigbreak
-Applying the preprocessing techniques such as stopwords removal, punctuations removal (Although no punctuations occur in the three given sentences), stemming and lemmatization, the bag-of-words would look like:
-\bigbreak
-Munich: 3
-Berlin: 2
-beautiful: 1
-compared: 1
-startups: 1
-place: 1
-\bigbreak
-NOTE: To write about previous works. 
+Applying the preprocessing techniques such as stopwords removal, punctuations removal, stemming and lemmatization, the BoW would look like as in \ref{tab:bowExample}. Nonnenmacher\cite{Nonnenmacher2017} and Goel \cite{Goel2017}, both, have used BoW model for their research on extraction of rationale and topic modeling using LDA, respectively. Additionally, Somasundaram et al. \cite{Somasundaram2012} took advantage of the same for performing categorization of bug reports.
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{2cm} p{2cm}}
+        \toprule
+        \textbf{Word} & \textbf{Count}\\
+        \midrule
+			Munich & 3 \\
+			Berlin & 2 \\ 
+			beautiful & 1 \\ 
+			compared & 1 \\ 
+			startups & 1 \\
+			place & 1 \\ 
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Example for Bag-of-Words Model}
+    \label{tab:bowExample}
+\end{table}
 
 \subsubsection{N-Gram Tokenization}
-Bag-of-words takes one word at a time and counts them. However, n-gram tokenization is a method were multiple words appearing continuously can be grouped as one term. This approach helps in extracting better meaning if multiple words occuring together make better sense than their individual counterparts. These terms of n-grams or n-tokens groupped together can then be used as a feature while running the classifier. 
+Bag-of-words takes one word at a time and counts them. However, n-gram tokenization is a method were multiple words appearing continuously can be grouped as one term. This approach helps in extracting better meaning if multiple words occuring together make better sense than their individual counterparts. These terms of n-grams or n-tokens grouped together can then be used as a feature while running the classifier. 
 \bigbreak
-An example sentence without any kind of preprocessing applied: Linux is a robust operating system
+Here is an example sentence: \textit{Linux is a robust operating system}
 \bigbreak
-Result of 1-gram (unigram) tokenization: Linux, is, a, robust, operating, system 
-\bigbreak
-Result of 2-gram (bigram) tokenization: Linux is, is a, a robust, robust operating, operating system
-\bigbreak
-Result of 3-gram (trigram) tokenization: Linux is a, is a robust, a robust operating, robust operating system
-\bigbreak
-It can be seen clearly that the results of 2-gram or 3-gram tokenization add more value in terms of using it as features when compared to 1-gram tokenization.
-\bigbreak
-NOTE: To write about previous works. 
+It can be seen clearly from Table \ref{tab:ngramExample} that the results of 2-gram or 3-gram tokenization add more value in terms of using it as features when compared to 1-gram tokenization. Alkadhi et al.\cite{Alkadhi2017} used n-gram tokenization for their research on extraction of rationale from chat messages. The minimum value of \textit{n} was 1 whereas the maximum value was 3 in order to conduct the study. 
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{4cm} p{10cm}}
+        \toprule
+        \textbf{N-Gram} & \textbf{Result}\\
+        \midrule
+			1-gram (unigram) & Linux, is, a, robust, operating, system \\
+			2-gram (bigram) & Linux is, is a, a robust, robust operating, operating system \\ 
+			3-gram (trigram) & Linux is a, is a robust, a robust operating, robust operating system \\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Example for N-Gram Tokenization}
+    \label{tab:ngramExample}
+\end{table}
+
 
 \subsubsection{Term Frequency - Inverse Document Frequency}
-Document Term Matrix converts the entire dataset in the form of individual words occurring in a comment column wise and the document, in this case, the comment itself, in a row wise fashion. A simple example illustrating the DTM for three comments listed below.
-\newline
 
-Comment 1: I learn machine learning 
-
-Comment 2: You learn machine learning 
-
-Comment 3: We love machine learning 
-\begin{table}[h]
-\caption{Document Term Matrix for the sample comments }
-\captionsetup{width=6cm}
-\label{my-label}
-\begin{tabular}{|l|l|l|l|l|l|l|l|}
-\hline
-          & I & learn & machine & learning & we & you & love \\ \hline
-Comment 1 & 1 & 1     & 1    & 0         & 0  & 0   & 0    \\ \hline
-Comment 2 & 0 & 1     & 1    & 1         & 0  & 1   & 0    \\ \hline
-Comment 3 & 0 & 0     & 1    & 1         & 1  & 0   & 1    \\ \hline
-\end{tabular}
+Term Frequency - Inverse Document Frequency (TFIDF) is the product of two values, term frequency and inverse document frequency \footnote{\url{http://www.tfidf.com/}}. Term Frequency (TF) can be defined as the number of times a given term occurs in a document. Inverse Document Frequency (IDF), on the other hand, checks for strength of frequency of a given word. 
+\bigbreak
+Consider the following documents to form a Document Term Matrix \footnote{\url{https://janav.wordpress.com/2013/10/27/tf-idf-and-cosine-similarity/}}.  A Document Term Matrix (DTM) converts the corpus of documents into a matrix of documents and the count of indivual words occuring in each of the document. 
+\bigbreak
+Document 1: \textit{I learn machine} 
+\bigbreak
+Document 2: \textit{You learn machine} 
+\bigbreak
+Document 3: \textit{Learning and loving machine learning}
+\bigbreak
+A simple example of DTM is illustrated using Table \ref{tab:dtmExample}. 
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{3cm} p{2cm} p{2cm} p{2cm} p{2cm} p{2cm} p{2cm} p{2cm}}
+        \toprule
+        \textbf{Document} & \textbf{i} & \textbf{learn} & \textbf{machine} & \textbf{learning} & \textbf{you} & \textbf{and} & \textbf{loving}\\
+        \midrule
+			Document 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
+			Document 2 & 0 & 1 & 1 & 0 & 1 & 0 & 0 \\ 
+			Document 3 & 0 & 0 & 1 & 2 & 0 & 1 & 1 \\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Example for Document Term Matrix}
+    \label{tab:dtmExample}
 \end{table}
 \bigbreak
-After having obtained the DTM for the set of comments, constraints are applied to the same. To do so, only words existing in the English dictionary are taken into consideration. The next step is to consider the part of speech in English. The parts of speech consists of: nouns, verbs, pronouns, prepositions, adverbs, article, adjectives, conjunctions and interjections. Out of the nine entities, only certain nouns and verbs are of primary interest. Tf-idf is the product of two values: term frequency and inverse document frequency; it is illustrated as follows:
-\begin{equation*}
-\label{eq:et}
-    tfidf(t,d,D) = tf(t,d).idf(t,D)
-\end{equation*}
-Term frequency can be defined as the number of times a term occurs in a document. On the other hand, inverse document frequency looks for strength of frequency for a given word, whether it is common or not. It can also be defined as the logarithmically scaled inverse fraction of the documents that contain the word, obtained by dividing the total number of documents by the number of documents containing the particular pertinent term, and then taking the logarithm (base 10) of that quotient. Consider the example used earlier in this section to form the dtm, to find out the tf-idf of the word "learn":
-The formula for tf is as follows:
+Given a set of documents, \textit{D}, \textit{tx} is the term in the document, \textit{di}, for which TFIDF is to be computed, \textit{tn} is the total number of words occuring in document, \textit{di}.
+\bigbreak
+The formula for TF is as follows:
 \begin{equation}
 \label{eq:et}
-    tf(t,d) = n
+    TF(t, di) = \frac{tx}{tn}
 \end{equation}
-Since the word "learn" occurs twice across the comments, 
+And, the formula for IDF is as follows:
 \begin{equation}
 \label{eq:et}
-    tf(learn,d) = 2
+    IDF(t, D) = log\frac{N}{|\{d \in D : t \in D\}|}
 \end{equation}
-The formula for idf is as follows:
+From equations 2.1 and 2.2, TFIDF is therefore:
 \begin{equation}
 \label{eq:et}
-    idf(t,D) = log\frac{N}{|\{d \in D : t \in D\}|}
+    TFIDF(t, d, D) = tf(t, d).idf(t, D)
 \end{equation}
-The idf for the word "learn" will be:
+Using equations 2.1, 2.2 and 2.3, TFIDF of the term  \textit{"learning"} occuring in document 3, d3, can now be computed. It can be seen that the word \textit{"learning"} occurs twice across the documents, hence from equation 2.1:
 \begin{equation}
 \label{eq:et}
-    idf(learn,D) = log\frac{3}{2} = 0.18
+    TF(learning, d3) = \frac{2}{5} = 0.4
 \end{equation}
-Therefore, the tfidf is:
+The IDF for the word \textit{"learning"} from 2.2, is therefore:
 \begin{equation}
 \label{eq:et}
-    tfidf(learn,d,D) = 3\times0.18 = 0.54
+    IDF(learning, D) = log(\frac{2}{1}) = 0.301
 \end{equation}
-This tfidf is one of the constraints used to obtain the final matrix using which the word cloud is formed. The final matrix comprises of the terms and their respective count. Based on number of words to be chosen for the word cloud, the top \textit{n} number of words are taken into account for forming the cloud.
-
+The TFIDF using equations 2.4 and 2.5 is thus:
+\begin{equation}
+\label{eq:et}
+    TFIDF(learning, d3, D) = 0.4\times0.301 = 0.12
+\end{equation}
+\bigbreak
+Guzman et al.\cite{Guzman2017}, Fan et al.\cite{Fan2017}, Nonnenmacher\cite{Nonnenmacher2017} and Goel \cite{Goel2017} are some of the few who have extensively used TFIDF mechanism in their works.  
 \subsection{Topic Modeling}
 Topic modeling is an approach in the domain of NLP to extract a specific number of topics from a large text corpus. The topics are retrieved by computing the probabilities of frequently occurring words that constitute the text corpus. Preprocessing techniques mentioned earlier can be applied before generating all the topics depending on the insights being looked for to make the final results more meaningful. It is to be noted that the name of the topics are not given by the algorithm but the end users themselves; the algorithm will only give the frequently occurred words for every given topic.
 \bigbreak
@@ -375,20 +406,20 @@ Parts-of-Speech tagging, also known as PoS tagging, is a NLP technique where a s
 \bigbreak
 Note: List out all the works where PoS tagging was used as any kind of main step or preprocessing step. 
 
-\subsection{Named Entity Recognition}
-Named Entity Recognition (NER) is a technique to extract information from textual content. Unlike PoS which gives information about each and every word, NER extracts specific information from text such as name, organization, location, time and monetary values. NER can thus be helpful for retrieving specific entities to give fine grained insights about each comment.
-\bigbreak
-An example of NER would be as follows:
-\bigbreak
-Brad will leave Munich after 10 PM. 
-\bigbreak
-Brad - Name
-\bigbreak
-Munich - Location
-\bigbreak
-10 PM - Time
-\bigbreak
-Note: List out all the works for NER
+%\subsection{Named Entity Recognition}
+%Named Entity Recognition (NER) is a technique to extract information from textual content. Unlike PoS which gives %information about each and every word, NER extracts specific information from text such as name, organization, location, %time and monetary values. NER can thus be helpful for retrieving specific entities to give fine grained insights about %each comment.
+%\bigbreak
+%An example of NER would be as follows:
+%\bigbreak
+%Brad will leave Munich after 10 PM. 
+%\bigbreak
+%Brad - Name
+%\bigbreak
+%Munich - Location
+%\bigbreak
+%10 PM - Time
+%\bigbreak
+%Note: List out all the works for NER
 
 \section{Machine Learning}
 
