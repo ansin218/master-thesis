@@ -441,13 +441,21 @@ There exists another technique, which neither completely relies on output like s
 \subsection{Pipeline}
 
 \subsubsection{Training} 
-For an algorithm to make predictions, it must first learn and train itself using some data. A part of the overall dataset, known as training dataset, is thus used for training the algorithm by working with some parameters. It is to be noted that more the quality and quantity of the training dataset, better the training. In other words, there must be enough examples from the different classes in good proportion for the algorithm to learn.  If the dataset is highly imbalanced or skewed, balancing techniques can be applied. In the case of text classification, the training data can be a group of sentences with some preprocessing steps mentioned in Section 2.3.1 along with the concerned output. The output can be something like, whether the sentence contains rationale or not, or whether the sentence has a positive tone or not, to mention a few.
+For an algorithm to make predictions, it must first learn and train itself using some data. A part of the overall dataset, known as training dataset, is thus used for training the algorithm by working with some parameters. It is to be noted that more the quality and quantity of the training dataset, better the training\footnote{\url{http://www.holehouse.org/mlclass/11_Machine_Learning_System_Design.html}}. In other words, there must be enough examples from the different classes in good proportion for the algorithm to learn.  If the dataset is highly imbalanced or skewed, balancing techniques can be applied\footnote{\url{https://www.analyticsvidhya.com/blog/2017/03/imbalanced-classification-problem/}}. In the case of text classification, the training data can be a group of sentences with some preprocessing steps mentioned in Section 2.3.1 along with the concerned output. The output can be something like, whether the sentence contains rationale or not, or whether the sentence has a positive tone or not, to mention a few.
 
 \subsubsection{Testing} 
 After having trained the data on a bulk portion of the entire dataset, the model must be tested by running the classifier on the minor portion of the dataset known as the test dataset. The metrics from the test dataset are the ones taken into account when evaluating the performance of the classifier. The metrics are explained in Section 2.4.5. 
 
 \subsubsection{Cross-Validation} 
-Models may be biased if they are being tested on a specific set of data. To improve fairness, k-fold cross validation technique is followed. In this method, the dataset is divided into k-folds, with k-1 folds for training and 1-fold for testing. This procedure is iterated over the entire dataset such that each portion k of the dataset would have been the testing dataset at some point across different iterations. This thesis uses a 10-fold cross validation approach. An example of 10-fold cross validation approach is illustrated in the figure as follows. 
+Models may be biased if they are being tested on a specific set of data. To improve fairness, cross validation technique is followed. In this method, the dataset is divided into k-folds, with k-1 folds for training and 1-fold for testing. This procedure is iterated over the entire dataset such that each portion k of the dataset would have been the testing dataset at some point across different iterations\footnote{\url{https://www.openml.org/a/estimation-procedures/1}}. This thesis uses a 10-fold cross validation approach. An example of 10-fold cross validation approach is illustrated in the following figure \ref{fig:k-fold}.
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=9cm]{k-fold}
+    \caption{Example for K-Fold Cross Validation}
+    \small Image adapted from Sebastian Raschka\footnotemark.
+    \label{fig:k-fold}
+\end{figure}
+\footnotetext{\url{https://sebastianraschka.com/faq/docs/evaluate-a-model.html}}
 
 \subsection{Transformation Methods}
 
