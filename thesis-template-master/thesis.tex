@@ -460,119 +460,115 @@ Models may be biased if they are being tested on a specific set of data. To impr
 \subsection{Transformation Methods}
 
 \subsubsection{Binary Relevance} 
-Binary relevance is a kind of problem transformation method applied to multi-class or multi-label classification problems. Using this approach, a multi-class problem is decomposed into multiple binary classification problems. For example, if there are five classes, the problem would be decomposed into five binary classification problem where the classifier runs independently on each of the class using the input features. An example of binary relevance is given below. 
+Binary relevance is a kind of problem transformation method applied to multi-class or multi-label classification problems. Using this approach, a multi-class problem is decomposed into multiple binary classification problems. For example, if there are five classes, the problem would be decomposed into five binary classification problem where the classifier runs independently on each of the class using the input features\footnote{\url{https://www.analyticsvidhya.com/blog/2017/08/introduction-to-multi-label-classification/}}. 
 
 \subsubsection{Label Powerset} 
-Label powerset is another form of problem transformation method applied to multi-class or multi-label classification problems. In the case of label powerset, one single multi-class classifier is used to train all unique combinations of label from the training dataset. An example of label powerset is given below.
+Label powerset is another form of problem transformation method applied to multi-class or multi-label classification problems. In the case of label powerset, one single multi-class classifier is used to train all unique combinations of label from the training dataset.
+\bigbreak
+Both Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017} have used BR and LP transformation methods to perform multi-label/multi-class text classification to extract rationale from chat messages and IRC messages respectively. 
 
 \subsection{Algorithms}
 Many algorithms exist in the domain of machine learning to perform different kinds of classification. The scope of this thesis, however, is text classification using supervised learning techniques. The algorithms that will be looked into are mentioned in this section.
 
 \subsubsection{Logistic Regression}
-Given a set of independent variables, x1, x2, .. , xn, logistic regression is an algorithm that predicts the outcome, y, that is a binary or categorical variable. It is a special form of linear regression except that probability is calculated by using the ratio of logarithm of odds. The data is fit into a logit function for the prediction of outcomes. Binary logistic model predicts the outcomes of two classes, Class A (0) and Class B (1), whereas multinomial logistic regression model is capable of predicting more than two classes, for example, Class A, Class B and Class C. 
+Given a set of independent variables, $x_1$, $x_2$,.., $x_n$, Logistic Regression (LR) is an algorithm that predicts the outcome, $Y$, that is a binary or categorical variable \cite{Peng2002}\cite{Strombergsson2009} . It is a special form of linear regression except that probability is calculated by using the ratio of logarithm of odds. The data is fit into a logit function for the prediction of outcomes. Binary logistic model predicts the outcomes of two classes, Class A (0) and Class B (1), whereas multinomial logistic model is capable of predicting more than two classes, for example, Class A, Class B and Class C\cite{Jurafsky2017}. 
 \bigbreak
-Log of odds ratio is given as:
+Given $b$ the co-efficient of $x_1$ and $a$ the bias term, log of odds ratio is given as:
+\begin{align*}
+log\frac{Y}{1-Y} &= a + bx_1
+\end{align*}
 \bigbreak
-log(Y/(1-Y)) = a + bx1
-
+Transforming the above log of odds ratio to get the value of $Y$:
+\begin{align*}
+Y &=  \frac{e^{a + bx_1}}{1 + e^{a + bx_1}}
+\end{align*}
 \bigbreak
-where b is the co-efficient of x1 and a is the bias term.
-\bigbreak
-Transforming the above log of odds ratio to get the value of Y, 
-\bigbreak
-Y =  exp(a + bx1) / 1 + exp(a + bx1)
- 
-\bigbreak
-NOTE: Mention previous works where this was applied
+Rogers et al.\cite{Rogers2012} and Kurtanovic et al.\cite{Kurtanovic2017} have used LR for extracting rationale and performing classification on their respective datasets of software reviews and bug reports. 
 
 \subsubsection{Multinomial Naive Bayes}
-Naive Bayes belongs to the class of algorithms that are predominantly based on the Bayes Theorem. Algorithms of this group have a common notion that features that contribute to the predicition of an outcome are all independent of each other. However, in real world, this assumption contradict the hypothesis based on which these algorithms function. Naive Bayes, though, is considered to be easy, fast and efficient. 
+Naive Bayes (NB) belongs to the class of algorithms that are predominantly based on the Bayes Theorem. Algorithms of this group have a common notion that features that contribute to the predicition of an outcome are all independent of each other. However, in real world, this assumption contradict the hypothesis based on which these algorithms function. Naive Bayes, though, is considered to be easy, fast and efficient \cite{Rennie2003}. 
 \bigbreak
-Given two events A and B, the Bayes Theorem formula, for computing the probability of event A given that B has occured, can be defined as: 
+Given two events $C$ and $F$, the Bayes Theorem formula, for computing the probability of event $C$ given that $F$ has occured, can be defined as: 
+\begin{align*}
+P(C|F) &= \frac{P(C|F) \times P(C)}{P(F)}
+\end{align*}
 \bigbreak
-P(A|B) = P(B|A) x P(A) / P(B)
+MacCullum and Nigam \cite{McCallum1998a} published their research on a variant of Naive Bayes, popularly known as the Multinomial Naive Bayes (MNB) model. Unlike the simple Naive Bayes model, MNB uses multinomial distribution for each of the attribute features\footnote{\url{https://stats.stackexchange.com/questions/33185/difference-between-naive-bayes-multinomial-naive-bayes}}. In addition, for tasks like text classification, MNB takes the frequency of word counts, or sequences of word counts, or n-gram tokens independently into account when compared to NB model which only tries to predict the presence or absense of individual words. 
 \bigbreak
-MacCullum and Nigam published their research on a variant of Naive Bayes, popularly known as the Multinomial Naive Bayes (MNB) model. Unlike the simple Naive Bayes model, MNB uses multinomial distribution for each of the attribute features. In addition, for tasks like text classification, MNB takes the frequency of word counts, or sequences of word counts, or n-gram tokens independently into account when compared to NB model which only tries to predict the presence or absense of individual words. 
+Given a class $c$ and features $f_1$, $f_2$,.., $f_n$, the formula under NB is:
+\begin{align*}
+p(c|f_1,...,f_n) \propto p(c) \times p(f_1|c) \times ... \times p(f_n|c)
+\end{align*}
 \bigbreak
-Formulate MNB here
+When $p(c|f_i)$ is said to have a multinomial distribution, it is said to be using MNB model.  
 \bigbreak
-NOTE: Mention previous works where this was applied
+Both Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017} have used MNB model to perform text classification to extract rationale from chat messages and IRC messages respectively. 
 
 \subsubsection{Support Vector Machines}
-Support Vector Machine (SVM) is a popular supervised machine learning algorithm that can be used for regression as well as classification. SVM has been used rigorously in the past for various text classification projects. In SVM, items from a dataset are plotted as points in an n-dimensional space where n equals the number of features in consideration to perform the classification. The value of each feature corresponds to the value of coordinate. A hyperplane is then used to segregate the classes into two. To increase the confidence of correctly classifying a data point to the right class, the margin between the hyperplane and the data point must not be close; more the distance between them better the likelihood of proper classification. 
+Support Vector Machine (SVM) is a popular supervised machine learning algorithm that can be used for regression as well as classification\footnote{\url{https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/}}. In SVM, items from a dataset are plotted as points in an n-dimensional space where n equals the number of features in consideration to perform the classification. The value of each feature corresponds to the value of coordinate. A hyperplane is then used to segregate the classes into two. To increase the confidence of correctly classifying a data point to the right class, the margin between the hyperplane and the data point must not be close; more the distance between them better the likelihood of proper classification\cite{Joachims1998a}.  
 \bigbreak
-NOTE: Add picture here! 
+In real world, datasets can rarely be linearly separable. In such a scenario, kernels come to rescue when more than two dimensions are involved. To separate the classes, the low dimensional input dimensional space is therefore mapped to a higher dimensional space \cite{Tong2001}. The demerit of this approach, although inevitable, is that is results in longer training time while running the classifier. An illustration of SVM is shown in Figure \ref{fig:svm}. 
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=5cm]{optimal-hyperplane}
+    \caption{Example for Support Vector Machines}
+    \small Image adapted from OpenCV\footnotemark.
+    \label{fig:svm}
+\end{figure}
+\footnotetext{\url{https://docs.opencv.org/2.4/doc/tutorials/ml/introduction_to_svm/introduction_to_svm.html}}
 \bigbreak
-In real world, datasets can rarely be linearly separable. In such a scenario, kernels come to rescue when more than two dimensions are involved. To separate the classes, the low dimensional input dimensional space is therefore mapped to a higher dimensional space. The demerit of this approach, although inevitable, is that is results in longer training time while running the classifier. 
-\bigbreak
-NOTE: Mention previous works where this was applied
+SVM has been used rigorously in the past for various text classification projects. In addition to the thesis works of Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017}, Fan et al.\cite{Fan2017}, Guzman et al.\cite{Guzman2016} and Bacchelli et al.\cite{Bacchelli2012} have also used SVM for text classification tasks in the past. 
 
 \subsubsection{Decision Trees}
-Decision tools predominantly used for classification and regression are decision trees. At the top most level, there exists one node from where decision needs to be made at every level going downwards based on some rules pertaining to the attribute in consideration, until the final goal is reached. 
+Decision tools predominantly used for classification and regression are Decision Trees (DT). At the top most level, there exists one node from where decision needs to be made at every level going downwards based on some rules pertaining to the attribute in consideration, until the final goal is reached\cite{Jain2017}. 
 \bigbreak
-At every level, for each node, there exists an attribute that is chosen to split into their pertinent classes based on the samples provided. This split is done using a goodness function; some of them are information gain, information gain ratio and gini index, to mention a few. The condition for an attribute to be chosen is the one that gives the smallest tree and hence, an attribute that gives the purest node is chosen. A typical criteria for computing impurity is information gain which increases as the average value of purity of the relevant subsets an attribute produces. Attribute that results in highest information gain is therefore chosen finally. 
+At every level, for each node, there exists an attribute that is chosen to split into their pertinent classes based on the samples provided. This split is done using a goodness function; some of them are information gain, information gain ratio and gini index, to mention a few. The condition for an attribute to be chosen is the one that gives the smallest tree and hence, an attribute that gives the purest node is chosen. A typical criteria for computing impurity is information gain which increases as the average value of purity of the relevant subsets an attribute produces. Attribute that results in highest information gain is therefore chosen finally\cite{Jain2017}. 
 \bigbreak
-Information Gain = (information before split)–(information after split)
-\bigbreak
-To compute the information required, the entropy is computed; entropy describes the randomness of a given system. 
-\bigbreak
-NOTE: Entropy formula goes here
-\bigbreak
-The highest information gain is chosen after computing the information gain for each of the attribute.
-\bigbreak
-NOTE: Gain formula goes here
-\bigbreak
-Splitting process occurs repeatedly until the scenario where data cannot be split any further. Later, from the bottom, pruning of the tree takes place to make it shorter and avoid overfitting of any kind. 
-\bigbreak
-NOTE: Add algorithm maybe?
+The highest information gain is chosen after computing the information gain for each of the attribute. Splitting process occurs repeatedly until the scenario where data cannot be split any further. Later, from the bottom, pruning of the tree takes place to make it shorter and avoid overfitting of any kind. In addition to SVM, Nonnenmacher\cite{Nonnenmacher2017}, Fan et al.\cite{Fan2017} and Guzman et al.\cite{Guzman2016} have also used DT for text classification tasks in their respective works.
 
 \subsubsection{Random Forest}
-Random forests belong to a special class of learning algorithms known as the ensemble learning algorithm. This methodology believes individual classifiers are weak and are not having high accuracy. Hence, random forests use techniques such as bagging to overcome this limitation. Random forests thus creates different subsets from the dataset and decision tree classifier is run on each of these subsets. Bagging is then used to combine the results of all the individual classifier run on different subsets to perform the final classification; it decreases the test error by lowering the variance of prediction. 
+Random forests belong to a special class of learning algorithms known as the ensemble learning algorithm. This methodology believes individual classifiers are weak and are not having high accuracy. Hence, random forests use techniques such as bagging to overcome this limitation. Random forests thus creates different subsets from the dataset and decision tree classifier is run on each of these subsets. Bagging is then used to combine the results of all the individual classifier run on different subsets to perform the final classification; it decreases the test error by lowering the variance of prediction\cite{Jain2017}. 
 \bigbreak
-Due to their nature of running the same algorithm multiple times over different subsets, random forests can be completely parallelized as well. Random forests have more advantages since it aggregates many weak classifiers to make the final classification. Thanks to its ensemble learning approach, it prevents overfitting and gives better accuracy. In addition to handling data without any kinds of preprocessing, random forests are also considered to be resitant to outliers and over-training. 
-\bigbreak
-Note: Add algorithm may be?
-\bigbreak
-Note: Add previous works
-\bigbreak
-Note: Add image may be?
+Due to their nature of running the same algorithm multiple times over different subsets, random forests can be completely parallelized as well. Random forests have more advantages since it aggregates many weak classifiers to make the final classification. Thanks to its ensemble learning approach, it prevents overfitting and gives better accuracy. In addition to handling data without any kinds of preprocessing, random forests are also considered to be resitant to outliers and over-training\cite{Jain2017}. In addition to MNB, SVM and DT, Nonnenmacher\cite{Nonnenmacher2017} performed the experiements using Random Forest model as well. 
 
 \subsection{Performance Metrics}
-Performance metrics of a classifier is imperative to know how accurate the model is. A confusion matrix can hence be plotted which comprises of True Positive (TP), True Negative (TN), False Positive (FP) and False Negative (FN) as depicted in Figure (insert figure).
+Performance metrics of a classifier is imperative to know how accurate the model is. A confusion matrix can hence be plotted which comprises of True Positive (TP), True Negative (TN), False Positive (FP) and False Negative (FN) as depicted in Figure \ref{fig:confusion-matrix}.
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=5cm]{confusion_matrix}
+    \caption{Confusion Matrix}
+    \small Image adapted MLXTEND\footnotemark.
+    \label{fig:confusion-matrix}
+\end{figure}
+\footnotetext{\url{https://rasbt.github.io/mlxtend/user_guide/evaluate/confusion_matrix/}}
 \bigbreak
-Given a positive class, CP, and a negative class, CN, the following can be defined:
+Given a positive class, $P_C$, and a negative class, $N_C$, the following can be defined:
 \bigbreak
-True Positive Rate is the proportion of correctly classified positive class, CP
-\bigbreak
-True Negative Rate is the proportion of correctly classified negative class, CN
-\bigbreak
-False Positive Rate is the proportion of incorrectly classified negative class, CN, classified as CP
-\bigbreak
-False Negative Rate is the proportion of incorrectly classified positive class, CP, classified as CN
-\bigbreak
-The four components of the confusion matrix defined earlier can now be used to define the following subsections.
+True Positive Rate (TPR) is the proportion of correctly classified $P_C$. True Negative Rate (TNR) is the proportion of correctly classified $N_C$. False Positive Rate (FPR) is the proportion of incorrectly classified $N_C$, classified as $P_C$. False Negative Rate (FNR) is the proportion of incorrectly classified $P_C$, classified as $N_C$. The four components of the confusion matrix defined earlier can now be used to define the following subsections.
 
 \subsubsection{Accuracy} 
-Accuracy is the ratio of sum of TP and TN to the entire number of samples in the dataset
-\bigbreak
+Accuracy is the ratio of sum of TP and TN to the entire number of samples in the dataset.
 \begin{align*}
 Accuracy &= \frac{ TP + TN}{TP + TN + FP + FN}
 \end{align*}
 
 \subsubsection{Precision} 
-Precision is the ratio of TP to the sum of TP and FP
-\bigbreak
-Precision = TP / TP + FP
+Precision is the ratio of TP to the sum of TP and FP.
+\begin{align*}
+Precision &= \frac{TP}{TP + FP}
+\end{align*}
 
 \subsubsection{Recall} 
-Recall is the ratio of TP to the sum of TP and FN. Recall is also known as hit rate, True Positive Rate (TPR) or sensitivity
-\bigbreak
-Recall = TP / TP +FN
+Recall is the ratio of TP to the sum of TP and FN. Recall is also known as hit rate, True Positive Rate (TPR) or sensitivity.
+\begin{align*}
+Recall &= \frac{TP}{TP +FN}
+\end{align*}
 
-\subsubsection{F1} 
-F1 is the harmonic mean of recall and precision
-\bigbreak
-F1 = 2 TP / 2 TP + FP + FN
+\subsubsection{F1 Score} 
+F1 score is the harmonic mean of recall and precision. 
+\begin{align*}
+F1 &= \frac{2TP}{2TP + FP + FN}
+\end{align*}
 
 %------- chapter 3 -------
 
