@@ -26,6 +26,9 @@
 \usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{adjustbox}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
 
 % Path for graphics
 \graphicspath{{figures/}}
@@ -126,8 +129,6 @@ Rationales Wissen ist besonders wichtig während der Softwarewartung und evoluti
 \acro{SGD}{Stochastic Gradient Descent}
 \acro{GATE}{General Architecture for Text Engineering}
 \acro{WEKA}{Waikato Environment for Knowledge Analysis}
-\acro{MEKA}{Need to look up}
-\acro{NER}{Named Entity Recognition}
 
 \end{acronym}
 
@@ -378,28 +379,30 @@ The TFIDF using equations 2.4 and 2.5 is thus:
 \bigbreak
 Guzman et al.\cite{Guzman2017}, Fan et al.\cite{Fan2017}, Nonnenmacher\cite{Nonnenmacher2017} and Goel \cite{Goel2017} are some of the few who have extensively used TFIDF mechanism in their works.  
 \subsection{Topic Modeling}
-Topic modeling is an approach in the domain of NLP to extract a specific number of topics from a large text corpus. The topics are retrieved by computing the probabilities of frequently occurring words that constitute the text corpus. Preprocessing techniques mentioned earlier can be applied before generating all the topics depending on the insights being looked for to make the final results more meaningful. It is to be noted that the name of the topics are not given by the algorithm but the end users themselves; the algorithm will only give the frequently occurred words for every given topic.
+Topic modeling is an approach in the domain of NLP to extract a specific number of topics from a large text corpus. The topics are retrieved by computing the probabilities of frequently occurring words that constitute the text corpus \cite{Zou2017} \cite{Linstead2007}. Preprocessing techniques mentioned earlier can be applied before generating all the topics depending on the insights being looked for to make the final results more meaningful. It is to be noted that the name of the topics are not given by the algorithm but the end users themselves; the algorithm will only give the frequently occurred words for every given topic \cite{Goel2017}.
 \bigbreak
-Mathematically, topic modeling is a kind of a Bayesian inference model where every document in the text corpus is associated with a probability distribution over topics and these topics are nothing but probability distribution over words. Many topic modeling algorithms exists such as LSA, p-LSA, LDA, and HDP to mention a few. This thesis performs topic modeling using LDA as it is widely used in the academia domain for working with text corpora. NOTE: Mention some works using which rationale data was worked with.
-
+Mathematically, topic modeling is a kind of a Bayesian inference model where every document in the text corpus is associated with a probability distribution over topics and these topics are nothing but probability distribution over words \cite{Goel2017}. Many topic modeling algorithms exists such as Latent Semantic Analysis (LSA) \cite{Agung2017}\cite{Tu2017}, Latent Dirichlet Allocation (LDA) \cite{Katsumata2016} \cite{Chen2016}, and Hierarchial Dirichlet Process (HDP) \cite{Li2018} \cite{Hu2017} to mention a few. This thesis performs topic modeling using LDA since many related works have incorporated the same. Some of these works are mentioned in the paragraphs to come. 
+\bigbreak
+Guzman at al. \cite{Guzman2015} \cite{Guzman2014} used topic modeling approach such as LDA to visualize user feedback and fine grained sentiment analysis of app reviews. For automatic classification of bug reports, Somasundaram et al. \cite{Somasundaram2012} used LDA to achieve the same. Pagano and Maalej\cite{Pagano2011} studied the blogging style of developers by applying topic modeling using LDA. 
+% Write it as pseudocode if possible
 \subsubsection{Latent Dirichlet Allocation}
-Latent Dirichilet Allocation (LDA) is a topic modeling algorithm where topics are formed using a generative process. The algorithm is described as follows:
+Latent Dirichilet Allocation (LDA) is a topic modeling algorithm introduced by Blei at al. \cite{Blei2003}, where topics are formed using a generative process. The algorithm ha been adapted from Goel \cite{Goel2017} and is described as follows.
 \bigbreak
-1. Let the number of words in the document, D, be n.
+1. Let w be number of words in the document, D; M be the number of documents in the corpora; k be the number of topics that can be comprised of. 
 \bigbreak
-2. Let the number of topics that can contribute to a document be k.
+2. Dirichlet distribution with parameter vector alpha of length k is chosen for k different topic distributions and parameter vector beta of length M is chosen for M documents in the corpora.
 \bigbreak
-3. Let the number of documents in the corpora be M.
+3. Repeat until M documents, for a given document D belonging to corpora:
 \bigbreak
-4. Dirichlet distribution with parameter vector alpha of length k is chosen for k different topic distributions and parameter vector beta of length M is chosen for M documents in the corpora.
+(a) Sample a multinomial distribution of topics from the dirichlet distribution with parameter vector alpha chosen earlier and for each topic
 \bigbreak
-6. Repeat until M documents, for a given document D belonging to corpora:
-\bigbreak
-(a) It samples a multinomial distribution of topics from the dirichlet distribution with parameter vector alpha chosen earlier and for each topic, it samples a multinomial distribution of words in that topic from the dirichlet distribution with parameter vector beta chosen earlier.
+(b) Sample a multinomial distribution of words in that topic from the dirichlet distribution with parameter vector beta chosen earlier.
 \bigbreak
 (b) Repeat until n words, for a given word w in the document:
 \bigbreak
-i. It picks one topic from the multinomial topic distribution sampled above and then generates word from the multinomial word distribution of the chosen topic and add that word to the document.
+i. Pick one topic from the multinomial topic distribution sampled above and then generate word from the multinomial word distribution of the chosen topic 
+\bigbreak
+ii. Add that word to the document.
 
 \subsection{Parts-of-Speech Tagging}
 Parts-of-Speech tagging, also known as PoS tagging, is a NLP technique where a sentence is broken into individual components and the PoS for each of those components are assigned. A sentence may contain words as well as punctuations. PoS tagging technique can also be used as a preprocessing technique for classification where features would be extracted based on the pattern and types of PoS used in every sentence. It is to be noted that this tagging can be coarse grained such as noun, verb, adjective, and others, or even fine grained where the tagging could be something like comparative adjective or superlative adjective, personal pronoun, past tense or past participle. This thesis uses the Penn Treebank Project from the University of Pennsylvania, for its PoS tagging related experiments.
