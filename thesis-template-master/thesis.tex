@@ -344,12 +344,12 @@ A simple example of DTM is illustrated using Table \ref{tab:dtmExample}.
     \label{tab:dtmExample}
 \end{table}
 \bigbreak
-Given a set of documents, \textit{D}, \textit{tx} is the term in the document, \textit{di}, for which TFIDF is to be computed, \textit{tn} is the total number of words occuring in document, \textit{di}.
+Given a set of documents, \textit{D}, \textit{$t_x$} is the term in the document, \textit{$d_i$}, for which TFIDF is to be computed, \textit{$t_n$} is the total number of words occuring in document, \textit{$d_i$}.
 \bigbreak
 The formula for TF is as follows:
 \begin{equation}
 \label{eq:et}
-    TF(t, di) = \frac{tx}{tn}
+    TF(t, d_i) = \frac{t_x}{t_n}
 \end{equation}
 And, the formula for IDF is as follows:
 \begin{equation}
@@ -361,10 +361,10 @@ From equations 2.1 and 2.2, TFIDF is therefore:
 \label{eq:et}
     TFIDF(t, d, D) = tf(t, d).idf(t, D)
 \end{equation}
-Using equations 2.1, 2.2 and 2.3, TFIDF of the term  \textit{"learning"} occuring in document 3, d3, can now be computed. It can be seen that the word \textit{"learning"} occurs twice across the documents, hence from equation 2.1:
+Using equations 2.1, 2.2 and 2.3, TFIDF of the term  \textit{"learning"} occuring in document 3, $d_3$, can now be computed. It can be seen that the word \textit{"learning"} occurs twice across the documents, hence from equation 2.1:
 \begin{equation}
 \label{eq:et}
-    TF(learning, d3) = \frac{2}{5} = 0.4
+    TF(learning, d_3) = \frac{2}{5} = 0.4
 \end{equation}
 The IDF for the word \textit{"learning"} from 2.2, is therefore:
 \begin{equation}
@@ -374,7 +374,7 @@ The IDF for the word \textit{"learning"} from 2.2, is therefore:
 The TFIDF using equations 2.4 and 2.5 is thus:
 \begin{equation}
 \label{eq:et}
-    TFIDF(learning, d3, D) = 0.4\times0.301 = 0.12
+    TFIDF(learning, d_3, D) = 0.4\times0.301 = 0.12
 \end{equation}
 \bigbreak
 Guzman et al.\cite{Guzman2017}, Fan et al.\cite{Fan2017}, Nonnenmacher\cite{Nonnenmacher2017} and Goel \cite{Goel2017} are some of the few who have extensively used TFIDF mechanism in their works.  
@@ -581,7 +581,25 @@ This chapter describes the datasets used to carry out the research and the colle
 In this section, we explore how the data was scraped for issues trackers and commit logs from each of the three sources: Apache Lucene, Mozilla Thunderbird and Ubuntu. 
 
 \subsection{Issue Trackers Dataset}
-This section investigates how data was obtained from issue trackers of Apache Lucene, Mozilla Thunderbird and Ubuntu. 
+This section investigates how data was obtained from issue trackers of Apache Lucene, Mozilla Thunderbird and Ubuntu. In addition, Table \ref{tab:rawIssueTrackers} shows the figures of the raw dataset. 
+
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{3cm} p{3cm} p{3cm}}
+        \toprule
+        \textbf{Project} & \textbf{Issues} & \textbf{Comments}\\
+        \midrule
+			Lucene & 7,932 & 74,012\\
+			Thunderbird & 4,367 & 26,587\\ 
+			Ubuntu & 28,429 & 150,008\\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Issue Trackers Raw Dataset}
+    \label{tab:rawIssueTrackers}
+\end{table}
 
 \subsubsection{Apache Lucene}
 Apache Lucene\footnote{\url{https://lucene.apache.org/}} is an open sourced high performance text search engine written in Java by Doug Cutting in 1999. The project was donated to Apache Foundation\footnote{\url{https://www.apache.org/}} in the year 2001. To develop and maintain the software, the issue tracker called JIRA\footnote{\url{https://www.atlassian.com/software/jira}} developed by Atlassian\footnote{\url{https://www.atlassian.com}} is used. At the time of conducting this research, the total number of issues were 7940. However, only 7932 issues were fetched since some issues could have been deleted by the moderators, contained non-English characters or had no comments.
