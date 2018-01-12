@@ -692,9 +692,9 @@ For the main content analysis, two annotators, the author and his advisor, indiv
 \begin{itemize}
 \item {Step 1:} Filter the dataset by discarding issues that do not fall under the required date range. The required date range is the range used in the IRC message dataset which can be referred in Table \ref{tab:rawIRCMessages}. This is to make sure the comments from issue trackers are from the same duration as messages from IRC. 
 \item {Step 2:} In the next step, count the number of comments for each issue that are under the required date range but only consider issues that have between 5 and 30 comments, and divide them into 5 groups: 6-10 comments, 11-15 comments, 16-20 comments, 21-25 comments and 26-30 comments, in order to avoid issues with too few comments (less than 5) or way too many comments (greater than 30). 
-\item {Step 3:} Perform proportionate random stratified sampling to obtain 100 random issues from the filtered dataset in step 2 for each of the three projects.
+\item {Step 3:} Perform proportionate random stratified sampling to obtain 100 random issues from the filtered dataset in step 2 for each of the three projects. Figures \ref{fig:luceneRSSDistro}, \ref{fig:thunderbirdRSSDistro} and \ref{fig:ubuntuRSSDistro} shows the ratio with which Apache Lucene, Mozilla Thunderbird and Ubuntu were sampled respectively. 
 \end{itemize}
-\bigbreak
+
 The figures after performing the random stratified sampling are presented in Table \ref{tab:overviewRSS}. 
 
 \begin{table} %[hb!]
@@ -714,6 +714,29 @@ The figures after performing the random stratified sampling are presented in Tab
     \captionof{table}{Overview of dataset after Random Stratified Sampling}
     \label{tab:overviewRSS}
 \end{table}
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=9cm]{lucene-comment-distribution-rss}
+    \caption{Distribution of comments for Apache Lucene after RSS}
+    \label{fig:luceneRSSDistro}
+\end{figure}
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=9cm]{thunderbird-comment-distribution-rss}
+    \caption{Distribution of comments for Mozilla Thunderbird after RSS}
+    \label{fig:thunderbirdRSSDistro}
+\end{figure}
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=9cm]{ubuntu-comment-distribution-rss}
+    \caption{Distribution of comments for Ubuntu after RSS}
+    \label{fig:ubuntuRSSDistro}
+\end{figure}
+
+\section{Rationale Frequency}
 
 %------- chapter 5 -------
 
