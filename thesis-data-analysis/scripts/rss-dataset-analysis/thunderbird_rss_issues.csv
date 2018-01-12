@@ -1,0 +1,101 @@
+id,title,count
+9,Identity detection should be based on Envelope-To,6
+25,X-Sender address in header from another account in Thunderbird,18
+53,gmail All Mail syncs even though it is set in account settings to not sync,20
+54,Unexpected changes to whether email bodies stored locally for imap account folders,6
+56,Allow setting width of the account creation wizard dialog for localized versions of Thunderbird,7
+80,creating news server account does not lead user to full server settings,6
+99,&apos;Add account wizard&apos; should give end user instructions in case autodetection fails,23
+114,Tibetan sorting doesn&apos;t work in Address Book (Windows 7).  Ability to choose font would be nice too.,10
+129,Create MetaSearch rank order via Prefs for Address Autocomplete,9
+153,When dragging an existing entry from Address Book to a List the complete entry is not moved,11
+192,[meta][VUW 2016] Address book Ensemble Project,6
+222,[am] Add Amharic localisation to Thunderbird,7
+267,Filelink: Add account auto config,17
+283,Cannot delete nor move messages when compact option is on,9
+308,Message filters with invalid HTML body not working,6
+332,Apply filter to URLs in message body,8
+333,Quick filter by body doesn&apos;t find message if message stored in IMAP folder,14
+344,Incorrect synchronization of moved items to IMAP server,8
+370,"Enlarge click area of folder tree twisty/arrow to the left ([+][-],[>][v])",6
+371,Keyboard shortcuts always inactive,6
+380,"List of messages is buggy in unified folder view, especially when moving/hovering the mouse over the unified thread pane",11
+390,delete messages from IMAP does not work,6
+415,some .msf files get lost after Thunderbird restart,6
+424,message contents disappear after deleting an imap folder,7
+425,Columns  not remembered in the message list after restart (only after restart of Tb which is automatically initiated when an update is applied by Addon update). Caused by add-on/extension,12
+435,threading breaks on save in Drafts folder,9
+490,Thunderbird 38.1.0 lost message folders,7
+544,Attachments seem to be corrupted even tho they are not.,9
+571,"Code clean-up: Style nits, typos and trailing spaces - take 2",9
+572,Please add Khmer (km) to Thunderbird for the release of 38,14
+577,Drag and Drop Mozmill failure 2017-09-08: 7 failures (Friday bustage),21
+580,TEST-UNEXPECTED-FAIL | C:slave	estuild	estsmozmillmigration-to-rdf-ui-2	est-migrate-to-rdf-ui-2.js | test-migrate-to-rdf-ui-2.js::test_width_persisted,7
+587,TEST-UNEXPECTED-FAIL | /builds/slave/test/build/tests/mozmill/content-tabs/test-plugin-crashing.js | test-plugin-crashing.js::test_crashed_plugin_notification_inline,12
+594,Clicking on new e-mail in the notifier may use the wrong window/tab,6
+624,crash in nsDocumentViewer::OnDonePrinting @ address 0x5a5a5a5a/e5e5e5e9,12
+628,Inserting image into mail causes crash @ @0x0 | CProfferService::QueryService,8
+634,"tb 38.1.0 D3D11 related crash in driver for Nvidia Geforce 740M on startup when HWA, layers.acceleration and gfx.direct2d, are enabled",13
+635,"ASSERTION: URI is empty: &apos;!aURI.IsEmpty()&apos;, file /TB-NEW/TB-3HG/new-src/mozilla/rdf/base/src/nsRDFService.cpp, line 884",8
+642,crash in nsImapIncomingServer::GetMsgFolderFromURI [Mac],6
+643,Lightning uninstalls itself on every minor Thunderbird upgrade,9
+682,Add method to get standard input from command line,6
+686,Extremely slow during writing operations onto a NAS since Windows 10 upgrade,10
+691,Smeared Fonts and Images with ATI Radeon HD 4800,11
+725,HTML text cut/copied from one composition (reply to received email message) cannot be pasted into new composition window,12
+771,View Source All Indented due to Lack of Line Numbers,27
+802,Thunderbird 52.2.0-1 on Arch Linux (4.11.5-1-ARCH) crashes when user clicks on a contact in the chat tab,10
+818,Daily chat client should not ask for an SSL certificate when connecting to a server through SSL.,20
+834,Show contacts groups for XMPP,6
+835,Feature request: Quick search in chat contacts,8
+871,New Message Notification pop-up window not working (but worked before),9
+919,Font spongy if switching external display(s) to internal on Notebook,16
+962,Activity Manager not showing failed/failing imap activity,13
+995,Uncaught exceptions during Thunderbird shutdown,6
+1019,compose body isn&apos;t actually ready (images not yet converted to data:) when NotifyComposeBodyReady event is triggered,10
+1038,Thunderbird 24 Beta 2 does not respect reply-to header,11
+1039,Mailto link in HTML email becomes duplicated e-mail address in plain text email,7
+1047,rewrap produces inconsistent results,8
+1049,"LDAP search/autocomplete using SSL doesn&apos;t work for TB 31.0 any loger, without SSL it still works.",10
+1079,Hardware acceleration may cause message compose window to lag severely (in unknown circumstances),18
+1133,Reply-All sometimes replies only to sender with only sender wrote: in message body,12
+1143,Delete key changes formatting in prior text instead of removing line break after,7
+1160,Text wrongly marked as quoted when composing a reply,6
+1176,Copy or cut and paste removes spaces within write window of Thunderbird,6
+1185,Fix to e-mail addresses that have a &apos; (MS Outlook 2013),7
+1202,Removing text in the HTML composer changes current font,12
+1209,Ctrl+drag moves selected text (instead of copying) on Linux,6
+1217,Full Screen Mail Compose window not closed after sending mail (OS X 10.8),10
+1224,rewrap destroys newline character,7
+1257,Emails sent to wrong recipients,11
+1355,Linkify text-only URLs e.g. http://foo.bar in HTML messages when shown in message reader,6
+1364,impossible to copy-paste parts of a link without visiting it.  text select opens link,7
+1375,"base64 encoded email even in text-only view causes 100% cpu load and never displays, hangs gui and thunderbird.exe process completely",21
+1388,"When ICS attached, Lightning enabled ONLY event is visible not the email",6
+1404,Provide user interface for Gmail labels (X-GM-LABELS),14
+1405,unexpected inheritance of colors through tables in thunderbird html mails,9
+1443,BiDi Mail UI direction auto-detection busted by recent(ish) changes,10
+1445,"When performing a Mail import from the Tools menu of the Thunderbird application, after choosing either Outlook or Outlook express the user is not prompted to select the folders that is desired to be imported.  Instead it imports all the mail folders.",7
+1481,C-C ldap directory: fix -Werror=sign-compare: signed vs unsigned warnings (now treated as errors),7
+1484,We don&apos;t register Thunderbird as the default .eml handler on Mac,6
+1487,new mail notification taskbar icon remains on program exit,14
+1535,Add UI for clearing Visited Link/Browsing History when Thunderbird closes,8
+1542,Large number of tags causes very bad tags preference UI performance (from autotaging RSS feeds),13
+1572,"imap messages archived to local folders still indexed on Inbox, not on archive folder [faceted search results]  (fixed by rebuilding gloda database)",6
+1603,Quick filter UI is unresponsive after a quick search triggers,9
+1606,Crash in nsMsgSearchTerm::MatchString / nsMsgSearchTerm::MatchRfc2047String,7
+1607,Crash in nsDocumentOpenInfo::OnStartRequest,6
+1611,"gloda implications of indexing / downloading email with hundreds of email addresses, memory usage rises to ~300MB/sec until it crashes",28
+1635,S/MIME signature wrongly reported as invalid,6
+1705,Upgrade of Thunderbird to 45.2 Password handshake fails,7
+1712,timeout / popup failures in thunderbird mozmill test: lack of proper synchronization in test programs,17
+1728,Thunderbird does not display strong plain text tag correctly.,6
+1734,Chat - ugly border around avatar on the right,6
+1760,"Toolbar in message-header pane lacks icons present in the main toolbar, no longer accessible in a message tab",8
+1763,menu bar should be on top - not inside tab,6
+1799,"GUI bug: emails don&apos;t appear in local inbox thread pane, but do appear in global inbox thread pane.",6
+1832,Almost impossible to write a new email (system unresponsive) while many new messages to be synchronised from IMAP server,12
+1849,imap emails re-download constantly for all accounts; summary inbox error message,6
+1871,Multiple draft copies saved,6
+1881,&apos;Always prefer display name over message header&apos; not always honoured for at least one address,7
+1956,unable to overwrite functions in addons with dom.compartment_per_addon = true,15

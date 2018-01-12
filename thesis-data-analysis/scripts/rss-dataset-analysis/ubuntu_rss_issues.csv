@@ -1,0 +1,139 @@
+id,title,count
+1738,System lock on upgrade or new install,7
+1798,[KM400]xserver/openchrome crash with unichrome,10
+1960,"
+    sort -u erase some utf8 characters
+",11
+1982,"cannot play video, complains about missing support for Quicktime",16
+2012,performance of accounts-daemon is very poor,18
+2168,"
+    kernel crash on EC2 raring
+",11
+2303,"rt2800 crash on skb_push, apparently underflows the skb area",6
+2317,After installation hitting enter to reboot the system after cd ejects fails,9
+2361,"
+    webbrowser-app does not start in Unity 8 preview session
+",13
+2461,Base Grid units on the gsettings key per monitor,8
+2620,"Ubuntu 15.04 - Macbook Pro Early 2015 (12,1) no 5 GHz wireless",6
+2992,"
+    python-apt in yakkety no longer creates partial
+",12
+3064,"
+    virtualbox+usb 3.0 breaks boot, -28 kernel works
+",13
+3088,stress-ng memory testing causes Arm64 system to hang,9
+3131,Xmir -rootless: Firefox menus pop up then close right away,21
+3198,Consistent boot time kernel panic,9
+3272,"
+    linux-aws/linux-gke incorrectly producing and using linux-*-tools-common/linux-*-cloud-tools-common
+",15
+3382,"
+    Synaptic has memory leaks
+",11
+3540,[apport] blam.exe crashed with SIGSEGV,8
+3551,[apport] oem-config-dm crashed with XStartupError in run(),16
+3717,Can't use the lowest brightness setting,25
+3804,glade-3 break  when open a .glade file,6
+3853,"
+    nautilus hangs when unmounting an nfs disk if nfs server is down
+",14
+4044,file-roller crashed with SIGSEGV in gtk_propagate_event(),6
+4206,Login sound is too loud and disruptive on first boot,7
+4573,mountall ignores nofail mount option,16
+4876,"
+    ssh-add does not always unlock ssh keys
+",15
+4885,[Upstream] Deleting a column in Writer deletes whole table,8
+4911,"
+    TRIM support not enabled for SSDs
+",12
+4921,Yelp causes 100% CPU usage,6
+5138,8086:10c9 bridged network interface dropping RX packets,16
+5324,mythtv-backend needs to run in writable directory,6
+5540,flac crashed with SIGFPE,8
+5759,"
+    [serial] use hw flow control if supported
+",11
+5805,gnome-shell crashed with SIGABRT in g_assertion_message(),7
+5834,mysql plugins fail on mysql 5.5/5.6,6
+6050,CVE-2014-0131,8
+6155,"
+    lpfc driver needs to be updated.
+",12
+6280,Low performance when using vlan over VxLan,8
+6292,Minicom opening serial but not input shown,7
+6293,"
+    WARNING: CPU: 1 PID: 207 at /build/linux-lts-vivid-3x86XO/linux-lts-vivid-3.19.0/drivers/gpu/drm/i915/intel_display.c:958
+",13
+6394,CVE-2015-8019,6
+6426,"
+    Screen doesn't change after connecting a BT mouse and no cursor displayed.
+",12
+6813,"package upgrade broken for multipath system, specifically ppc64el",6
+6879,can't change sensitivity on (new) Alps trackstick,20
+7256,Extremely long URLs don't display properly,21
+7307,Splashy continues to conflict with usplash and thus fails to start despite removing usplash startup links,7
+7634,Screenlets hide on show desktop without compiz,17
+7693,Qalculate SIGABRTs with exp($large_number),8
+7844,Permission denied running splitconfig.pl when running debian/rules updateconfigs,10
+8073,Appearance Preferences GUI White Space Problem,9
+8114,Gnome print dialog too big for 1024*600 resolution,6
+8146,transmission downloads portions of files I've unselected in the torrent,9
+8561,CVE-2012-2373,6
+9270,Smarty in php.ini Include,8
+9535,Thunderbird should use a local startpage,7
+9941,Make fullscreen pan if remote display has higher resolution,7
+10585,[needs packaging] gxmame,7
+10916,Key bindng for Back and Forward functionality,8
+11299,[needs-packaging] Create package: Acsal,7
+11402,Xorg misbehaves when user home directory is missing,8
+12128,Unity quicklists should be theme able,6
+12222,No support for power management,6
+12295,use symbolic icons,28
+12965,jaunty wicd wpa2 constant reconnect,10
+13053,cannot launch install,7
+13304,system freeze on facebook surfing,27
+13430,"Firefox is flickering elements, drawing random lines, and other artifacts.",7
+14420,Black dots appear on screen,29
+14954,Hauppauge HVR-1600 Remote Not Detected,16
+15044,"
+    udev-configure-printer /invalid or missing IEEE 1284 Device ID 
+",12
+15458,usb audio driver can still be loaded first despite settings in /etc/modprobe.d/alsa-base.conf,8
+16231,Vimicro Corp. Venus USB 2.0 webcam not detected [WORKAROUND],6
+16572,Mdadm array fails to assemble on boot.,28
+16764,mumble doesn't recognize hotplugged external USB keyboard for shortcuts,9
+17340,"
+    PCM mixer too high / distortion - HDA Intel: Conexant CX20551 (Waikiki)
+",12
+17512,gtk-missing-image is missing,7
+17705,Recommended packages are excessive,10
+18237,upstart fails to upgrade from hardy to lucid (--configure),7
+18707,"
+    javascript toLocaleDateString output format YY-MM-YYYY
+",14
+19354,weather applet loses connectivity permanently,10
+19930,rsyslogd fails to load lmnsd_gtls.so,6
+20122,100% CPU usage in init if /dev/console is not available,21
+20232,Banshee library watcher should be enabled by default,6
+20911,Half screen display on primary when extending,18
+21713,Kubuntu 12.04 doesn't logout/reboot/shutdown,16
+22768,"
+    LightDM KDE Greeter loads the desktop half a minute after login
+",11
+23003,xrandr : Failed to get size of gamma for output default,8
+24706,"Ubuntu 13.10, Thinkpad x230, Fn keys not working after upgrade",10
+25027,"No sound with HDA Intel, VIA VT8237A/VT8251, kernel 3.12",9
+25059,No Autohide Launcher Bar Mouse Reveal on Secondary Monitor,6
+25071,Error loading shared library for smart card authentication to server,7
+25607,stardict-tools doesn't allow duplicate keys,6
+25719,haveged consumes 100% cpu when used with -w > 4067,8
+25783,No buttons in shut down menu on login page,9
+26755,[OTA13- notification panel]no apps listed,24
+26757,yakkety compiling failed on ubuntu trusty,10
+26964,"
+    gnome-terminal crashes when tab is dragged onto another tab's terminal area
+",14
+27786,Distorted menus in a lot of Qt apps under Unity8,21
+28249,Intel i40e PF reset under load,6

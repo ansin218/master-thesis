@@ -1,0 +1,101 @@
+id,title,count
+44,"[LUCENE-7888] Test{Mixed,Binary}DocValuesUpdates.testManyReopensAndFields() failures",12
+48,[LUCENE-7883] Remove references to Thread#getContextClassLoader() from Lucene/Solr codebase,7
+147,[LUCENE-7755] Join queries should not reference IndexReaders.,6
+258,[LUCENE-7631] Enforce javac warnings,7
+273,[LUCENE-7615] SpanSynonymQuery,6
+432,[LUCENE-7434] Add minNumberShouldMatch parameter to SpanNearQuery,24
+463,[LUCENE-7401] BKDWriter should ensure all dimensions are indexed,8
+508,[LUCENE-7352] TestSimpleExplanationsWithFillerDocs failures,6
+509,[LUCENE-7351] BKDWriter should compress doc ids when all values in a block are the same,7
+527,[LUCENE-7331] GeoPointTestQuery should use GeoTestUtil instead of GeoPointTestUtil,6
+563,[LUCENE-7291] HeatmapFacetCounter bug with dateline and large non-point shapes,12
+583,[LUCENE-7264] Fewer conditionals in DocIdSetBuilder.add,9
+645,[LUCENE-7197] Geo3DPoint test failure,11
+648,[LUCENE-7194] Ban Math.toRadians/toDegrees and remove all usages of it,24
+749,[LUCENE-7085] PointRangeQuery.equals does not work,8
+827,[LUCENE-6995] Add branch change trigger to common-build.xml to keep sane build on GIT branch change,19
+920,[LUCENE-6894] Improve DISI.cost() by assuming independence for match probabilities,8
+982,[LUCENE-6821] TermQuery's constructors should clone the incoming term,27
+1102,[LUCENE-6680] BlendedInfixSuggester dedup bug,6
+1136,[LUCENE-6641] Idea CodeSyle should be enriched,6
+1229,[LUCENE-6542] FSDirectory throws AccessControlException unless you grant write access to the index,23
+1244,[LUCENE-6526] Make AssertingWeight check that scores are not computed when needsScores is false,6
+1347,[LUCENE-6413] Test runner should report the number of suites completed/ remaining,6
+1354,[LUCENE-6405] BaseXXXFormatTestCase should test exception handling.,9
+1370,[LUCENE-6388] Optimize SpanNearQuery,8
+1422,[LUCENE-6329] Calling score() should be ok even if needsScores is false,6
+1426,[LUCENE-6325] improve perf and memory of FieldInfos.fieldInfo(int),14
+1444,[LUCENE-6304] Add MatchNoDocsQuery that matches no documents,16
+1508,[LUCENE-6233] CheckIndex is dog slow when checking term vectors,9
+1583,"[LUCENE-6149] Infix suggesters' highlighting, allTermsRequired options are hardwired and not configurable for non-contextual lookup",16
+1611,[LUCENE-6119] Add auto-io-throttle to ConcurrentMergeScheduler,28
+1683,[LUCENE-6043] Add backcompat support for UAX29URLEmailTokenizer before 4.7,6
+1716,[LUCENE-6007] Failed attempt of downloading javax:activation javadoc,18
+1722,[LUCENE-6001] DrillSideways throws NullPointerException for some searches,17
+1751,[LUCENE-5968] Improve error message when 'ant beast' is run on top-level modules,11
+1753,[LUCENE-5965] Make CorruptIndexException require 'resource' like TooOld/TooNew do,7
+1755,[LUCENE-5963] Improved AnalyzingSuggester.replaceSep(),6
+1785,"[LUCENE-5931] DirectoryReader.openIfChanged(oldReader, commit) incorrectly assumes given commit point has deletes/field updates",17
+1818,[LUCENE-5892] Make CharsRefBuilder implement Appendable,10
+1868,[LUCENE-5837] Only check docsWithField when necessary in numeric comparators,14
+1904,[LUCENE-5796] Scorer.getChildren() can throw or hide a subscorer for some boolean queries,6
+1924,[LUCENE-5775] JaspellTernarySearchTrie.ramBytesUsed hits StackOverflowError,17
+2113,[LUCENE-5563] Remove sep layout,6
+2136,[LUCENE-5538] FastVectorHighlighter fails with booleans of phrases,8
+2296,[LUCENE-5362] IndexReader and friends should check ref count when incrementing,8
+2297,[LUCENE-5361] FVH throws away some boosts,7
+2357,[LUCENE-5293] Also use EliasFanoDocIdSet in CachingWrapperFilter,21
+2460,[LUCENE-5180] ShingleFilter should make shingles from trailing holes,6
+2471,[LUCENE-5166] PostingsHighlighter fails with IndexOutOfBoundsException,28
+2590,[LUCENE-5033] SlowFuzzyQuery appears to fail with edit distance >=3 in some cases,11
+2638,[LUCENE-4976] PersistentSnapshotDeletionPolicy should save to a single file,11
+2710,[LUCENE-4897] Add a sugar API for traversing categories.,14
+2720,[LUCENE-4883] Hide FieldCache behind an UninvertingFilterReader,14
+2722,[LUCENE-4881] Add a set iterator to SentinelIntSet,8
+2726,[LUCENE-4877] Fix analyzer factories to throw exception when arguments are invalid,23
+2751,[LUCENE-4852] BaseStoredFieldsFormatTestCase,8
+2816,[LUCENE-4782] Let the NaiveBayes classifier have a fallback docCount method if codec doesn't support Terms#docCount(),8
+2953,[LUCENE-4630] add a system property to allow testing of suspicious stuff,9
+2975,[LUCENE-4607] Add estimateDocCount to DocIdSetIterator,20
+3035,[LUCENE-4540] Allow packed ints norms,14
+3158,[LUCENE-4409] implement javadocs linting with eclipse ecj compiler,11
+3167,[LUCENE-4397] TestIndexWriterWithThreads.testRollbackAndCommitWithThreads is sometimes very very slow,6
+3313,"[LUCENE-4227] DirectPostingsFormat, storing postings as simple int[] in memory, if you have tons of RAM",10
+3459,[LUCENE-4059] prepare-webpages breaks the build if there are none URI complement characters in the path,6
+3474,[LUCENE-4043] Add scoring support for query time join,16
+3500,[LUCENE-4013] DWPTpool shouldnt be public (its methods have pkg-private parameters),6
+3501,"[LUCENE-4012] Make all query classes serializable with Jackson, and provide a trivial query parser to consume them",11
+3625,[LUCENE-3877] Lucene should not call System.out.println,29
+3626,[LUCENE-3876] TestIndexWriterExceptions fails (reproducible),9
+3675,[LUCENE-3825] Please push maven snapshots to repositories.apache.org again,25
+3710,[LUCENE-3786] Create SearcherTaxoManager,15
+3789,[LUCENE-3703] DirectoryTaxonomyReader.refresh misbehaves with ref counts,7
+3797,[LUCENE-3694] DocValuesField should not overload setInt/setFloat etc,6
+3938,[LUCENE-3539] IndexFormatTooOld/NewExc should try to include fileName + directory when possible,12
+4052,[LUCENE-3414] Bring Hunspell for Lucene into analysis module,16
+4218,[LUCENE-3228] build should allow you (especially hudson) to refer to a local javadocs installation instead of downloading,20
+4269,[LUCENE-3176] TestNRTThreads test failure,11
+4274,[LUCENE-3171] BlockJoinQuery/Collector,9
+4306,[LUCENE-3139] LuceneTestCase.afterClass does not print enough information if a temp-test-dir fails to delete,11
+4318,[LUCENE-3123] TestIndexWriter.testBackgroundOptimize fails with too many open files,8
+4325,[LUCENE-3116] pendingCommit in IndexWriter is not thoroughly tested,6
+4400,"[LUCENE-3034] If you vary a setting per round and that setting is a long string, the report padding/columns break down.",7
+4415,[LUCENE-3019] FVH: uncontrollable color tags,8
+4489,[LUCENE-2936] score and explain don't match,21
+4499,[LUCENE-2924] fix getting started / demo docs,6
+4517,[LUCENE-2905] Sep codec writes insane amounts of skip data,13
+4535,[LUCENE-2886] Adaptive Frame Of Reference,26
+4565,"[LUCENE-2856] Create IndexWriter event listener, specifically for merges",16
+4600,[LUCENE-2818] abort() method for IndexOutput,7
+4661,[LUCENE-2753] IndexReader.listCommits should return a List and not an abstract Collection,6
+4725,[LUCENE-2684] it's not possible to access sub-query's freq information if BooleanScorer is use,14
+4844,[LUCENE-2558] Use sequence ids for deleted docs,11
+4920,"[LUCENE-2476] Constructor of IndexWriter let's runtime exceptions pop up, while keeping the writeLock obtained",14
+4921,[LUCENE-2475] Incorrect Bounding Box calculation results in the exclusion of valid data locations,10
+4949,[LUCENE-2444] move contrib/analyzers to modules/analysis,9
+4973,[LUCENE-2409] add a tokenfilter for icu transforms,7
+4979,[LUCENE-2402] Add an explicit method to invoke IndexDeletionPolicy,15
+4983,[LUCENE-2398] Improve tests to work easier from IDEs,12
+4994,[LUCENE-2387] IndexWriter retains references to Readers used in Fields (memory leak),7
+5167,[LUCENE-2206] integrate snowball stopword lists,8
