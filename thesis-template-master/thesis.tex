@@ -687,15 +687,43 @@ An imperative step after performing machine learning experiements is to measure 
 \end{itemize}
 
 \section{Random Stratified Sampling}
-For the main content analysis, two annotators, the author and his advisor, individually read through individual sentences of all comments spanning 100 issues from each of the three projects. Although the number of issues fetched for each of them were much higher, only 100 of them were attained for each project using random stratified sampling due to time constraints of the research. Random stratified sampling can be of two types: proportionate random stratified sampling and disproportionate random stratified sampling. In proportionate random stratified sampling\footnote{\url{http://www.oxfordreference.com/view/10.1093/oi/authority.20110803100349910}}, the parent dataset is divided into multiple strata and the child dataset sampled randomly must have the strata in the same proportion as the parent dataset. Contrary to proportionate random stratified sampling, the case of disproportionate random stratified sampling\footnote{\url{http://www.oxfordreference.com/view/10.1093/oi/authority.20110803095722568}} has the parent dataset divided into multiple strate but the child dataset sampled randomly may not have its strata in the same proportion as the parent dataset. There are, however, three steps carried out sequentially to obtain the sample which are as follows.
+For the main content analysis, two annotators, the author and his advisor, individually read through individual sentences of all comments spanning 100 issues from each of the three projects. Although the number of issues fetched for each of them were much higher, only 100 of them were attained for each project using Random Stratified Sampling (RSS) due to time constraints of the research. RSS can be of two types: proportionate random stratified sampling and disproportionate random stratified sampling. In proportionate random stratified sampling\footnote{\url{http://www.oxfordreference.com/view/10.1093/oi/authority.20110803100349910}}, the parent dataset is divided into multiple strata and the child dataset sampled randomly must have the strata in the same proportion as the parent dataset. Contrary to proportionate random stratified sampling, the case of disproportionate random stratified sampling\footnote{\url{http://www.oxfordreference.com/view/10.1093/oi/authority.20110803095722568}} has the parent dataset divided into multiple strate but the child dataset sampled randomly may not have its strata in the same proportion as the parent dataset. There are, however, three steps carried out sequentially to obtain the sample which are as follows.
 
 \begin{itemize}
 \item {Step 1:} Filter the dataset by discarding issues that do not fall under the required date range. The required date range is the range used in the IRC message dataset which can be referred in Table \ref{tab:rawIRCMessages}. This is to make sure the comments from issue trackers are from the same duration as messages from IRC. 
 \item {Step 2:} In the next step, count the number of comments for each issue that are under the required date range but only consider issues that have between 5 and 30 comments, and divide them into 5 groups: 6-10 comments, 11-15 comments, 16-20 comments, 21-25 comments and 26-30 comments, in order to avoid issues with too few comments (less than 5) or way too many comments (greater than 30). 
-\item {Step 3:} Perform proportionate random stratified sampling to obtain 100 random issues from the filtered dataset in step 2 for each of the three projects. Figures \ref{fig:luceneRSSDistro}, \ref{fig:thunderbirdRSSDistro} and \ref{fig:ubuntuRSSDistro} shows the ratio with which Apache Lucene, Mozilla Thunderbird and Ubuntu were sampled respectively. 
+\item {Step 3:} Perform proportionate random stratified sampling to obtain 100 random issues from the filtered dataset in step 2 for each of the three projects. 
 \end{itemize}
 
-The figures after performing the random stratified sampling are presented in Table \ref{tab:overviewRSS}. 
+
+
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{4cm} p{2cm} p{2cm} p{2cm} p{2cm} p{2cm}}
+        \toprule
+        \textbf{Project} & \textbf{6-10} & \textbf{11-15} & \textbf{16-20} & \textbf{21-25} & \textbf{25-30}\\
+        \midrule
+			Apache Lucene & 53 & 23 & 12 & 7 & 5\\
+			Mozilla Thunderbird & 68 & 20 & 7 & 3 & 2\\ 
+			Ubuntu & 61 & 19 & 10 & 6 & 4\\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Number of issues in each strata after RSS}
+    \label{tab:strataProportion}
+\end{table}
+
+From Table \ref{tab:strataProportion} and Figure \ref{fig:multilineStrata}, it can be seen that there is an inverse correlation between the number of issues and comments in each strata. All the three projects, Apache Lucene, Mozilla Thunderbird and Ubuntu, demonstrate that the number of issues in each strata gradually decreases as the number of comments in them increases. 
+\bigbreak
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=11cm]{rss-multi-line-plot}
+    \caption{Number of issues in each strata for all 3 projects}
+    \label{fig:multilineStrata}
+\end{figure}
+The figures on number of comments and the number of sentences under each project after performing the random stratified sampling are presented in Table \ref{tab:overviewRSS}. 
 
 \begin{table} %[hb!]
     \centering
@@ -715,28 +743,11 @@ The figures after performing the random stratified sampling are presented in Tab
     \label{tab:overviewRSS}
 \end{table}
 
-\begin{figure}[h] %b!]
-    \centering
-    \includegraphics[width=9cm]{lucene-comment-distribution-rss}
-    \caption{Distribution of comments for Apache Lucene after RSS}
-    \label{fig:luceneRSSDistro}
-\end{figure}
 
-\begin{figure}[h] %b!]
-    \centering
-    \includegraphics[width=9cm]{thunderbird-comment-distribution-rss}
-    \caption{Distribution of comments for Mozilla Thunderbird after RSS}
-    \label{fig:thunderbirdRSSDistro}
-\end{figure}
 
-\begin{figure}[h] %b!]
-    \centering
-    \includegraphics[width=9cm]{ubuntu-comment-distribution-rss}
-    \caption{Distribution of comments for Ubuntu after RSS}
-    \label{fig:ubuntuRSSDistro}
-\end{figure}
+\section{Manual Annotation}
 
-\section{Rationale Frequency}
+\section{Annotation Results}
 
 %------- chapter 5 -------
 
