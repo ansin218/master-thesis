@@ -743,9 +743,48 @@ The figures on number of comments and the number of sentences under each project
     \label{tab:overviewRSS}
 \end{table}
 
-
-
 \section{Manual Annotation}
+After having performed the Random Stratified Sampling, the next step was to manully annotate or label each every sentence from all the 3 projects, Apache Lucene, Mozilla Thunderbird and Ubuntu. These annotations would therefore form the groundtruth to perform the machine learning classification experiments in later stages of this thesis. Manual annotation has been a popular technique and has been implemented in the past by various researchers \cite{Alkadhi2017} \cite{Nonnenmacher2017}. 
+\bigbreak
+To perform this step, Excel was used since it was a tool to achieve the goal without having the need to install anything more. A set of criteria found in Appendix A was agreed upon and followed by the two annotators, the author and his advisor. Both the annotators individually labeled the sentences from all the 3 projects. While the author of this thesis took 21 hours to accomplish this task, the same task took a tad bit more, 21 hours and 15 minutes for his advisor. 
+\bigbreak
+The second step of this annotation task was to keep all the complete agreements intact but discuss the sub-agreements and complete disagreements. Sub-agreements were those sentences were there was an overlap of labeling between the author and his advisor. For an example, a sentence was labeled as an issue and decision by the author while the advisor marked it as an issue and an alternative. One can note that both had agreed that the sentece does belong to the class of issue but had conflicting opinions about decision or an alternative. Complete disagreements are cases were both of them marked a given sentence as completely different with no overlap of opinions. For example, a sentence was marked as an alternative by the author while his advisor marked it as a decision. Both, the author and his advisor, then sat once again, this time together, to resolve all the conflicting opinions and come to a mutual conclusion on the labels. Table \ref{tab:labelBinary} and Table \ref{tab:labelFine} gives the statistics of agreements, sub-agreements and disagreements of the two annotators. 
+
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{4cm} p{3cm} p{3cm} p{3cm} p{3cm}}
+        \toprule
+        \textbf{Project} & \textbf{Sentences} & \textbf{Agreements} & \textbf{Sub-Agreements} & \textbf{Disagreements}\\
+        \midrule
+			Apache Lucene & 2,446 & X & X & X\\
+			Mozilla Thunderbird & 3,086 & X & X & X\\ 
+			Ubuntu & 2,782 & X & X & X\\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Annotation Statistics for Binary Classification}
+    \label{tab:labelBinary}
+\end{table}
+
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{4cm} p{3cm} p{3cm} p{3cm} p{3cm}}
+        \toprule
+        \textbf{Project} & \textbf{Sentences} & \textbf{Agreements} & \textbf{Sub-Agreements} & \textbf{Disagreements}\\
+        \midrule
+			Apache Lucene & 2,446 & X & X & X\\
+			Mozilla Thunderbird & 3,086 & X & X & X\\ 
+			Ubuntu & 2,782 & X & X & X\\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Annotation Statistic for Fine Grained Classification}
+    \label{tab:labelFine}
+\end{table}
 
 \section{Annotation Results}
 
