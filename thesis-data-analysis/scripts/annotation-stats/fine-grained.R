@@ -15,5 +15,8 @@ ggplot(df, aes(x, value, fill = variable)) + geom_bar(aes(fill = variable), posi
   coord_flip() + 
   geom_text(aes(label = value), position = position_dodge(0.9), hjust = 1.25, vjust = 0.5) +
   xlab("Projects") +
-  ylab("Number of Sentences")
+  ylab("Number of Sentences") + 
+  scale_fill_manual(values=c("#983232", "#c45252", "#d17878", "#e5b2b2", "#f2d8d8"), 
+                    name="Legend",
+                    labels=c("Issue", "Alternative", "Pro-Argument", "Con-Argument", "Decision"))
 

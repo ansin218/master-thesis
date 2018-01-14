@@ -744,7 +744,7 @@ The figures on number of comments and the number of sentences under each project
 \end{table}
 
 \section{Manual Annotation}
-After having performed the Random Stratified Sampling, the next step was to manully annotate or label each every sentence from all the 3 projects, Apache Lucene, Mozilla Thunderbird and Ubuntu. These annotations would therefore form the groundtruth to perform the machine learning classification experiments in later stages of this thesis. Manual annotation has been a popular technique and has been implemented in the past by various researchers \cite{Alkadhi2017} \cite{Nonnenmacher2017}. 
+After having performed Random Stratified Sampling, the next step was to manully annotate or label each every sentence from all the 3 projects, Apache Lucene, Mozilla Thunderbird and Ubuntu. These annotations would therefore form the groundtruth to perform the machine learning classification experiments in later stages of this thesis. Manual annotation has been a popular technique and has been implemented in the past by various researchers \cite{Alkadhi2017} \cite{Nonnenmacher2017}. 
 \bigbreak
 To perform this step, Excel was used since it was a tool to achieve the goal without having the need to install anything more. A set of criteria found in Appendix A was agreed upon and followed by the two annotators, the author and his advisor. Both the annotators individually labeled the sentences from all the 3 projects. While the author of this thesis took 21 hours to accomplish this task, the same task took a tad bit more, 21 hours and 15 minutes for his advisor. 
 \bigbreak
@@ -782,12 +782,61 @@ The second step of this annotation task was to keep all the complete agreements 
         \midrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{Annotation Statistic for Fine Grained Classification}
+    \captionof{table}{Annotation Statistics for Fine Grained Classification}
     \label{tab:labelFine}
 \end{table}
 
 \section{Annotation Results}
+The results of manual annotation from both the annotators are presented in this section. Table \ref{tab:distroBinaryRationale} gives a detailed overview with both, number and percentages, for all three projects. It can be inferred that Apache Lucene had the highest ratio between sentences with rationale to ones without any rationale whereas Mozilla Thunderbird and Ubuntu appear to be having a healthy ratio between both, rationale and no rationale. Ubuntu is the only project though where the number of sentences with rationale has been outnumbered marginally by the number of sentences not containing any kind of rationale in it. Figure \ref{fig:distroBinaryRationale} shows the proportion of messages for all three projects. Similarly, Table \ref{tab:distroMultiRationale} presents complete overview with numbers and percetage for fine-grained rationale found in the dataset. Apache Lucene (11\%) had the least percentage of issues compared to Mozilla Thunderbird (24\%) and Ubuntu (25\%). However, higher percentage of decisions were made in Apache Lucene (8\%) than Mozilla Thunderbird (3\%) or Ubuntu (4\%). The numbers look very similar even in the case of alternatives, pro-arguments and con-arguments, where Apache Lucene outnumbers Mozilla Thunderbird and Ubuntu. The following numbers can also lead to the inference that due to lesser number of issues, more number of final decisions were reached in case of Apache Lucene. This also leads to another observation that lesser decisions were made in the case of Mozilla Thunderbird and Ubuntu because the numbers for alternatives, pro-argument and con-argument are also low, which are crucial to reach a final conclusion. Figure \ref{fig:distroMultiRationale} shows the distribution of fine-grained rationale in the dataset across all three projects. 
 
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{4cm} p{3cm} p{3cm} p{3cm}}
+        \toprule
+        \textbf{Project} & \textbf{Sentences} & \textbf{Rationale} & \textbf{No Rationale}\\
+        \midrule
+			Apache Lucene & 2,446 & 1,780 (73\%) & 666 (27\%)\\
+			Mozilla Thunderbird & 3,086 & 1,577 (51\%) & 1,509 (49\%)\\ 
+			Ubuntu & 2,782 & 1,349 (48\%) & 1,433 (52\%)\\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Distribution of Rationale in Sentences}
+    \label{tab:distroBinaryRationale}
+\end{table}
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=11cm]{binary-distro-rationale}
+    \caption{Distribution of Rationale Frequency}
+    \label{fig:distroBinaryRationale}
+\end{figure}
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{4cm} p{2cm} p{2cm} p{3cm} p{2cm} p{2cm} p{2cm}}
+        \toprule
+        \textbf{Project} & \textbf{Sentences} & \textbf{Issue} & \textbf{Alternative} & \textbf{Pro-Argument}  & \textbf{Con-Argument}  & \textbf{Decision} \\
+        \midrule
+			Apache Lucene & 2,446 & 259 (11\%) & 828 (34\%)  & 543 (22\%) & 284 (12\%) & 207 (8\%)\\
+			Mozilla Thunderbird & 3,086 & 747 (24\%) & 484 (16\%) & 224 (7\%) & 228 (7\%) & 80 (3\%)\\ 
+			Ubuntu & 2,782 & 687 (25\%) & 410 (15\%) & 189 (7\%) & 152 (5\%) & 117 (4\%)\\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Distribution of Fine-Grained Rationale in Sentences}
+    \label{tab:distroMultiRationale}
+\end{table}
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=12cm]{multi-distro-rationale}
+    \caption{Distribution of Fine-Grained Rationale Frequency}
+    \label{fig:distroMultiRationale}
+\end{figure}
 %------- chapter 5 -------
 
 \chapter{Natural Language Processing}

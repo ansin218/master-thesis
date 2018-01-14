@@ -12,6 +12,9 @@ ggplot(df, aes(x, value, fill = variable)) + geom_bar(aes(fill = variable), posi
   coord_flip() + 
   geom_text(aes(label = value), position = position_dodge(0.9), hjust = 1.25, vjust = 0.5) +
   xlab("Projects") +
-  ylab("Number of Sentences")
+  ylab("Number of Sentences") + 
+  scale_fill_manual(values=c("#BE3F3F", "#D27878"), 
+                    name="Legend",
+                    labels=c("With Rationale", "Without Rationale"))
 
   
