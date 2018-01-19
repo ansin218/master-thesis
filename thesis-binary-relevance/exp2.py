@@ -9,6 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import f1_score, accuracy_score, confusion_matrix
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics import classification_report
+from sklearn.cross_validation import cross_val_predict
 
 data = pd.read_csv("a_lucene_results.csv", dtype={'sentence':np.str_ })
 #print(data.info())
