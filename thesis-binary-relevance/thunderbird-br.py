@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 import scipy
 import scipy.sparse as sp
-from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS as stopwords
 from skmultilearn.problem_transform import BinaryRelevance
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import MultinomialNB
@@ -29,6 +30,8 @@ target_names = ['isIssue','isAlternative','isPro','isCon','isDecision']
 
 count_vectorizer = CountVectorizer()
 counts = count_vectorizer.fit_transform(X['sentence'].values)
+transformer = TfidfTransformer()
+counts = transformer.fit_transform(counts)
 
 # LOGISTIC REGRESSION MODEL
 clf = BinaryRelevance(LogisticRegression())

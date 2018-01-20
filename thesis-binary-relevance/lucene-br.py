@@ -30,6 +30,8 @@ target_names = ['isIssue','isAlternative','isPro','isCon','isDecision']
 
 count_vectorizer = CountVectorizer()
 counts = count_vectorizer.fit_transform(X['sentence'].values)
+transformer = TfidfTransformer()
+counts = transformer.fit_transform(counts)
 
 # LOGISTIC REGRESSION MODEL
 clf = BinaryRelevance(LogisticRegression())
