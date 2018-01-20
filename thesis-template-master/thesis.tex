@@ -29,6 +29,12 @@
 \usepackage{algorithm}
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{multirow}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit Breitenangabe
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbündig mit Breitenangabe
 
 % Path for graphics
 \graphicspath{{figures/}}
@@ -860,10 +866,203 @@ The results of manual annotation from both the annotators are presented in this 
 \chapter{Automatic Classification}
 
 In this section, automatic classification of rationale using numerous preprocessing techniques and classification models is performed. The classification is divided into two categories: binary and fine-grained. In binary classification, a sentence is classified as whether it contains rationale or not; in other words, a given sentence can only belong to one class. However, in fine-grained classification, a given sentence may belong to more than one class. Hence, the classifier would aim to classify them into any of the classes such as issue, alternative, pro-argument, con-argument and decision. 
+\bigbreak
+Both kinds of classifications have been performed using the preprocessing methods that have been described in Section 2.3.1. These preprocessing methods act as configurations that are supplied to the classification models whose results are later described in the sections to follow. Table \ref{tab:configurationNames} describes the name of the configuration and its corresponding preprocessing methods. The five classifiers that have been used to carry out the classification tasks are Multinomial Naive Bayes (MNB), Logistic Regression (LR), Support Vector Machine (SVM), Decision Tree (DT) and Random Forest (RF). In the case of multi-class classification, transformation methods such as Binary Relevance (BR) and Label Powerset (LP) were used in addition to the five classifiers mentioned earlier. 
+
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{2cm} p{13cm}}
+        \toprule
+        \textbf{Config} & \textbf{Preprocessing Methods} \\
+        \midrule
+			Config 1 & Bag-of-Words \\
+			Config 2 & Bag-of-Words + TF-IDF \\ 
+			Config 3 & Bag-of-Words + TF-IDF + N-Grams \\
+			Config 4 & Bag-of-Words + TF-IDF + N-Grams + Stopwords \\
+			Config 5 & Bag-of-Words + TF-IDF + N-Grams + Stopwords + Lemmatization \\
+			Config 6 & Bag-of-Words + TF-IDF + N-Grams + POS Tagging \\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Preprocessing methods and its combinations used for classification}
+    \label{tab:configurationNames}
+\end{table} 
 
 \section{Binary Classification}
 
 \textit{Note: Describe honestly the achieved goals (e.g. the well implemented and tested use cases) and the open goals here. if you only have achieved goals, you did something wrong in your analysis.}
+
+\begin{table}[h] %[hb!]
+    %\resizebox{\textwidth}{!}{%
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \begin{tabular}{L{1.5cm} c ccc | ccc | ccc }
+        \toprule
+         \multirow{2}{*}{\textbf{Config}} &  \multirow{2}{*}{\textbf{Rationale}} & \multicolumn{3}{c}{Lucene} & \multicolumn{3}{c}{Thunderbird} & \multicolumn{3}{c}{Ubuntu}\\ 
+        \cmidrule(l){3-5} \cmidrule(l){6-8} \cmidrule(l){9-11}
+            &  & \textbf{Pr} &  \textbf{Re} & \textbf{F1} & \textbf{Pr} & \textbf{Re} & \textbf{F1} & \textbf{Pr} & \textbf{Re} & \textbf{F1} \\
+        \midrule 	
+        & with & 0.84 & 0.92 & 0.88 & 0.71 & 0.64 & 0.67 & 0.76 & 0.70 & 0.72 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 1 \\ Config 1} \end{minipage}} &   without & 0.70 & 0.51 & 0.59 & 0.68 & 0.75 & 0.71 & 0.73 & 0.79 & 0.75 \\ 
+        \midrule 	
+        & with & 0.81 & 0.97  & 0.88 & 0.67 & 0.70 & 0.68 & 0.71 & 0.78 & 0.74 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 2 \\ Config 2} \end{minipage}} &   without & 0.83 & 0.38 & 0.51 & 0.70 & 0.67 & 0.68 & 0.76 & 0.70 & 0.73 \\ 
+        \midrule 	
+        & with & 0.81 & 0.97  & 0.88 & 0.65 & 0.83 & 0.73 & 0.67 & 0.87 & 0.75 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & 0.83 & 0.38 & 0.51 & 0.70 & 0.67 & 0.68 & 0.76 & 0.70 & 0.73 \\ 
+        \midrule 	
+        & with & 0.81 & 0.97  & 0.88 & 0.64 & 0.61 & 0.62 & 0.67 & 0.72 & 0.68 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 4 \\ Config 4} \end{minipage}} &   without & 0.78 & 0.35  & 0.48 & 0.64 & 0.67 & 0.65 & 0.71 & 0.67 & 0.68 \\ 
+        \midrule 	
+        & with & 0.80 & 0.98  & 0.88 & 0.65 & 0.62 & 0.63 & 0.70 & 0.72 & 0.70 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 5 \\ Config 5} \end{minipage}} &   without & 0.79 & 0.32  & 0.44 & 0.71 & 0.66 & 0.68 & 0.77 & 0.70 & 0.73 \\ 
+        \midrule 	
+        & with & 0.81 & 0.98  & 0.88 & 0.64 & 0.83 & 0.72 & 0.66 & 0.86 & 0.75 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 6 \\ Config 6} \end{minipage}} &   without & 0.83 & 0.36  & 0.49 & 0.71 & 0.66 & 0.68 & 0.78 & 0.70 & 0.73 \\ 
+        \bottomrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Binary classification with LR and 10-fold cross validation}
+    \label{tab:binLR}
+\end{table}
+
+\begin{table}[h] %[hb!]
+    %\resizebox{\textwidth}{!}{%
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \begin{tabular}{L{1.5cm} c ccc | ccc | ccc }
+        \toprule
+         \multirow{2}{*}{\textbf{Config}} &  \multirow{2}{*}{\textbf{Rationale}} & \multicolumn{3}{c}{Lucene} & \multicolumn{3}{c}{Thunderbird} & \multicolumn{3}{c}{Ubuntu}\\ 
+        \cmidrule(l){3-5} \cmidrule(l){6-8} \cmidrule(l){9-11}
+            &  & \textbf{Pr} &  \textbf{Re} & \textbf{F1} & \textbf{Pr} & \textbf{Re} & \textbf{F1} & \textbf{Pr} & \textbf{Re} & \textbf{F1} \\
+        \midrule 	
+        & with & 80 & 97 & 88 & 61 & 81 & 69 & 65 & 82 & 72 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 1 \\ Config 1} \end{minipage}} &   without & 75 & 33 & 44 & 75 & 51 & 60& 78 & 60 & 67 \\ 
+        \midrule 	
+        & with & 79 & 99  & 88 & 64 & 74 & 68 & 67 & 80 & 72 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 2 \\ Config 2} \end{minipage}} &   without & 83 & 28 & 41 & 71 & 60 & 64 & 77 & 64 & 69 \\ 
+        \midrule 	
+        & with & 79 & 99  & 88 & 63 & 78 & 69 & 68 & 82 & 74  \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & 83 & 28 & 41 & 71 & 60 & 64 & 77 & 64 & 69 \\ 
+        \midrule 	
+        & with & 80 & 98  & 88 & 62 & 65 & 63 & 67 & 73 & 69 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 4 \\ Config 4} \end{minipage}} &   without & 82 & 31  & 43 & 65 & 62 & 63 & 72 & 66 & 68 \\ 
+        \midrule 	
+        & with & 78 & 99  & 87 & 61 & 67 & 63 & 67 & 73 & 69 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 5 \\ Config 5} \end{minipage}} &   without & 83 & 23  & 34 & 71 & 61 & 65 & 78 & 64 & 70 \\ 
+        \midrule 	
+        & with & 79 & 99  & 88 & 64 & 77 & 69 & 66 & 86 & 75 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 6 \\ Config 6} \end{minipage}} &   without & 88 & 28  & 40 & 71 & 60 & 65 & 78 & 63 & 69 \\ 
+        \bottomrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Binary classification with MNB and 10-fold cross validation}
+    \label{tab:binMNB}
+\end{table}
+
+\begin{table}[h] %[hb!]
+    %\resizebox{\textwidth}{!}{%
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \begin{tabular}{L{1.5cm} c ccc | ccc | ccc }
+        \toprule
+         \multirow{2}{*}{\textbf{Config}} &  \multirow{2}{*}{\textbf{Rationale}} & \multicolumn{3}{c}{Lucene} & \multicolumn{3}{c}{Thunderbird} & \multicolumn{3}{c}{Ubuntu}\\ 
+        \cmidrule(l){3-5} \cmidrule(l){6-8} \cmidrule(l){9-11}
+            &  & \textbf{Pr} &  \textbf{Re} & \textbf{F1} & \textbf{Pr} & \textbf{Re} & \textbf{F1} & \textbf{Pr} & \textbf{Re} & \textbf{F1} \\
+        \midrule 	
+        & with & 0.72 & 0.99 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 1 \\ Config 1} \end{minipage}} &   without & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 2 \\ Config 2} \end{minipage}} &   without & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 4 \\ Config 4} \end{minipage}} &   without & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 5 \\ Config 5} \end{minipage}} &   without & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 6 \\ Config 6} \end{minipage}} &   without & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \bottomrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Binary classification with SVM and 10-fold cross validation}
+    \label{tab:binSVM}
+\end{table}
+
+\begin{table}[h] %[hb!]
+    %\resizebox{\textwidth}{!}{%
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \begin{tabular}{L{1.5cm} c ccc | ccc | ccc }
+        \toprule
+         \multirow{2}{*}{\textbf{Config}} &  \multirow{2}{*}{\textbf{Rationale}} & \multicolumn{3}{c}{Lucene} & \multicolumn{3}{c}{Thunderbird} & \multicolumn{3}{c}{Ubuntu}\\ 
+        \cmidrule(l){3-5} \cmidrule(l){6-8} \cmidrule(l){9-11}
+            &  & \textbf{Pr} &  \textbf{Re} & \textbf{F1} & \textbf{Pr} & \textbf{Re} & \textbf{F1} & \textbf{Pr} & \textbf{Re} & \textbf{F1} \\
+        \midrule 	
+        & with & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 1 \\ Config 1} \end{minipage}} &   without & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 2 \\ Config 2} \end{minipage}} &   without & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 4 \\ Config 4} \end{minipage}} &   without & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 5 \\ Config 5} \end{minipage}} &   without & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 6 \\ Config 6} \end{minipage}} &   without & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \bottomrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Binary classification with DT and 10-fold cross validation}
+    \label{tab:binDT}
+\end{table}
+
+\begin{table}[h] %[hb!]
+    %\resizebox{\textwidth}{!}{%
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \begin{tabular}{L{1.5cm} c ccc | ccc | ccc }
+        \toprule
+         \multirow{2}{*}{\textbf{Config}} &  \multirow{2}{*}{\textbf{Rationale}} & \multicolumn{3}{c}{Lucene} & \multicolumn{3}{c}{Thunderbird} & \multicolumn{3}{c}{Ubuntu}\\ 
+        \cmidrule(l){3-5} \cmidrule(l){6-8} \cmidrule(l){9-11}
+            &  & \textbf{Pr} &  \textbf{Re} & \textbf{F1} & \textbf{Pr} & \textbf{Re} & \textbf{F1} & \textbf{Pr} & \textbf{Re} & \textbf{F1} \\
+        \midrule 	
+        & with & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 1 \\ Config 1} \end{minipage}} &   without & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 2 \\ Config 2} \end{minipage}} &   without & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 4 \\ Config 4} \end{minipage}} &   without & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 5 \\ Config 5} \end{minipage}} &   without & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \midrule 	
+        & with & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 6 \\ Config 6} \end{minipage}} &   without & 0.52 & \textbf{0.31} & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        \bottomrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Binary classification with RF and 10-fold cross validation}
+    \label{tab:binRF}
+\end{table}
 
 \section{Fine Grained Classification}
 
