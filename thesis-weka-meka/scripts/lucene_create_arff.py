@@ -11,7 +11,7 @@ import pymysql
 db = pymysql.connect(host='localhost', user='root', password='password', db='Issue_Trackers', autocommit=True, use_unicode=True, charset="utf8")
 cursor = db.cursor()
 
-cursor.execute('SELECT * FROM a_lucene_results')
+cursor.execute('SELECT * FROM a_lucene_pos_results')
 messages = cursor.fetchall()
 
 data = []
