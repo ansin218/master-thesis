@@ -891,8 +891,10 @@ Both kinds of classifications have been performed using the preprocessing method
 \end{table} 
 
 \section{Binary Classification}
+This section presents the results of the binary classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames} and the algorithms from Section 2.4.4. It is to be noted that in the case of Lucene dataset, unigram results have been presented while trigram results in the cases of Thunderbird and Ubuntu have been shown, since these combinations have given the best results. The experiments have been carried out using scikit-learn Python library. For POS tagging mechanism, Spacy, another popular NLP library was used. 
 
-This section presents the results of the binary classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames} and the algorithms from Section 2.4.4.
+\subsection{Logistic Regression}
+In case of Lucene dataset, LR does its best to predict rationale when Config 6, that is, POS Tagging with unigram is applied with an F1 score of 0.889. However, when the contrary is to be predicted, the most basic configuration of BoW method seems to be the best with an F1 score of 0.591. Thunderbird and Ubuntu datasets, when fed with LR classifier, shows similar results when non-rationale sentences are to be predicted with the basic configuration, Config 1, giving the most impressive results with F1 scores of 0.732 and 0.758 respectively. However, when predicting rationale, Config 3 with trigram gives F1 scores of 0.732 and 0.758 respectively. An overall observation of LR across all three datasets also reveals that the classifier performs better in predicting rationale than when predicting the opposite. Table \ref{tab:binLR} demonstrates the results in detail. 
 
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
@@ -928,6 +930,9 @@ This section presents the results of the binary classification experiments perfo
     \label{tab:binLR}
 \end{table}
 
+\subsection{Multinomial Naive Bayes}
+When predicting rationale, MNB has an F1 score of 0.884 for Config 2 and Config 3 for the dataset of Lucene. However, Config 2, BoW + TFIDF, would be a better choice since Config 3 is nothing but Config 2 with n-gram preprocessing method, and hence Config 2 is marginally faster. Like in the case of Logistic Regression, Config 1 gives the best result when predicting non-rationale sentences with an F1 score of 0.448. The Thunderbird dataset gives an F1 score of 0.699 with Config 3 when predicting rationale but an F1 score of 0.658 when otherwise. The Ubuntu dataset, with an F1 score of 0.754 performs the best when POS tagging technique is applied whereas Config 2 and 3 get the highest F1 score of 0.697 when trying to predict non-rationale sentences. Table \ref{tab:binMNB} demonstrates the results in detail. 
+
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -962,6 +967,8 @@ This section presents the results of the binary classification experiments perfo
     \label{tab:binMNB}
 \end{table}
 
+\subsection{Support Vector Machine}
+When predicting rationale, MNB has an F1 score of 0.884 for Config 2 and Config 3 for the dataset of Lucene. However, Config 2, BoW + TFIDF, would be a better choice since Config 3 is nothing but Config 2 with n-gram preprocessing method, and hence Config 2 is marginally faster. Like in the case of Logistic Regression, Config 1 gives the best result when predicting non-rationale sentences with an F1 score of 0.448. The Thunderbird dataset gives an F1 score of 0.699 with Config 3 when predicting rationale but an F1 score of 0.658 when otherwise. The Ubuntu dataset, with an F1 score of 0.754 performs the best when POS tagging technique is applied whereas Config 2 and 3 get the highest F1 score of 0.697 when trying to predict non-rationale sentences. Table \ref{tab:binMNB} demonstrates the results in detail. 
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -972,23 +979,23 @@ This section presents the results of the binary classification experiments perfo
         \cmidrule(l){3-5} \cmidrule(l){6-8} \cmidrule(l){9-11}
             &  & \textbf{Pr} &  \textbf{Re} & \textbf{F1} & \textbf{Pr} & \textbf{Re} & \textbf{F1} & \textbf{Pr} & \textbf{Re} & \textbf{F1} \\
         \midrule 	
-        & with & 0.72 & 0.99 & 0.83 & 0.75 & 0.11 & 0.19 & 0.52 & 0.31 & 0.39 \\
-        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 1 \\ Config 1} \end{minipage}} &   without & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        & with & 0.830 & \textbf{0.945} & \textbf{0.883} & 0.689 & 0.518 & 0.585 & 0.644 & \textbf{0.669} & 0.654 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 1 \\ Config 1} \end{minipage}} &   without & 0.742 & 0.427 & 0.538 & 0.665 & 0.659 & 0.657 & 0.740 & 0.697 & \textbf{0.715} \\ 
         \midrule 	
-        & with & 0.72 & 1.00 & 0.83 & 0.03 & 0.10 & 0.05 & 0.52 & 0.31 & 0.39 \\
-        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 2 \\ Config 2} \end{minipage}} &   without & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        & with & 0.830 & 0.943 & 0.882 & 0.680 & \textbf{0.577} & \textbf{0.619} & 0.678 & 0.665 & \textbf{0.670} \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 2 \\ Config 2} \end{minipage}} &   without & \textbf{0.782} & 0.408 & 0.525 & 0.689 & 0.621 & 0.649 & \textbf{0.762} & 0.675 & 0.714 \\ 
         \midrule 	
-        & with & 0.72 & 1.00 & 0.83 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
-        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        & with & 0.834 & 0.942 & \textbf{0.883} & 0.699 & 0.430 & 0.526 & 0.738 & 0.525 & 0.610 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & \textbf{0.782} & 0.408 & 0.525 & 0.689 & 0.621 & 0.649 & \textbf{0.762} & 0.675 & 0.714 \\ 
         \midrule 	
-        & with & 0.72 & 1.00 & 0.83 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
-        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 4 \\ Config 4} \end{minipage}} &   without & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        & with & 0.836 & 0.906 & 0.868 & 0.661 & 0.462 & 0.538 & 0.737 & 0.479 & 0.579 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 4 \\ Config 4} \end{minipage}} &   without & 0.685 & 0.488 & 0.566 & 0.628 & \textbf{0.700} & \textbf{0.757} & 0.659 & \textbf{0.774} & 0.710 \\ 
+        \midrule
+        & with & \textbf{0.847} & 0.839 & 0.843 & 0.667 & 0.487 & 0.559 & 0.748 & 0.511 & 0.604 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 5 \\ Config 5} \end{minipage}} &   without & 0.579 & \textbf{0.542} & \textbf{0.556} & 0.690 & 0.660 & 0.601 & 0.735 & 0.677 & 0.702 \\ 
         \midrule 	
-        & with & 0.72 & 1.00 & 0.83 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
-        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 5 \\ Config 5} \end{minipage}} &   without & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
-        \midrule 	
-        & with & 0.72 & 1.00 & 0.83 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\
-        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 6 \\ Config 6} \end{minipage}} &   without & 0.52 & 0.39 & 0.39 & 0.52 & 0.31 & 0.39 & 0.52 & 0.31 & 0.39 \\ 
+        & with & 0.830 & 0.930 & 0.864 & \textbf{0.705} & 0.415 & 0.510 & \textbf{0.768} & 0.523 & 0.618 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 6 \\ Config 6} \end{minipage}} &   without & 0.748 & 0.394 & 0.507 & \textbf{0.695} & 0.654 & 0.668 & 0.747 & 0.656 & 0.695 \\ 
         \bottomrule
     \end{tabular}
     \end{adjustbox}
@@ -996,6 +1003,8 @@ This section presents the results of the binary classification experiments perfo
     \label{tab:binSVM}
 \end{table}
 
+\subsection{Decision Tree}
+With an F1 score of 0.885, DT performs the best when Config 3 is in action when preciting rationale while the same config also has the highest F1 score of 0.551 when trying to predict non-rationale sentences, in the case of Lucene dataset. Config 1 performs the best in the case of Thunderbird with F1 scores of 0.623 and 0.665 respectively when predicting rationale and non-rationale sentences. When Config 2 is applied to Ubuntu dataset for predicting rationale, an F1 score of 0.685 is achieved while Config 6 seems to perform better when predicting non-rationale sentences with an F1 score of 0.703. Another interesting observation is that, compared to LR and MNB, DT achieves higher scores in predicting non-rationale sentences in the cases of Thunderbird and Ubuntu datasets. Table \ref{tab:binDT} presents the results in detail. 
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -1030,6 +1039,8 @@ This section presents the results of the binary classification experiments perfo
     \label{tab:binDT}
 \end{table}
 
+\subsection{Random Forest}
+Both, Config 1 and Config 3, attain an F1 score of 0.883 in predicting rationale from the Lucene dataset. However, the score drops to 0.556 when predicting non-rationale sentences on the same dataset. In the case of Thunderbird and Ubuntu, Config 2 outshines other configurations when predicting rationale in sentences with F1 scores of 0.619 and 0.670 respectively. However, in the case of predicting non-rationale sentences Config 4 works the best with 0.757 as the F1 score for Thunderbird dataset while Ubuntu dataset required Config 1 to attain an F1 score of 0.715. Observations similar to that of DT can be noticed as RF performs better in classifiying non-rationale sentences when fed with Thunderbird and Ubuntu datasets. Table \ref{tab:binRF} demonstrates the results in detail. 
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -1065,8 +1076,7 @@ This section presents the results of the binary classification experiments perfo
 \end{table}
 
 \section{Fine Grained Classification}
-
-\textit{Note: Describe honestly the achieved goals (e.g. the well implemented and tested use cases) and the open goals here. if you only have achieved goals, you did something wrong in your analysis.}
+This section presents the results of the fine grained classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames}, transformation methods from Section 2.4.3 and the algorithms from Section 2.4.4. Unlike  binary classification, all three datasets have used trigram tokenization. The scikit-learn library does not support Binary Relevance and Label Transformation methods and hence scikit-multilearn, a library specific for performing multi-class and multi-label classifications was used. However, the results were not impressive when compared to MEKA. In addition, a lot of classifiers along with certain configurations returned a value of 0. Therefore, the fine-grained classifications were perfomed using MEKA exclusively. 
 
 %------- chapter 6 -------
 
