@@ -576,6 +576,25 @@ F1 score is the harmonic mean of recall and precision.
 F1 &= \frac{2TP}{2TP + FP + FN}
 \end{align*}
 
+\section{Tools}
+There are a wide range of tools to accomplish the tasks that have been carried out in this thesis. Some of these tools are free and open-sourced while the rest are commercial. This research has been carried out only using the tools that are popular, have been used in the past to carry out similar tasks by others, and are completely free. 
+\bigbreak
+For the annotation tasks, spreadsheet application such as Libre Office\footnote{\url{https://www.libreoffice.org/}} has been used although many have used GATE in the past \cite{Lata2016}\cite{Nonnenmacher2017}. The reason for using Libre Office was that it comes readily available Ubuntu operating systems and does not require additional installation, like in the cast of GATE. 
+\bigbreak
+To carry out tasks such as scraping, classification and NLP, Python\footnote{\url{https://www.python.org/}} was used. Python is a programming language that can cater to the needs of the tasks needed to accomplish in this thesis. In addition, Python can be installed across any operating system. Python has an extensive list of libraries for scraping. This thesis uses BeautifulSoup\footnote{\url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}} and Requests\footnote{\url{http://docs.python-requests.org/en/master/}} to scrape data from different websites. While Requests was used to request and get responses from the URL to be scraped, BeautifulSoup was used to achieve the final goal of fetching the content. In addition, BeautifulSoup also had its own parsers that was used to extract the content needed.
+\bigbreak
+Results of scraping and final annotations were stored in a MySQL\footnote{\url{https://www.mysql.com/}} database. As stated by themselves, MySQL is also the world's most popular open sourced database. Like Python, MySQL is free and can also be installed across different platforms and hence was used by both, the author as well as his advisor for the tasks pertaining for scraping and manual labeling. 
+\bigbreak
+Topic modeling using LDA was performed using a famous library named Gensim\footnote{\url{https://radimrehurek.com/gensim/}}. Rehurek and Sojka \cite{Rehurek2010} published their work on the internal details of how Gensim works as well. Gensim is also capable of supporting other topic modeling techniques such as Hierarchial Dirichlet Process and Latent Semantic Analysis. 
+\bigbreak
+Scikit-learn\footnote{\url{http://scikit-learn.org/stable/}} is one of the most sought after machine learning libraries for Python \cite{Pedregosa2012}. It supports multiple machine learning methodologies such as classification, regression, clustering, dimensionality reduction, to mention a few. All the binary classification tasks in this thesis has been carried out using LR, MNB, SVM, DT and RF, which come packaged with the scikit-learn library. Kurtanovic and Maleej \cite{Kurtanovic2017} have also used this library for their work on mining rationale from software reviews. However, at the time of writing this thesis, scikit-learn did not provide transformation methods such as Binary Relevance and Label Powerset for multi-class and multi-label classifications. Hence, an extension of scikit-learn called scikit-multilearn\footnote{\url{http://scikit.ml/}} was used. However, the library did not yield proper results for a lot of configurations and algorithms. 
+\bigbreak
+Topic modeling and classification tasks in Python have been carried with the help of some additional libraries such as NLTK\footnote{\url{http://www.nltk.org/}} and SpaCy\footnote{\url{https://spacy.io/}}. NLTK was used for tokenization and lemmatization while SpaCy was used for POS tagging techniques. NLTK and SpaCy were extensively studied by Al Omran and Treude \cite{AlOmran2017} where they explored NLP libraries for analyzing software documentation. 
+\bigbreak
+MEKA\footnote{\url{http://meka.sourceforge.net/}}\cite{MEKA2016}, an extension of WEKA\footnote{\url{https://www.cs.waikato.ac.nz/ml/weka/}}, has been used to overcome the limitations of scikit-learn and scikit-multilearn. The fine grained classifications using transformation methods such as BR and LP are supported by MEKA. In addition, MEKA also has a robust range of preprocessing options. This tool has also been used by Lata \cite{Lata2016} and Nonnenmacher \cite{Nonnenmacher2017} in their respective research works. 
+\bigbreak
+For quick analysis of results and neat data visualizations, R programming language\footnote{\url{https://www.r-project.org/}} was used, a language concentrating on statistical analyses. The graphic libraries offered by R have been claimed to be more pleasing to the eyes when compared to Python\footnote{\url{https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis}}. All the graphs in this thesis has been generated using ggplot2\footnote{\url{http://ggplot2.org/}} library for R. 
+
 %------- chapter 3 -------
 
 \chapter{Data Collection}
