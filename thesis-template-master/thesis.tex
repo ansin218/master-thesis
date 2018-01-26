@@ -1276,8 +1276,83 @@ Your task would be to read the messages from the issue tracking systems assigned
 \bigbreak
 Should you have any queries or doubts that arise during the labeling task, please contact the other project members. 
 \subsubsection{Classify the Issue Tracker Messages}
-A message may contain more than a sentence. You are required to annotate each of these sentences, which will hereby be referred to as a message itself. If the message contains any rationale element, highlight the part of the sentence containing the same and label them appropriately. A message may also be written in a way such that it may contain multiple rationale elements. In such a case, you are required to label all the possible rationale elements that are hidden in the message. 
+A message may contain more than a sentence. You are required to annotate each of these sentences, which will hereby be referred to as a message itself. If the message contains any rationale element, highlight the part of the sentence containing the same and label them appropriately. A message may also be written in a way such that it may contain multiple rationale elements. In such a case, you are required to label all the possible rationale elements that are hidden in the message. The rationale elements are as follows:
+\newline \newline
+You can assign more than one rationale element for each message. The rationale elements are: 
+\newline \newline
+\textbf{Issue:} A problem to be solved. Issues are typically resolved through discussions and negotiation. Issues are usually phrased as questions. Examples:
+\newline \newline
+\textit{"I think you had a good question about difficulty level - whether it's for all recipes or for particular ones."}
+\newline \newline
+\textit{"How soon should a dispatcher be notified of a train delay?"}
+\newline \newline
+\textit{"How should persistent data be stored?"}
+\newline \newline
+\textit{"Which technology presents the most risk?"}
+\newline \newline
+\textbf{Alternative:} A possible solution that could address the issue under consideration. Examples:
+\newline \newline
+\textit{"Just my thoughts, but what do you think of making the "cost" be for the whole dish, instead of next to each individual ingredient?"}
+\newline \newline
+\textit{"The interface for the dispatcher could be realized with a point-and-click interface."}
+\newline \newline
+\textit{"The display used by the dispatcher can be a text-only display with graphic characters to represent track segments."}
+\newline \newline
+\textbf{Pro argument:} A reason supporting an alternative. A pro argument is usually phrased as a positive statement. Example:
+\newline \newline
+\textit{"Text-based interfaces are easier to implement and test than Point-and-click interfaces."}
+\newline \newline
+When a developer responds to an alternative with a subjective opinion it should be marked as a pro argument. Example: 
+\newline \newline
+\textit{"I like it."}
+\newline \newline
+\textit{"I totally agree with you!"}
+\newline \newline\textit{"I feel it is good"} (feelings, sentiment)
+\newline \newline
+\textbf{Con argument:} A reasons against an alternative. A con argument is usually phrased as a negative statement. Examples:
+\newline \newline
+\textit{"This screen has no real useful functionality."}
+\newline \newline
+\textit{"Point-and-click interfaces are much more complex to implement than text-based interfaces."}
+\newline \newline
+\textit{"The point-and-click interface risks introducing fatal errors in the system that would offset any usability benefit the interface would provide."}
+\newline \newline
+\textbf{Decision:} A decision that were made to resolve the issue. Examples:
+\newline \newline
+\textit{"We decided that we will rank our recipes based on frequency of use."}
+\newline \newline\textit{"We select a text-based display and a keyboard input for the traffic control user interface."}
 
+\subsubsection{What not to classify?}
+\begin{itemize}
+    \item \textbf{Management issues:} that are not discussing the software system being developed. Example:
+    \begin{itemize}
+        \item \textit{"Should I put the user stories in Confluence and Jira?"}
+    \end{itemize}
+    \item \textbf{General questions and issues:} that are not related to the software system being developed. For example, questions about the development environment, development processes, programming languages, APIs or software libraries. Example:
+    \begin{itemize}
+        \item \textit{"How can I log in to confluence?"}
+        \item \textit{"How can I see the project events on the calendar?"}
+        \item \textit{"How do I create a new storyboard in Xcode?"}
+        \item \textit{"I get a crash when I try to open the project workspace."}
+        \item \textit{"How to sort any object array by dates on Swift?"}
+    \end{itemize}
+    \item \textbf{Social events:} Messages that discuss social aspects of the development teams. Example:
+    \begin{itemize}
+        \item Arrangement for an icebreaker event.
+        \item Discussing the time and place for a gathering.
+    \end{itemize}
+    \item \textbf{Bugs in the code:} When developers report on bugs and error in the code. Example: 
+    \begin{itemize}
+        \item \textit{"I got merging conflicts when I commit my code."}
+        \item \textit{"I got an error when I call this function."}
+    \end{itemize}
+    \item \textbf{Prioritization and distribution of workload.} Example:
+    \begin{itemize}
+        \item \textit{"I would do it myself but I’m too afraid to break something. I would be very happy if someone with more knowledge maybe can reset things and create the structure we need."}
+        \item \textit{"From my end, I would prioritize the work like this: We implement all the design changes listed in the acceptance (…)  Then, when this is all done, we can come back to design again"}
+    \end{itemize}
+    \item \textbf{Non-English messages.}
+\end{itemize}
 
 \clearpage
 
