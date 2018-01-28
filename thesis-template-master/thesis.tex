@@ -169,12 +169,13 @@ Of the many software development artifacts, issue tracking systems are one of th
 \end{itemize}
 
 \section{Methodology}
-
-\textit{Note: Motivate scientifically why solving this problem is necessary. What kind of benefits do we have by solving the problem?}
+This thesis is divided into three main phases: data collection, content analysis and automatic classification, all of which are sequential and the output of one phase serves as input of the next phase. In the first phase, to collect data, all the suitable OSS projects whose data is publicly available are considered. Later, datasets which are already provided by the website as a dump are downloaded. Those projects whose websites do not provide any dataset readily have been scraped. In both the instances of readily available dump or scraped data, the necessary contents were parsed and finally stored in a common structured format in the database. Random Stratified Sampling was applied at the data stored and all the messages were also decomposed into individual sentences. The final dataset thus consisted of 8,310 sentences from 300 issues of all three projects; these were also the input for the content analysis phase. 
+\bigbreak
+In the content analysis phase, two annotators, the author and the advisor, considered the dataset obtained in the previous phase mentioned in paragraph earlier. They had to label all the messages whether they contained rationale or not, and if they did contain, the annotators had to further specify the element present in the rationale such as issue, alternative, pro-argument, con-argument and decision. In order to perform this step, Neuendorf's \cite{Neuendorf2017a} content analysis technique was followed. First, a labeling guide, mentioned in detail in Appendix A, was prepared. This labeling guide provided understanding to both the annotators to reducde th disagreements significantly since they would now know which one to label as what. Second, disagreements, if any, were sorted out between the annotators. Finally, the results of this stage served as ground truth training set for the automatic classification phase.  
+\bigbreak
+In the final phase of automatic classification, the ground truth obtained from the previous phase was used for training the various machine learning algorithms. Before running the classifier models, numerous data preprocessing methods such as bag-of-words, n-gram tokenization and parts-of-speech tagging were applied. The dataset was divided into training set and testing set by the virtue of performing k-fold cross validation to test the accuracy of the model and retrieve the best performing ones. The classifier models were capable of performing both kinds of classification, binary as well as fine-grained classification. The results were later studied and insights were gained to validate the research hypotheses formulated earlier.
 
 \section{Outline}
-
-\textit{Note: Describe the outline of your thesis}
 
 
 %------- chapter 2 -------
