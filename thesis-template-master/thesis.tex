@@ -163,9 +163,9 @@ Extracting rationale from software development artifacts is imperative in order 
 Of the many software development artifacts, issue tracking systems are one of the potential sources for capturing rationale. Unlike other channels such as chat messages or emails, issue tracking systems specifically concentrate exclusively on development of the pertinent project. In the past, there has been research on extracting emotions of developers from issue tracking systems \cite{Marshall2016} \cite{Robillard2017}. Additionally, studies have also been conducted on classification of reports from issue tracking systems \cite{Fan2017}. This thesis explores the possibilities of finding rationale and classify them automatically from issue tracking systems of three OSS projects, namely, Apache Lucene, Mozilla Thunderbird and Ubuntu. In addition, this thesis also tries to extend the work of Nonnenmacher \cite{Nonnenmacher2017} by trying to find links between messages from IRC channel and issue tracking systems of the projects mentioned earlier. The Research Hypotheses (RH) are thus formulated as follows.
 
 \begin{itemize}
-\item[\textbf{RH1}] \textit{Messages from ITS of OSS projects contain rationale.} Something here.  
-\item[\textbf{RH2}] \textit{Something here} Something here.  
-\item[\textbf{RH3}] \textit{Something here} Something here.  
+\item[\textbf{RH1}] \textit{Messages from ITS of OSS projects contain rationale.} The frequency with which rationale appears in messages from ITS is an important factor to consider them as a useful source of rationale.   
+\item[\textbf{RH2}] \textit{Rationale can be captured automatically from ITS.} Machine learning algorithms are capable of automatically extract if a given message contains rationale or not, which in other words is binary classification. Additionally, these algorithms can also perform fine-grained classification on those messages that are considered to contain rationale elements such as issues, alternatives, pro-arguments, con-arguments and decisions; in other words, multi-label classification. 
+\item[\textbf{RH3}] \textit{Mutual issues exist in IRC and ITS.} There exists certain issues that are possibly discussed in both, IRC channel as well as ITS. These issues could therefore be linked together to know more about the rationale behind them.    
 \end{itemize}
 
 \section{Methodology}
