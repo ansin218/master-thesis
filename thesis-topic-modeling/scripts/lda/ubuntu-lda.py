@@ -34,8 +34,9 @@ customList6 = ['00', '1014', '10', '03', '28', 'still', '2016', '15', '11901', '
 customList7 = ['11', '31', '2147483647', '26', '13', 'ubuntu', 'common', 'find', 'found', 'version', 'something', 'seem', 'seems']
 customList8 = ['change', 'changes', 'changed', 'tool', 'tools', 'user', 'users', '32', '22', '17', 'status', 'linux']
 customList9 = ['patch', 'patches', 'issue', 'issues', 'bug', 'bugs', 'problem', 'problems', 'fix', 'fixes', 'fixed', 'test', 'tests']
+customList10 = ['management', 'usr', 'focus', 'application', 'log', 'package', 'packages', 'logs', 'work', 'worked', 'report']
 en_stop = en_stop + alphaList + numList + customList1 + customList2 + customList3 + customList4 + customList5
-en_stop = en_stop + customList6 + customList7 + customList8 + customList9
+en_stop = en_stop + customList6 + customList7 + customList8 + customList9 + customList10
 
 p_stemmer = PorterStemmer()
 lmtzr = WordNetLemmatizer()

@@ -15,16 +15,17 @@ LUCENE TOPIC MODELING LDA RESULTS - 10 TOPICS
 UBUNTU TOPIC MODELING LDA RESULTS - 10 TOPICS
 ---------------------------------------------
 
-0 0.079*"bug" + 0.022*"kernel" + 0.022*"status" + 0.019*"report" + 0.018*"confirmed" + 0.016*"upstream" + 0.015*"changed" + 0.014*"affect" + 0.014*"user" + 0.014*"mozilla"
-1 0.044*"linux" + 0.025*"tool" + 0.014*"package" + 0.013*"ubuntu" + 0.013*"lp" + 0.011*"common" + 0.010*"grub" + 0.009*"gke" + 0.009*"aws" + 0.009*"install"
-2 0.016*"amd64" + 0.016*"device" + 0.013*"ubuntu" + 0.012*"mir" + 0.011*"printer" + 0.010*"01" + 0.010*"20" + 0.009*"udev" + 0.009*"linux" + 0.009*"17"
-3 0.025*"cx18" + 0.011*"problem" + 0.010*"phablet" + 0.009*"tveeprom" + 0.008*"file" + 0.008*"log" + 0.008*"ir" + 0.007*"turn" + 0.007*"ubuntu" + 0.007*"i2c"
-4 0.040*"ubuntu" + 0.020*"issue" + 0.013*"application" + 0.011*"icon" + 0.011*"one" + 0.010*"http" + 0.009*"setting" + 0.009*"bug" + 0.008*"problem" + 0.008*"system"
-5 0.020*"bug" + 0.016*"ubuntu" + 0.013*"http" + 0.010*"new" + 0.010*"message" + 0.010*"net" + 0.009*"launchpad" + 0.009*"driver" + 0.009*"fix" + 0.008*"card"
-6 0.016*"patch" + 0.010*"http" + 0.009*"upstart" + 0.009*"xmir" + 0.009*"setting" + 0.008*"bug" + 0.007*"etc" + 0.007*"v3" + 0.007*"text" + 0.007*"fix"
-7 0.039*"dev" + 0.020*"information" + 0.019*"mdadm" + 0.018*"miral" + 0.014*"apport" + 0.013*"management" + 0.012*"window" + 0.012*"name" + 0.011*"firefox" + 0.010*"state"
-8 0.028*"kernel" + 0.022*"oct" + 0.022*"htpc" + 0.014*"array" + 0.014*"byte" + 0.009*"md" + 0.009*"dvb" + 0.008*"cx18" + 0.008*"block" + 0.008*"device"
-9 0.021*"firefox" + 0.020*"controller" + 0.016*"rev" + 0.015*"intel" + 0.015*"corporation" + 0.013*"menu" + 0.009*"bus" + 0.009*"window" + 0.009*"device" + 0.009*"usb"
+0 0.016*"grub" + 0.014*"install" + 0.013*"lib" + 0.011*"info" + 0.011*"boot" + 0.010*"icon" + 0.010*"ieee1275" + 0.009*"symbolic" + 0.009*"powerpc" + 0.009*"mod"
+1 0.017*"mozilla" + 0.013*"script" + 0.010*"debian" + 0.010*"state" + 0.009*"http" + 0.009*"conf" + 0.009*"turn" + 0.008*"icon" + 0.008*"driver" + 0.007*"home"
+2 0.015*"file" + 0.014*"http" + 0.010*"indicator" + 0.007*"new" + 0.007*"message" + 0.007*"xmir" + 0.007*"id" + 0.006*"xorg" + 0.006*"commit" + 0.006*"time"
+3 0.033*"kernel" + 0.023*"upstream" + 0.019*"http" + 0.010*"phablet" + 0.009*"following" + 0.008*"upstart" + 0.008*"developer" + 0.008*"comment" + 0.008*"launchpad" + 0.008*"net"
+4 0.020*"controller" + 0.018*"device" + 0.017*"intel" + 0.017*"rev" + 0.015*"menu" + 0.015*"corporation" + 0.013*"pci" + 0.012*"usb" + 0.010*"event" + 0.009*"bus"
+5 0.027*"dev" + 0.018*"mdadm" + 0.016*"byte" + 0.013*"sudo" + 0.010*"setting" + 0.010*"application" + 0.009*"device" + 0.009*"registered" + 0.008*"medium" + 0.008*"trinitronx"
+6 0.020*"lp" + 0.009*"update" + 0.009*"aws" + 0.008*"warning" + 0.008*"2017" + 0.007*"gke" + 0.007*"xenial" + 0.007*"ext4" + 0.007*"group" + 0.007*"cloud"
+7 0.029*"kernel" + 0.022*"oct" + 0.021*"htpc" + 0.016*"array" + 0.009*"mdadm" + 0.009*"boot" + 0.009*"dev" + 0.008*"device" + 0.008*"active" + 0.008*"may"
+8 0.033*"firefox" + 0.031*"window" + 0.022*"information" + 0.019*"miral" + 0.018*"apport" + 0.010*"name" + 0.009*"restored" + 0.009*"type" + 0.008*"4294967295" + 0.008*"output_id"
+9 0.032*"cx18" + 0.020*"setting" + 0.015*"affect" + 0.014*"confirmed" + 0.013*"multiple" + 0.011*"tveeprom" + 0.010*"kb" + 0.009*"18" + 0.009*"system" + 0.007*"hauppauge"
+
 
 THUNDERBIRD TOPIC MODELING LDA RESULTS - 10 TOPICS
 --------------------------------------------------
