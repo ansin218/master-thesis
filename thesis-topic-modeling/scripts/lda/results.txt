@@ -1,16 +1,17 @@
 LUCENE TOPIC MODELING LDA RESULTS - 10 TOPICS
 ---------------------------------------------
 
-0 0.055*"branch" + 0.046*"commit" + 0.040*"http" + 0.032*"svn" + 0.029*"dev" + 0.026*"trunk" + 0.014*"merge" + 0.013*"mccandless" + 0.012*"michael" + 0.012*"solr"
-1 0.017*"solr" + 0.016*"factory" + 0.013*"patch" + 0.013*"pull" + 0.013*"github" + 0.011*"issue" + 0.010*"nexus" + 0.008*"request" + 0.008*"removed" + 0.008*"work"
-2 0.216*"forbidden" + 0.152*"apis" + 0.115*"java" + 0.066*"lang" + 0.045*"field" + 0.033*"benchmark" + 0.020*"bytask" + 0.014*"index" + 0.009*"searchfiles" + 0.009*"pulsingpostingswriter"
-3 0.144*"system" + 0.140*"access" + 0.116*"java" + 0.068*"forbidden" + 0.067*"field" + 0.035*"lang" + 0.031*"apis" + 0.031*"checkindex" + 0.009*"index" + 0.009*"en"
-4 0.054*"err" + 0.014*"test" + 0.011*"param" + 0.009*"maven" + 0.008*"system" + 0.007*"search" + 0.007*"artifact" + 0.006*"correctly" + 0.006*"pom" + 0.006*"pulled"
-5 0.015*"id" + 0.013*"doc" + 0.012*"junit" + 0.011*"bug" + 0.010*"file" + 0.010*"deleted" + 0.009*"rule" + 0.009*"test" + 0.008*"added" + 0.008*"docid"
-6 0.040*"analysis" + 0.018*"utils" + 0.016*"access" + 0.014*"case" + 0.012*"system" + 0.012*"demo" + 0.012*"merge" + 0.011*"release" + 0.010*"one" + 0.009*"thread"
-7 0.026*"name" + 0.017*"docvaluesformat" + 0.017*"test" + 0.017*"value" + 0.016*"patch" + 0.011*"case" + 0.011*"time" + 0.010*"term" + 0.008*"query" + 0.008*"lucene70"
-8 0.033*"lat" + 0.029*"point" + 0.021*"planetmodel" + 0.013*"false" + 0.012*"junit4" + 0.012*"required" + 0.011*"hole" + 0.011*"true" + 0.010*"internaledges" + 0.010*"wgs84"
-9 0.037*"task" + 0.037*"patch" + 0.017*"snapshot" + 0.017*"issue" + 0.015*"term" + 0.011*"fix" + 0.010*"test" + 0.009*"one" + 0.009*"class" + 0.008*"really"
+0 0.023*"code" + 0.017*"check" + 0.016*"bytesref" + 0.010*"index" + 0.010*"call" + 0.009*"end" + 0.008*"correctly" + 0.008*"backport" + 0.008*"case" + 0.008*"extra"
+1 0.026*"docvaluesformat" + 0.019*"close" + 0.016*"release" + 0.016*"junit4" + 0.012*"lucene70" + 0.012*"jenkins" + 0.011*"dtests" + 0.009*"java" + 0.009*"repository" + 0.008*"thread"
+2 0.177*"forbidden" + 0.126*"java" + 0.118*"apis" + 0.060*"lang" + 0.059*"system" + 0.057*"field" + 0.056*"access" + 0.024*"benchmark" + 0.015*"bytask" + 0.013*"checkindex"
+3 0.025*"doc" + 0.024*"pulsing" + 0.019*"id" + 0.012*"term" + 0.012*"junit" + 0.010*"query" + 0.010*"deleted" + 0.009*"pas" + 0.008*"docid" + 0.008*"bit"
+4 0.040*"branch" + 0.022*"http" + 0.019*"dev" + 0.019*"snapshot" + 0.013*"case" + 0.008*"added" + 0.007*"muir" + 0.007*"remove" + 0.006*"block" + 0.006*"mccandless"
+5 0.016*"revision" + 0.016*"nexus" + 0.014*"collection" + 0.013*"http" + 0.010*"access" + 0.010*"value" + 0.010*"file" + 0.009*"back" + 0.008*"code" + 0.007*"case"
+6 0.032*"branch" + 0.023*"http" + 0.020*"dev" + 0.014*"mccandless" + 0.011*"rate" + 0.010*"search" + 0.010*"artifact" + 0.009*"queryparser" + 0.009*"pom" + 0.008*"postingshighlighter"
+7 0.023*"param" + 0.021*"term" + 0.018*"method" + 0.012*"time" + 0.010*"class" + 0.009*"rule" + 0.009*"reason" + 0.009*"question" + 0.008*"example" + 0.008*"abstractanalysisfactory"
+8 0.014*"factory" + 0.012*"constructor" + 0.011*"add" + 0.010*"look" + 0.009*"buffer" + 0.008*"dataset" + 0.007*"term" + 0.007*"make" + 0.007*"rate" + 0.007*"passed"
+9 0.031*"lat" + 0.023*"point" + 0.020*"planetmodel" + 0.012*"mean" + 0.010*"hole" + 0.010*"junit4" + 0.010*"internaledges" + 0.010*"wgs84" + 0.009*"within" + 0.009*"let"
+
 
 UBUNTU TOPIC MODELING LDA RESULTS - 10 TOPICS
 ---------------------------------------------
