@@ -31,9 +31,11 @@ customList3 = ['don', 'maybe', 'never', 'also', 'many', 'look', 'll', 'com', 'do
 customList4 = ['now', 'lon', 'method', 'much', 'need', 'sure', 'thanks', 'doesn', 'used', 'get', 'ok', '023']
 customList5 = ['well', 'since', 'using', 'rice', '64', '27', '21', '16', 'without', '14', '12', '19', '09']
 customList6 = ['00', '1014', '10', '03', '28', 'still', '2016', '15', '11901', 'please', '30', '0050', '04', '026']
-customList7 = ['11', '31', '2147483647', '26', '13', 'ubuntu']
+customList7 = ['11', '31', '2147483647', '26', '13', 'ubuntu', 'common', 'find', 'found', 'version', 'something', 'seem', 'seems']
+customList8 = ['change', 'changes', 'changed', 'tool', 'tools', 'user', 'users', '32', '22', '17', 'status', 'linux']
+customList9 = ['patch', 'patches', 'issue', 'issues', 'bug', 'bugs', 'problem', 'problems', 'fix', 'fixes', 'fixed', 'test', 'tests']
 en_stop = en_stop + alphaList + numList + customList1 + customList2 + customList3 + customList4 + customList5
-en_stop = en_stop + customList6 + customList7
+en_stop = en_stop + customList6 + customList7 + customList8 + customList9
 
 p_stemmer = PorterStemmer()
 lmtzr = WordNetLemmatizer()
