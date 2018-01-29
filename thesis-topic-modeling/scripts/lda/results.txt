@@ -29,13 +29,14 @@ UBUNTU TOPIC MODELING LDA RESULTS - 10 TOPICS
 
 THUNDERBIRD TOPIC MODELING LDA RESULTS - 10 TOPICS
 --------------------------------------------------
-0 0.023*"mozilla" + 0.020*"central" + 0.019*"http" + 0.017*"comm" + 0.011*"chrome" + 0.011*"messenger" + 0.010*"string" + 0.010*"j" + 0.010*"content" + 0.009*"gmail"
-1 0.024*"thunderbird" + 0.022*"account" + 0.016*"mail" + 0.014*"folder" + 0.012*"problem" + 0.010*"new" + 0.010*"time" + 0.009*"gloda" + 0.009*"tb" + 0.008*"disable"
-2 0.019*"mozmill" + 0.018*"bug" + 0.013*"test" + 0.012*"change" + 0.011*"line" + 0.011*"manager" + 0.010*"one" + 0.008*"really" + 0.008*"good" + 0.006*"please"
-3 0.047*"bug" + 0.028*"j" + 0.026*"test" + 0.015*"duplicate" + 0.014*"marked" + 0.013*"06" + 0.011*"tabmail" + 0.010*"11" + 0.010*"info" + 0.009*"07"
-4 0.032*"reply" + 0.031*"comment" + 0.012*"server" + 0.011*"setting" + 0.011*"version" + 0.010*"message" + 0.010*"bug" + 0.010*"imap" + 0.009*"client" + 0.009*"user"
-5 0.026*"thunderbird" + 0.015*"email" + 0.015*"mode" + 0.014*"address" + 0.013*"http" + 0.013*"message" + 0.013*"problem" + 0.012*"bug" + 0.010*"issue" + 0.010*"safe"
-6 0.014*"thunderbird" + 0.011*"text" + 0.011*"brain" + 0.011*"mozilla" + 0.009*"html" + 0.008*"line" + 0.008*"mail" + 0.008*"message" + 0.008*"reproduce" + 0.007*"input"
-7 0.026*"visible" + 0.024*"mail" + 0.023*"ordinal" + 0.019*"false" + 0.018*"2013" + 0.017*"25" + 0.011*"true" + 0.011*"inbox" + 0.008*"26" + 0.008*"zfn"
-8 0.046*"attachment" + 0.038*"created" + 0.027*"patch" + 0.012*"http" + 0.011*"calendar" + 0.011*"message" + 0.009*"mozilla" + 0.008*"people" + 0.008*"comment" + 0.007*"error"
-9 0.017*"wizard" + 0.016*"info" + 0.015*"window" + 0.014*"error" + 0.013*"message" + 0.013*"test" + 0.013*"09" + 0.012*"bit" + 0.011*"view" + 0.011*"may"
+0 0.026*"mode" + 0.016*"window" + 0.016*"safe" + 0.014*"attachment" + 0.010*"gloda" + 0.009*"happens" + 0.009*"setting" + 0.009*"eml" + 0.008*"archive" + 0.008*"add"
+1 0.011*"book" + 0.011*"time" + 0.010*"manager" + 0.010*"build" + 0.009*"server" + 0.009*"let" + 0.007*"cpp" + 0.007*"calendar" + 0.007*"new" + 0.007*"52"
+2 0.011*"service" + 0.010*"sending" + 0.009*"information" + 0.009*"dll" + 0.008*"however" + 0.008*"wonder" + 0.008*"place" + 0.007*"gecko" + 0.007*"current" + 0.007*"latest"
+3 0.014*"central" + 0.014*"content" + 0.013*"http" + 0.011*"function" + 0.010*"chrome" + 0.008*"space" + 0.008*"offline" + 0.007*"source" + 0.007*"request" + 0.007*"messenger"
+4 0.014*"folder" + 0.014*"file" + 0.011*"time" + 0.009*"port" + 0.009*"source" + 0.009*"field" + 0.008*"imap" + 0.007*"account" + 0.007*"global" + 0.007*"setting"
+5 0.029*"j" + 0.018*"mozmill" + 0.017*"account" + 0.012*"server" + 0.010*"display" + 0.010*"button" + 0.010*"setting" + 0.010*"header" + 0.010*"calendar" + 0.008*"folder"
+6 0.019*"wizard" + 0.015*"server" + 0.013*"tabmail" + 0.012*"ssl" + 0.011*"de" + 0.011*"exception" + 0.010*"zfn" + 0.009*"attachment" + 0.009*"fail" + 0.009*"j"
+7 0.011*"line" + 0.010*"debian" + 0.009*"reproduce" + 0.009*"string" + 0.008*"text" + 0.008*"display" + 0.007*"source" + 0.006*"stack" + 0.006*"bit" + 0.006*"build"
+8 0.018*"duplicate" + 0.016*"attachment" + 0.015*"marked" + 0.009*"re" + 0.008*"http" + 0.008*"screenshot" + 0.007*"dll" + 0.007*"id" + 0.007*"line" + 0.006*"font"
+9 0.030*"visible" + 0.026*"ordinal" + 0.014*"client" + 0.009*"u" + 0.008*"07" + 0.008*"default" + 0.008*"sign" + 0.007*"number" + 0.006*"restart" + 0.006*"authentication"
+
