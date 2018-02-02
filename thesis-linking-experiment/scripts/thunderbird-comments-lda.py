@@ -58,16 +58,18 @@ for x in range(len(thunderbird_rss_list)):
 	customList23 = ['crash', 'crashed', 'book', 'occur', 'started', 'result', 'seperate', 'get', 'gets', 'duplicate', 'marked', 'necessary', 'completely', 'may', 'even']
 	customList24 = ['source', 'mark', 'marked', 'big', 'require', 'need', 'required', 'occurs', 'ubuntu', 'try', 'mail', 'thunderbird', 'creating', 'create']
 	customList25 = ['normal', 'annoying', 'closed', 'present', 'tb', 'guessing', 'cover', 'hmm', 'affect', 'entire', 'ah', 'commented', 'commenting', 'comments', 'comment']
-	customList26 = ['try', 'forever', 'added', 'specified', 'whatever', 'hello', 'specifies', 'specify', 'affect', 'ask', 'asks', 'asked', 'exactly', 'exact']
-	customList27 = ['recently', 'rather', 'described', 'caused', 'come', 'bad', 'comes', 'came', 'told', 'tell', 'looked', 'looking', 'confirming', 'per', 'cause', 'share']
+	customList26 = ['try', 'forever', 'added', 'specified', 'whatever', 'hello', 'specifies', 'specify', 'affect', 'ask', 'asks', 'asked', 'exactly', 'exact', 'saying']
+	customList27 = ['recently', 'rather', 'described', 'caused', 'come', 'bad', 'comes', 'came', 'told', 'tell', 'looked', 'looking', 'confirming', 'per', 'cause', 'share', 'away', 'included', 'seemed', 'seem', 'taking', 'fewer']
 	customList28 = ['happen', 'happens', 'happening', 'within', 'helpful', 'working', 'getting', 'trying', 'something', 'reason', 'reasons', 'finish', 'enable', 'every', 'take' 'anything', 'understand', 'without', 'version', 'persists', 'persist', 'daily']
-	customList29 = ['delete', 'deleting', 'showing', 'simply', 'running', 'said', 'next', 'keeping', 'mind', 'advice', 'seeing', 'behavior', 'think', 'thought', 'back', 'already', 'needed']
-	customList30 = ['perfect', 'feature', 'related', 'quite', 'wrongly', 'separate', 'seen', 'anyone', 'lately', 'removing', 'missed', 'anything', 'highly', 'unlikely', 'quickly', 'someone']
+	customList29 = ['delete', 'deleting', 'showing', 'simply', 'running', 'said', 'next', 'keeping', 'mind', 'advice', 'seeing', 'behavior', 'think', 'thought', 'back', 'already', 'needed', 'incorrect', 'follows', 'won', 'together']
+	customList30 = ['perfect', 'feature', 'related', 'quite', 'wrongly', 'separate', 'seen', 'anyone', 'lately', 'removing', 'missed', 'anything', 'highly', 'unlikely', 'quickly', 'someone', 'checking', 'handled', 'handle', 'possibly']
+	customList31 = ['must', 'shouldn', 'shouldnt', 'really', 'supported', 'return', 'isnt', 'isn', 'busy', 'make', 'always', 'similar', 'dealt', 'behind', 'opnion', 'decent', 'directly', 'please', 'reply', 'replying', 'replied']
 	en_stop = en_stop + alphaList + numList + customList1 + customList2 + customList3 + customList4 + customList5 + customList14
 	en_stop = en_stop + customList6 + customList7 + customList8 + customList9 + customList10 + customList11 + customList12 + customList13
 	en_stop = en_stop + customList15 + customList16 + customList17 + customList18 + customList19 + customList20 + customList21 + customList22
 	en_stop = en_stop + customList23 + customList24 + customList25 + customList26 + customList27 + customList28 + customList29 + customList30
-	
+	en_stop = en_stop + customList31
+
 	p_stemmer = PorterStemmer()
 	lmtzr = WordNetLemmatizer()
 
