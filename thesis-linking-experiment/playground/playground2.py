@@ -8,7 +8,10 @@ b = ['ab9122090312 a5a3 thread', 'riyadh chennai', 'partition 472009']
 for x in range(len(a)):
 	for y in range(len(b)):
 		z = fuzz.token_set_ratio(a[x], b[y])
-		print('\n')
-		print(a[x])
-		print(b[y])
-		print(z)
+		#print('\n')
+		#print(a[x])
+		#print(b[y])
+		#print(z)
+
+		if(z > 50):
+			print(a[x], ' is similar to ', b[y], ' by ', z, '%')
