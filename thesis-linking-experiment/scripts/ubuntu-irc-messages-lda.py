@@ -15,7 +15,7 @@ conn = pymysql.connect(host='localhost', user='root', password='password', db='I
 
 cursor_1 = conn.cursor()
 cursor_2 = conn.cursor()
-cursor_1.execute("SELECT DISTINCT(id), message FROM `ubuntu_binary`")
+cursor_1.execute("SELECT DISTINCT(id), message FROM `ubuntu_fine_grained`")
 
 ubuntu_irc_list = list()
 irc_msg_id_list = list()
