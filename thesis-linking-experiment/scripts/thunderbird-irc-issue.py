@@ -10,10 +10,10 @@ start_time = time()
 conn = pymysql.connect(host='localhost', user='root', password='password', db='Issue_Trackers', autocommit=True, use_unicode=True, charset="utf8")
 
 cursor_1 = conn.cursor()
-cursor_1.execute("SELECT issue_id, comment_id, keywords FROM lucene_issues_keywords_lda")
+cursor_1.execute("SELECT issue_id, comment_id, keywords FROM thunderbird_issues_keywords_lda")
 
 cursor_2 = conn.cursor()
-cursor_2.execute("SELECT msg_id, keywords FROM lucene_irc_keywords_lda")
+cursor_2.execute("SELECT msg_id, keywords FROM thunderbird_irc_keywords_lda")
 
 cursor_3 = conn.cursor()
 
@@ -42,7 +42,7 @@ for x in range(len(issue_keyword_list)):
 					print('Issue ID and ', issue_id_list[x], ' Comment ID ', comment_id_list[x], ' is similar to ', irc_id_list[y], ' by ', z, '%')
 					print('\n')
 					try:
-					    cursor_3.execute("""INSERT INTO lucene_issue_irc (issue_id, comment_id, irc_msg_id, similarity) VALUES ("%s", "%s", "%s", "%s")""" % (issue_id_list[x], comment_id_list[x], irc_id_list[y], z))
+					    cursor_3.execute("""INSERT INTO thunderbird_issue_irc (issue_id, comment_id, irc_msg_id, similarity) VALUES ("%s", "%s", "%s", "%s")""" % (issue_id_list[x], comment_id_list[x], irc_id_list[y], z))
 					except:
 					    conn.rollback()
 
