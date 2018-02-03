@@ -1136,10 +1136,17 @@ This section presents the results of the fine grained classification experiments
         & con-argument  & 0.113 & 0.585 & 0.473 & 0.074 & 0.504 & 0.501 & 0.094 & 0.178 & 0.297 \\
         \multirow{-5}{*}{\begin{minipage}{4cm}{\scriptsize  Config 5 \\  Config 5 \\ Config 5 \\Config 5  \\ Config 5 } \end{minipage}}
         & decision      & 0.838 & 0.527 & 0.688 & 0.944 & 0.213 & 0.350 & 0.890 & 0.556 & 0.714 \\
+        \midrule
+        & issue         & 0.118 & 0.340 & 0.457 & 0.323 & 0.607 & 0.479 & 0.645 & 0.402 & 0.561 \\
+        & alternative   & 0.672 & 0.541 & 0.666 & 0.207 & 0.532 & 0.340 & 0.204 & 0.468 & 0.556 \\
+        & pro-argument  & 0.665 & 0.333 & 0.494 & 0.598 & 0.072 & 0.478 & 0.103 & 0.159 & 0.270 \\
+        & con-argument  & 0.137 & 0.366 & 0.480 & 0.820 & 0.076 & 0.322 & 0.058 & 0.112 & 0.199 \\
+        \multirow{-5}{*}{\begin{minipage}{4cm}{\scriptsize  Config 6 \\  Config 6 \\ Config 6 \\Config 6  \\ Config 6 } \end{minipage}}
+        & decision      & 0.848 & 0.565 & 0.720 & 0.175 & 0.737 & 0.298 & 0.918 & 0.573 & 0.728 \\
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{BR - LR - 10-fold CV}
+    \captionof{table}{Binary Relevance with Logistic Regression and 10-fold Cross Validation}
     \label{tab:fgcBRLR}
 \end{table}
 
@@ -1240,10 +1247,17 @@ This section presents the results of the fine grained classification experiments
         & con-argument  & 0.229 & 0.461 & 0.584 & 0.219 & 0.465 & 0.605 & 0.172 & 0.546 & 0.664 \\
         \multirow{-5}{*}{\begin{minipage}{4cm}{\scriptsize  Config 5 \\  Config 5 \\ Config 5 \\Config 5  \\ Config 5 } \end{minipage}}
         & decision      & 0.471 & 0.812 & 0.860 & 0.145 & 0.500 & 0.648 & 0.576 & 0.581 & 0.730 \\
+        \midrule
+        & issue         & 0.319 & 0.350 & 0.495 & 0.458 & 0.594 & 0.673 & 0.549 & 0.691 & 0.748 \\
+        & alternative   & 0.549 & 0.816 & 0.728 & 0.385 & 0.618 & 0.703 & 0.442 & 0.549 & 0.676 \\
+        & pro-argument  & 0.444 & 0.783 & 0.750 & 0.195 & 0.429 & 0.572 & 0.299 & 0.201 & 0.333 \\
+        & con-argument  & 0.249 & 0.585 & 0.664 & 0.233 & 0.513 & 0.644 & 0.341 & 0.382 & 0.546 \\
+        \multirow{-5}{*}{\begin{minipage}{4cm}{\scriptsize  Config 6 \\  Config 6 \\ Config 6 \\Config 6  \\ Config 6 } \end{minipage}}
+        & decision      & 0.546 & 0.749 & 0.835 & 0.205 & 0.450 & 0.611 & 0.931 & 0.573 & 0.728 \\
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{BR - MNB - 10-fold CV}
+    \captionof{table}{Binary Relevance with Multinomial Naive Bayes and 10-fold Cross Validation}
     \label{tab:fgcBRMNB}
 \end{table}
 
@@ -1345,6 +1359,13 @@ This section presents the results of the fine grained classification experiments
         & con-argument  & 0.432 & 0.225 & 0.365 & 0.432 & 0.237 & 0.381 & 0.333 & 0.171 & 0.291 \\
         \multirow{-5}{*}{\begin{minipage}{4cm}{\scriptsize  Config 5 \\  Config 5 \\ Config 5 \\Config 5  \\ Config 5 } \end{minipage}}
         & decision      & 0.763 & 0.638 & 0.773 & 0.735 & 0.313 & 0.476 & 0.855 & 0.607 & 0.754 \\
+        \midrule
+        & issue         & 0.336 & 0.274 & 0.424 & 0.555 & 0.463 & 0.607 & 0.621 & 0.571 & 0.694 \\
+        & alternative   & 0.668 & 0.626 & 0.718 & 0.537 & 0.421 & 0.581 & 0.540 & 0.424 & 0.584 \\
+        & pro-argument  & 0.633 & 0.569 & 0.699 & 0.244 & 0.179 & 0.301 & 0.400 & 0.254 & 0.403 \\
+        & con-argument  & 0.420 & 0.359 & 0.519 & 0.372 & 0.294 & 0.450 & 0.431 & 0.368 & 0.534 \\
+        \multirow{-5}{*}{\begin{minipage}{4cm}{\scriptsize  Config 6 \\  Config 6 \\ Config 6 \\Config 6  \\ Config 6 } \end{minipage}}
+        & decision      & 0.732 & 0.647 & 0.779 & 0.519 & 0.338 & 0.504 & 0.755 & 0.684 & 0.809 \\
         \bottomrule
     \end{tabular}
     \end{adjustbox}
@@ -1449,6 +1470,13 @@ This section presents the results of the fine grained classification experiments
         & con-argument  & 0.500 & 0.018 & 0.035 & 0.143 & 0.004 & 0.009 & 0.857 & 0.039 & 0.076 \\
         \multirow{-5}{*}{\begin{minipage}{4cm}{\scriptsize  Config 5 \\  Config 5 \\ Config 5 \\Config 5  \\ Config 5 } \end{minipage}}
         & decision      & 0.813 & 0.440 & 0.609 & 0.929 & 0.163 & 0.280 & 0.887 & 0.438 & 0.699 \\
+        \midrule
+        & issue         & 0.636 & 0.027 & 0.053 & 0.513 & 0.245 & 0.387 & 0.560 & 0.265 & 0.413 \\
+        & alternative   & 0.599 & 0.475 & 0.606 & 0.523 & 0.140 & 0.246 & 0.500 & 0.132 & 0.232 \\
+        & pro-argument  & 0.668 & 0.326 & 0.486 & 0.200 & 0.004 & 0.009 & 0.550 & 0.058 & 0.110 \\
+        & con-argument  & 0.453 & 0.085 & 0.156 & 0.667 & 0.018 & 0.034 & 0.333 & 0.026 & 0.051 \\
+        \multirow{-5}{*}{\begin{minipage}{4cm}{\scriptsize  Config 6 \\  Config 6 \\ Config 6 \\Config 6  \\ Config 6 } \end{minipage}}
+        & decision      & 0.735 & 0.469 & 0.635 & 0.800 & 0.150 & 0.261 & 0.890 & 0.556 & 0.714 \\
         \bottomrule
     \end{tabular}
     \end{adjustbox}
@@ -1553,6 +1581,13 @@ This section presents the results of the fine grained classification experiments
         & con-argument  & 0.509 & 0.194 & 0.323 & 0.667 & 0.167 & 0.285 & 0.650 & 0.171 & 0.292 \\
         \multirow{-5}{*}{\begin{minipage}{4cm}{\scriptsize  Config 5 \\  Config 5 \\ Config 5 \\Config 5  \\ Config 5 } \end{minipage}}
         & decision      & 0.820 & 0.638 & 0.775 & 0.957 & 0.275 & 0.431 & 0.911 & 0.615 & 0.761 \\
+        \midrule
+        & issue         & 1.000 & 0.089 & 0.163 & 0.867 & 0.210 & 0.347 & 0.818 & 0.367 & 0.533 \\
+        & alternative   & 0.752 & 0.622 & 0.734 & 0.913 & 0.174 & 0.296 & 0.945 & 0.210 & 0.347 \\
+        & pro-argument  & 0.865 & 0.354 & 0.520 & 0.800 & 0.107 & 0.194 & 1.000 & 0.106 & 0.191 \\
+        & con-argument  & 0.917 & 0.155 & 0.268 & 0.944 & 0.149 & 0.260 & 0.857 & 0.158 & 0.273 \\
+        \multirow{-5}{*}{\begin{minipage}{4cm}{\scriptsize  Config 6 \\  Config 6 \\ Config 6 \\Config 6  \\ Config 6 } \end{minipage}}
+        & decision      & 0.955 & 0.512 & 0.677 & 1.000 & 0.263 & 0.416 & 0.947 & 0.607 & 0.755 \\
         \bottomrule
     \end{tabular}
     \end{adjustbox}
