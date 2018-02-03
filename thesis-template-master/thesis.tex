@@ -893,7 +893,7 @@ Both kinds of classifications have been performed using the preprocessing method
 			Config 2 & Bag-of-Words + TF-IDF \\ 
 			Config 3 & Bag-of-Words + TF-IDF + N-Grams \\
 			Config 4 & Bag-of-Words + TF-IDF + N-Grams + Stopwords \\
-			Config 5 & Bag-of-Words + TF-IDF + N-Grams + Stopwords + Lemmatization \\
+			Config 5 & Bag-of-Words + TF-IDF + N-Grams + Stopwords + Lemmatization/Stemming \\
 			Config 6 & Bag-of-Words + TF-IDF + N-Grams + POS Tagging \\
         \midrule
     \end{tabular}
@@ -925,7 +925,7 @@ In case of Lucene dataset, LR does its best to predict rationale when Config 6, 
         \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 2 \\ Config 2} \end{minipage}} &   without & \textbf{0.837} & 0.386 & 0.518 & 0.703 & 0.677 & 0.684 & 0.769 & 0.704 & 0.731 \\ 
         \midrule 	
         & with & 0.816 & 0.978  & 0.889 & 0.656 & \textbf{0.839} & \textbf{0.732} & 0.671 & \textbf{0.878} & \textbf{0.758} \\
-        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & \textbf{0.837} & 0.386 & 0.518 & 0.703 & 0.677 & 0.684 & 0.769 & 0.704 & 0.731 \\ 
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & 0.837 & 0.386 & 0.518 & 0.703 & 0.677 & 0.684 & 0.769 & 0.704 & 0.731 \\ 
         \midrule 	
         & with & 0.816 & 0.978  & 0.885 & 0.643 & 0.613 & 0.621 & 0.671 & 0.720 & 0.689 \\
         \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 4 \\ Config 4} \end{minipage}} &   without & 0.780 & 0.357  & 0.480 & 0.649 & 0.677 & 0.657 & 0.718 & 0.671 & 0.688 \\ 
@@ -961,8 +961,8 @@ When predicting rationale, MNB has an F1 score of 0.884 for Config 2 and Config 
         & with & 0.795 & 0.995  & \textbf{0.884} & \textbf{0.642} & 0.744 & 0.683 & 0.678 & 0.801 & 0.729 \\
         \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 2 \\ Config 2} \end{minipage}} &   without & 0.830 & 0.289 & 0.413 & 0.711 & 0.603 & 0.645 & 0.773 & 0.644 & \textbf{0.697} \\ 
         \midrule 	
-        & with & 0.795 & 0.995 & \textbf{0.884} & 0.639 & 0.788 & \textbf{0.699}& \textbf{0.682} & 0.826 & 0.742 \\
-        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & 0.830 & 0.289 & 0.413 & 0.711 & 0.603 & 0.645 & 0.773 & 0.644 & \textbf{0.697} \\ 
+        & with & 0.795 & 0.995 & 0.884 & 0.639 & 0.788 & \textbf{0.699}& \textbf{0.682} & 0.826 & 0.742 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & 0.830 & 0.289 & 0.413 & 0.711 & 0.603 & 0.645 & 0.773 & 0.644 & 0.697 \\ 
         \midrule 	
         & with & 0.801 & 0.988  & 0.883 & 0.626 & 0.655 & 0.634 & 0.672 & 0.734 & 0.693 \\
         \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 4 \\ Config 4} \end{minipage}} &   without & 0.827 & 0.311  & 0.438 & 0.656 & \textbf{0.627} & 0.636 & 0.726 & \textbf{0.663} & 0.684 \\ 
@@ -997,8 +997,8 @@ When predicting rationale, MNB has an F1 score of 0.884 for Config 2 and Config 
         & with & 0.830 & 0.943 & 0.882 & 0.680 & \textbf{0.577} & \textbf{0.619} & 0.678 & 0.665 & \textbf{0.670} \\
         \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 2 \\ Config 2} \end{minipage}} &   without & \textbf{0.782} & 0.408 & 0.525 & 0.689 & 0.621 & 0.649 & \textbf{0.762} & 0.675 & 0.714 \\ 
         \midrule 	
-        & with & 0.834 & 0.942 & \textbf{0.883} & 0.699 & 0.430 & 0.526 & 0.738 & 0.525 & 0.610 \\
-        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & \textbf{0.782} & 0.408 & 0.525 & 0.689 & 0.621 & 0.649 & \textbf{0.762} & 0.675 & 0.714 \\ 
+        & with & 0.834 & 0.942 & 0.883 & 0.699 & 0.430 & 0.526 & 0.738 & 0.525 & 0.610 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & 0.782 & 0.408 & 0.525 & 0.689 & 0.621 & 0.649 & \textbf{0.762} & 0.675 & 0.714 \\ 
         \midrule 	
         & with & 0.836 & 0.906 & 0.868 & 0.661 & 0.462 & 0.538 & 0.737 & 0.479 & 0.579 \\
         \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 4 \\ Config 4} \end{minipage}} &   without & 0.685 & 0.488 & 0.566 & 0.628 & \textbf{0.700} & \textbf{0.757} & 0.659 & \textbf{0.774} & 0.710 \\ 
@@ -1034,7 +1034,7 @@ With an F1 score of 0.885, DT performs the best when Config 3 is in action when 
         \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 2 \\ Config 2} \end{minipage}} &   without & 0.553 & 0.560 & \textbf{0.551} & 0.632 & 0.652 & 0.638 & \textbf{0.684} & 0.696 & 0.689 \\ 
         \midrule 	
         & with & 0.834 & \textbf{0.945} & \textbf{0.885} & 0.600 & 0.466 & 0.423 & \textbf{0.750} & 0.525 & 0.616 \\
-        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & 0.553 & 0.560 & \textbf{0.551} & 0.639 & 0.651 & 0.639 & \textbf{0.684} & 0.696 & 0.689 \\ 
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & 0.553 & 0.560 & 0.551 & 0.639 & 0.651 & 0.639 & 0.684 & 0.696 & 0.689 \\ 
         \midrule 	
         & with & 0.831 & 0.918 & 0.873 & 0.609 & 0.554 & 0.574 & 0.719 & 0.484 & 0.676 \\
         \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 4 \\ Config 4} \end{minipage}} &   without & 0.535 & 0.541 & 0.534 & 0.608 & 0.660 & 0.627 & 0.635 & 0.723 & 0.674 \\ 
@@ -1043,7 +1043,7 @@ With an F1 score of 0.885, DT performs the best when Config 3 is in action when 
         \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 5 \\ Config 5} \end{minipage}} &   without & 0.477 & \textbf{0.593} & 0.524 & 0.630 & 0.670 & 0.651 & 0.668 & 0.699 & 0.680 \\ 
         \midrule 	
         & with & 0.835 & 0.938 & 0.874 & 0.623 & 0.471 & 0.532 & 0.653 & 0.582 & 0.614 \\
-        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 6 \\ Config 6} \end{minipage}} &   without & 0.545 & 0.553 & 0.543 & 0.629 & 0.667 & 0.645 & \textbf{0.684} & \textbf{0.726} & \textbf{0.703} \\ 
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 6 \\ Config 6} \end{minipage}} &   without & 0.545 & 0.553 & 0.543 & 0.629 & 0.667 & 0.645 & 0.684 & \textbf{0.726} & \textbf{0.703} \\ 
         \bottomrule
     \end{tabular}
     \end{adjustbox}
@@ -1069,8 +1069,8 @@ Both, Config 1 and Config 3, attain an F1 score of 0.883 in predicting rationale
         & with & 0.830 & 0.943 & 0.882 & 0.680 & \textbf{0.577} & \textbf{0.619} & 0.678 & 0.665 & \textbf{0.670} \\
         \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 2 \\ Config 2} \end{minipage}} &   without & \textbf{0.782} & 0.408 & 0.525 & 0.689 & 0.621 & 0.649 & \textbf{0.762} & 0.675 & 0.714 \\ 
         \midrule 	
-        & with & 0.834 & 0.942 & \textbf{0.883} & 0.699 & 0.430 & 0.526 & 0.738 & 0.525 & 0.610 \\
-        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & \textbf{0.782} & 0.408 & 0.525 & 0.689 & 0.621 & 0.649 & \textbf{0.762} & 0.675 & 0.714 \\ 
+        & with & 0.834 & 0.942 & 0.883 & 0.699 & 0.430 & 0.526 & 0.738 & 0.525 & 0.610 \\
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & 0.782 & 0.408 & 0.525 & 0.689 & 0.621 & 0.649 & 0.762 & 0.675 & 0.714 \\ 
         \midrule 	
         & with & 0.836 & 0.906 & 0.868 & 0.661 & 0.462 & 0.538 & 0.737 & 0.479 & 0.579 \\
         \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 4 \\ Config 4} \end{minipage}} &   without & 0.685 & 0.488 & 0.566 & 0.628 & \textbf{0.700} & \textbf{0.757} & 0.659 & \textbf{0.774} & 0.710 \\ 
