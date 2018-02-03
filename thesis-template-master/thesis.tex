@@ -855,23 +855,6 @@ The results of manual annotation from both the annotators are presented in this 
     \caption{Distribution of Fine-Grained Rationale Frequency}
     \label{fig:distroMultiRationale}
 \end{figure}
-%------- chapter 5 -------
-
-\chapter{Natural Language Processing}
-
-\textit{Note: If you did an evaluation / case study, describe it here.}
-
-\section{Topic Modeling}
-
-\textit{Note: Describe the design / methodology of the evaluation and why you did it like that. E.g. what kind of evaluation have you done (e.g. questionnaire, personal interviews, simulation, quantitative analysis of metrics, what kind of participants, what kind of questions, what was the procedure?}
-
-\section{Parts of Speech Tagging}
-
-\textit{Note: Derive concrete objectives / hypotheses for this evaluation from the general ones in the introduction.}
-
-\section{Named Entity Recognition}
-
-\textit{Note: Derive concrete objectives / hypotheses for this evaluation from the general ones in the introduction.}
 
 %------- chapter 7 -------
 
@@ -900,6 +883,111 @@ Both kinds of classifications have been performed using the preprocessing method
     \end{adjustbox}
     \captionof{table}{Preprocessing methods and its combinations used for classification}
     \label{tab:configurationNames}
+\end{table} 
+
+\section{Topic Modeling}
+Put all the three tables here
+
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{3cm} p{12cm}}
+        \toprule
+        \textbf{Topic} & \textbf{Keywords with Probabilities}\\
+        \midrule
+			Topic 1 & 0.023*"code" + 0.017*"check" + 0.016*"bytesref" + 0.010*"index" + 0.010*"call" + 0.009*"end" + 0.008*"correctly" + 0.008*"backport" + 0.008*"case" + 0.008*"extra" \\
+			\midrule 
+			Topic 2 & 0.026*"docvaluesformat" + 0.019*"close" + 0.016*"release" + 0.016*"junit4" + 0.012*"lucene70" + 0.012*"jenkins" + 0.011*"dtests" + 0.009*"java" + 0.009*"repository" + 0.008*"thread" \\ 
+			\midrule 
+			Topic 3 & 0.177*"forbidden" + 0.126*"java" + 0.118*"apis" + 0.060*"lang" + 0.059*"system" + 0.057*"field" + 0.056*"access" + 0.024*"benchmark" + 0.015*"bytask" + 0.013*"checkindex" \\
+			\midrule 
+			Topic 4 & 0.025*"doc" + 0.024*"pulsing" + 0.019*"id" + 0.012*"term" + 0.012*"junit" + 0.010*"query" + 0.010*"deleted" + 0.009*"pas" + 0.008*"docid" + 0.008*"bit" \\
+			\midrule 
+			Topic 5 & 0.040*"branch" + 0.022*"http" + 0.019*"dev" + 0.019*"snapshot" + 0.013*"case" + 0.008*"added" + 0.007*"muir" + 0.007*"remove" + 0.006*"block" + 0.006*"mccandless" \\
+			\midrule 
+			Topic 6 & 0.016*"revision" + 0.016*"nexus" + 0.014*"collection" + 0.013*"http" + 0.010*"access" + 0.010*"value" + 0.010*"file" + 0.009*"back" + 0.008*"code" + 0.007*"case" \\
+			\midrule 
+			Topic 7 & 0.032*"branch" + 0.023*"http" + 0.020*"dev" + 0.014*"mccandless" + 0.011*"rate" + 0.010*"search" + 0.010*"artifact" + 0.009*"queryparser" + 0.009*"pom" + 0.008*"postingshighlighter" \\
+			\midrule 
+			Topic 8 & 0.023*"param" + 0.021*"term" + 0.018*"method" + 0.012*"time" + 0.010*"class" + 0.009*"rule" + 0.009*"reason" + 0.009*"question" + 0.008*"example" + 0.008*"abstractanalysisfactory" \\
+			\midrule 
+			Topic 9 & 0.014*"factory" + 0.012*"constructor" + 0.011*"add" + 0.010*"look" + 0.009*"buffer" + 0.008*"dataset" + 0.007*"term" + 0.007*"make" + 0.007*"rate" + 0.007*"passed" \\
+			\midrule 
+			Topic 10 & 0.031*"lat" + 0.023*"point" + 0.020*"planetmodel" + 0.012*"mean" + 0.010*"hole" + 0.010*"junit4" + 0.010*"internaledges" + 0.010*"wgs84" + 0.009*"within" + 0.009*"let" \\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Topic modeling of Apache Lucene dataset}
+    \label{tab:tmLucene}
+\end{table} 
+
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{3cm} p{12cm}}
+        \toprule
+        \textbf{Topic} & \textbf{Keywords with Probabilities}\\
+        \midrule
+			Topic 1 & 0.026*"mode" + 0.016*"window" + 0.016*"safe" + 0.014*"attachment" + 0.010*"gloda" + 0.009*"happens" + 0.009*"setting" + 0.009*"eml" + 0.008*"archive" + 0.008*"add" \\
+			\midrule 
+			Topic 2 & 0.011*"book" + 0.011*"time" + 0.010*"manager" + 0.010*"build" + 0.009*"server" + 0.009*"let" + 0.007*"cpp" + 0.007*"calendar" + 0.007*"new" + 0.007*"52" \\ 
+			\midrule 
+			Topic 3 & 0.011*"service" + 0.010*"sending" + 0.009*"information" + 0.009*"dll" + 0.008*"however" + 0.008*"wonder" + 0.008*"place" + 0.007*"gecko" + 0.007*"current" + 0.007*"latest" \\
+			\midrule 
+			Topic 4 & 0.014*"central" + 0.014*"content" + 0.013*"http" + 0.011*"function" + 0.010*"chrome" + 0.008*"space" + 0.008*"offline" + 0.007*"source" + 0.007*"request" + 0.007*"messenger" \\
+			\midrule 
+			Topic 5 & 0.014*"folder" + 0.014*"file" + 0.011*"time" + 0.009*"port" + 0.009*"source" + 0.009*"field" + 0.008*"imap" + 0.007*"account" + 0.007*"global" + 0.007*"setting" \\
+			\midrule 
+			Topic 6 & 0.029*"j" + 0.018*"mozmill" + 0.017*"account" + 0.012*"server" + 0.010*"display" + 0.010*"button" + 0.010*"setting" + 0.010*"header" + 0.010*"calendar" + 0.008*"folder" \\
+			\midrule 
+			Topic 7 & 0.019*"wizard" + 0.015*"server" + 0.013*"tabmail" + 0.012*"ssl" + 0.011*"de" + 0.011*"exception" + 0.010*"zfn" + 0.009*"attachment" + 0.009*"fail" + 0.009*"j" \\
+			\midrule 
+			Topic 8 & 0.011*"line" + 0.010*"debian" + 0.009*"reproduce" + 0.009*"string" + 0.008*"text" + 0.008*"display" + 0.007*"source" + 0.006*"stack" + 0.006*"bit" + 0.006*"build" \\
+			\midrule 
+			Topic 9 & 0.018*"duplicate" + 0.016*"attachment" + 0.015*"marked" + 0.009*"re" + 0.008*"http" + 0.008*"screenshot" + 0.007*"dll" + 0.007*"id" + 0.007*"line" + 0.006*"font" \\
+			\midrule 
+			Topic 10 & 0.030*"visible" + 0.026*"ordinal" + 0.014*"client" + 0.009*"u" + 0.008*"07" + 0.008*"default" + 0.008*"sign" + 0.007*"number" + 0.006*"restart" + 0.006*"authentication" \\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Topic modeling of Mozilla Thunderbird dataset}
+    \label{tab:tmThunderbird}
+\end{table} 
+
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{3cm} p{12cm}}
+        \toprule
+        \textbf{Topic} & \textbf{Keywords with Probabilities}\\
+        \midrule
+			Topic 1 & 0.016*"grub" + 0.014*"install" + 0.013*"lib" + 0.011*"info" + 0.011*"boot" + 0.010*"icon" + 0.010*"ieee1275" + 0.009*"symbolic" + 0.009*"powerpc" + 0.009*"mod" \\
+			\midrule 
+			Topic 2 & 0.017*"mozilla" + 0.013*"script" + 0.010*"debian" + 0.010*"state" + 0.009*"http" + 0.009*"conf" + 0.009*"turn" + 0.008*"icon" + 0.008*"driver" + 0.007*"home" \\ 
+			\midrule 
+			Topic 3 & 0.015*"file" + 0.014*"http" + 0.010*"indicator" + 0.007*"new" + 0.007*"message" + 0.007*"xmir" + 0.007*"id" + 0.006*"xorg" + 0.006*"commit" + 0.006*"time" \\
+			\midrule 
+			Topic 4 & 0.033*"kernel" + 0.023*"upstream" + 0.019*"http" + 0.010*"phablet" + 0.009*"following" + 0.008*"upstart" + 0.008*"developer" + 0.008*"comment" + 0.008*"launchpad" + 0.008*"net" \\
+			\midrule 
+			Topic 5 & 0.020*"controller" + 0.018*"device" + 0.017*"intel" + 0.017*"rev" + 0.015*"menu" + 0.015*"corporation" + 0.013*"pci" + 0.012*"usb" + 0.010*"event" + 0.009*"bus" \\
+			\midrule 
+			Topic 6 & 0.027*"dev" + 0.018*"mdadm" + 0.016*"byte" + 0.013*"sudo" + 0.010*"setting" + 0.010*"application" + 0.009*"device" + 0.009*"registered" + 0.008*"medium" + 0.008*"trinitronx" \\
+			\midrule 
+			Topic 7 & 0.020*"lp" + 0.009*"update" + 0.009*"aws" + 0.008*"warning" + 0.008*"2017" + 0.007*"gke" + 0.007*"xenial" + 0.007*"ext4" + 0.007*"group" + 0.007*"cloud" \\
+			\midrule 
+			Topic 8 & 0.011*"line" + 0.010*"debian" + 0.009*"reproduce" + 0.009*"string" + 0.008*"text" + 0.008*"display" + 0.007*"source" + 0.006*"stack" + 0.006*"bit" + 0.006*"build" \\
+			\midrule 
+			Topic 9 & 0.033*"firefox" + 0.031*"window" + 0.022*"information" + 0.019*"miral" + 0.018*"apport" + 0.010*"name" + 0.009*"restored" + 0.009*"type" + 0.008*"4294967295" + 0.008*"outputid" \\
+			\midrule 
+			Topic 10 & 0.032*"cx18" + 0.020*"setting" + 0.015*"affect" + 0.014*"confirmed" + 0.013*"multiple" + 0.011*"tveeprom" + 0.010*"kb" + 0.009*"18" + 0.009*"system" + 0.007*"hauppauge" \\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Topic modeling of Ubuntu dataset}
+    \label{tab:tmUbuntu}
 \end{table} 
 
 \section{Binary Classification}
@@ -1067,7 +1155,7 @@ Both, Config 1 and Config 3, attain an F1 score of 0.883 in predicting rationale
         \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 1 \\ Config 1} \end{minipage}} &   without & 0.742 & 0.427 & 0.538 & 0.665 & 0.659 & 0.657 & 0.740 & 0.697 & \textbf{0.715} \\ 
         \midrule 	
         & with & 0.830 & 0.943 & 0.882 & 0.680 & \textbf{0.577} & \textbf{0.619} & 0.678 & 0.665 & \textbf{0.670} \\
-        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 2 \\ Config 2} \end{minipage}} &   without & \textbf{0.782} & 0.408 & 0.525 & 0.689 & 0.621 & 0.649 & \textbf{0.762} & 0.675 & 0.714 \\ 
+        \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 2 \\ Config 2} \end{minipage}} &   without & \textbf{0.782} & 0.408 & 0.525 & 0.689 & 0.621 & 0.649 & \textbf{0.762} & 0.675 & 0.714 \\
         \midrule 	
         & with & 0.834 & 0.942 & 0.883 & 0.699 & 0.430 & 0.526 & 0.738 & 0.525 & 0.610 \\
         \multirow{-2}{*}{\begin{minipage}{4cm}{\scriptsize Config 3 \\ Config 3} \end{minipage}} &   without & 0.782 & 0.408 & 0.525 & 0.689 & 0.621 & 0.649 & 0.762 & 0.675 & 0.714 \\ 
