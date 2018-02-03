@@ -990,6 +990,25 @@ Put all the three tables here
     \label{tab:tmUbuntu}
 \end{table} 
 
+\section{Linking}
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{4cm} p{3cm} p{3cm} p{4cm} p{4cm}}
+        \toprule
+        \textbf{Dataset} & \textbf{Issues} & \textbf{Comments} & \textbf{Messages (IRC)} & \textbf{Highest Similarity}\\
+        \midrule
+			Apache Lucene & 83 & 255 & 316 & 100 \\
+			Mozilla Thunderbird & 81 & 209 & 143 & 78 \\ 
+			Ubuntu & 94 & 318 & 318 & 71 \\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Linking based on similarity}
+    \label{tab:topicLinking}
+\end{table}
+
 \section{Binary Classification}
 This section presents the results of the binary classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames} and the algorithms from Section 2.4.4. It is to be noted that in the case of Lucene dataset, unigram results have been presented while trigram results in the cases of Thunderbird and Ubuntu have been shown, since these combinations have given the best results. The experiments have been carried out using scikit-learn Python library. For POS tagging mechanism, Spacy, another popular NLP library was used. 
 
