@@ -1315,12 +1315,15 @@ For issue and alternative on Apache Lucene dataset, Config 2 returns the best pr
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{LR transformation method with LR classifier and 10-fold CV}
+    \captionof{table}{LP transformation method with LR classifier and 10-fold CV}
     \label{tab:fgcLPLR}
 \end{table}
 
 \subsection{Multinomial Naive Bayes}
+
 \subsubsection{Binary Relevance}
+Config 1 has best precision for all five rationale elements when applied on the Apache Lucene dataset while Config 6 had best recall in three occasions. Config 1 has top F1 score of 0.768 for predicting alternative, Config 4 has F1 score of 0.860 to classify decision, Config 5 has F1 score of 0.525 in case of predicting issue while Config 6 have F1 scores of 0.750 and 0.664 for pro-argument and con-argument prediction. Precision on Mozilla Thunderbird dataset is the same as that on Apache Lucene dataset; Config 1 attains highest precision scores for all five rationale elements. Config 4 does its best in predicting pro-argument and decision with F1 scores of 0.619 and 0.648 while Config 6 achieves F1 scores of 0.673, 0.703 and 0.644 with respect to issue, alternative and con-argument respectively. In case of the Ubuntu dataset, Config 4 gives the best recall while predicting all five rationale elements. With F1 scores of 0.749, 0.713 and 0.784 in the case of issue, alternative and decision, Config 2 performs the best while Config 4 does the best with scores of 0.622 and 0.664 for predicting pro-argument and con-argument. Table \ref{tab:fgcBRMNB} shows all the values in detail.
+
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -1375,9 +1378,12 @@ For issue and alternative on Apache Lucene dataset, Config 2 returns the best pr
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{Binary Relevance with Multinomial Naive Bayes and 10-fold Cross Validation}
+    \captionof{table}{BR transformation method with MNB classifier and 10-fold CV}
     \label{tab:fgcBRMNB}
 \end{table}
+
+\subsubsection{Label Powerset}
+For the Apache Lucene dataset, top recall and F1 scores are achieved using Config 2 for issue, pro-argument and con-argument; the F1 scores are 0.430, 0.712 and 0.604 respectively. While Config 6 helps attaining an F1 score of 0.750 in predicting alternative, Config 4 helps in predicting decision with an F1 score of 0.842. Unlike previous instances, Mozilla Thunderbird has F1 scores of 0.690 in applying Config 1 to predict issue, 0.683 and 0.602 in applying Config 2 to predict alternative and con-argument, 0.610 with Config 4 and 0.530 with Config 6 to predict decision and alternative. Config 1 and Config 2 also tops for similar rationale elements in the case of Ubuntu dataset with scores of 0.771, 0.706 and 0.552 for issue, alternative and con-argument. Config 3 predicts decision the best with an F1 score of 0.733 while Config 5 classified pro-argument well with an F1 score of 0.556. Table \ref{tab:fgcLPMNB} gives a summary of all the scores in detail.
 
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
@@ -1433,10 +1439,9 @@ For issue and alternative on Apache Lucene dataset, Config 2 returns the best pr
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{LP - MNB - 10-fold CV}
+    \captionof{table}{LP transformation method with MNB classifier and 10-fold CV}
     \label{tab:fgcLPMNB}
 \end{table}
-
 
 \subsection{Support Vector Machine}
 
