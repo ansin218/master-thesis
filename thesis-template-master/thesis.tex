@@ -1568,6 +1568,8 @@ For the dataset of Apache Lucene, Config 1 gives best F1 scores of 0.397 and 0.7
 
 \subsection{Decision Tree}
 
+\subsubsection{Binary Relevance}
+On the Apache Lucene dataset, Config 2 gives the top F1 scores of 0.162 and 0.667 for con-argument and decision while Config 4 helps getting the best F1 scores of 0.067, 0.635 and 0.519 for issue, alternative and pro-argument. It also gives the top recall scores for similar rationale elements. For Mozilla Thunderbird dataset, scores of 0.252 and 0.043 were attained using Config 3 for alternative and con-argument while scores of 0.413, 0.077 and 0.280 were achieved in the case of issue, pro-argument and decision with Config 4. On the Ubuntu dataset, Config 3 helped attain an F1 score of 0.165 for predicting pro-argument element, Config 4 for issue and con-argument with scores of 0.509 and 0.076, and Config 6 for alternative and decision with scores of 0.232 and 0.714 respectively. Table \ref{tab:fgcBRDT} demonstrates all the values of the metrics in detail.
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -1622,10 +1624,12 @@ For the dataset of Apache Lucene, Config 1 gives best F1 scores of 0.397 and 0.7
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{BR - DT - 10-fold CV}
+    \captionof{table}{BR transformation method with DT classifier and 10-fold CV}
     \label{tab:fgcBRDT}
 \end{table}
 
+\subsubsection{Label Powerset}
+Config 2 gives an F1 score of 0.350 for classiying issue on the dataset of Apache Lucene. Config 4 gives scores of 0.480 and 0.758 in the case of pro-argument and decision while Config 6 gives scores of 0.670 and 0.235 with regards to alternative and con-argument on the Apache Lucene dataset. The best recall and F1 scores on the Mozilla Thunderbird dataset are obtained for issue, alternative and con-argument. The F1 scores are 0.378, 0.267 and 0.100 respectively while Config 1 gives an F1 score of 0.077 for pro-argument and Config 6 gives a score of 0.367 for decision. For the Ubuntu dataset, Config 1 performs the best in the case of issue, pro-argument and decision with F1 scores of 0.533, 0.138 and 0.706 while Config 2 helps with a score of 0.507 for con-argument and Config 4 helps with a score of 0.269 for alternative. Table\ref{tab:fgcLPDT} summarises all the metrics and its values.
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -1680,7 +1684,7 @@ For the dataset of Apache Lucene, Config 1 gives best F1 scores of 0.397 and 0.7
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{LP - DT - 10-fold CV}
+    \captionof{table}{LP transformation method with DT classifier and 10-fold CV}
     \label{tab:fgcLPDT}
 \end{table}
 
@@ -1740,7 +1744,7 @@ For the dataset of Apache Lucene, Config 1 gives best F1 scores of 0.397 and 0.7
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{BR - RF - 10-fold CV}
+    \captionof{table}{BR transformation method with RF classifier and 10-fold CV}
     \label{tab:fgcBRRF}
 \end{table}
 
@@ -1798,7 +1802,7 @@ For the dataset of Apache Lucene, Config 1 gives best F1 scores of 0.397 and 0.7
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{LP - RF - 10-fold CV}
+    \captionof{table}{LP transformation method with RF classifier and 10-fold CV}
     \label{tab:fgcLPRF}
 \end{table}
 
