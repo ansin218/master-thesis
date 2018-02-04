@@ -963,7 +963,7 @@ When predicting rationale, MNB has an F1 score of 0.884 for Config 2 and Config 
 \end{table}
 
 \subsection{Support Vector Machine}
-When predicting rationale, MNB has an F1 score of 0.884 for Config 2 and Config 3 for the dataset of Lucene. However, Config 2, BoW + TFIDF, would be a better choice since Config 3 is nothing but Config 2 with n-gram preprocessing method, and hence Config 2 is marginally faster. Like in the case of Logistic Regression, Config 1 gives the best result when predicting non-rationale sentences with an F1 score of 0.448. The Thunderbird dataset gives an F1 score of 0.699 with Config 3 when predicting rationale but an F1 score of 0.658 when otherwise. The Ubuntu dataset, with an F1 score of 0.754 performs the best when POS tagging technique is applied whereas Config 2 and 3 get the highest F1 score of 0.697 when trying to predict non-rationale sentences. Table \ref{tab:binMNB} demonstrates the results in detail. 
+Unlike other classifiers, recall score of 1.000 was achieved while predicting rationale on Apache Lucene dataset for all configurations but Config 1. The highest F1 score attained was 0.839 using Config 2 for predicting rationale while the top score was 0.682 using Config 1 for predicting non-rationale sentences. In the case of Mozilla Thunderbird dataset, highest precision, recall and F1 scores were achieved using Config 6 for predicting rationale with the F1 score being 0.758. However, in the case of predicting non-rationale sentences on the same dataset, Config 1 performed the best for precision, recall and F1 score, with the F1 score being 0.683. On applying Config 1 to the Ubuntu dataset, top F1 scores of 0.781 and 0.681 were obtained for both. Recall of 1.000 was also achieved using all configurations but Config 1 when classifying non-rationale sentences. Table \ref{tab:binSVM} demonstrates the results. 
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -1071,21 +1071,22 @@ Both, Config 1 and Config 3, attain an F1 score of 0.883 in predicting rationale
 \end{table}
 
 \subsection{Summary}
+In this section, the best configurations and classifiers along with their respective F1 scores are summarized as shown in Table \ref{tab:summaryBC}. For Apache Lucene dataset, the best classifier happens to be LR with Config 6 and F1 score of 0.889 to predict rationale based sentences while the same classifier with Config 1 gives an F1 score of 0.591 to classify non-rationale based sentences. SVM turns out to be the best classifier to predict rationale in datasets of Mozilla Thunderbird and Ubuntu. The configurations applied are Config 6 with an F1 score of 0.758 and Config 1 with an F1 score of 0.781. To predict non-rationale based sentences on Ubuntu dataset, LR with Config 1 gives a top score of 0.758 while RF with Config 4 tops the list to predict the same with a score of 0.757 on the dataset of Mozilla Thunderbird. 
 \begin{table} %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
     \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
-    \begin{tabular}{p{4cm} p{3cm} p{3cm} p{3cm} p{3cm}}
+    \begin{tabular}{p{4cm} p{2cm} p{2cm} p{2cm} p{2cm}}
         \toprule
         \textbf{Dataset} & \textbf{Rationale} & \textbf{Config} & \textbf{Classifier} & \textbf{F1 Score}\\
         \midrule
 			Apache Lucene & with & Config 6 & LR & 0.889 \\
 			Apache Lucene & without & Config 1 & LR & 0.591 \\
 		\midrule
-			Mozilla Thunderbird & with & Config 3 & LR & 0.732 \\ 
-			Mozilla Thunderbird & without & Config 4 & SVM & 0.757 \\ 
+			Mozilla Thunderbird & with & Config 6 & SVM & 0.758 \\ 
+			Mozilla Thunderbird & without & Config 4 & RF & 0.757 \\ 
 		\midrule
-			Ubuntu & with & Config 1 & LR & 0.758 \\
+			Ubuntu & with & Config 1 & SVM & 0.781 \\
 			Ubuntu & without & Config 1 & LR & 0.758 \\
         \midrule
     \end{tabular}
@@ -1711,6 +1712,7 @@ Precision of 1.000 was achieved but in the case of decision and pro-argument onl
 \end{table}
 
 \subsection{Summary}
+This section presents the best configurations, classifiers and transformation methods along with their respective F1 scores as shown in Table \ref{tab:summaryFGC}. For the Apache Lucene dataset, MNB is the best classifier and BR is the ideal transformation method in predicting any kind of rationale element. Config 4 is suitable to classify issue and decision with F1 scores of 0.525 and 0.860, Config 1 is suitable for classifying alternative with a score of 0.768 and Config 6 is the best for any kind of arguments with scores of 0.750 and 0.664 for pro-argument and con-argument respectively. MNB turns out to be the best classifier for predicting any rationale element even in the case of Mozilla Thunderbird. BR is the most suitable transformation method for all cases except issue for which LP happens to be the best. Config 4 gives F1 scores of 0.619, 0.644 abd 0.648 for pro-argument, con-argument and decision while Config 1 gives 0.690 for issue and Config 6 gives 0.703 for alternative. A slight change is observed in the case of Ubuntu dataset where classifying decision turns out to be the best using Config 1, SVM and LP with an F1 score of 0.821. For all the other rationale elements, MNB once again turns out be the top performing classifier. LP is yet again the ideal transformation method with Config 1 and an F1 score of 0.771 to classify issue in a sentence. BR with Config 2 gives a score of 0.712 while Config 4 again is the suitable one for pro-argument and con-arugment with scores of 0.622 and 0.664 respectively. 
 \begin{table} %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
