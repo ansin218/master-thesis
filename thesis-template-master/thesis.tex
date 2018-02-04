@@ -1346,7 +1346,7 @@ For issue and alternative on Apache Lucene dataset, Config 2 returns the best pr
 \subsection{Multinomial Naive Bayes}
 
 \subsubsection{Binary Relevance}
-Config 1 has best precision for all five rationale elements when applied on the Apache Lucene dataset while Config 6 had best recall in three occasions. Config 1 has top F1 score of 0.768 for predicting alternative, Config 4 has F1 score of 0.860 to classify decision, Config 5 has F1 score of 0.525 in case of predicting issue while Config 6 have F1 scores of 0.750 and 0.664 for pro-argument and con-argument prediction. Precision on Mozilla Thunderbird dataset is the same as that on Apache Lucene dataset; Config 1 attains highest precision scores for all five rationale elements. Config 4 does its best in predicting pro-argument and decision with F1 scores of 0.619 and 0.648 while Config 6 achieves F1 scores of 0.673, 0.703 and 0.644 with respect to issue, alternative and con-argument respectively. In case of the Ubuntu dataset, Config 4 gives the best recall while predicting all five rationale elements. With F1 scores of 0.749, 0.713 and 0.784 in the case of issue, alternative and decision, Config 2 performs the best while Config 4 does the best with scores of 0.622 and 0.664 for predicting pro-argument and con-argument. Table \ref{tab:fgcBRMNB} shows all the values in detail.
+Config 1 has best precision for all five rationale elements when applied on the Apache Lucene dataset while Config 6 had best recall in three occasions. Config 1 has top F1 score of 0.768 for predicting alternative, Config 4 has F1 score of 0.860 to classify decision, Config 4 has F1 score of 0.525 in case of predicting issue while Config 6 have F1 scores of 0.750 and 0.664 for pro-argument and con-argument prediction. Precision on Mozilla Thunderbird dataset is the same as that on Apache Lucene dataset; Config 1 attains highest precision scores for all five rationale elements. Config 4 does its best in predicting pro-argument and decision with F1 scores of 0.619 and 0.648 while Config 6 achieves F1 scores of 0.673, 0.703 and 0.644 with respect to issue, alternative and con-argument respectively. In case of the Ubuntu dataset, Config 4 gives the best recall while predicting all five rationale elements. With F1 scores of 0.749, 0.713 and 0.784 in the case of issue, alternative and decision, Config 2 performs the best while Config 4 does the best with scores of 0.622 and 0.664 for predicting pro-argument and con-argument. Table \ref{tab:fgcBRMNB} shows all the values in detail.
 
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
@@ -1379,14 +1379,14 @@ Config 1 has best precision for all five rationale elements when applied on the 
         \multirow{-5}{*}{\begin{minipage}{4cm}{\scriptsize  Config 3 \\  Config 3 \\ Config 3 \\Config 3  \\ Config 3 } \end{minipage}}
         & decision      & 0.606 & 0.758 & 0.845 & 0.293 & 0.425 & 0.592 & 0.724 & 0.650 & 0.784 \\
         \midrule
-        & issue         & 0.303 & \textbf{0.371} & 0.525 & 0.453 & 0.589 & 0.668 & 0.491 & \textbf{0.710} & 0.734 \\
+        & issue         & 0.303 & \textbf{0.371} & \textbf{0.525} & 0.453 & 0.589 & 0.668 & 0.491 & \textbf{0.710} & 0.734 \\
         & alternative   & 0.574 & 0.777 & 0.739 & 0.393 & 0.605 & 0.699 & 0.342 & \textbf{0.637} & 0.704 \\
         & pro-argument  & 0.450 & 0.689 & 0.723 & 0.216 & \textbf{0.482} & \textbf{0.619} & 0.187 & \textbf{0.492} & \textbf{0.622} \\
         & con-argument  & 0.229 & 0.461 & 0.584 & 0.219 & 0.465 & 0.605 & 0.172 & \textbf{0.546} & \textbf{0.664} \\
         \multirow{-5}{*}{\begin{minipage}{4cm}{\scriptsize  Config 4 \\  Config 4 \\ Config 4 \\Config 4  \\ Config 4 } \end{minipage}}
         & decision      & 0.471 & \textbf{0.812} & \textbf{0.860} & 0.145 & \textbf{0.500} & \textbf{0.648} & 0.576 & \textbf{0.581} & 0.730 \\
         \midrule
-        & issue         & 0.303 & 0.371 & \textbf{0.525} & 0.453 & 0.589 & 0.668 & 0.491 & 0.710 & 0.734 \\
+        & issue         & 0.303 & 0.371 & 0.525 & 0.453 & 0.589 & 0.668 & 0.491 & 0.710 & 0.734 \\
         & alternative   & 0.574 & 0.777 & 0.739 & 0.393 & 0.605 & 0.699 & 0.342 & 0.637 & 0.704 \\
         & pro-argument  & 0.450 & 0.689 & 0.723 & 0.216 & 0.482 & 0.619 & 0.187 & 0.492 & 0.622 \\
         & con-argument  & 0.229 & 0.461 & 0.584 & 0.219 & 0.465 & 0.605 & 0.172 & 0.546 & 0.664 \\
@@ -1407,7 +1407,7 @@ Config 1 has best precision for all five rationale elements when applied on the 
 \end{table}
 
 \subsubsection{Label Powerset}
-For the Apache Lucene dataset, top recall and F1 scores are achieved using Config 2 for issue, pro-argument and con-argument; the F1 scores are 0.430, 0.712 and 0.604 respectively. While Config 6 helps attaining an F1 score of 0.750 in predicting alternative, Config 4 helps in predicting decision with an F1 score of 0.842. Unlike previous instances, Mozilla Thunderbird has F1 scores of 0.690 in applying Config 1 to predict issue, 0.683 and 0.602 in applying Config 2 to predict alternative and con-argument, 0.610 with Config 4 and 0.530 with Config 6 to predict decision and alternative. Config 1 and Config 2 also tops for similar rationale elements in the case of Ubuntu dataset with scores of 0.771, 0.706 and 0.552 for issue, alternative and con-argument. Config 3 predicts decision the best with an F1 score of 0.733 while Config 5 classified pro-argument well with an F1 score of 0.556. Table \ref{tab:fgcLPMNB} gives a summary of all the scores in detail.
+For the Apache Lucene dataset, top recall and F1 scores are achieved using Config 2 for issue, pro-argument and con-argument; the F1 scores are 0.430, 0.712 and 0.604 respectively. While Config 6 helps attaining an F1 score of 0.750 in predicting alternative, Config 4 helps in predicting decision with an F1 score of 0.842. Unlike previous instances, Mozilla Thunderbird has F1 scores of 0.690 in applying Config 1 to predict issue, 0.683, 0.524 and 0.602 in applying Config 2 to predict alternative, pro-argument and con-argument, 0.610 with Config 4 to predict decision. Config 1 and Config 2 also tops for similar rationale elements in the case of Ubuntu dataset with scores of 0.771, 0.706 and 0.552 for issue, alternative and con-argument. Config 3 predicts decision the best with an F1 score of 0.733 while Config 5 classified pro-argument well with an F1 score of 0.556. Table \ref{tab:fgcLPMNB} gives a summary of all the scores in detail.
 
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
@@ -1428,7 +1428,7 @@ For the Apache Lucene dataset, top recall and F1 scores are achieved using Confi
         \midrule
         & issue         & 0.379 & \textbf{0.278} & \textbf{0.430} & 0.487 & 0.546 & 0.654 & 0.563 & 0.636 & 0.723 \\
         & alternative   & 0.592 & 0.705 & 0.728 & 0.373 & \textbf{0.587} & \textbf{0.683} & 0.384 & \textbf{0.615} & \textbf{0.706} \\
-        & pro-argument  & 0.508 & \textbf{0.624} & \textbf{0.712} & 0.214 & \textbf{0.371} & 0.524 & 0.250 & 0.381 & 0.538 \\
+        & pro-argument  & 0.508 & \textbf{0.624} & \textbf{0.712} & 0.214 & \textbf{0.371} & \textbf{0.524} & 0.250 & 0.381 & 0.538 \\
         & con-argument  & 0.290 & \textbf{0.468} & \textbf{0.604} & 0.240 & \textbf{0.456} & \textbf{0.602} & 0.222 & 0.395 & \textbf{0.552} \\
         \multirow{-5}{*}{\begin{minipage}{4cm}{\scriptsize  Config 2 \\  Config 2 \\ Config 2 \\Config 2  \\ Config 2 } \end{minipage}}
         & decision      & 0.626 & 0.734 & 0.832 & 0.224 & 0.438 & 0.601 & 0.773 & \textbf{0.581} & 0.733 \\
@@ -1455,7 +1455,7 @@ For the Apache Lucene dataset, top recall and F1 scores are achieved using Confi
         & decision      & 0.561 & 0.758 & 0.842 & 0.185 & 0.450 & 0.610 & 0.593 & 0.573 & 0.724 \\
         \midrule
         & issue         & \textbf{0.383} & 0.239 & 0.383 & 0.490 & 0.581 & 0.676 & 0.534 & 0.734 & 0.761 \\
-        & alternative   & 0.592 & \textbf{0.773} & \textbf{0.750} & 0.516 & 0.370 & \textbf{0.530} & 0.549 & 0.371 & 0.533 \\
+        & alternative   & 0.592 & \textbf{0.773} & \textbf{0.750} & 0.516 & 0.370 & 0.530 & 0.549 & 0.371 & 0.533 \\
         & pro-argument  & 0.573 & 0.564 & 0.687 & 0.316 & 0.112 & 0.200 & \textbf{0.447} & 0.090 & 0.165 \\
         & con-argument  & \textbf{0.455} & 0.299 & 0.456 & \textbf{0.423} & 0.193 & 0.322 & 0.400 & 0.092 & 0.169 \\
         \multirow{-5}{*}{\begin{minipage}{4cm}{\scriptsize  Config 6 \\  Config 6 \\ Config 6 \\Config 6  \\ Config 6 } \end{minipage}}
@@ -1839,21 +1839,27 @@ Precision of 1.000 was achieved but in the case of decision and pro-argument onl
     \centering
     \begin{adjustbox}{max width=\columnwidth}
     \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
-    \begin{tabular}{p{4cm} p{3cm} p{3cm} p{3cm} p{3cm}}
+    \begin{tabular}{p{4cm} p{3cm} p{2cm} p{2cm} p{3cm} p{3cm}}
         \toprule
-        \textbf{Dataset} & \textbf{Rationale} & \textbf{Config} & \textbf{Classifier} & \textbf{F1 Score}\\
+        \textbf{Dataset} & \textbf{Rationale} & \textbf{Config} & \textbf{Classifier} & \textbf{Transformation} & \textbf{F1 Score}\\
         \midrule
-			Apache Lucene & with & Config 6 & LR & 0.889 \\
-			Apache Lucene & without & Config 1 & LR & 0.591 \\
-			Apache Lucene & without & Config 1 & LR & 0.591 \\
-			Apache Lucene & without & Config 1 & LR & 0.591 \\
-			Apache Lucene & without & Config 1 & LR & 0.591 \\
+			Apache Lucene & issue & Config 4 & MNB & BR & 0.525 \\
+			Apache Lucene & alternative & Config 1 & MNB & BR & 0.768 \\
+			Apache Lucene & pro-argument & Config 6 & MNB & BR & 0.750 \\
+			Apache Lucene & con-argument & Config 6 & MNB & BR & 0.664 \\
+			Apache Lucene & decision & Config 4 & MNB & BR & 0.860 \\
 		\midrule
-			Mozilla Thunderbird & with & Config 3 & LR & 0.732 \\ 
-			Mozilla Thunderbird & without & Config 4 & SVM & 0.757 \\ 
+			Mozilla Thunderbird & issue & Config 1 & MNB & LP & 0.690 \\ 
+			Mozilla Thunderbird & alternative & Config 6 & MNB & BR & 0.703 \\ 
+			Mozilla Thunderbird & pro-argument & Config 4 & MNB & BR & 0.619 \\ 
+			Mozilla Thunderbird & con-argument & Config 4 & MNB & BR & 0.644 \\ 			
+			Mozilla Thunderbird & decision & Config 4 & MNB & BR & 0.648 \\ 
 		\midrule
-			Ubuntu & with & Config 1 & LR & 0.758 \\
-			Ubuntu & without & Config 1 & LR & 0.758 \\
+			Ubuntu & issue & Config 1 & MNB & LP & 0.771 \\
+			Ubuntu & alternative & Config 2 & MNB & BR & 0.712 \\
+			Ubuntu & pro-argument & Config 4 & MNB & BR & 0.622 \\
+			Ubuntu & con-argument & Config 4 & MNB & BR & 0.664 \\
+			Ubuntu & decision & Config 1 & SVM & LP & 0.821 \\
         \midrule
     \end{tabular}
     \end{adjustbox}
