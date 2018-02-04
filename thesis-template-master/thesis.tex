@@ -1690,6 +1690,8 @@ Config 2 gives an F1 score of 0.350 for classiying issue on the dataset of Apach
 
 \subsection{Random Forest}
 
+\subsubsection{Binary Relevance}
+For all three datasets, precision of 1.000 was achieved using different configurations for rationale elements such as issue, and pro-argument. In the case of Lucene dataset, the best recall scores were all attained using Config 4. In addition, Config 4 also helped in obtaining the best F1 scores for all elements but alternative which was obtained using Config 3. The scores are 0.289, 0.725, 0.653, 0.323 and 0.775 for issue, alternative, pro-argument, con-argument and decision. In the case of Mozilla Thunderbird dataset, top F1 scores of 0.474, 0.500 and 0.243 for issue, alternative and pro-argument were achieved using Config 4. However, for classifying decision and con-argument, Config 2 and Config 3 performed the best with scores of 0.462 and 0.286. For the Ubuntu dataset, for all rationale elements, top F1 scores were achieved using Config 4 with the scores being 0.643, 0.470, 0.217, 0.292 and 0.761 for issue, alternative, pro-argument, con-argument and decision. Table \ref{tab:fgcBRRF} presents all the values in detail.
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -1748,6 +1750,8 @@ Config 2 gives an F1 score of 0.350 for classiying issue on the dataset of Apach
     \label{tab:fgcBRRF}
 \end{table}
 
+\subsubsection{Label Powerset}
+Precision of 1.000 was achieved but in the case of decision and pro-argument only for Mozilla Thunderbird and Ubuntu dataset with Config 1 and Config 2 respectively. Config 1 helps achieving the best F1 score of 0.775 and 0.357 in the case of Apache Lucene dataset. However, Config 4 performs the best for other rationale elements with scores of 0.363, 0.603 and 0.807 for issue, pro-argument and decision. For Mozilla Thunderbird dataset, once again Config 1 does well with F1 scores of 0.467 and 0.491 but for issue and decision unlike in the case of Apache Lucene dataset. Similarly, Config 4 performs the best for all the other rationale elements with scores of 0.455, 0.263 and 0.317 for alternative, pro-argument and con-argument. In the case of Ubuntu dataset, Config 2 helps classifying issue the best with an F1 score of 0.662 while Config 4 has scores of 0.432, 0.250, 0.301 and 0.774 for alternative, pro-argument, con-argument and decision respectively. Table \ref{tab:fgcLPRF} presents all the metrics and its values in detail.
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
