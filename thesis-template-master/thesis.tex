@@ -1858,6 +1858,9 @@ Ubuntu is an operating system and the most spoken topics were predictably about 
 \end{table} 
 
 \section{Linking}
+In this section, the results of linking comments from ITS and messages from IRC are analysed. Keywords were extracted using topic modeling applied with Config 5 from comments of ITS as well as messages of IRC. The keywords of each comment from ITS and each message of IRC were compared and checked for atleast fifty percent similarity using a string matching library. Table \ref{tab:topicLinking} shows the results of how many messages and comments were linked for each dataset. 
+\newline \newline
+Each of the three datasets had 100 issues and 2,500 IRC messages. However, since most of the IRC messages did not have any rationale and predominantly consisted of greetings and salutions when introspected manually, only those with rationale were considered to perform the experiment. Around 83 issues out of 100 spanning 255 comments could be linked to 316 IRC messages for the dataset of Apache Lucene. As high as 100 percent similarity was attained. For the Mozilla Thunderbird dataset, 81 issues spanning 209 comments were linked to 143 IRC messages; almost half as compared to that of messages from Apache Lucene or Ubuntu. In addition, the highest similarity attained was 78 percent. Ubuntu had the maximum number of issues with 94 of them spanning 318 comments linked to 318 IRC messages. However, the highest similarity achieved on this dataset was only 71 percent, which was the least when compared to the other datasets of Apache Lucene and Mozilla Thunderbird. 
 \begin{table} %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
