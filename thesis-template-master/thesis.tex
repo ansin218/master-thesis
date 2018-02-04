@@ -1194,6 +1194,30 @@ Both, Config 1 and Config 3, attain an F1 score of 0.883 in predicting rationale
     \label{tab:binRF}
 \end{table}
 
+\subsection{Summary}
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{4cm} p{3cm} p{3cm} p{3cm} p{3cm}}
+        \toprule
+        \textbf{Dataset} & \textbf{Rationale} & \textbf{Config} & \textbf{Classifier} & \textbf{F1 Score}\\
+        \midrule
+			Apache Lucene & with & Config 6 & LR & 0.889 \\
+			Apache Lucene & without & Config 1 & LR & 0.591 \\
+		\midrule
+			Mozilla Thunderbird & with & Config 3 & LR & 0.732 \\ 
+			Mozilla Thunderbird & without & Config 4 & SVM & 0.757 \\ 
+		\midrule
+			Ubuntu & with & Config 1 & LR & 0.758 \\
+			Ubuntu & without & Config 1 & LR & 0.758 \\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Summary of binary classification}
+    \label{tab:summaryBC}
+\end{table}
+
 \section{Fine Grained Classification}
 This section presents the results of the fine grained classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames}, transformation methods from Section 2.4.3 and the algorithms from Section 2.4.4. Unlike  binary classification, all three datasets have used trigram tokenization. The scikit-learn library does not support Binary Relevance and Label Transformation methods and hence scikit-multilearn, a library specific for performing multi-class and multi-label classifications was used. However, the results were not impressive when compared to MEKA. In addition, a lot of classifiers along with certain configurations returned a value of 0. Therefore, the fine-grained classifications were perfomed using MEKA exclusively. 
 
@@ -1810,7 +1834,32 @@ Precision of 1.000 was achieved but in the case of decision and pro-argument onl
     \label{tab:fgcLPRF}
 \end{table}
 
-
+\subsection{Summary}
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{4cm} p{3cm} p{3cm} p{3cm} p{3cm}}
+        \toprule
+        \textbf{Dataset} & \textbf{Rationale} & \textbf{Config} & \textbf{Classifier} & \textbf{F1 Score}\\
+        \midrule
+			Apache Lucene & with & Config 6 & LR & 0.889 \\
+			Apache Lucene & without & Config 1 & LR & 0.591 \\
+			Apache Lucene & without & Config 1 & LR & 0.591 \\
+			Apache Lucene & without & Config 1 & LR & 0.591 \\
+			Apache Lucene & without & Config 1 & LR & 0.591 \\
+		\midrule
+			Mozilla Thunderbird & with & Config 3 & LR & 0.732 \\ 
+			Mozilla Thunderbird & without & Config 4 & SVM & 0.757 \\ 
+		\midrule
+			Ubuntu & with & Config 1 & LR & 0.758 \\
+			Ubuntu & without & Config 1 & LR & 0.758 \\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Summary of fine grained classification}
+    \label{tab:summaryFGC}
+\end{table}
 
 
 %------- chapter 6 -------
