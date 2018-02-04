@@ -1199,6 +1199,8 @@ This section presents the results of the fine grained classification experiments
 
 \subsection{Logistic Regression}
 
+\subsubsection{Binary Relevance}
+When BR transformation method is applied with LR classifier on the dataset of Apache Lucene, Config 2 performs the best to predict decision element in terms of precision, recall and F1 score with the numbers being 0.879, 0.594 and 0.743 respectively. Config 4, similarly, has highest scores in all three departments when predicting pro-argument in a sentence with scores of 0.734, 0.370 and 0.535 respectively. However, when POS tagging configuration, Config 6, is applied, the best F1 scores for predicting issue, alternative and decision is achieved with scores of 0.457, 0.666 and 0.480 respectively. For the Mozilla Thunderbird dataset, top F1 scores were observed in three instances of classifying issue, alternative and decision with scores of 0.488, 0.410 and 0.416 when using Config 1. Additionally, Config 3 had the best F1 score of 0.512 to classify con-argument while pro-argument had an F1 score of 0.478 with Config 6. The best precision and recall scores were scattered across different configurations for all three datasets. Issue and decision had F1 scores of 0.582 and 0.748 when Config 2 was applied on the Ubuntu dataset; pro-argument and con-argument had scores of 0.471 and 0.297 when Config 3 was used and Config 6 provided an F1 score of 0.556 when classifying alternative related sentences. Table \ref{tab:fgcBRLR} presents the results in detail.
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -1253,10 +1255,12 @@ This section presents the results of the fine grained classification experiments
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{Binary Relevance with Logistic Regression and 10-fold Cross Validation}
+    \captionof{table}{BR transformation method with LR classifier and 10-fold CV}
     \label{tab:fgcBRLR}
 \end{table}
 
+\subsubsection{Label Powerset}
+For issue and alternative on Apache Lucene dataset, Config 2 returns the best precision of 0.371 and 0.657 as well as F1 scores of 0.430 and 0.736. With regards to classifying decision, recall of 0.676 and F1 score of 0.800 were achieved using Config 4. Config 6 topped all three metrics of precision, recall and F1 score when predicting pro-argument and con-argument with the F1 scores being 0.682 and 0.513. In case of the Mozilla Thunderbird dataset, Config 1 does the best in precision, recall as well as F1 when predicting alternative in a sentence with F1 score of 0.522. In addition, the same configuration also tops with an F1 score of 0.616 in case of classifying issues correctly. However, for other three rational elements, pro-argument, con-argument and decision, Config 2 gets the best F1 scores of 0.314, 0.352 and 0.490 respectively. Config 2 also attains top recall scores for all elements but alternative. In addition, in case of Ubuntu dataset, Config 2 yet again achieves best F1 scores on three occasions of issue, con-argument and decision with the numbers being 0.692, 0.431 and 0.772 respectively. Config 1 with an F1 score of 0.568 and Config 4 with an F1 score of 0.416 perform well in cases of alternative and pro-argument. Table \ref{tab:fgcLPLR} demonstrates the results in detail.
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -1311,12 +1315,12 @@ This section presents the results of the fine grained classification experiments
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{LP - LR - 10-fold CV}
+    \captionof{table}{LR transformation method with LR classifier and 10-fold CV}
     \label{tab:fgcLPLR}
 \end{table}
 
 \subsection{Multinomial Naive Bayes}
-
+\subsubsection{Binary Relevance}
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
