@@ -1445,6 +1445,8 @@ For the Apache Lucene dataset, top recall and F1 scores are achieved using Confi
 
 \subsection{Support Vector Machine}
 
+\subsubsection{Binary Relevance}
+Config 2 helps attaining top scores of precision in all rationale elements but alternative when applied on Apache Lucene dataset. However, Config 1 provides top scores for recall as well as F1 for all five rationale elements on the same dataset. The F1 scores are 0.462, 0.742, 0.708, 0.553 and 0.812 for issue, alternative, pro-argument, con.argument and decision respectively. The F1 scores are the highest even in the case of Mozilla Thunderbird and Ubuntu dataset for all rationale elements except decision. The scores are 0.688, 0.649, 0.441 and 0.526 for issue, alternative, pro-argument and con-argument in the case of Mozilla Thunderbird dataset. Similarly, the scores are 0.740, 0.666, 0.429 and 0.447 in the case of Ubuntu dataset. However, Config 6 helps in classifying decision elements with scores of 0.504 and 0.809 on Mozilla Thunderbird and Ubuntu dataset respectively. Table \ref{tab:fgcBRSVM} presents the values of all the metrics in detail.
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -1499,9 +1501,12 @@ For the Apache Lucene dataset, top recall and F1 scores are achieved using Confi
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{BR - SVM - 10-fold CV}
+    \captionof{table}{BR transformation method with SVM classifier and 10-fold CV}
     \label{tab:fgcBRSVM}
 \end{table}
+
+\subsubsection{Label Powerset}
+For the dataset of Apache Lucene, Config 1 gives best F1 scores of 0.397 and 0.760 for classifying issue and alternative, Config 6 gives scores of 0.690 and 0.563 for classifying pro-argument and con-argument, and Config 4 gives a top score of 0.790 for predicting decision element in a sentence. However, in the case of datasets of Mozilla Thunderbird and Ubuntu, the topmost recall and F1 scores are achieved using Config 1. The F1 scores for issue, alternative, pro-argument, con-argument and decision are 0.637, 0.645, 0.434, 0.500 and 0.517 for Mozilla Thunderbird while Ubuntu has scores of 0.693, 0.653, 0.435, 0.507 and 0.821. Table \ref{tab:fgcLPSVM} presents the summary of all the metrics and its values.
 
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
@@ -1557,7 +1562,7 @@ For the Apache Lucene dataset, top recall and F1 scores are achieved using Confi
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{LP - SVM - 10-fold CV}
+    \captionof{table}{LP transformation method with SVM classifier and 10-fold CV}
     \label{tab:fgcLPSVM}
 \end{table}
 
