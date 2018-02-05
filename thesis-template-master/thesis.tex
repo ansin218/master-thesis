@@ -710,6 +710,13 @@ The IRC messages dataset has been scraped by Nonnenmacher \cite{Nonnenmacher2017
 
 This chapter dives into the procedure of manual content analysis and the formation of ground truth for machine learning experiments to be carried out later. In addition, this chapter also gives insights on how the sample data for the experiements to be performed were obtained from the initial raw dataset. 
 
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=12cm]{frequency-object-diagram}
+    \caption{Approach to check rationale frequency using UML object diagram}
+    \label{fig:frequencyModel}
+\end{figure}
+
 \section{Ground Truth Dataset}
 An imperative step after performing machine learning experiements is to measure characteristics such as accuracy, precision, recall and F1 score. This, in turn, means one needs to have a reliable dataset for ground truth. Messages from the issue trackers have no pre-defined structure as to whether they contain any kind of rationale or not. To have similar understanding, be on the same page and reduce the number of disagreements later, both the annotators randomly went through a few sentences. The annotators marked rationale for each of them if applicable, classified them appropriately, and shared their perspectives before concluding on mutual agreements as to how to go about in the main manual content analysis experiment.  Some of the examples are mentioned in detail in the coding guide for manual content analysis. There were two kinds of classification performed in this stage: binary and multi-class classification. Binary classification was done to check if the sentence contains any kind of rationale or not. Multi-class classification was done to classify the sentence, if rationale is found, into five categories: issue, alternatives, pro-arguments, con-arguments and decision, which are explained as follows.
 
@@ -904,6 +911,13 @@ Besides binary and fine grained classification, the results of topic modeling ar
 
 \section{Binary Classification}
 This section presents the results of the binary classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames} and the algorithms from Section 2.4.4. It is to be noted that in the case of Lucene dataset, unigram results have been presented while trigram results in the cases of Thunderbird and Ubuntu have been shown, since these combinations have given the best results. The experiments have been carried out using scikit-learn Python library. For POS tagging mechanism, Spacy, another popular NLP library was used. 
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=14cm]{binary-classification}
+    \caption{Binary classification illustrated using UML activity diagram}
+    \label{fig:binaryClass}
+\end{figure}
 
 \subsection{Logistic Regression}
 In case of Lucene dataset, LR does its best to predict rationale when Config 6, that is, POS Tagging with unigram is applied with an F1 score of 0.889. However, when the contrary is to be predicted, the most basic configuration of BoW method seems to be the best with an F1 score of 0.591. Thunderbird and Ubuntu datasets, when fed with LR classifier, shows similar results when non-rationale sentences are to be predicted with the basic configuration, Config 1, giving the most impressive results with F1 scores of 0.732 and 0.758 respectively. However, when predicting rationale, Config 3 with trigram gives F1 scores of 0.732 and 0.758 respectively. An overall observation of LR across all three datasets also reveals that the classifier performs better in predicting rationale than when predicting the opposite. Table \ref{tab:binLR} demonstrates the results in detail. 
@@ -1114,6 +1128,13 @@ In this section, the best configurations and classifiers along with their respec
 
 \section{Fine Grained Classification}
 This section presents the results of the fine grained classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames}, transformation methods from Section 2.4.3 and the algorithms from Section 2.4.4. Unlike  binary classification, all three datasets have used trigram tokenization. The scikit-learn library does not support Binary Relevance and Label Transformation methods and hence scikit-multilearn, a library specific for performing multi-class and multi-label classifications was used. However, the results were not impressive when compared to MEKA. In addition, a lot of classifiers along with certain configurations returned a value of 0. Therefore, the fine-grained classifications were perfomed using MEKA exclusively. 
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=14cm]{fine-grained-classification}
+    \caption{Fine grained classification illustrated using UML activity diagram}
+    \label{fig:finegrainedClass}
+\end{figure}
 
 \subsection{Logistic Regression}
 
@@ -1765,6 +1786,13 @@ This section presents the best configurations, classifiers and transformation me
 \section{Topic Modeling}
 In this section, the results of topic modeling applied on each of the dataset of issue trackers, namely, Apache Lucene, Mozilla Thunderbird and Ubuntu are discussed in detail. The experiments were conducted using Gensim libary for Python. The best results were obtained using Config 5. The optimum number of topics to be generated was experimented with values of 5, 10, 15 and 20. While the number of topics when limited to 5 gave too less insights, 10, 15 and 20 seemed ideal. However, the optimum number was 10 compared to 15 or 20 since they all produced similar results but when the number of topics to be generated is lower, the program gives results much faster.
 
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=14cm]{topic-modeling}
+    \caption{Topic modeling using LDA illustrated using UML activity diagram}
+    \label{fig:topicmodelClass}
+\end{figure}
+
 \subsubsection{Apache Lucene} 
 Given that Apache Lucene is an information retrieval library, majority of the topics revolved around indexing, parsing and file formats which form the backbone of information retrieval mechanisms. Bytes Reference\footnote{\url{https://lucene.apache.org/core/4_2_0/core/org/apache/lucene/util/BytesRef.html}}, or BytesRef, is a Java class used by Lucene to represent terms using a particular character encoding format such as UTF8. Lucene 7.0\footnote{\url{https://lucene.apache.org/core/7_1_0/benchmark/org/apache/lucene/benchmark/byTask/package-summary.html}} is an indexing file format used by Lucene itself. Another topic ByTask Benchmarking\footnote{\url{https://lucene.apache.org/core/7_1_0/benchmark/org/apache/lucene/benchmark/byTask/package-summary.html}} revolves around a package that provides mechanisms to perform task based benchmarking of Lucene. Pulsing\footnote{\url{https://lucene.apache.org/core/4_2_0/codecs/org/apache/lucene/codecs/pulsing/package-summary.html}}, the fourth topic, is a technique that helps inlining terms of low frequency and its pertinent postings into terms dictionary. Compared to others, one of the most unique topics encountered was that of Robert Muir\footnote{\url{https://github.com/rmuir}}, an active developer of Apache Lucene. The sixth topic, Nexus Indexer\footnote{\url{https://repository.sonatype.org/nexus-indexer-lucene-plugin/default/docs/index.html}} is an API based on REST model to provide access through a fixed set of operations to a set of resources. One of the most important topics, presumably predictable, was that of Query Parser\footnote{\url{http://lucene.apache.org/core/6_6_2/queryparser/org/apache/lucene/queryparser/classic/QueryParser.html}}. The eighth and ninth topics deal with factory constructors\footnote{\url{https://lucene.apache.org/core/6_1_0/analyzers-common/org/apache/lucene/analysis/util/AbstractAnalysisFactory.html}} required by Lucene whereas the final topic focuses on spatial search using parameters such as latitude and longitude\footnote{\url{https://lucene.apache.org/solr/guide/6_6/spatial-search.html}}. Table \ref{tab:tmLucene} presents all the topics, its keywords and probabilities associated with it. 
 
@@ -1895,6 +1923,13 @@ Each of the three datasets had 100 issues and 2,500 IRC messages. However, since
     \captionof{table}{Linking based on similarity}
     \label{tab:topicLinking}
 \end{table}
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=14cm]{topic-linking}
+    \caption{Approach to link issues to IRC messages illustrated using UML activity diagram}
+    \label{fig:topiclinkingClass}
+\end{figure}
 
 %------- chapter 6 -------
 
