@@ -1903,27 +1903,29 @@ The third hypothesis RH1 can be endorsed by observing the results after having l
 
 \section{Limitations}
 During different phases of this thesis, various challenges and limitations were encountered. In this section, these limitations and how they were addressed and overcome are discussed. 
-\bigbreak
+\newline \newline
 The selection of the OSS projects were questionable, initially. Commercial projects could have been chosen but OSS ones were opted for based on certain reasons. To eliminate bias towards one particular field of software engineering, projects from different domains were chosen. In addition, it was required to have projects that have been actively developed for a long time, typically more than five years, and has a vibrant community of developers and users even today. In addition, for the comments from ITS to be linked to messages from IRC, same projects with identical time frame had to be chosen. In this case, datasets for messages from IRC were already readily available for the three selected OSS projects; thereby also leading to significant savings of time and effort. 
-\bigbreak
+\newline \newline
 While scraping, another issue encountered was that the layout of HTML, the names of the classes and its attributes were not consistent and kept changing over the course of entire period for which the data had to be scraped. Hence, every time the scraper failed to gather data, the reason behind it was introspected. On certain occasions, there were downlinks for which nothing could be done but on other occasions, the code for scraping was modified to accommodate any changes in the HTML code. In addition, since requests to fetch data were frequently made and the possibility of getting blacklisted was looming, fake user agents were generated every time while making requests in order to overcome the aforementioned limitation. 
-\bigbreak
+\newline \newline
 In the manual labeling phase, a conundrum cropped up about how large should the sample size be in order for the ML algorithms to be trained. However, it turns out the sample size chosen seemed to be sufficient given that similar projects more or less had similar number \cite{Alkadhi2017}, \cite{Nonnenmacher2017}. Additionally, a healthy proportion of sentences contained rationale in them thereby eliminating the need for deploying balancing techniques.  
-\bigbreak
+\newline \newline
 Manual labeling is a task that is prone to human errors. Given the nature of the project, some messages were abstract and difficult to comprehend. Keeping the nature of project aside, language skills may also vary from human to human as they could interpret and perceive a given statement in different ways with valid reasoning and arguments to justify their stand. However, in order to overcome this scenario, a labeling guide was created prior to beginning the labeling task. In addition, two annotators were involved in this process. Despite following the labeling guide, there were certain disagreements that were discussed and resolved in person constructively and amicably to come to a mutual conclusion on all the labels. 
-\bigbreak
+\newline \newline
 During the automatic classification phase, it was difficult to guess which preprocessing methods and classifiers would give the best results. Hence, more than 400 experiments were carried out using different combinations to arrive at the best results. Another problem faced during this task was that, scikit-learn and scikit-multilearn yielded poor results for fine grained classification compared to binary classification and therefore, MEKA was chosen to perform the experiments in the case of fine grained classification. This problem was encountered in the early stages of fine grained classification. Additionally, MEKA gave much better results compared to scikit-learn or scikit-multilearn. 
-\bigbreak
+\newline \newline
 MEKA also had its share of limitations. For example, MEKA lacked inbuilt preprocessing methods for POS tagging. Hence, the data was preprocessed with POS tagging initially before being fed into MEKA for classification. The data was preprocessed using a Python library named SpaCy which has been said to perform better than NLTK, another popular counterpart to perform POS tagging. 
-\bigbreak
+\newline \newline
 Besides binary and fine grained classification, carrying out LDA based experiments to unearth topics also threw certain challenges. Stopwords used from the Python libraries did not suffice as such and hence custom stopword lists had to be created to extract more meaningful topics. Single alphabets and numbers were added to stopword lists. In addition, commonly occurring terms in the domain of software engineering such as \textit{branch, merge, bugs, patches, and problems}, were also added to create custom stopword lists. 
-\bigbreak
+\newline \newline
 To compare similarity between keywords of comments from ITS and messages from IRC, a string matching approach had to be employed. Keywords were extracted using LDA and custom stopords lists mentioned earlier were used here as well. A Python library, fuzzywuzzy, based on Levenshtein distance function seemed to have been the most appropriate one to achieve this goal. The minimum threshold for similarity to match an issue to an IRC message is debatable. However, choosing a threshold of 50\% seemed ideal considering that two of the projects were able to attain highest similarity in the 70-80\% range. 
 
 \section{Conclusion}
-
-\textit{Note: Recap shortly which problem you solved in your thesis and discuss your \textbf{contributions} here.}
-
+The means to communicate for developers of various OSS projects are many. While face-to-face communications do occur, considering OSS projects have developers scattered across the world, numerous digital media such as mailing lists, IRCs and issue trackers become indispensible for discussions and extracting rationale. This thesis focuses on capturing rationale from the comments of issue trackers of three OSS projects. Using topic modeling it was found that developers discussed a large range of issues pertaining to their projects. In addition, a large percentage of rationale, more than 50\% across all projects, were recovered and most of them revolved around issues, alternatives and positive arguments to support them. There were also a good amount rationale pertaining to con-arguments and decisions taking although the number was on the lower side compared to other three rationale elements mentioned earlier. 
+\newline \newline
+Manual annotation of more than 8,000 sentences is a time consuming task and is thus not a feasible option when there are large datasets to be examined. With advancement of technology, both software and hardware wise, automatic extraction of rationale using ML algorithms seems to be an ideal choice. Validation techniques such as k-fold cross validation also gives insights about how well the classifier has been performing and will perform on unseen data. 
+\newline \newline
+Besides capturing rationale, keywords extracted from comments were also linked to numerous IRC messages which shows that similar topics are usually discussed on different communication platforms. Hence, rationale can also be captured from other communication platforms to document more rich information about similar topics. This thesis is therefore a valuable contribution in the domain of mining rationale from developers present on different communication platforms. 
 \section{Future Work}
 
 \textit{Note: Tell us the next steps  (that you would do if you have more time. be creative, visionary and open-minded here.}
