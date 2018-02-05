@@ -163,6 +163,12 @@ This thesis is divided into three main phases: data collection, content analysis
 In the content analysis phase, two annotators, the author and the advisor, considered the dataset obtained in the previous phase mentioned in paragraph earlier. They had to label all the messages whether they contained rationale or not, and if they did contain, the annotators had to further specify the element present in the rationale such as issue, alternative, pro-argument, con-argument and decision. In order to perform this step, Neuendorf's \cite{Neuendorf2017a} content analysis technique was followed. First, a labeling guide, mentioned in detail in Appendix A, was prepared. This labeling guide provided understanding to both the annotators to reducde th disagreements significantly since they would now know which one to label as what. Second, disagreements, if any, were sorted out between the annotators. Finally, the results of this stage served as ground truth training set for the automatic classification phase.  
 \bigbreak
 In the final phase of automatic classification, the ground truth obtained from the previous phase was used for training the various machine learning algorithms. Before running the classifier models, numerous data preprocessing methods such as bag-of-words, n-gram tokenization and parts-of-speech tagging were applied. The dataset was divided into training set and testing set by the virtue of performing k-fold cross validation to test the accuracy of the model and retrieve the best performing ones. The classifier models were capable of performing both kinds of classification, binary as well as fine-grained classification. The results were later studied and insights were gained to validate the research hypotheses formulated earlier.
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=15cm]{methodology}
+    \caption{Thesis methodology explained using UML activity diagram}
+    \label{fig:thesisMethodology}
+\end{figure}
 
 \section{Outline}
 
@@ -178,6 +184,12 @@ Conversations between developers can take place in person or across digital medi
 \bigbreak
 The problems or issues to be tackled, more often than not, do not have path towards a solution or a concrete end point. Such problems are popularly described as wicked problems. With respect to computer science, wicked problems do not have any concrete algorithm or predefined point to solve a problem. Wicked problems were studied by Professor Horst Rittel and Webber \cite{Rittel1973} from the Architecture Department at the University of California, Berkely. They described such problems as those which are not formulated properly. In addition, he stated that such problems are solved by multiple decision makers. This is very synonymous to the fact that, in software engineering, such a situation has become a commonplace. West Churchman \cite{InstituteofManagementSciences.1967} of the same university mentioned in a couple of sentences earlier, in the guest editorial of a publication, echoing similar views. In the year 2014, Marcelo et al. \cite{Machado2014}, proposed the Massive Open Online Research, which is claimed to be a framework to deal with wicked problems. 
 \bigbreak
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=12cm]{ibis-model}
+    \caption{IBIS model demonstrated using UML class diagram}
+    \label{fig:ibisModel}
+\end{figure}
 Taking a leaf out of the works of Bruegge and Dutoit\cite{Bruegge2009}, five types of rationale elements are taken into consideration for this research. They are: issues, alternatives, pro-arguments, con-arguments and decision.
  
 \subsubsection{Issues}
@@ -195,7 +207,12 @@ Con-arguments are the opposite of pro-arguments. They refute claims and also sta
 \subsubsection{Decisions}
 Decisions are final conclusions made by the team members to solve an issue. While decisions can be made by alternatives suggested, they can also be made directly. Alternatively, decisions can also be made by without discussing or dismissing an issue. \textit{"This bug was fixed in the package snapcraft - 2.8.8+16.10"} and \textit{"Though Banshee won't be in 12.04 anymore, this is still a valid papercut"} are a couple of examples of decision from the dataset used in this thesis.
 
-
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=12cm]{thesis-class-diagram}
+    \caption{Fine tuned model demonstrated using UML class diagram}
+    \label{fig:thesisClassModel}
+\end{figure}
 \section{Related Work}
 
 In this section, we look at all the works relevant to this thesis done by others. 
