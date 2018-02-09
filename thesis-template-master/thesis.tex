@@ -889,11 +889,11 @@ Besides binary and fine grained classification, the results of topic modeling ar
 \end{table} 
 
 \section{Binary Classification}
-This section presents the results of the binary classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames} and the algorithms from Section 2.4.4. It is to be noted that in the case of Lucene dataset, unigram results have been presented while trigram results in the cases of Thunderbird and Ubuntu have been shown, since these combinations have given the best results. The experiments have been carried out using scikit-learn Python library. For POS tagging mechanism, Spacy, another popular NLP library was used. 
+This section presents the results of the binary classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames} and the algorithms from Section 2.4.4. It is to be noted that in the case of Lucene dataset, unigram results have been presented while trigram results in the cases of Thunderbird and Ubuntu have been shown, since these combinations have given the best results. The experiments have been carried out using scikit-learn Python library. For POS tagging mechanism, Spacy, another popular NLP library was used. Figure \ref{fig:binaryClass} illustrates the methodology for binary classification. 
 
 \begin{figure}[h] %b!]
     \centering
-    \includegraphics[width=14cm]{binary-classification}
+    \includegraphics[width=12cm]{binary-classification}
     \caption{Binary classification illustrated using UML activity diagram}
     \label{fig:binaryClass}
 \end{figure}
@@ -1106,11 +1106,11 @@ In this section, the best configurations and classifiers along with their respec
 \end{table}
 
 \section{Fine Grained Classification}
-This section presents the results of the fine grained classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames}, transformation methods from Section 2.4.3 and the algorithms from Section 2.4.4. Unlike  binary classification, all three datasets have used trigram tokenization. The scikit-learn library does not support Binary Relevance and Label Transformation methods and hence scikit-multilearn, a library specific for performing multi-class and multi-label classifications was used. However, the results were not impressive when compared to MEKA. In addition, a lot of classifiers along with certain configurations returned a value of 0. Therefore, the fine-grained classifications were perfomed using MEKA exclusively. 
+This section presents the results of the fine grained classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames}, transformation methods from Section 2.4.3 and the algorithms from Section 2.4.4. Unlike  binary classification, all three datasets have used trigram tokenization. The scikit-learn library does not support Binary Relevance and Label Transformation methods and hence scikit-multilearn, a library specific for performing multi-class and multi-label classifications was used. However, the results were not impressive when compared to MEKA. In addition, a lot of classifiers along with certain configurations returned a value of zero. Therefore, the fine-grained classifications were perfomed using MEKA exclusively. Figure \ref{fig:finegrainedClass} illustrates the methodology for fine grained classification. 
 
 \begin{figure}[h] %b!]
     \centering
-    \includegraphics[width=14cm]{fine-grained-classification}
+    \includegraphics[width=12cm]{fine-grained-classification}
     \caption{Fine grained classification illustrated using UML activity diagram}
     \label{fig:finegrainedClass}
 \end{figure}
@@ -1763,11 +1763,11 @@ This section presents the best configurations, classifiers and transformation me
 \end{table}
 
 \section{Topic Modeling}
-In this section, the results of topic modeling applied on each of the dataset of issue trackers, namely, Apache Lucene, Mozilla Thunderbird and Ubuntu are discussed in detail. The experiments were conducted using Gensim libary for Python. The best results were obtained using Config 5. The optimum number of topics to be generated was experimented with values of 5, 10, 15 and 20. While the number of topics when limited to 5 gave too less insights, 10, 15 and 20 seemed ideal. However, the optimum number was 10 compared to 15 or 20 since they all produced similar results but when the number of topics to be generated is lower, the program gives results much faster.
+In this section, the results of topic modeling applied on each of the dataset of issue trackers, namely, Apache Lucene, Mozilla Thunderbird and Ubuntu are discussed. The experiments were conducted using Gensim library for Python. The best results were obtained using Config 5. The optimum number of topics when limited to 5 gave less insights compared to 10, 15 and 20 which seemed ideal. However, the optimum number chosen was 10 compared to 15 or 20 despite producing similar results because when the number of topics to be generated is lower, the program gives results faster. Figure \ref{fig:topicmodelClass} illustrates the methodology for topic modeling. 
 
 \begin{figure}[h] %b!]
     \centering
-    \includegraphics[width=14cm]{topic-modeling}
+    \includegraphics[width=12cm]{topic-modeling}
     \caption{Topic modeling using LDA illustrated using UML activity diagram}
     \label{fig:topicmodelClass}
 \end{figure}
@@ -1882,8 +1882,14 @@ Ubuntu is an operating system and the most spoken topics were predictably about 
 \end{table} 
 
 \section{Linking}
-In this section, the results of linking comments from ITS and messages from IRC are analysed. Keywords were extracted using topic modeling applied with Config 5 from comments of ITS as well as messages of IRC. The keywords of each comment from ITS and each message of IRC were compared and checked for atleast fifty percent similarity using a string matching library. Table \ref{tab:topicLinking} shows the results of how many messages and comments were linked for each dataset. 
+In this section, the results of linking comments from ITS and messages from IRC are analysed. Keywords were extracted using topic modeling applied with Config 5 from comments of ITS as well as messages of IRC. The keywords of each comment from ITS and each message of IRC were compared and checked for atleast fifty percent similarity using a string matching library. Table \ref{tab:topicLinking} shows the results of how many messages and comments were linked for each dataset. Figure \ref{fig:topiclinkingClass} illustrates the methodology for linking issues to IRC messages. 
 \newline \newline
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=10cm]{topic-linking}
+    \caption{Approach to link issues to IRC messages illustrated using UML activity diagram}
+    \label{fig:topiclinkingClass}
+\end{figure}
 Each of the three datasets had 100 issues and 2,500 IRC messages. However, since most of the IRC messages did not have any rationale and predominantly consisted of greetings and salutions when introspected manually, only those with rationale were considered to perform the experiment. Around 83 issues out of 100 spanning 255 comments could be linked to 316 IRC messages for the dataset of Apache Lucene. As high as 100 percent similarity was attained. For the Mozilla Thunderbird dataset, 81 issues spanning 209 comments were linked to 143 IRC messages; almost half as compared to that of messages from Apache Lucene or Ubuntu. In addition, the highest similarity attained was 78 percent. Ubuntu had the maximum number of issues with 94 of them spanning 318 comments linked to 318 IRC messages. However, the highest similarity achieved on this dataset was only 71 percent, which was the least when compared to the other datasets of Apache Lucene and Mozilla Thunderbird. 
 \begin{table} %[hb!]
     \centering
@@ -1903,12 +1909,7 @@ Each of the three datasets had 100 issues and 2,500 IRC messages. However, since
     \label{tab:topicLinking}
 \end{table}
 
-\begin{figure}[h] %b!]
-    \centering
-    \includegraphics[width=14cm]{topic-linking}
-    \caption{Approach to link issues to IRC messages illustrated using UML activity diagram}
-    \label{fig:topiclinkingClass}
-\end{figure}
+
 
 %------- chapter 6 -------
 
