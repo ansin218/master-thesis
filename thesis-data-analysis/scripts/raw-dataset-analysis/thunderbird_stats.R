@@ -10,7 +10,7 @@ thunderbirdData <- thunderbirdData[!is.na(thunderbirdData$countCat), ]
 
 ggplot(thunderbirdData, aes(x = factor(thunderbirdData$countCat))) +
   geom_bar(aes(y = (..count..))) +
-  labs(x="Count Category",y="Count Frequency") +
-  ggtitle("Mozilla Thunderbird Issue Trackers Comment Distribution") +
-  theme(plot.title = element_text(hjust = 0.5)) +
+  labs(x="Comments Count Category",y="Number of Issues") +
+  ggtitle("Mozilla Thunderbird Issue Trackers Comments Distribution") +
+  theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(color = "black", size = 11), axis.text.y = element_text(color = "black", size = 11)) +
   geom_text(aes( label = (..count..), y= ..count.. ), stat="count", vjust = -.5)
