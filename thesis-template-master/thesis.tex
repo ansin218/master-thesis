@@ -423,22 +423,21 @@ Guzman at al. \cite{Guzman2015}, \cite{Guzman2014} used LDA along with sentiment
 % Write it as pseudocode if possible
 \subsubsection{Latent Dirichlet Allocation}
 Latent Dirichilet Allocation (LDA) is a topic modeling algorithm introduced by Blei at al. \cite{Blei2003}, where topics are formed using a generative process. The algorithm has been adapted from Goel \cite{Goel2017} and is described as follows.
-\bigbreak
-1. Let w be number of words in the document, D; M be the number of documents in the corpora; k be the number of topics that can be comprised of. 
-\bigbreak
-2. Dirichlet distribution with parameter vector alpha of length k is chosen for k different topic distributions and parameter vector beta of length M is chosen for M documents in the corpora.
-\bigbreak
-3. Repeat until M documents, for a given document D belonging to corpora:
-\bigbreak
-(a) Sample a multinomial distribution of topics from the dirichlet distribution with parameter vector alpha chosen earlier and for each topic
-\bigbreak
-(b) Sample a multinomial distribution of words in that topic from the dirichlet distribution with parameter vector beta chosen earlier.
-\bigbreak
-(b) Repeat until n words, for a given word w in the document:
-\bigbreak
-i. Pick one topic from the multinomial topic distribution sampled above and then generate word from the multinomial word distribution of the chosen topic 
-\bigbreak
-ii. Add that word to the document.
+
+\begin{algorithm}
+\caption{Latent Dirichlet Allocation Algorithm}
+\begin{algorithmic}[1]
+\Procedure{Generate Topics}{}
+\For{\text{each document \textit{d} in \textit{D}}}
+	\State \text{update document-topic distribution for \textit{d}}
+    \For{\text{each word \textit{w} in document \textit{d}}}
+    	\State \text{update topic-word assignment for \textit{d}}
+    \EndFor
+\EndFor
+\State \text{update topic-word probability distribution}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
 \subsection{Parts-of-Speech Tagging}
 Parts-of-Speech tagging, also known as PoS tagging, is a NLP technique where a sentence is broken into individual components and the PoS for each of those components are assigned \cite{Jurafsky2017}. A sentence may contain words as well as punctuations. PoS tagging technique can also be used as a preprocessing technique for classification where features would be extracted based on the pattern and types of PoS used in every sentence. It is to be noted that this tagging can be coarse grained such as noun, verb, adjective, and others, or even fine grained where the tagging could be something like comparative adjective or superlative adjective, personal pronoun, past tense or past participle. This thesis uses the Penn Treebank Project from the University of Pennsylvania\footnote{\url{https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html}} used by Spacy\footnote{\url{https://spacy.io/usage/linguistic-features}} library for its PoS tagging related experiments.
