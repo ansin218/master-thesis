@@ -160,11 +160,11 @@ Of the many software development artifacts, issue tracking systems are one of th
 \end{itemize}
 
 \section{Methodology}
-This thesis is divided into three main phases: data collection, content analysis and automatic classification, all of which are sequential and the output of one phase serves as input of the next phase. In the first phase, to collect data, all the suitable OSS projects whose data is publicly available were considered. Three projects were then selected, which are Apache Lucene, Mozilla Thunderbird and Ubuntu. Later, datasets which were already provided by the website as a dump were downloaded. Those projects whose websites did not provide any dataset readily had been scraped. In both the instances of readily available dump or scraped data, the necessary contents were parsed and finally stored in a common structured format in the database. Random Stratified Sampling (RSS), a procedure to divide a given entity into some strata, was applied at the data stored and all the comments were also decomposed into individual sentences. The final dataset consisted of 8,310 sentences from 300 issues of all three projects; these were the input for the content analysis phase. 
+This thesis is divided into three main phases: data collection, content analysis and automatic classification, all of which are sequential and the output of one phase serves as input of the next phase as shown in Figure \ref{fig:thesisMethodology}. In the first phase, to collect data, all the suitable OSS projects whose data is publicly available were considered. Three projects were then selected, which are Apache Lucene, Mozilla Thunderbird and Ubuntu. Later, datasets which were already provided by the website as a dump were downloaded. Those projects whose websites did not provide any dataset readily had been scraped. In both the instances of readily available dump or scraped data, the necessary contents were parsed and finally stored in a common structured format in the database. Random Stratified Sampling (RSS), a procedure to divide a given entity into some strata, was applied at the data stored and all the comments were also decomposed into individual sentences. The final dataset consisted of 8,310 sentences from 300 issues of all three projects; these were the input for the content analysis phase. 
 \newline \newline
 In the content analysis phase, two annotators, the author and the advisor of this thesis, considered the dataset obtained in the previous phase. They had to label all the messages whether they contained rationale or not, and if they did contain, the annotators had to further specify the elements present in the rationale such as issue, alternative, pro-argument, con-argument and decision. In order to perform this step, Neuendorf's \cite{Neuendorf2017a} content analysis technique was followed. First, a labeling guide, mentioned in detail in Appendix A, was prepared. This labeling guide provided understanding to both annotators to reduce the disagreements since they would now know which one to label as what. Second, disagreements, if any, were sorted out between the annotators through discussion. Finally, the results of this stage served as ground truth training set for the automatic classification phase.  
 \newline \newline
-In the final phase of automatic classification, the ground truth obtained from the previous phase was used for training the various machine learning algorithms. Before running the classifier models, data preprocessing methods such as bag-of-words, n-gram tokenization and parts-of-speech tagging were applied. The dataset was divided into training set and testing set by the virtue of performing k-fold cross validation to test the accuracy of the model and retrieve the best performing ones. The classifier models were capable of performing both kinds of classification, binary as well as fine-grained classification. The results were later studied and insights were gained to validate the research hypotheses formulated earlier.
+In the final phase of automatic classification, the ground truth obtained from the previous phase was used for training the various machine learning algorithms. Before running the classifier models, data preprocessing methods such as bag-of-words, n-gram tokenization and parts-of-speech tagging were applied. The dataset was divided into training set and testing set by the virtue of performing k-fold cross validation to test the accuracy of the model and retrieve the best performing ones. The classifier models were capable of performing both kinds of classification, binary as well as fine grained classification. In addition, topic modeling was done on the dataset and comments of ITS and messages of IRC to find common topics of discussion and link them together. The results were later studied and insights were gained to validate the research hypotheses formulated earlier. 
 \begin{figure}[h] %b!]
     \centering
     \includegraphics[width=13cm]{methodology}
@@ -178,21 +178,29 @@ The thesis is structured as follows: Chapter 2 presents information about ration
 %------- chapter 2 -------
 \chapter{Foundation}
 
-\section{Rationale Management}
+\section{Rationale in Software Development}
 
-During different stages such as planning, designing, developing, testing and maintenance, individuals responsible come together to tackle any particular issue. Such a discussion includes the numerous ways in which the problem can be solved. A problem, however, cannot be solved just by proposing a possible solution. Different team members come together to show their support or go against it by pointing the demerits of a suggested implementation. Finally, they come together towards a mutual conclusion and decide to go ahead with a particular suggestion. Rationale can thus be defined as the logical reasoning behind a particular act or statement. In the context of software engineering, rationale is the reasoning behind the decision taken with respect to some task in hand during various phases of software development \cite{Dutoit2006} \cite{Bruegge2009}. 
-\bigbreak
+During different stages of software development such as designing, developing, testing and maintenance, individuals responsible come together to tackle any particular issue. Such a discussion includes different ways in which the problem can be solved. Different team members come together to show their support or go against it by pointing the demerits of a suggested implementation. Finally, they come together towards a mutual conclusion and decide to go ahead with a particular suggestion. Rationale can thus be defined as the logical reasoning behind a particular act or statement. In the context of software engineering, rationale is the reasoning behind the decision with respect to some task in hand during various phases of software development \cite{Dutoit2006}, \cite{Bruegge2009}. 
+\newline \newline
 Conversations between developers can take place in person or across digital medium. Digital medium may include emails, chat messengers and issue trackers to name a few. While discussions taking place in person cannot be captured, technological advancements have made it possible to extract rationale from the aforementioned digital media. Capturing these vital information from different artifcats and managing these rationale can therefore be of great benefit for other developers. This helps them in a way such that one does not have to go through the entire conversation history which would include a lot of irrelevant, petty, or off-topic comments; concentrating and focusing only on the pertinent messages can be made possible through rationale management. 
-\bigbreak
+\newline \newline
 The problems or issues to be tackled, more often than not, do not have path towards a solution or a concrete end point. Such problems are popularly described as wicked problems. With respect to computer science, wicked problems do not have any concrete algorithm or predefined point to solve a problem. Wicked problems were studied by Professor Horst Rittel and Webber \cite{Rittel1973} from the Architecture Department at the University of California, Berkely. They described such problems as those which are not formulated properly. In addition, he stated that such problems are solved by multiple decision makers. This is very synonymous to the fact that, in software engineering, such a situation has become a commonplace. West Churchman \cite{InstituteofManagementSciences.1967} of the same university mentioned in a couple of sentences earlier, in the guest editorial of a publication, echoing similar views. In the year 2014, Marcelo et al. \cite{Machado2014}, proposed the Massive Open Online Research, which is claimed to be a framework to deal with wicked problems. 
-\bigbreak
+\newline \newline
+Taking a leaf out of the works of Bruegge and Dutoit\cite{Bruegge2009}, five types of rationale elements are taken into consideration for this research based on the Issue Based Information System (IBIS) model which was introduced by Rittel and Kunz \cite{Kunz1970} to address wicked problems. The five rationale elements are: issues, alternatives, pro-arguments, con-arguments and decisions. Figure \ref{fig:ibisModel} shows the IBIS model where as Figure \ref{fig:thesisClassModel} shows the adapted model for the this thesis based on the IBIS model. 
 \begin{figure}[h] %b!]
     \centering
-    \includegraphics[width=12cm]{ibis-model}
-    \caption{IBIS model demonstrated using UML class diagram}
+    \includegraphics[width=9cm]{ibis-model}
+    \caption{UML class diagram of IBIS model \cite{Kunz1970}}
     \label{fig:ibisModel}
 \end{figure}
-Taking a leaf out of the works of Bruegge and Dutoit\cite{Bruegge2009}, five types of rationale elements are taken into consideration for this research. They are: issues, alternatives, pro-arguments, con-arguments and decision.
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=12cm]{thesis-class-diagram}
+    \caption{UML class diagram of fine tuned model adapted from \cite{Kunz1970}}
+    \label{fig:thesisClassModel}
+\end{figure}
+
  
 \subsubsection{Issues}
 Issues are tasks that need to be solved. They can be a new feature, a major or minor bug, or a problem that could have stemmed out of an existing implementation. Issues can also be termed as wicked problems \cite{Rittel1973} since they may neither have any predefined path to reach the goal nor a proper end point to the goal itself. Some examples of issues from the data obtained are, \textit{"How do I go about limiting the search window as well as the number of matches?"} and \textit{"It does seem odd that all failures we've seen have been for very complex polygons".}  
@@ -209,82 +217,79 @@ Con-arguments are the opposite of pro-arguments. They refute claims and also sta
 \subsubsection{Decisions}
 Decisions are final conclusions made by the team members to solve an issue. While decisions can be made by alternatives suggested, they can also be made directly. Alternatively, decisions can also be made by without discussing or dismissing an issue. \textit{"This bug was fixed in the package snapcraft - 2.8.8+16.10"} and \textit{"Though Banshee won't be in 12.04 anymore, this is still a valid papercut"} are a couple of examples of decision from the dataset used in this thesis.
 
-\begin{figure}[h] %b!]
-    \centering
-    \includegraphics[width=12cm]{thesis-class-diagram}
-    \caption{Fine tuned model demonstrated using UML class diagram}
-    \label{fig:thesisClassModel}
-\end{figure}
+
 \section{Related Work}
 
-In this section, we look at all the works relevant to this thesis done by others. 
+In this section, all the works done by others relevant to this thesis are looked into. 
 
-\subsection{Mining Sentiments from Development Artifacts}
-In the past, research has been carried out to retrieve different kinds of elements from issue tracking systems. Ortu et al.\cite{Ortu2017} published their work on extracting emotions and sentiments of developers from JIRA issue trackers of four different open source projects.  Sentiments such as love, joy, surprise, anger, sadness and fear were mined from 2,000 issue comments spanning 4,000 sentences from the JIRA issue tracking system of open source communities namely, Apache, Spring, CodeHaus and JBoss. This was a smaller version of a project where Ortu et. al.\cite{Ortu2015} carried out similar research with a dataset that spanned 700,000 reports of issues and 2 million comments. In another work of Murgia et al.\cite{Murgia2014}, it has been concluded that being polite helped in fixing the issue in lesser amount of time. 
-\bigbreak
+\subsection{Mining Information from Development Artifacts}
+In recent years, research has been carried out to retrieve different kinds of elements from issue tracking systems. Ortu et al.\cite{Ortu2017} published their work on extracting emotions and sentiments of developers from Jira issue trackers of four different open source projects.  Sentiments such as love, joy, surprise, anger, sadness and fear were mined from 2,000 issue comments spanning 4,000 sentences from the Jira issue tracking system of open source communities namely, Apache, Spring, CodeHaus and JBoss. This was a smaller version of a project where Ortu et. al.\cite{Ortu2015} carried out similar research with a dataset that spanned 700,000 reports of issues and 2 million comments. In another work of Murgia et al.\cite{Murgia2014}, it has been concluded that being polite helped in fixing the issue in lesser amount of time. 
+\newline \newline
 Marshall et al.\cite{Marshall2016} demonstrated the outcomes of emotions from the forum posts of agile teams. Their dataset contained more than 1,300 forum posts from five teams. The posts from the forums were classified into unemotional, positive, negative and neutral. It was discovered that members of the team showing less emotions performed better than others. In addition, such individuals were evaluated more positively by their cohorts. 
-\bigbreak
-A study was conducted by Souza and Silva \cite{Souza2017} where they performed sentiment analysis on Travis Continuous Integration builds. They carried out empirical assessment of 1,262 projects hosted on GitHub having more than 609,000 builds using Travis CI. It was found out that negative sentiments from developers leads to build breakage in continuous integration processes, although the influence is small. 
-\bigbreak
+\newline \newline
+A study was conducted by Souza and Silva \cite{Souza2017} where they performed sentiment analysis on Travis Continuous Integration builds. They carried out empirical assessment of 1,262 projects hosted on GitHub having more than 609,000 builds using Travis. It was found out that negative sentiments from developers leads to build breakage in continuous integration processes. 
+\newline \newline
 Sentiments about software development can also be mined from social media. One such research was conducted by Guzman et al.\cite{Guzman2017} where they extracted more than 10 million tweets of 30 different mobile and desktop software applications from Twitter. Their study demonstrated the type of content present in tweets with respect to the concerned software application. The tweets were categorized into 25 groups; some of which are praises, complaints, service, shortcomings and others, from general public. In addition to manual content analysis, supervised machine learning techniques were used to classify the tweets into different categories. 
 
 \subsection{Automatic Classification of Rationale Elements}
-Like mining and classifying sentiments, rationale elements were also extracted in some works. Kurtanovic et al.\cite{Kurtanovic2017} conducted research similar to that of Guzman et al.\cite{Guzman2017} mentioned in the previous section. They performed manual content analysis and automatic classification of rationale from more than 52,000 user reviews of 52 software applications from the Amazon Store. Reviews and its pertinent sentences were classified using SVM, MNB and LR into the following: issue, alternative, criteria, decision and justification.  
-\bigbreak
-Fan et al.\cite{Fan2017} performed a study on a dataset obtained from GitHub spanning 80 projects and more than 252,000 issue reports. The goal was to classify them into bug or non-bug related sentences by running algorithms such as SVM, LR, MNB and RF using a two-fold approach. The first step included the computing probability to find out whether a sentence was bug-prone related or not. This was later used as an input in the second step coupled with other factors such as characteristics of the person who made the comment, their contributions, and others, to finally classify the sentence as bug-prone or not. 
-\bigbreak
-Rogers et al.\cite{Rogers2014} carried out manual and automatic classification of rationale on 200 Chrome bug reports using GATE and WEKA. Rogers et al.\cite{Rogers2012} also exclusively studied parsin and annotating techniques to extract rationale. While the binary classification was conducted to see if a sentence contained rationale or not, fine-grained classification was also performed to check if a sentence had the following kinds of rationale: requirements, decisions, alternatives, arguments, assumptions, questions, answers, and procedures. The automatic extraction of rationale elements was carried out using machine learning techniques such as SGD, RF and MNB. 
-\bigbreak
-Synonymous to the classification mentioned earlier, Alkadhi et al.\cite{Alkadhi2017} performed classification of rationale elements where the dataset included more than 8,700 chat messages from 3 software development teams. Apart from the binary classification of extracting if there was any rationale in a sentence or not, fine-grained classification was also performed to extract issues, alternatives, pro-arguments, con-arguments and decisions using MNB and SVM machine learning algorithms. 
-\bigbreak
+Rationale elements were also extracted in some works. Kurtanovic et al.\cite{Kurtanovic2017} conducted research similar to that of Guzman et al.\cite{Guzman2017} mentioned in the previous section. They performed manual content analysis and automatic classification of user rationale from more than 52,000 user reviews of 52 software applications from the Amazon Store. Reviews and its pertinent sentences were classified using Support Vector Machine, Multinomial Naive Bayes and Logistic Regression into the following: issue, alternative, criteria, decision and justification.  
+\newline \newline
+Fan et al.\cite{Fan2017} performed a study on a dataset obtained from GitHub spanning 80 projects and more than 252,000 issue reports. The goal was to classify them into bug or non-bug related sentences by running algorithms such as Support Vector Machine, Multinomial Naive Bayes, Random Forest and Logistic Regression using a two-fold approach. The first step included the computing probability to find out whether a sentence was bug-prone related or not. This was later used as an input in the second step coupled with other factors such as characteristics of the person who made the comment, their contributions, and others, to finally classify the sentence as bug-prone or not. 
+\newline \newline
+Rogers et al.\cite{Rogers2014} carried out manual and automatic classification of rationale on 200 Chrome bug reports using GATE and WEKA. Rogers et al.\cite{Rogers2012} also exclusively studied parsing and annotating techniques to extract rationale. While the binary classification was conducted to see if a message contained rationale or not, fine grained classification was also performed to check if a sentence had the following kinds of rationale: requirements, decisions, alternatives, arguments, assumptions, questions, answers, and procedures. The automatic extraction of rationale elements was carried out using Multinomial Naive Bayes and Random Forest. 
+\newline \newline
+Synonymous to the classification mentioned earlier, Alkadhi et al.\cite{Alkadhi2017} performed classification of rationale elements where the dataset included more than 8,700 chat messages from 3 software development teams. Apart from the binary classification of extracting if there was any rationale in a sentence or not, fine-grained classification was also performed to extract issues, alternatives, pro-arguments, con-arguments and decisions using Multinomial Naive Bayes and Support Vector Machine algorithms. 
+\newline \newline
 Bachelli et al.\cite{Bacchelli2012} used a dataset of around 1,500 emails from mailing lists. They then tried to classify the contents of the emails into 5 categories. The categories into which they were classified automatically were natural language, junk, patch, stack trace and source code, using MNB classifier. 
+\newline \newline
+Hesse et al.\cite{Hesse2016} conducted an analysis on decision-making process on Firefox issue reports. They studied two types decision-making strategies: rationale decision-making and naturalistic-decision making. Rationale decision-making dealt with all possible alternatives for an issue examined carefully while naturalistic decision-making was comparison of current and former scenarios and situations to solve a given problem in stipulated time. They concluded that majority of the strategies were naturalistic in nature. 
+\newline \newline
+Bhat et al.\cite{Bhat2017} carried out research to extract different kinds of design decisions from issue management systems. They captured more than 19,000 issues from two OSS projects: Apache Spark and Apache Hadoop Common, and performed their experiments using Support Vector Machine, Naive Bayes, Decision Tree and Logistic Regression. It was concluded that Support Vector Machine classifier performed the best of all in classifying the design decisions. 
 
-%\subsection{Generating Categories using Topic Modeling}
-%In the past, research has been carried out to generate categories using Topic Modeling techniques such as LDA. 
 
 \section{Natural Language Processing}
 
-Natural Language Processing (NLP) is a popular branch of computer science to extract meaningful features from natural language texts that are comprehensible to humans \cite{Al-ghamdi2017} \cite{Suhaimin2017}. Categorization and classification of natural language texts can also be done using NLP based algorithms. In the past, NLP has been used for various purposes in numerous domains. Malware detection studies has been conducted using NLP based approaches by Karbab et al. \cite{Karbab2017} and Tran et al.\cite{Tran2017}. Sentiment classification of twitter texts and hotel reviews were carried out by Kanakaraj et al.\cite{Kanakaraj2015} and Ghorpade et al.\cite{Ghorpade2012} respectively. The branch of NLP and its algorithms have grown astoundingly and are being implemented in many languages such as Persian\cite{Ri}, Arabic\cite{Abuleil2007}, Chinese\cite{Liu2008}, German\cite{Metzmacher2017} and Italian\cite{Damiano2017}. 
-\bigbreak
+Natural Language Processing (NLP) is a popular branch of computer science to extract meaningful features from natural language texts that are comprehensible to humans \cite{Al-ghamdi2017}, \cite{Suhaimin2017}. Categorization and classification of natural language texts can also be done using NLP based algorithms. In the past, NLP has been used for various purposes in numerous domains. Malware detection studies have been conducted using NLP based approaches by Karbab et al. \cite{Karbab2017} and Tran et al.\cite{Tran2017}. Sentiment classification of twitter texts and hotel reviews were carried out by Kanakaraj et al.\cite{Kanakaraj2015} and Ghorpade et al.\cite{Ghorpade2012} respectively. The branch of NLP and its algorithms have grown and are being implemented in many languages such as Persian\cite{Ri}, Arabic\cite{Abuleil2007}, Chinese\cite{Liu2008}, German\cite{Metzmacher2017} and Italian\cite{Damiano2017}. 
+\newline \newline
 In addition, some methodologies under NLP can also be used for data preprocessing while performing machine learning tasks. Some of the most popular methods and techniques from NLP and their pertinent works are discussed below. 
 
 \subsection{Preprocessing Steps}
 The following section explores different preprocessing steps that can be applied for text classification. 
 
 \subsubsection{Stopwords Removal}
-A sentence usually is comprised of different parts-of-speech. However, there may be some words that are very common across all sentences and thereby does not contribute to learning about specific features or keywords. In such a scenario, researchers deploy stopword removal mechanism to filter out words that are of less or no interest to them. An exhaustive list of stopwords has been published by the Information Retrieval Group, School of Computing, University of Glasgow\footnote{\url{http://ir.dcs.gla.ac.uk/resources/linguistic_utils/stop_words}}. In addition, one can also create their own stopwords list if specific information or keywords are being looked for or to be omitted. 
-\bigbreak
+A sentence usually is comprised of different parts-of-speech. However, there may be some words that are very common across all sentences such as \textit{the, is, am}, and thereby does not contribute to learning about specific features or keywords. In such a scenario, researchers deploy stopword removal mechanism to filter out words that are of less or no interest to them. An exhaustive list of stopwords has been published by the Information Retrieval Group, School of Computing, University of Glasgow\footnote{\url{http://ir.dcs.gla.ac.uk/resources/linguistic_utils/stop_words}}. In addition, one can also create their own stopwords list if specific information or keywords are being looked for or to be omitted. 
+\newline \newline
 Given a sentence: \textit{Munich is a really beautiful city with a cosmopolitan crowd.} 
-\bigbreak
+\newline \newline
 After applying stopwords removal, the sentence would then look like: \textit{Munich really beautiful city cosmopolitan crowd.} 
-\bigbreak
-Rogers et al.\cite{Rogers2012} carried out an experiment to identify rationale from documents using linguistic features such as stopwords removal to conclude that it resulted in better precision but lower recall. Kurtanovic et al.\cite{Kurtanovic2017} also performed stopwords removal in their data preprocessing step while retrieving rationale from software reviews. Guzman et al.\cite{Guzman2017}\cite{Guzman2017a}\cite{Guzman2016}\cite{Guzman2014} used stopwords removal in many of their works extensively.
+\newline \newline
+Rogers et al.\cite{Rogers2012} carried out an experiment to identify rationale from documents using linguistic features such as stopwords removal to conclude that it resulted in better precision but lower recall. Kurtanovic et al.\cite{Kurtanovic2017} also performed stopwords removal in their data preprocessing step while retrieving rationale from software reviews. Guzman et al.\cite{Guzman2017}, \cite{Guzman2017a}, \cite{Guzman2016}, \cite{Guzman2014} used stopwords removal in many of their works.
 
 \subsubsection{Punctuations Removal}
 Similar to words, punctuations are different parts of speech that can be removed from text after which the filtered data can be fed to the classifier. Some commonly witnessed punctuations include fullstop (.), comma (,), colon (:), semi-colon (;) amongst others. 
-\bigbreak
+\newline \newline
 Given a sentence: \textit{Munich has many kinds of people living here such as: Indians, Chinese, Americans.}
-\bigbreak
+\newline \newline
 After applying punctuations removal, the sentence would then look like: \textit{Munich has many kinds of people living here such as Indians Chinese Americans}
-\bigbreak
+\newline \newline
 Like stopwords removal, Kurtanovic et al.\cite{Kurtanovic2017} also performed punctuation removal as well for retrieving rationale from software reviews. However, Bacchelli et al.\cite{Bacchelli2012} and Guzman\cite{Guzman2015} used the emphasis of punctuations for their research. 
 
 \subsubsection{Stemming}
-Stemming is a popular preprocessing technique of mapping similar words with different variations to one single word by truncation. One of the most popular stemmers out there in the field of research is the Porter Stemmer \cite{Porter}. Manning et al.\cite{Manning2009} state that stemming increases recall but harms precision. An example of stemming would be that words like \textit{operational, operative, operations} would all get mapped to \textit{operate}. However, there are cases were words also get mapped to a single word which may not have an exact dictionary meaning. An example of such a case can be \textit{calculation, calculative} getting mapped to \textit{calculat} instead of \textit{calculate}\cite{Toman2006}. Stemming has been used as a preprocessing step in the works of Fan et al.\cite{Fan2017}, Murgia et al.\cite{Murgia2016} and Panichela et al.\cite{Panichella2014a} to mention a few.
+Stemming is a popular preprocessing technique of mapping similar words with different variations to one single word by truncation. One of the most popular stemmers out there in the field of research is the Porter Stemmer \cite{Porter}. Manning et al.\cite{Manning2009} state that stemming increases recall but harms precision. An example of stemming would be that words like \textit{operational, operative, operations} would all get mapped to \textit{oper}. However, there are cases were words also get mapped to a single word which may not have an exact dictionary meaning. An example of such a case can be \textit{calculation, calculative} getting mapped to \textit{calculat} instead of \textit{calculate}\cite{Toman2006}. Stemming has been used as a preprocessing step in the works of Fan et al.\cite{Fan2017}, Murgia et al.\cite{Murgia2016} and Panichella et al.\cite{Panichella2014a} to mention a few.
 
 \subsubsection{Lemmatization}
 Another preprocessing technique, but rather a better replacement of stemming, is lemmatization. In this technique, words of different variations are not truncated but rather are mapped to a root word. This root word is identical to a word found in the dictionary. Toman et al.\cite{Toman2006} state that lemmatization is a difficult and expensive process but is more beneficial. An example of lemmatization would be that words like \textit{is} and \textit{are} would be mapped to \textit{be}, which is an actual word found in the dictionary. Lemmatization has been performed by Guzman et al.\cite{Guzman2014}, Toman et al. \cite{Toman2006} and Kurtanovic et al.\cite{Kurtanovic2017} as part of preprocessing technique in their research. 
 
 \subsubsection{Bag-of-Words}
-Given a corpus of \textit{N} documents, each document may contain many words. A Bag-of-Words (BoW) can thus be formed by counting the frequency of every unique word occuring across N documents. However, to form a vocabulary pertaining to the text dataset, techniques such as stopwords removal, punctuations removal, stemming and lemmatization, can be applied to prune on commonly occuring words and different variations of the same word. An example would be as follows.
-\bigbreak
+Given a corpus of \textit{N} documents, each document may contain many words. A Bag-of-Words (BoW) can thus be formed by counting the frequency of every unique word occuring across \textit{N} documents. However, to form a vocabulary pertaining to the text dataset, techniques such as stopwords removal, punctuations removal, stemming and lemmatization, can be applied to prune on commonly occuring words and different variations of the same word. An example would be as follows.
+\newline \newline
 Sentence 1: \textit{I went to Munich.}
-\bigbreak
+\newline \newline
 Sentence 2: \textit{Munich is a very beautiful place compared to Berlin.}
-\bigbreak
+\newline \newline
 Sentence 3: \textit{Berlin has more startups than Munich}
-\bigbreak
-Applying the preprocessing techniques such as stopwords removal, punctuations removal, stemming and lemmatization, the BoW would look like as in \ref{tab:bowExample}. Nonnenmacher\cite{Nonnenmacher2017} and Goel \cite{Goel2017}, both, have used BoW model for their research on extraction of rationale and topic modeling using LDA, respectively. Additionally, Somasundaram et al. \cite{Somasundaram2012} took advantage of the same for performing categorization of bug reports.
+\newline \newline
+Applying the preprocessing techniques such as stopwords removal, punctuations removal, stemming and lemmatization, the BoW would look like as in \ref{tab:bowExample}. Nonnenmacher\cite{Nonnenmacher2017} and Goel \cite{Goel2017} both have used BoW model in their research on extraction of rationale and topic modeling using LDA, respectively. Additionally, Somasundaram et al. \cite{Somasundaram2012} took advantage of the same for performing categorization of bug reports.
 \begin{table} %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -296,9 +301,10 @@ Applying the preprocessing techniques such as stopwords removal, punctuations re
 			Munich & 3 \\
 			Berlin & 2 \\ 
 			beautiful & 1 \\ 
-			compared & 1 \\ 
-			startups & 1 \\
+			compare & 1 \\ 
+			startup & 1 \\
 			place & 1 \\ 
+			went & 1 \\
         \midrule
     \end{tabular}
     \end{adjustbox}
@@ -307,10 +313,10 @@ Applying the preprocessing techniques such as stopwords removal, punctuations re
 \end{table}
 
 \subsubsection{N-Gram Tokenization}
-Bag-of-words takes one word at a time and counts them. However, n-gram tokenization is a method were multiple words appearing continuously can be grouped as one term. This approach helps in extracting better meaning if multiple words occuring together make better sense than their individual counterparts. These terms of n-grams or n-tokens grouped together can then be used as a feature while running the classifier. 
-\bigbreak
+Bag-of-words takes one word at a time and counts their occurence. However, n-gram tokenization is a method were multiple words appearing continuously can be grouped as one term. This approach helps in extracting better meaning if multiple words occuring together make better sense than their individual counterparts. These terms of n-grams or n-tokens grouped together can then be used as a feature while running the classifier. 
+\newline \newline
 Here is an example sentence: \textit{Linux is a robust operating system}
-\bigbreak
+\newline \newline
 It can be seen clearly from Table \ref{tab:ngramExample} that the results of 2-gram or 3-gram tokenization add more value in terms of using it as features when compared to 1-gram tokenization. Alkadhi et al.\cite{Alkadhi2017} used n-gram tokenization for their research on extraction of rationale from chat messages. The minimum value of \textit{n} was 1 whereas the maximum value was 3 in order to conduct the study. 
 \begin{table} %[hb!]
     \centering
@@ -334,15 +340,15 @@ It can be seen clearly from Table \ref{tab:ngramExample} that the results of 2-g
 \subsubsection{Term Frequency - Inverse Document Frequency}
 
 Term Frequency - Inverse Document Frequency (TFIDF) is the product of two values, term frequency and inverse document frequency\footnote{\url{http://www.tfidf.com/}}. Term Frequency (TF) can be defined as the number of times a given term occurs in a document. Inverse Document Frequency (IDF), on the other hand, checks for strength of frequency of a given word. 
-\bigbreak
+\newline \newline
 Consider the following documents to form a Document Term Matrix\footnote{\url{https://janav.wordpress.com/2013/10/27/tf-idf-and-cosine-similarity/}}.  A Document Term Matrix (DTM) converts the corpus of documents into a matrix of documents and the count of indivual words occuring in each of the document. 
-\bigbreak
+\newline 
 Document 1: \textit{I learn machine} 
-\bigbreak
+\newline \newline
 Document 2: \textit{You learn machine} 
-\bigbreak
+\newline \newline
 Document 3: \textit{Learning and loving machine learning}
-\bigbreak
+\newline \newline
 A simple example of DTM is illustrated using Table \ref{tab:dtmExample}. 
 \begin{table} %[hb!]
     \centering
@@ -361,50 +367,62 @@ A simple example of DTM is illustrated using Table \ref{tab:dtmExample}.
     \captionof{table}{Example for Document Term Matrix}
     \label{tab:dtmExample}
 \end{table}
-\bigbreak
-Given a set of documents, \textit{D}, \textit{$t_x$} is the term in the document, \textit{$d_i$}, for which TFIDF is to be computed, \textit{$t_n$} is the total number of words occuring in document, \textit{$d_i$}.
-\bigbreak
+Given a set of documents \textit{D}, \textit{$t_x$} is the term in the document \textit{$d_i$}, for which TFIDF is to be computed, \textit{$t_n$} is the total number of words occuring in document \textit{$d_i$}.
+\newline \newline
 The formula for TF is as follows:
+\newline
 \begin{equation}
-\label{eq:et}
+\label{eq:tfidf1}
     TF(t, d_i) = \frac{t_x}{t_n}
 \end{equation}
+\newline
 And, the formula for IDF is as follows:
+\newline
 \begin{equation}
-\label{eq:et}
+\label{eq:tfidf2}
     IDF(t, D) = log\frac{N}{|\{d \in D : t \in D\}|}
 \end{equation}
+\newline
 From equations 2.1 and 2.2, TFIDF is therefore:
+\newline
 \begin{equation}
-\label{eq:et}
-    TFIDF(t, d, D) = tf(t, d).idf(t, D)
+\label{eq:tfidf3}
+    TFIDF(t, d, D) = tf(t, d)\times idf(t, D)
 \end{equation}
+\newline
 Using equations 2.1, 2.2 and 2.3, TFIDF of the term  \textit{"learning"} occuring in document 3, $d_3$, can now be computed. It can be seen that the word \textit{"learning"} occurs twice across the documents, hence from equation 2.1:
+\newline
 \begin{equation}
-\label{eq:et}
+\label{eq:tfidf4}
     TF(learning, d_3) = \frac{2}{5} = 0.4
 \end{equation}
+\newline
 The IDF for the word \textit{"learning"} from 2.2, is therefore:
+\newline
 \begin{equation}
-\label{eq:et}
-    IDF(learning, D) = log(\frac{2}{1}) = 0.301
+\label{eq:tfidf5}
+    IDF(learning, D) = log(\frac{3}{1}) = 0.477
 \end{equation}
+\newline
 The TFIDF using equations 2.4 and 2.5 is thus:
+\newline
 \begin{equation}
-\label{eq:et}
-    TFIDF(learning, d_3, D) = 0.4\times0.301 = 0.12
+\label{eq:tfidf6}
+    TFIDF(learning, d_3, D) = 0.4\times0.477 = 0.1908
 \end{equation}
-\bigbreak
-Guzman et al.\cite{Guzman2017}, Fan et al.\cite{Fan2017}, Nonnenmacher\cite{Nonnenmacher2017} and Goel \cite{Goel2017} are some of the few who have extensively used TFIDF mechanism in their works.  
+\newline 
+Guzman et al.\cite{Guzman2017}, Fan et al.\cite{Fan2017}, Nonnenmacher\cite{Nonnenmacher2017} and Goel \cite{Goel2017} are some of the few who have used TFIDF mechanism in their works.
+  
 \subsection{Topic Modeling}
-Topic modeling is an approach in the domain of NLP to extract a specific number of topics from a large text corpus. The topics are retrieved by computing the probabilities of frequently occurring words that constitute the text corpus \cite{Zou2017} \cite{Linstead2007}. Preprocessing techniques mentioned earlier can be applied before generating all the topics depending on the insights being looked for to make the final results more meaningful. It is to be noted that the name of the topics are not given by the algorithm but the end users themselves; the algorithm will only give the frequently occurred words for every given topic \cite{Goel2017}.
-\bigbreak
-Mathematically, topic modeling is a kind of a Bayesian inference model where every document in the text corpus is associated with a probability distribution over topics and these topics are nothing but probability distribution over words \cite{Goel2017}. Many topic modeling algorithms exists such as Latent Semantic Analysis (LSA) \cite{Agung2017}\cite{Tu2017}, Latent Dirichlet Allocation (LDA) \cite{Katsumata2016} \cite{Chen2016}, and Hierarchial Dirichlet Process (HDP) \cite{Li2018} \cite{Hu2017} to mention a few. This thesis performs topic modeling using LDA since many related works have incorporated the same. Some of these works are mentioned in the paragraphs to come. 
-\bigbreak
-Guzman at al. \cite{Guzman2015} \cite{Guzman2014} used topic modeling approach such as LDA to visualize user feedback and fine grained sentiment analysis of app reviews. For automatic classification of bug reports, Somasundaram et al. \cite{Somasundaram2012} used LDA to achieve the same. Pagano and Maalej\cite{Pagano2011} studied the blogging style of developers by applying topic modeling using LDA. 
+Topic modeling is an approach in the domain of NLP to extract a specific number of topics from a large text corpus. The topics are retrieved by computing the probabilities of frequently occurring words that constitute the text corpus \cite{Zou2017}, \cite{Linstead2007}. Preprocessing techniques mentioned earlier can be applied before generating all the topics depending on the insights being looked for to make the final results more meaningful. It is to be noted that the name of the topics are not given by the algorithm but the end users themselves; the algorithm will only give the frequently occurred words for every given topic \cite{Goel2017}.
+\newline \newline
+Mathematically, topic modeling is a kind of a Bayesian inference model where every document in the text corpus is associated with a probability distribution over topics and these topics are nothing but probability distribution over words \cite{Goel2017}. Many topic modeling algorithms exists such as Latent Semantic Analysis (LSA) \cite{Agung2017}, \cite{Tu2017}, Latent Dirichlet Allocation (LDA) \cite{Katsumata2016}, \cite{Chen2016}, and Hierarchial Dirichlet Process (HDP) \cite{Li2018}, \cite{Hu2017} to mention a few. This thesis performs topic modeling using LDA since many related works have incorporated the same. Some of these works are mentioned in the paragraphs to come. 
+\newline \newline
+Guzman at al. \cite{Guzman2015}, \cite{Guzman2014} used LDA along with sentiment analysis to visualize user feedback and fine grained sentiments of app reviews from users. For automatic categorization of bug reports, Somasundaram et al. \cite{Somasundaram2012} used LDA and SVM separately to achieve the same. Additionally, they also tried to achieved their goal of categorizing bug reports by combining LDA with SVM. Pagano and Maalej\cite{Pagano2011} applied LDA as well to study different topics discussed by developers. 
+
 % Write it as pseudocode if possible
 \subsubsection{Latent Dirichlet Allocation}
-Latent Dirichilet Allocation (LDA) is a topic modeling algorithm introduced by Blei at al. \cite{Blei2003}, where topics are formed using a generative process. The algorithm ha been adapted from Goel \cite{Goel2017} and is described as follows.
+Latent Dirichilet Allocation (LDA) is a topic modeling algorithm introduced by Blei at al. \cite{Blei2003}, where topics are formed using a generative process. The algorithm has been adapted from Goel \cite{Goel2017} and is described as follows.
 \bigbreak
 1. Let w be number of words in the document, D; M be the number of documents in the corpora; k be the number of topics that can be comprised of. 
 \bigbreak
@@ -424,23 +442,9 @@ ii. Add that word to the document.
 
 \subsection{Parts-of-Speech Tagging}
 Parts-of-Speech tagging, also known as PoS tagging, is a NLP technique where a sentence is broken into individual components and the PoS for each of those components are assigned \cite{Jurafsky2017}. A sentence may contain words as well as punctuations. PoS tagging technique can also be used as a preprocessing technique for classification where features would be extracted based on the pattern and types of PoS used in every sentence. It is to be noted that this tagging can be coarse grained such as noun, verb, adjective, and others, or even fine grained where the tagging could be something like comparative adjective or superlative adjective, personal pronoun, past tense or past participle. This thesis uses the Penn Treebank Project from the University of Pennsylvania\footnote{\url{https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html}} used by Spacy\footnote{\url{https://spacy.io/usage/linguistic-features}} library for its PoS tagging related experiments.
-\bigbreak
+\newline \newline
 Kurtanovic and Maalej \cite{Kurtanovic2017} used PoS tagging techniques in their quest to mine rationale from software reviews. Guzman et al.\cite{Guzman2015} took advantage of the same to perform fine grained sentiment analysis of app reviews. To perform sentiment analysis on twitter data, PoS tagging was used as a preprocessing step by Kanakaraj and Guddeti \cite{Kanakaraj2015}.
 
-%\subsection{Named Entity Recognition}
-%Named Entity Recognition (NER) is a technique to extract information from textual content. Unlike PoS which gives %information about each and every word, NER extracts specific information from text such as name, organization, location, %time and monetary values. NER can thus be helpful for retrieving specific entities to give fine grained insights about %each comment.
-%\bigbreak
-%An example of NER would be as follows:
-%\bigbreak
-%Brad will leave Munich after 10 PM. 
-%\bigbreak
-%Brad - Name
-%\bigbreak
-%Munich - Location
-%\bigbreak
-%10 PM - Time
-%\bigbreak
-%Note: List out all the works for NER
 
 \section{Machine Learning}
 Machine learning is a term coined by Arthur Samuel in the year 1959 \cite{Samuel1959a} while working at IBM. He states that it is the domain of computer science where computers learn without being explicitly programmed. Mannila \cite{Mannila1996a} expressed opinion on the fact that machine learning tries to work with concepts that is beyond the ability of human beings to see and work. In the upcoming sections, machine learning techniques, pipeline, transformation methods, algorithms and performance metrics are discussed. 
@@ -448,10 +452,10 @@ Machine learning is a term coined by Arthur Samuel in the year 1959 \cite{Samuel
 \subsection{Techniques}
 
 \subsubsection{Supervised Learning}
-Supervised learning is a technique where the algorithm learns from a given set of examples. Given a dataset with many entries, the algorithm gets hold of both, all the inputs and the pertinent output \cite{Singh2016}\cite{Caruana2006}. This helps the classifier to come up with patterns to map the given set of inputs to the output. Supervised learning, thus, can classify if a sentence contains rationale or not based on certain inputs and its features. This technique would however require sufficient amount of data to learn or train and hence improve the performance of the classifier. Some of the popular supervised learning algorithms\footnote{\url{https://www.kdnuggets.com/2016/08/10-algorithms-machine-learning-engineers.html}},\footnote{\url{http://www.dataschool.io/comparing-supervised-learning-algorithms/}} are Logistic Regression, Multinomial Naive Bayes, Decision Trees, Support Vector Machines and Random Forest, all of which have been used in this thesis. Patwardhan \cite{Patwardhan2017}, Kurtanovic and Maleej \cite{Kurtanovic2017}, and Guzman et al.\cite{Guzman2016}, have all opted for supervised learning techniques in their research works.
+Supervised learning is a technique where the algorithm learns from a given set of examples. Given a dataset with many entries, the algorithm gets hold of both, all the inputs and the pertinent output \cite{Singh2016}, \cite{Caruana2006}. This helps the classifier to come up with patterns to map the given set of inputs to the output. Supervised learning, thus, can classify if a sentence contains rationale or not based on certain inputs and its features. This technique would however require sufficient amount of data to learn or train and hence improve the performance of the classifier. Some of the popular supervised learning algorithms\footnote{\url{https://www.kdnuggets.com/2016/08/10-algorithms-machine-learning-engineers.html}}\textsuperscript{,}\footnote{\url{http://www.dataschool.io/comparing-supervised-learning-algorithms/}} are Logistic Regression, Multinomial Naive Bayes, Decision Trees, Support Vector Machines and Random Forest, all of which have been used in this thesis. Patwardhan \cite{Patwardhan2017}, Kurtanovic and Maleej \cite{Kurtanovic2017}, and Guzman et al.\cite{Guzman2016}, have all opted for supervised learning techniques in their research works.
 
 \subsubsection{Unsupervised Learning}  
-Contrary to supervised learning, unsupervised learning technique has no labeled outputs for the given set of inputs. The unsupervised learning algorithm applied has to come up with patterns and relations from the data supplied \cite{Ball2011}\cite{Rojas1996}. The discovered patterns thus help in categorizing or clustering the data which can be studied by researchers later for better understanding of what constitutes the data. Clustering algorithms such as K-Means and Apriori are popular clustering algorithms\footnote{\url{https://machinelearningmastery.com/supervised-and-unsupervised-machine-learning-algorithms/}},\footnote{\url{https://www.dezyre.com/article/top-10-machine-learning-algorithms/202}} that belong to the class of unsupervised learning techniques. Rui et al.\cite{Rui2016} and Tsarev et al. \cite{Tsarev2011} have incorporated unsupervised learning techniques to perform text classifications in their research. 
+Contrary to supervised learning, unsupervised learning technique has no outputs for the given set of inputs. The unsupervised learning algorithm applied has to come up with patterns and relations from the data supplied \cite{Ball2011}, \cite{Rojas1996}. The discovered patterns thus help in categorizing or clustering the data which can be studied by researchers later for better understanding of what constitutes the data. Clustering algorithms such as K-Means and Apriori are popular clustering algorithms\footnote{\url{https://machinelearningmastery.com/supervised-and-unsupervised-machine-learning-algorithms/}}\textsuperscript{,}\footnote{\url{https://www.dezyre.com/article/top-10-machine-learning-algorithms/202}} that belong to the class of unsupervised learning techniques. Rui et al.\cite{Rui2016} and Tsarev et al. \cite{Tsarev2011} have incorporated unsupervised learning techniques to perform text classifications in their research. 
 
 \subsubsection{Reinforcement Learning} 
 There exists another technique, which neither completely relies on output like supervised learning nor is completely like the approach of unsupervised learning, known as reinforcement learning. In reinforcement learning, the machine or agent tries to learn the behavior of something specific from a given environment based on feedback or reward. The goal of the algorithm is to maximize the reward. These behaviors, depending on the nature of the problem, can be learnt all at once or can be adaptive in nature. Littman and Moore \cite{Littman1996} published work on the ground principles of reinforcement learning. 
@@ -462,7 +466,7 @@ There exists another technique, which neither completely relies on output like s
 For an algorithm to make predictions, it must first learn and train itself using some data. A part of the overall dataset, known as training dataset, is thus used for training the algorithm by working with some parameters. It is to be noted that more the quality and quantity of the training dataset, better the training\footnote{\url{http://www.holehouse.org/mlclass/11_Machine_Learning_System_Design.html}}. In other words, there must be enough examples from the different classes in good proportion for the algorithm to learn.  If the dataset is highly imbalanced or skewed, balancing techniques can be applied\footnote{\url{https://www.analyticsvidhya.com/blog/2017/03/imbalanced-classification-problem/}}. In the case of text classification, the training data can be a group of sentences with some preprocessing steps mentioned in Section 2.3.1 along with the concerned output. The output can be something like, whether the sentence contains rationale or not, or whether the sentence has a positive tone or not, to mention a few.
 
 \subsubsection{Testing} 
-After having trained the data on a bulk portion of the entire dataset, the model must be tested by running the classifier on the minor portion of the dataset known as the test dataset. The metrics from the test dataset are the ones taken into account when evaluating the performance of the classifier. The metrics are explained in Section 2.4.5. 
+After having trained the data on a bulk portion of the entire dataset, the model must be tested by running the classifier on an unseen dataset known as the test dataset. The metrics from the test dataset are the ones taken into account when evaluating the performance of the classifier. The metrics are explained in Section 2.4.5. 
 
 \subsubsection{Cross-Validation} 
 Models may be biased if they are being tested on a specific set of data. To improve fairness, cross validation technique is followed. In this method, the dataset is divided into k-folds, with k-1 folds for training and 1-fold for testing. This procedure is iterated over the entire dataset such that each portion k of the dataset would have been the testing dataset at some point across different iterations\footnote{\url{https://www.openml.org/a/estimation-procedures/1}}. This thesis uses a 10-fold cross validation approach. An example of 10-fold cross validation approach is illustrated in the following figure \ref{fig:k-fold}.
@@ -476,55 +480,56 @@ Models may be biased if they are being tested on a specific set of data. To impr
 \footnotetext{\url{https://sebastianraschka.com/faq/docs/evaluate-a-model.html}}
 
 \subsection{Transformation Methods}
+Transformation methods are applied to multi-class or multi-label problems. Multi-class problems are those that have more than two classes but at a given instance may belong only to one class. For example, one can classify a group of animals based on some images such as lions, tigers, dogs and cats, but for each given sample, an animal may belong only to one class. Multi-label problems are those where a given sample may have multiple labels at the same time. For example, a movie may belong to multiple genres such as comedy and romance at the same time. 
 
 \subsubsection{Binary Relevance} 
-Binary relevance is a kind of problem transformation method applied to multi-class or multi-label classification problems. Using this approach, a multi-class problem is decomposed into multiple binary classification problems. For example, if there are five classes, the problem would be decomposed into five binary classification problem where the classifier runs independently on each of the class using the input features\footnote{\url{https://www.analyticsvidhya.com/blog/2017/08/introduction-to-multi-label-classification/}}. 
+Binary Relevance (BR) is a kind of problem transformation method applied to multi-class or multi-label classification problems. Using this approach, a multi-class problem is decomposed into multiple binary classification problems. For example, if there are five classes, the problem would be decomposed into five binary classification problems where the classifier runs independently on each of the class using the input features\footnote{\url{https://www.analyticsvidhya.com/blog/2017/08/introduction-to-multi-label-classification/}}. 
 
 \subsubsection{Label Powerset} 
-Label powerset is another form of problem transformation method applied to multi-class or multi-label classification problems. In the case of label powerset, one single multi-class classifier is used to train all unique combinations of label from the training dataset.
-\bigbreak
-Both Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017} have used BR and LP transformation methods to perform multi-label/multi-class text classification to extract rationale from chat messages and IRC messages respectively. 
+Label Powerset (LP) is another form of problem transformation method applied to multi-class or multi-label classification problems. In the case of label powerset, one single multi-class classifier is used to train all unique combinations of labels from the training dataset.
+\newline \newline
+Both Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017} have used BR and LP transformation methods to perform multi-label/multi-class text classification to extract rationale from chat messages and IRC messages, respectively. 
 
-\subsection{Algorithms}
+\subsection{Supervised Learning Algorithms}
 Many algorithms exist in the domain of machine learning to perform different kinds of classification. The scope of this thesis, however, is text classification using supervised learning techniques. The algorithms that will be looked into are mentioned in this section.
 
 \subsubsection{Logistic Regression}
-Given a set of independent variables, $x_1$, $x_2$,.., $x_n$, Logistic Regression (LR) is an algorithm that predicts the outcome, $Y$, that is a binary or categorical variable \cite{Peng2002}\cite{Strombergsson2009} . It is a special form of linear regression except that probability is calculated by using the ratio of logarithm of odds. The data is fit into a logit function for the prediction of outcomes. Binary logistic model predicts the outcomes of two classes, Class A (0) and Class B (1), whereas multinomial logistic model is capable of predicting more than two classes, for example, Class A, Class B and Class C\cite{Jurafsky2017}. 
-\bigbreak
+Given a set of independent variables, $x_1$, $x_2$,.., $x_n$, Logistic Regression (LR) is an algorithm that predicts the outcome, $Y$, that is a binary or categorical variable \cite{Peng2002}, \cite{Strombergsson2009} . It is a special form of linear regression except that probability is calculated by using the ratio of logarithm of odds. The data is fit into a logit function for the prediction of outcomes. Binary logistic model predicts the outcomes of two classes, Class A (0) and Class B (1), whereas multinomial logistic model is capable of predicting more than two classes, for example, Class A, Class B and Class C\cite{Jurafsky2017}. 
+\newline \newline
 Given $b$ the co-efficient of $x_1$ and $a$ the bias term, log of odds ratio is given as:
 \begin{align*}
 log\frac{Y}{1-Y} &= a + bx_1
 \end{align*}
-\bigbreak
+\newline \newline
 Transforming the above log of odds ratio to get the value of $Y$:
 \begin{align*}
 Y &=  \frac{e^{a + bx_1}}{1 + e^{a + bx_1}}
 \end{align*}
-\bigbreak
+\newline \newline
 Rogers et al.\cite{Rogers2012} and Kurtanovic et al.\cite{Kurtanovic2017} have used LR for extracting rationale and performing classification on their respective datasets of software reviews and bug reports. 
 
 \subsubsection{Multinomial Naive Bayes}
 Naive Bayes (NB) belongs to the class of algorithms that are predominantly based on the Bayes Theorem. Algorithms of this group have a common notion that features that contribute to the predicition of an outcome are all independent of each other. However, in real world, this assumption contradict the hypothesis based on which these algorithms function. Naive Bayes, though, is considered to be easy, fast and efficient \cite{Rennie2003}. 
-\bigbreak
+\newline \newline
 Given two events $C$ and $F$, the Bayes Theorem formula, for computing the probability of event $C$ given that $F$ has occured, can be defined as: 
 \begin{align*}
-P(C|F) &= \frac{P(C|F) \times P(C)}{P(F)}
+P(C|F) &= \frac{P(F|C) \times P(C)}{P(F)}
 \end{align*}
-\bigbreak
+\newline \newline
 MacCullum and Nigam \cite{McCallum1998a} published their research on a variant of Naive Bayes, popularly known as the Multinomial Naive Bayes (MNB) model. Unlike the simple Naive Bayes model, MNB uses multinomial distribution for each of the attribute features\footnote{\url{https://stats.stackexchange.com/questions/33185/difference-between-naive-bayes-multinomial-naive-bayes}}. In addition, for tasks like text classification, MNB takes the frequency of word counts, or sequences of word counts, or n-gram tokens independently into account when compared to NB model which only tries to predict the presence or absense of individual words. 
-\bigbreak
+\newline \newline
 Given a class $c$ and features $f_1$, $f_2$,.., $f_n$, the formula under NB is:
 \begin{align*}
 p(c|f_1,...,f_n) \propto p(c) \times p(f_1|c) \times ... \times p(f_n|c)
 \end{align*}
-\bigbreak
+\newline \newline
 When $p(c|f_i)$ is said to have a multinomial distribution, it is said to be using MNB model.  
-\bigbreak
+\newline \newline
 Both Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017} have used MNB model to perform text classification to extract rationale from chat messages and IRC messages respectively. 
 
 \subsubsection{Support Vector Machines}
 Support Vector Machine (SVM) is a popular supervised machine learning algorithm that can be used for regression as well as classification\footnote{\url{https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/}}. In SVM, items from a dataset are plotted as points in an n-dimensional space where n equals the number of features in consideration to perform the classification. The value of each feature corresponds to the value of coordinate. A hyperplane is then used to segregate the classes into two. To increase the confidence of correctly classifying a data point to the right class, the margin between the hyperplane and the data point must not be close; more the distance between them better the likelihood of proper classification\cite{Joachims1998a}.  
-\bigbreak
+\newline \newline
 In real world, datasets can rarely be linearly separable. In such a scenario, kernels come to rescue when more than two dimensions are involved. To separate the classes, the low dimensional input dimensional space is therefore mapped to a higher dimensional space \cite{Tong2001}. The demerit of this approach, although inevitable, is that is results in longer training time while running the classifier. An illustration of SVM is shown in Figure \ref{fig:svm}. 
 \begin{figure}[h] %b!]
     \centering
@@ -534,19 +539,19 @@ In real world, datasets can rarely be linearly separable. In such a scenario, ke
     \label{fig:svm}
 \end{figure}
 \footnotetext{\url{https://docs.opencv.org/2.4/doc/tutorials/ml/introduction_to_svm/introduction_to_svm.html}}
-\bigbreak
-SVM has been used rigorously in the past for various text classification projects. In addition to the thesis works of Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017}, Fan et al.\cite{Fan2017}, Guzman et al.\cite{Guzman2016} and Bacchelli et al.\cite{Bacchelli2012} have also used SVM for text classification tasks in the past. 
+\newline \newline
+SVM has been used rigorously in the past for various text classification projects. In addition to the thesis, works of Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017}, Fan et al.\cite{Fan2017}, Guzman et al.\cite{Guzman2016} and Bacchelli et al.\cite{Bacchelli2012} have also used SVM for text classification tasks. 
 
 \subsubsection{Decision Trees}
 Decision tools predominantly used for classification and regression are Decision Trees (DT). At the top most level, there exists one node from where decision needs to be made at every level going downwards based on some rules pertaining to the attribute in consideration, until the final goal is reached\cite{Jain2017}. 
-\bigbreak
+\newline \newline
 At every level, for each node, there exists an attribute that is chosen to split into their pertinent classes based on the samples provided. This split is done using a goodness function; some of them are information gain, information gain ratio and gini index, to mention a few. The condition for an attribute to be chosen is the one that gives the smallest tree and hence, an attribute that gives the purest node is chosen. A typical criteria for computing impurity is information gain which increases as the average value of purity of the relevant subsets an attribute produces. Attribute that results in highest information gain is therefore chosen finally\cite{Jain2017}. 
-\bigbreak
+\newline \newline
 The highest information gain is chosen after computing the information gain for each of the attribute. Splitting process occurs repeatedly until the scenario where data cannot be split any further. Later, from the bottom, pruning of the tree takes place to make it shorter and avoid overfitting of any kind. In addition to SVM, Nonnenmacher\cite{Nonnenmacher2017}, Fan et al.\cite{Fan2017} and Guzman et al.\cite{Guzman2016} have also used DT for text classification tasks in their respective works.
 
 \subsubsection{Random Forest}
 Random forests belong to a special class of learning algorithms known as the ensemble learning algorithm. This methodology believes individual classifiers are weak and are not having high accuracy. Hence, random forests use techniques such as bagging to overcome this limitation. Random forests thus creates different subsets from the dataset and decision tree classifier is run on each of these subsets. Bagging is then used to combine the results of all the individual classifier run on different subsets to perform the final classification; it decreases the test error by lowering the variance of prediction\cite{Jain2017}. 
-\bigbreak
+\newline \newline
 Due to their nature of running the same algorithm multiple times over different subsets, random forests can be completely parallelized as well. Random forests have more advantages since it aggregates many weak classifiers to make the final classification. Thanks to its ensemble learning approach, it prevents overfitting and gives better accuracy. In addition to handling data without any kinds of preprocessing, random forests are also considered to be resitant to outliers and over-training\cite{Jain2017}. In addition to MNB, SVM and DT, Nonnenmacher\cite{Nonnenmacher2017} performed the experiements using Random Forest model as well. 
 
 \subsection{Performance Metrics}
@@ -559,9 +564,9 @@ Performance metrics of a classifier is imperative to know how accurate the model
     \label{fig:confusion-matrix}
 \end{figure}
 \footnotetext{\url{https://rasbt.github.io/mlxtend/user_guide/evaluate/confusion_matrix/}}
-\bigbreak
+\newline \newline
 Given a positive class, $P_C$, and a negative class, $N_C$, the following can be defined:
-\bigbreak
+\newline \newline
 True Positive Rate (TPR) is the proportion of correctly classified $P_C$. True Negative Rate (TNR) is the proportion of correctly classified $N_C$. False Positive Rate (FPR) is the proportion of incorrectly classified $N_C$, classified as $P_C$. False Negative Rate (FNR) is the proportion of incorrectly classified $P_C$, classified as $N_C$. The four components of the confusion matrix defined earlier can now be used to define the following subsections.
 
 \subsubsection{Accuracy} 
@@ -590,22 +595,22 @@ F1 &= \frac{2TP}{2TP + FP + FN}
 
 \section{Tools}
 There are a wide range of tools to accomplish the tasks that have been carried out in this thesis. Some of these tools are free and open-sourced while the rest are commercial. This research has been carried out only using the tools that are popular, have been used in the past to carry out similar tasks by others, and are completely free. 
-\bigbreak
-For the annotation tasks, spreadsheet application such as Libre Office\footnote{\url{https://www.libreoffice.org/}} has been used although many have used GATE in the past \cite{Lata2016}\cite{Nonnenmacher2017}. The reason for using Libre Office was that it comes readily available Ubuntu operating systems and does not require additional installation, like in the cast of GATE. 
-\bigbreak
-To carry out tasks such as scraping, classification and NLP, Python\footnote{\url{https://www.python.org/}} was used. Python is a programming language that can cater to the needs of the tasks needed to accomplish in this thesis. In addition, Python can be installed across any operating system. Python has an extensive list of libraries for scraping. This thesis uses BeautifulSoup\footnote{\url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}} and Requests\footnote{\url{http://docs.python-requests.org/en/master/}} to scrape data from different websites. While Requests was used to request and get responses from the URL to be scraped, BeautifulSoup was used to achieve the final goal of fetching the content. In addition, BeautifulSoup also had its own parsers that was used to extract the content needed.
-\bigbreak
+\newline \newline
+For the annotation tasks, spreadsheet application such as Libre Office\footnote{\url{https://www.libreoffice.org/}} has been used although many have used GATE in the past \cite{Lata2016}\cite{Nonnenmacher2017}. The reason for using Libre Office was that it catered well t. 
+\newline \newline
+To carry out tasks such as scraping, classification and NLP, Python\footnote{\url{https://www.python.org/}} was used. Python is a programming language that can cater to the needs of the tasks needed to be accomplish in this thesis. In addition, Python can be installed across any operating system. Python has an extensive list of libraries for scraping. This thesis uses BeautifulSoup\footnote{\url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}} and Requests\footnote{\url{http://docs.python-requests.org/en/master/}} to scrape data from different websites. While Requests was used to request and get responses from the URL to be scraped, BeautifulSoup was used to achieve the final goal of fetching the content. In addition, BeautifulSoup also has its own parsers that was used to extract the content needed.
+\newline \newline
 Results of scraping and final annotations were stored in a MySQL\footnote{\url{https://www.mysql.com/}} database. As stated by themselves, MySQL is also the world's most popular open sourced database. Like Python, MySQL is free and can also be installed across different platforms and hence was used by both, the author as well as his advisor for the tasks pertaining for scraping and manual labeling. 
-\bigbreak
-Topic modeling using LDA was performed using a famous library named Gensim\footnote{\url{https://radimrehurek.com/gensim/}}. Rehurek and Sojka \cite{Rehurek2010} published their work on the internal details of how Gensim works as well. Gensim is also capable of supporting other topic modeling techniques such as Hierarchial Dirichlet Process and Latent Semantic Analysis. 
-\bigbreak
+\newline \newline
 Scikit-learn\footnote{\url{http://scikit-learn.org/stable/}} is one of the most sought after machine learning libraries for Python \cite{Pedregosa2012}. It supports multiple machine learning methodologies such as classification, regression, clustering, dimensionality reduction, to mention a few. All the binary classification tasks in this thesis has been carried out using LR, MNB, SVM, DT and RF, which come packaged with the scikit-learn library. Kurtanovic and Maleej \cite{Kurtanovic2017} have also used this library for their work on mining rationale from software reviews. However, at the time of writing this thesis, scikit-learn did not provide transformation methods such as Binary Relevance and Label Powerset for multi-class and multi-label classifications. Hence, an extension of scikit-learn called scikit-multilearn\footnote{\url{http://scikit.ml/}} was used. However, the library did not yield proper results for a lot of configurations and algorithms. 
-\bigbreak
+\newline \newline
+MEKA\footnote{\url{http://meka.sourceforge.net/}}\cite{MEKA2016}, an extension of WEKA\footnote{\url{https://www.cs.waikato.ac.nz/ml/weka/}}, has been used to overcome the limitations of scikit-learn and scikit-multilearn. The fine grained classifications using transformation methods such as BR and LP are supported by MEKA. In addition, MEKA also has a robust range of preprocessing options. This tool has also been used by Lata \cite{Lata2016} and Nonnenmacher \cite{Nonnenmacher2017} in their respective research works.
+\newline \newline
+Topic modeling using LDA was performed using a famous library named Gensim\footnote{\url{https://radimrehurek.com/gensim/}}. Rehurek and Sojka \cite{Rehurek2010} published their work on the internal details of how Gensim works as well. Gensim is also capable of supporting other topic modeling techniques such as Hierarchial Dirichlet Process and Latent Semantic Analysis. Keywords generated using LDA for comments of ITS and messages of IRC were linked using a string similarity Python library called fuzzywuzzy\footnote{\url{http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/}} based on Levenshtein distance.
+\newline \newline
 Topic modeling and classification tasks in Python have been carried with the help of some additional libraries such as NLTK\footnote{\url{http://www.nltk.org/}} and SpaCy\footnote{\url{https://spacy.io/}}. NLTK was used for tokenization and lemmatization while SpaCy was used for POS tagging techniques. NLTK and SpaCy were extensively studied by Al Omran and Treude \cite{AlOmran2017} where they explored NLP libraries for analyzing software documentation. 
-\bigbreak
-MEKA\footnote{\url{http://meka.sourceforge.net/}}\cite{MEKA2016}, an extension of WEKA\footnote{\url{https://www.cs.waikato.ac.nz/ml/weka/}}, has been used to overcome the limitations of scikit-learn and scikit-multilearn. The fine grained classifications using transformation methods such as BR and LP are supported by MEKA. In addition, MEKA also has a robust range of preprocessing options. This tool has also been used by Lata \cite{Lata2016} and Nonnenmacher \cite{Nonnenmacher2017} in their respective research works. 
-\bigbreak
-For quick analysis of results and neat data visualizations, R programming language\footnote{\url{https://www.r-project.org/}} was used, a language concentrating on statistical analyses. The graphic libraries offered by R have been claimed to be more pleasing to the eyes when compared to Python\footnote{\url{https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis}}. All the graphs in this thesis has been generated using ggplot2\footnote{\url{http://ggplot2.org/}} library for R. 
+\newline \newline
+For quick analysis of results and neat data visualizations, R programming language\footnote{\url{https://www.r-project.org/}} was used, a language concentrating on statistical analyses. The graphic libraries offered by R have been claimed to be more pleasing to the eyes when compared to Python\footnote{\url{https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis}}. All the graphs in this thesis has been generated using ggplot2\footnote{\url{http://ggplot2.org/}} library for R. The UML diagrams have been generated using draw.io tool \footnote{\url{http://draw.io/}}.
 
 %------- chapter 3 -------
 
