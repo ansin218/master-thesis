@@ -539,19 +539,50 @@ In real world, datasets can rarely be linearly separable. In such a scenario, ke
 \end{figure}
 \footnotetext{\url{https://docs.opencv.org/2.4/doc/tutorials/ml/introduction_to_svm/introduction_to_svm.html}}
 \newline \newline
-SVM has been used rigorously in the past for various text classification projects. In addition to the thesis, works of Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017}, Fan et al.\cite{Fan2017}, Guzman et al.\cite{Guzman2016} and Bacchelli et al.\cite{Bacchelli2012} have also used SVM for text classification tasks. 
+SVM has been used in the past for various text classification projects. In addition to the thesis, works of Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017}, Fan et al.\cite{Fan2017}, Guzman et al.\cite{Guzman2016} and Bacchelli et al.\cite{Bacchelli2012} have also used SVM for text classification tasks. 
 
 \subsubsection{Decision Trees}
 Decision tools predominantly used for classification and regression are Decision Trees (DT). At the top most level, there exists one node from where decision needs to be made at every level going downwards based on some rules pertaining to the attribute in consideration, until the final goal is reached\cite{Jain2017}. 
 \newline \newline
-At every level, for each node, there exists an attribute that is chosen to split into their pertinent classes based on the samples provided. This split is done using a goodness function; some of them are information gain, information gain ratio and gini index, to mention a few. The condition for an attribute to be chosen is the one that gives the smallest tree and hence, an attribute that gives the purest node is chosen. A typical criteria for computing impurity is information gain which increases as the average value of purity of the relevant subsets an attribute produces. Attribute that results in highest information gain is therefore chosen finally\cite{Jain2017}. 
+At every level, for each node, there exists an attribute that is chosen to split based on the samples provided. This split is done using a goodness function such as information gain. Information gain is the change in entropy which is the impurity in the dataset. Information gain results in decrease in entropy after dataset is split based on some attribute\footnote{\url{http://www.saedsayad.com/decision_tree.htm}}. The highest information gain is chosen after computing the information gain for each of the attribute. Splitting process occurs repeatedly until the scenario where data cannot be split any further\cite{Jain2017}. 
 \newline \newline
-The highest information gain is chosen after computing the information gain for each of the attribute. Splitting process occurs repeatedly until the scenario where data cannot be split any further. Later, from the bottom, pruning of the tree takes place to make it shorter and avoid overfitting of any kind. In addition to SVM, Nonnenmacher\cite{Nonnenmacher2017}, Fan et al.\cite{Fan2017} and Guzman et al.\cite{Guzman2016} have also used DT for text classification tasks in their respective works.
+Given a set of attributes \textit{$x_1$, $x_2$, .. , $x_m$}, and target attribute \textit{Y} comprising of \textit{n} classes, entropy of \textit{Y} is:
+\begin{equation}
+	E(Y) = \sum\limits_{i=1}^n -p_i log_2 p_i
+\end{equation}
+\newline
+Entropy of attribute $x_m$ is given by:
+\begin{equation}
+E(Y, x_m) = \sum\limits_{n \in x_m} P(n) \times E(n)
+\end{equation}
+\newline
+Based on 2.7 and 2.8, information gain would therefore be:
+\begin{equation}
+IG(Y, x_m) = E(Y) - E(Y, x_m)
+\end{equation}
+The pseudocode of DT is described as follows. 
+\begin{algorithm}
+\caption{Decision Tree Pseudocode}
+\begin{algorithmic}[1]
+\Procedure{Decision Tree Classifier}{}
+\State \text{start at root node}
+\For{\text{each attribute of child node}}
+	\State \text{calculate information gain}
+   	\State \text{store result}
+\EndFor
+\State \text{choose result with maximum information gain}
+\State \text{repeat steps 3 to 7 until leaf node traversed}
+\State \text{return best result}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\newline 
+In addition to SVM, Nonnenmacher\cite{Nonnenmacher2017}, Fan et al.\cite{Fan2017} and Guzman et al.\cite{Guzman2016} have also used DT for text classification tasks in their respective works.
 
 \subsubsection{Random Forest}
-Random forests belong to a special class of learning algorithms known as the ensemble learning algorithm. This methodology believes individual classifiers are weak and are not having high accuracy. Hence, random forests use techniques such as bagging to overcome this limitation. Random forests thus creates different subsets from the dataset and decision tree classifier is run on each of these subsets. Bagging is then used to combine the results of all the individual classifier run on different subsets to perform the final classification; it decreases the test error by lowering the variance of prediction\cite{Jain2017}. 
+Random Forest (RF) belong to a special class of learning algorithms known as the ensemble learning algorithm. This methodology believes individual classifiers are weak and are not having high accuracy. Hence, random forests use techniques such as bagging to overcome this limitation. Random forests thus creates different subsets from the dataset and decision tree classifier is run on each of these subsets. Bagging, or bootstrap aggregating, is then used to combine the results of all the individual classifier run on different subsets to perform the final classification\cite{Jain2017}. 
 \newline \newline
-Due to their nature of running the same algorithm multiple times over different subsets, random forests can be completely parallelized as well. Random forests have more advantages since it aggregates many weak classifiers to make the final classification. Thanks to its ensemble learning approach, it prevents overfitting and gives better accuracy. In addition to handling data without any kinds of preprocessing, random forests are also considered to be resitant to outliers and over-training\cite{Jain2017}. In addition to MNB, SVM and DT, Nonnenmacher\cite{Nonnenmacher2017} performed the experiements using Random Forest model as well. 
+Due to their nature of running the same algorithm multiple times over different subsets, random forests can be completely parallelized as well. Random forests have more advantages since it aggregates many weak classifiers to make the final classification. Thanks to its ensemble learning approach, it prevents overfitting and gives better accuracy. In addition to handling data without any kinds of preprocessing, random forests are also considered to be resitant to outliers and over-training\cite{Jain2017}. In addition to MNB, SVM and DT, Nonnenmacher\cite{Nonnenmacher2017} performed the experiements using Random Forest model as well. The pseudocode of RF is as follows. 
 \begin{algorithm}
 \caption{Random Forest Pseudocode}
 \begin{algorithmic}[1]
