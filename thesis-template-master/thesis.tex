@@ -676,18 +676,7 @@ Launchpad did not have its export option to fetch mass number of issues and its 
     \caption{Overview of distribution of comments for Ubuntu}
     \label{fig:ubuntuRawDistro}
 \end{figure}
- 
-%\subsection{Commit Logs Dataset}
-%This section scrutinizes how the data of commit messages were obtained for Apache Lucene, Mozilla Thunderbird and Ubuntu.
 
-%\subsubsection{Apache Lucene}
-%Apache Lucene uses Git for its version control, which was developed by Linus Torvald and released in 2005. Apache Lucene along with SOLR is hosted together within the same repository on GitHub. The repository was cloned to local environment in the system to retrieve the commit logs. Git allows the logs of the repository to be exported in TXT format and this is the method that has been used to get all the logs for Apache Lucene. However, a parsing script was additionally written in Python to obtain all the commit id, author, date and commit message respectively. These information was later stored in a MySQL database. 
-
-%\subsubsection{Mozilla Thunderbird}
-%Mozilla Thunderbird uses Mercurial for its version control, which was developed by Matt Mackall and released in 2005. The Mozilla Thunderbird project in a repository owned by Mozilla. This repository was cloned to the system to extract the commit logs. Like Git, Mercurial also offers users an option to extract the entire commit log history in TXT format. This data was parsed using a script written in Python to retrieve all the commit id, author, date and commit message respectively. The retrieved information was eventually stored in a MySQL database. 
-
-%\subsubsection{Ubuntu}
-%Ubuntu makes use of Bazaar primarily for its version control, which was developed by Martin Pool in 2005 and maintained by Canonical Ltd. The Ubuntu project is hosted on Launchpad platform using Bazaar. Due to too numerous repositories, the entire Ubuntu project could not be cloned individually. However, a script in Python was written using the BeautifulSoup library; similar to the script used for fetching data from issue trackers for Ubuntu. Identical problems of many downlinks were encountered and hence, only those that were up were fetched automatically. A MySQL database was used to store all of these information. 
 
 \section{IRC Messages Dataset}
 
@@ -713,38 +702,18 @@ The IRC messages dataset has been scraped by Nonnenmacher \cite{Nonnenmacher2017
 
 %------- chapter 4 -------
 
-\chapter{Manual Content Analysis}
+\chapter{Content Analysis}
 
 This chapter dives into the procedure of manual content analysis and the formation of ground truth for machine learning experiments to be carried out later. In addition, this chapter also gives insights on how the sample data for the experiements to be performed were obtained from the initial raw dataset. 
 
-\begin{figure}[h] %b!]
-    \centering
-    \includegraphics[width=12cm]{frequency-object-diagram}
-    \caption{Approach to check rationale frequency using UML object diagram}
-    \label{fig:frequencyModel}
-\end{figure}
-
-\section{Ground Truth Dataset}
-An imperative step after performing machine learning experiements is to measure characteristics such as accuracy, precision, recall and F1 score. This, in turn, means one needs to have a reliable dataset for ground truth. Messages from the issue trackers have no pre-defined structure as to whether they contain any kind of rationale or not. To have similar understanding, be on the same page and reduce the number of disagreements later, both the annotators randomly went through a few sentences. The annotators marked rationale for each of them if applicable, classified them appropriately, and shared their perspectives before concluding on mutual agreements as to how to go about in the main manual content analysis experiment.  Some of the examples are mentioned in detail in the coding guide for manual content analysis. There were two kinds of classification performed in this stage: binary and multi-class classification. Binary classification was done to check if the sentence contains any kind of rationale or not. Multi-class classification was done to classify the sentence, if rationale is found, into five categories: issue, alternatives, pro-arguments, con-arguments and decision, which are explained as follows.
-
-\begin{itemize}
-\item \textbf{Issue:} the problem to be solved, or a feature to be implemented
-\item \textbf{Alternative:} the feasible solutions that could address the issue
-\item \textbf{Pro-Argument:} the argument put across in favor of a particular alternative
-\item \textbf{Con-Argument:} the argument put across against a particular alternative
-\item \textbf{Decision:} the final conclusions made to resolve the issue
-\end{itemize}
-
 \section{Random Stratified Sampling}
-For the main content analysis, two annotators, the author and his advisor, individually read through individual sentences of all comments spanning 100 issues from each of the three projects. Although the number of issues fetched for each of them were much higher, only 100 of them were attained for each project using Random Stratified Sampling (RSS) due to time constraints of the research. RSS can be of two types: proportionate random stratified sampling and disproportionate random stratified sampling. In proportionate random stratified sampling\footnote{\url{http://www.oxfordreference.com/view/10.1093/oi/authority.20110803100349910}}, the parent dataset is divided into multiple strata and the child dataset sampled randomly must have the strata in the same proportion as the parent dataset. Contrary to proportionate random stratified sampling, the case of disproportionate random stratified sampling\footnote{\url{http://www.oxfordreference.com/view/10.1093/oi/authority.20110803095722568}} has the parent dataset divided into multiple strate but the child dataset sampled randomly may not have its strata in the same proportion as the parent dataset. There are, however, three steps carried out sequentially to obtain the sample which are as follows.
-
+For the main content analysis, two annotators, the author and his advisor, individually read through each sentence of all comments spanning 100 issues from each of the three projects. Although the number of issues fetched for each of them were much higher, only 100 of them were attained for each project using Random Stratified Sampling (RSS) due to time constraints of the research. RSS can be of two types: proportionate random stratified sampling and disproportionate random stratified sampling. In proportionate random stratified sampling\footnote{\url{http://www.oxfordreference.com/view/10.1093/oi/authority.20110803100349910}}, the parent dataset is divided into multiple strata and the child dataset sampled randomly must have the strata in the same proportion as the parent dataset. Contrary to proportionate random stratified sampling, the case of disproportionate random stratified sampling\footnote{\url{http://www.oxfordreference.com/view/10.1093/oi/authority.20110803095722568}} has the parent dataset divided into multiple strate but the child dataset sampled randomly may not have its strata in the same proportion as the parent dataset. There are, however, three steps carried out sequentially to obtain the sample which are as follows.
+\newline 
 \begin{itemize}
 \item {Step 1:} Filter the dataset by discarding issues that do not fall under the required date range. The required date range is the range used in the IRC message dataset which can be referred in Table \ref{tab:rawIRCMessages}. This is to make sure the comments from issue trackers are from the same duration as messages from IRC. 
-\item {Step 2:} In the next step, count the number of comments for each issue that are under the required date range but only consider issues that have between 5 and 30 comments, and divide them into 5 groups: 6-10 comments, 11-15 comments, 16-20 comments, 21-25 comments and 26-30 comments, in order to avoid issues with too few comments (less than 5) or way too many comments (greater than 30). 
+\item {Step 2:} In the next step, count the number of comments for each issue that are under the required date range but only consider issues that have between 5 and 30 comments to avoid issues with too few comments (less than 5) or way too many comments (greater than 30). The 5 groups are: 6-10, 11-15, 16-20, 21-25 and 26-30 comments.
 \item {Step 3:} Perform proportionate random stratified sampling to obtain 100 random issues from the filtered dataset in step 2 for each of the three projects. 
 \end{itemize}
-
-
 
 \begin{table} %[hb!]
     \centering
@@ -764,15 +733,15 @@ For the main content analysis, two annotators, the author and his advisor, indiv
     \label{tab:strataProportion}
 \end{table}
 
-From Table \ref{tab:strataProportion} and Figure \ref{fig:multilineStrata}, it can be seen that there is an inverse correlation between the number of issues and comments in each strata. All the three projects, Apache Lucene, Mozilla Thunderbird and Ubuntu, demonstrate that the number of issues in each strata gradually decreases as the number of comments in them increases. 
-\bigbreak
+From Table \ref{tab:strataProportion} and Figure \ref{fig:multilineStrata}, it can be seen that there is an inverse correlation between the number of issues and comments in each strata. All the three projects, Apache Lucene, Mozilla Thunderbird and Ubuntu, demonstrate that the number of issues in each strata gradually decreases as the number of comments in them increases. The figures on number of comments and the number of sentences under each project after performing the random stratified sampling are presented in Table \ref{tab:overviewRSS}. 
+\newline 
 \begin{figure}[h] %b!]
     \centering
-    \includegraphics[width=11cm]{rss-multi-line-plot}
+    \includegraphics[width=12cm]{rss-multi-line-plot}
     \caption{Number of issues in each strata for all 3 projects}
     \label{fig:multilineStrata}
 \end{figure}
-The figures on number of comments and the number of sentences under each project after performing the random stratified sampling are presented in Table \ref{tab:overviewRSS}. 
+\newline 
 
 \begin{table} %[hb!]
     \centering
@@ -793,12 +762,11 @@ The figures on number of comments and the number of sentences under each project
 \end{table}
 
 \section{Manual Annotation}
-After having performed Random Stratified Sampling, the next step was to manully annotate or label each every sentence from all the 3 projects, Apache Lucene, Mozilla Thunderbird and Ubuntu. These annotations would therefore form the groundtruth to perform the machine learning classification experiments in later stages of this thesis. Manual annotation has been a popular technique and has been implemented in the past by various researchers \cite{Alkadhi2017} \cite{Nonnenmacher2017}. 
-\bigbreak
+After having performed RSS, the next step was to manully annotate or label each every sentence from all three projects, Apache Lucene, Mozilla Thunderbird and Ubuntu. These annotations would therefore form the groundtruth to perform the machine learning classification experiments in later stages of this thesis. Manual annotation has been a popular technique and has been implemented in the past by various researchers \cite{Alkadhi2017} \cite{Nonnenmacher2017}. 
+\newline \newline 
 To perform this step, Excel was used since it was a tool to achieve the goal without having the need to install anything more. A set of criteria found in Appendix A was agreed upon and followed by the two annotators, the author and his advisor. Both the annotators individually labeled the sentences from all the 3 projects. While the author of this thesis took 21 hours to accomplish this task, the same task took a tad bit more, 21 hours and 15 minutes for his advisor. 
-\bigbreak
-The second step of this annotation task was to keep all the complete agreements intact but discuss the sub-agreements and complete disagreements. Sub-agreements were those sentences were there was an overlap of labeling between the author and his advisor. For an example, a sentence was labeled as an issue and decision by the author while the advisor marked it as an issue and an alternative. One can note that both had agreed that the sentece does belong to the class of issue but had conflicting opinions about decision or an alternative. Complete disagreements are cases were both of them marked a given sentence as completely different with no overlap of opinions. For example, a sentence was marked as an alternative by the author while his advisor marked it as a decision. Both, the author and his advisor, then sat once again, this time together, to resolve all the conflicting opinions and come to a mutual conclusion on the labels. Table \ref{tab:labelBinary} and Table \ref{tab:labelFine} gives the statistics of agreements and disagreements of the two annotators. 
-
+\newline \newline 
+The second step of this annotation task was to keep all the complete agreements intact but discuss the sub-agreements and complete disagreements. Sub-agreements were those sentences were there was an overlap of labeling between the author and his advisor. For an example, a sentence was labeled as an issue and decision by the author while the advisor marked it as an issue and an alternative. One can note that both had agreed that the sentece does belong to the class of issue but had conflicting opinions about decision or an alternative. Complete disagreements are cases were both of them marked a given sentence as completely different with no overlap of opinions. For example, a sentence was marked as an alternative by the author while his advisor marked it as a decision. Both, the author and his advisor, then sat once again, this time together, to resolve all the conflicting opinions and come to a mutual conclusion on the labels. Table \ref{tab:labelBinary} and Table \ref{tab:labelFine} gives the statistics of agreements and disagreements between two annotators. 
 \begin{table} %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -816,7 +784,6 @@ The second step of this annotation task was to keep all the complete agreements 
     \captionof{table}{Annotation Statistics for Binary Classification}
     \label{tab:labelBinary}
 \end{table}
-
 \begin{table} %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -836,7 +803,11 @@ The second step of this annotation task was to keep all the complete agreements 
 \end{table}
 
 \section{Annotation Results}
-The results of manual annotation from both the annotators are presented in this section. Table \ref{tab:distroBinaryRationale} gives a detailed overview with both, number and percentages, for all three projects. It can be inferred that Apache Lucene had the highest ratio between sentences with rationale to ones without any rationale whereas Mozilla Thunderbird and Ubuntu appear to be having a healthy ratio between both, rationale and no rationale. Ubuntu is the only project though where the number of sentences with rationale has been outnumbered marginally by the number of sentences not containing any kind of rationale in it. Figure \ref{fig:distroBinaryRationale} shows the proportion of messages for all three projects. Similarly, Table \ref{tab:distroMultiRationale} presents complete overview with numbers and percetage for fine-grained rationale found in the dataset. Apache Lucene (11\%) had the least percentage of issues compared to Mozilla Thunderbird (24\%) and Ubuntu (25\%). However, higher percentage of decisions were made in Apache Lucene (8\%) than Mozilla Thunderbird (3\%) or Ubuntu (4\%). The numbers look very similar even in the case of alternatives, pro-arguments and con-arguments, where Apache Lucene outnumbers Mozilla Thunderbird and Ubuntu. The following numbers can also lead to the inference that due to lesser number of issues, more number of final decisions were reached in case of Apache Lucene. This also leads to another observation that lesser decisions were made in the case of Mozilla Thunderbird and Ubuntu because the numbers for alternatives, pro-argument and con-argument are also low, which are crucial to reach a final conclusion. Figure \ref{fig:distroMultiRationale} shows the distribution of fine-grained rationale in the dataset across all three projects. 
+The results of manual annotation from both the annotators are presented in this section. Table \ref{tab:distroBinaryRationale} gives a detailed overview with both, number and percentages, for all three projects. It can be inferred that Apache Lucene had the highest ratio between sentences with rationale to ones without any rationale whereas Mozilla Thunderbird and Ubuntu appear to be having a healthy ratio between both, rationale and no rationale. Ubuntu is the only project though where the number of sentences with rationale has been outnumbered marginally by the number of sentences not containing any kind of rationale in it. Figure \ref{fig:distroBinaryRationale} shows the proportion of messages for all three projects. 
+\newline \newline
+Similarly, Table \ref{tab:distroMultiRationale} presents complete overview with numbers and percetage for fine grained rationale found in the dataset. Apache Lucene (11\%) had the least percentage of issues compared to Mozilla Thunderbird (24\%) and Ubuntu (25\%). However, higher percentage of decisions were made in Apache Lucene (8\%) than Mozilla Thunderbird (3\%) or Ubuntu (4\%). The numbers look very similar even in the case of alternatives, pro-arguments and con-arguments, where Apache Lucene outnumbers Mozilla Thunderbird and Ubuntu. 
+\newline \newline
+The following numbers can also lead to the inference that due to lesser number of issues, more number of final decisions were reached in case of Apache Lucene. This leads to another observation that lesser decisions were made in the case of Mozilla Thunderbird and Ubuntu because the numbers for alternatives, pro-argument and con-argument are also low, which are crucial to reach a final conclusion. Figure \ref{fig:distroMultiRationale} shows the distribution of fine-grained rationale in the dataset across all three projects. 
 
 \begin{table} %[hb!]
     \centering
@@ -858,10 +829,11 @@ The results of manual annotation from both the annotators are presented in this 
 
 \begin{figure}[h] %b!]
     \centering
-    \includegraphics[width=11cm]{binary-distro-rationale}
+    \includegraphics[width=14cm]{binary-distro-rationale}
     \caption{Distribution of Rationale Frequency}
     \label{fig:distroBinaryRationale}
 \end{figure}
+
 \begin{table} %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -876,14 +848,14 @@ The results of manual annotation from both the annotators are presented in this 
         \midrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{Distribution of Fine-Grained Rationale in Sentences}
+    \captionof{table}{Distribution of Fine Grained Rationale in Sentences}
     \label{tab:distroMultiRationale}
 \end{table}
 
 \begin{figure}[h] %b!]
     \centering
-    \includegraphics[width=12cm]{multi-distro-rationale}
-    \caption{Distribution of Fine-Grained Rationale Frequency}
+    \includegraphics[width=14cm]{multi-distro-rationale}
+    \caption{Distribution of Fine Grained Rationale Frequency}
     \label{fig:distroMultiRationale}
 \end{figure}
 
