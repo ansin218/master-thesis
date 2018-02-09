@@ -552,6 +552,21 @@ The highest information gain is chosen after computing the information gain for 
 Random forests belong to a special class of learning algorithms known as the ensemble learning algorithm. This methodology believes individual classifiers are weak and are not having high accuracy. Hence, random forests use techniques such as bagging to overcome this limitation. Random forests thus creates different subsets from the dataset and decision tree classifier is run on each of these subsets. Bagging is then used to combine the results of all the individual classifier run on different subsets to perform the final classification; it decreases the test error by lowering the variance of prediction\cite{Jain2017}. 
 \newline \newline
 Due to their nature of running the same algorithm multiple times over different subsets, random forests can be completely parallelized as well. Random forests have more advantages since it aggregates many weak classifiers to make the final classification. Thanks to its ensemble learning approach, it prevents overfitting and gives better accuracy. In addition to handling data without any kinds of preprocessing, random forests are also considered to be resitant to outliers and over-training\cite{Jain2017}. In addition to MNB, SVM and DT, Nonnenmacher\cite{Nonnenmacher2017} performed the experiements using Random Forest model as well. 
+\begin{algorithm}
+\caption{Random Forest Pseudocode}
+\begin{algorithmic}[1]
+\Procedure{Random Forest Classifier}{}
+\State \text{choose random subset of data}
+\For{\text{each subset of data}}
+	\State \text{construct decision tree}
+	\State \text{choose best split criterion for attributes}
+   	\State \text{store final result of tree}
+\EndFor
+\State \text{perform voting on results of all subtrees}
+\State \text{return best result based on majority voting}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
 \subsection{Performance Metrics}
 Performance metrics of a classifier is imperative to know how accurate the model is. A confusion matrix can hence be plotted which comprises of True Positive (TP), True Negative (TN), False Positive (FP) and False Negative (FN) as depicted in Figure \ref{fig:confusion-matrix}.
