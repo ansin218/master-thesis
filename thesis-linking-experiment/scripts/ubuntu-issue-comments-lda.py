@@ -13,6 +13,7 @@ start_time = time()
 
 conn = pymysql.connect(host='localhost', user='root', password='password', db='Issue_Trackers', autocommit=True, use_unicode=True, charset="utf8")
 
+# Load issues dataset
 cursor_1 = conn.cursor()
 cursor_2 = conn.cursor()
 cursor_1.execute("SELECT DISTINCT(comment), comment_id, issue_id FROM `ubuntu_rss_comments` WHERE 1")
@@ -31,6 +32,8 @@ for x in range(len(ubuntu_rss_comments)):
 
 	tokenizer = RegexpTokenizer(r'\w+')
 	en_stop = get_stop_words('en')
+
+	# Create custom stopwords list
 	alphaList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 	numList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 	customList1 = ['can', 'due', 'jira', 'lucene', 'instead', 'org', 'apache', 'hole', 'probably', 'use', 'another', 'looks', 'look', 'good']
@@ -84,6 +87,7 @@ for x in range(len(ubuntu_rss_comments)):
 
 	texts = []
 
+	# Generate keywords using LDA
 	for i in doc_set:
 
 	    raw = i.lower()

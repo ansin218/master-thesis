@@ -9,6 +9,7 @@ start_time = time()
 
 conn = pymysql.connect(host='localhost', user='root', password='password', db='Issue_Trackers', autocommit=True, use_unicode=True, charset="utf8")
 
+# Load keywords of issues and IRCs
 cursor_1 = conn.cursor()
 cursor_1.execute("SELECT issue_id, comment_id, keywords FROM thunderbird_issues_keywords_lda")
 
@@ -33,6 +34,7 @@ for row in cursor_2:
 	irc_id_list.append(row[0])
 	irc_keyword_list.append(row[1])
 
+# Perform similarity between keywords using string matching Levenshtein distance
 for x in range(len(issue_keyword_list)):
 	if(issue_keyword_list[x] != 'Insufficient Data'):
 		for y in range(len(irc_keyword_list)):
