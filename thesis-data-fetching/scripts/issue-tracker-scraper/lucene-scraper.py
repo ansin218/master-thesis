@@ -14,6 +14,9 @@ cursor = db.cursor()
 start_time = time()
 i = 1
 
+# Data already downloaded from JIRA using export option
+# This file only parses necessary data from exported XML files 
+
 for i in range(8):
     i = i + 1
     curxml = 'lucene_data_' + str(i) + '.xml'

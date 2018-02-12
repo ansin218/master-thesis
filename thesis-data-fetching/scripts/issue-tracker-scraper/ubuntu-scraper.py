@@ -12,6 +12,10 @@ db = pymysql.connect(host='localhost', user='root', password='password', db='mas
 cursor = db.cursor()
 
 x = 0
+
+# Request necessary link and scrape data
+# Some links return no data, skip them using try/catch
+
 for x in range(120000, 132809, 75):
     link = "https://bugs.launchpad.net/ubuntu/+bugs?orderby=-importance&memo=" + str(x) + "&start=" + str(x)
     print("\nMAIN LINK: Scraping and parsing data from: ", link, "\n")

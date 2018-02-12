@@ -14,6 +14,10 @@ date_list = list()
 com_list = list()
 i = 0
 
+# Put commit.txt in same directory as this file
+# Parse commit.txt file to get necessary data
+# This file does not scrape but only parses downloaded logs data
+
 with open('commit.txt') as f:
     for text in f:
         if text.startswith('changeset:   '):

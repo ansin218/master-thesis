@@ -12,11 +12,13 @@ cursor = db.cursor()
 
 start_time = time()
 
+# Request the link to scrape
 page = requests.get("https://bugzilla.mozilla.org/buglist.cgi?product=Thunderbird&component=Security&resolution=---")
 soup = BeautifulSoup(page.content, 'html.parser')
 i = 0
 a_len = len(soup.find_all('a'))
 
+# Scrape all the necessary data
 for i in range(a_len):
     x = soup.find_all('a')[i].get_text()
     if(x.isnumeric()):
