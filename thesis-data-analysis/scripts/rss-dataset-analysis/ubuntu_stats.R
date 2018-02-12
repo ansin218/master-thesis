@@ -8,6 +8,7 @@ ubuntuData$countCat <- cut(ubuntuData$count, breaks=c(5,10,15,20,25,30))
 
 ubuntuData <- ubuntuData[!is.na(ubuntuData$countCat), ]
 
+# Plot stratified data analysis statistics
 ggplot(ubuntuData, aes(x = factor(ubuntuData$countCat))) +
   geom_bar(aes(y = (..count..))) +
   labs(x="Count Category",y="Count Frequency") +

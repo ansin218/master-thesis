@@ -8,6 +8,7 @@ luceneData$countCat <- cut(luceneData$count, breaks=c(1,5,10,15,20,25,30,35,40,4
 
 luceneData <- luceneData[!is.na(luceneData$countCat), ]
 
+# Plot raw data analysis statistics
 ggplot(luceneData, aes(x = factor(luceneData$countCat))) +
   geom_bar(aes(y = (..count..))) +
   labs(x="Comments Count Category",y="Number of Issues") +

@@ -8,6 +8,7 @@ ubuntuData$countCat <- cut(ubuntuData$count, breaks=c(1,5,10,15,20,25,30,35,40,4
 
 ubuntuData <- ubuntuData[!is.na(ubuntuData$countCat), ]
 
+# Plot raw data analysis statistics
 ggplot(ubuntuData, aes(x = factor(ubuntuData$countCat))) +
   geom_bar(aes(y = (..count..))) +
   labs(x="Comments Count Category",y="Number of Issues") +

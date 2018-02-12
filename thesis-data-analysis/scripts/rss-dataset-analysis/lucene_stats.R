@@ -8,6 +8,7 @@ luceneData$countCat <- cut(luceneData$count, breaks=c(5,10,15,20,25,30))
 
 luceneData <- luceneData[!is.na(luceneData$countCat), ]
 
+# Plot stratified data analysis statistics
 ggplot(luceneData, aes(x = factor(luceneData$countCat))) +
   geom_bar(aes(y = (..count..))) +
   labs(x="Count Category",y="Count Frequency") +

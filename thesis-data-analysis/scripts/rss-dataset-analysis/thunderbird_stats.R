@@ -8,6 +8,7 @@ thunderbirdData$countCat <- cut(thunderbirdData$count, breaks=c(5,10,15,20,25,30
 
 thunderbirdData <- thunderbirdData[!is.na(thunderbirdData$countCat), ]
 
+# Plot stratified data analysis statistics
 ggplot(thunderbirdData, aes(x = factor(thunderbirdData$countCat))) +
   geom_bar(aes(y = (..count..))) +
   labs(x="Count Category",y="Count Frequency") +

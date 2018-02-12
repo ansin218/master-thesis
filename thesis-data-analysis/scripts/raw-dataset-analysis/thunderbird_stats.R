@@ -8,6 +8,7 @@ thunderbirdData$countCat <- cut(thunderbirdData$count, breaks=c(1,5,10,15,20,25,
 
 thunderbirdData <- thunderbirdData[!is.na(thunderbirdData$countCat), ]
 
+# Plot raw data analysis statistics
 ggplot(thunderbirdData, aes(x = factor(thunderbirdData$countCat))) +
   geom_bar(aes(y = (..count..))) +
   labs(x="Comments Count Category",y="Number of Issues") +

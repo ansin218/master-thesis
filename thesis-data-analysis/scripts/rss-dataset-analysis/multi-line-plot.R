@@ -11,6 +11,7 @@ df <- data.frame(x, lucene, thunderbird, ubuntu)
 chart_data <- melt(df, id='x')
 names(chart_data) <- c('x', 'dataset', 'value')
 
+# Plot stratified data analysis statistics of all three datasets using line graph
 ggplot() +
   geom_line(data = chart_data, aes(x = x, y = value, color = dataset), size = 1)+
   labs(x="Strata", y="Number of Issues") +
