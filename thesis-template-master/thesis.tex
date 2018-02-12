@@ -32,6 +32,7 @@
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
 \usepackage{multirow}
+\usepackage[toc,page]{appendix}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit Breitenangabe
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbündig mit Breitenangabe
@@ -90,7 +91,7 @@ Finally, I would like to thank my family in Chennai and my extended family in At
 
 %abstract english
 
-Rationale knowledge is particularly important during software maintenance and evolution because it is valuable to understand the rationale behind the previous decisions. Rationale knowledge, in the context of software engineering, corresponds to the reasoning and logic behind the decisions taken during all phases of software development. Such decisive conversations are spread out across various mediums. Rationale may be discussed face-to-face or over other modes of communication such as chats, emails, or issue trackers to mention a few. It is thus important to extract and mine these messages that were exchanged over different modes of communication to recover rationale. Open source projects come with licenses that provides the rights to study, develop and also contribute to the same. Additionally, issue trackers for open source projects are available publicly. Therefore, this research focuses on mining rationale from the issue trackers of open source projects: Apache Lucene, Mozilla Thunderbird and Ubuntu. This thesis also aims to link common topics of discussion taking place over IRC and issue tracker of the aforementioned projects. The rationale captured can help developers evaluate decisions, improve understandability, and document the pertinent information better.
+Rationale knowledge is particularly important during software maintenance and evolution because it is valuable to understand the rationale behind the previous decisions. Rationale knowledge, in the context of software engineering, corresponds to the reasoning and logic behind the decisions taken during all phases of software development. Such decisive conversations are spread out across various mediums. Rationale may be discussed face-to-face or over other modes of communication such as chats, emails, or issue trackers to mention a few. It is thus important to extract and mine these messages that were exchanged over different modes of communication to recover rationale. Open source projects come with licenses that provides the rights to study, develop and also contribute to the same. Additionally, issue trackers for open source projects are available publicly. Therefore, this research focuses on mining rationale from the issue trackers of open source projects: Apache Lucene, Mozilla Thunderbird and Ubuntu. This thesis also aims to link common topics of discussions taking place over IRC and issue tracker of the aforementioned projects. The rationale captured can help developers evaluate decisions, improve understandability, and document the pertinent information better.
 
 \end{abstract}
 
@@ -178,7 +179,7 @@ Of the many software development artifacts, \acs{ITS}s are one of the potential 
 
 \begin{itemize}
 \item[\textbf{RH1}] \textit{Comments from \acs{ITS}s of \acs{OSS} projects contain rationale.} The frequency with which rationale appears in comments from \acs{ITS}s is an important factor to consider them as a useful source of rationale.   
-\item[\textbf{RH2}] \textit{Rationale can be captured automatically from \acs{ITS}s.} Machine learning algorithms are capable of automatically detect if a given comment contains rationale or not, which in other words is binary classification. Additionally, these algorithms can also perform fine-grained classification on these messages that are considered to contain rationale elements such as issues, alternatives, pro-arguments, con-arguments and decisions; in other words, multi-label classification. 
+\item[\textbf{RH2}] \textit{Rationale can be extracted automatically from \acs{ITS}s.} Machine learning algorithms are capable of automatically detect if a given comment contains rationale or not, which in other words is binary classification. Additionally, these algorithms can also perform fine-grained classification on these messages that are considered to contain rationale elements such as issues, alternatives, pro-arguments, con-arguments and decisions; in other words, multi-label classification. 
 \item[\textbf{RH3}] \textit{Common topics are discussed on \acs{IRC} as well as \acs{ITS}.} There exists certain issues that are possibly discussed in both, \acs{IRC} channel as well as \acs{ITS}. These issues could therefore be linked together to link related rationale.    
 \end{itemize}
 
@@ -229,7 +230,7 @@ Taking a leaf out of the works of Bruegge and Dutoit\cite{Bruegge2009}, five typ
 Issues are tasks that need to be solved. They can be a new feature, a major or minor bug, or a problem that could have stemmed out of an existing implementation. Issues can also be termed as wicked problems \cite{Rittel1973} since they may neither have any predefined path to reach the goal nor a proper end point to the goal itself. Some examples of issues from the data obtained are, \textit{"How do I go about limiting the search window as well as the number of matches?"} and \textit{"It does seem odd that all failures we've seen have been for very complex polygons".}  
 
 \subsubsection{Alternatives}
-Alternatives are the possible solutions to solve the issue in hand. Developers come up with different strategies to solve the issue. However, there are cases when an individual or a group of indviduals may not come up with a concrete solution. In such a scenario, temporary fixes are suggested by members of the group. Statements like, \textit{"I made a change just to see what would happen and x-sender started changing"} and \textit{"I found the way to remove a news server account" are some examples of alternatives.}
+Alternatives are the possible solutions to solve the issue in hand. Developers come up with different strategies to solve the issue. However, there are cases when an individual or a group of indviduals may not come up with a concrete solution. In such a scenario, temporary fixes are suggested by members of the group. Statements like, \textit{"I made a change just to see what would happen and x-sender started changing"} and \textit{"I found the way to remove a news server account"} are some examples of alternatives.
 
 \subsubsection{Pro-arguments}
 Pro-arguments are made to lend support to a particular alternative or decision. Additionally, they may also state extra advantages and merits as to why a particular approach must be taken. From the dataset, examples such as, \textit{"It is well possible that that will work"} and \textit{"From how I read the code, it does reject them, so it should work"}, for pro-arguments were encountered. 
@@ -441,7 +442,7 @@ Topic modeling is an approach in the domain of \acs{NLP} to extract a specific n
 \newline \newline
 Mathematically, topic modeling is a kind of a Bayesian inference model where every document in the text corpus is associated with a probability distribution over topics and these topics are nothing but probability distribution over words \cite{Goel2017}. Many topic modeling algorithms exists such as Latent Semantic Analysis \cite{Agung2017}, \cite{Tu2017}, Latent Dirichlet Allocation (\acs{LDA}) \cite{Katsumata2016}, \cite{Chen2016}, and Hierarchial Dirichlet Process \cite{Li2018}, \cite{Hu2017} to mention a few. This thesis performs topic modeling using \acs{LDA} since many related works have incorporated the same. Some of these works are mentioned in the paragraphs to come. 
 \newline \newline
-Guzman at al. \cite{Guzman2015}, \cite{Guzman2014} used \acs{LDA} along with sentiment analysis to visualize user feedback and fine grained sentiments of app reviews from users. For automatic categorization of bug reports, Somasundaram et al. \cite{Somasundaram2012} used \acs{LDA} and Support Vector Machine (\acs{SVM}) separately to achieve the same. Additionally, they also tried to achieved their goal of categorizing bug reports by combining \acs{LDA} with \acs{SVM}. Pagano and Maalej\cite{Pagano2011} applied \acs{LDA} as well to study different topics discussed by developers. 
+Guzman at al. \cite{Guzman2015}, \cite{Guzman2014} used \acs{LDA} along with sentiment analysis to visualize user feedback and fine grained sentiments of app reviews from users. For automatic categorization of bug reports, Somasundaram et al. \cite{Somasundaram2012} used \acs{LDA} and Support Vector Machine (\acs{SVM}) separately to achieve the same. Additionally, they also tried to achieved their goal of categorizing bug reports by combining \acs{LDA} with \acs{SVM}. Pagano and Maalej\cite{Pagano2011} applied \acs{LDA} to study topics discussed by developers in development blogs. 
 
 % Write it as pseudocode if possible
 \subsubsection{Latent Dirichlet Allocation}
@@ -779,7 +780,7 @@ For the main content analysis, two annotators, the author and his advisor, indiv
 \newline 
 \begin{itemize}
 \item {Step 1:} Filter the dataset by discarding issues that do not fall under the required date range. The required date range is the range used in the \acs{IRC} message dataset which can be referred in Table \ref{tab:rawIRCMessages}. This is to make sure the comments from issue trackers are from the same duration as messages from \acs{IRC}. 
-\item {Step 2:} In the next step, count the number of comments for each issue that are under the required date range but only consider issues that have between 5 and 30 comments to avoid issues with too few comments (less than 5) or way too many comments (greater than 30). The 5 groups are: 6-10, 11-15, 16-20, 21-25 and 26-30 comments.
+\item {Step 2:} In the next step, count the number of comments for each issue that are under the required date range but only consider issues that have between 5 and 30 comments to avoid issues with too few comments (less than 5) or way too many comments (greater than 30). The 5 groups (stratas) are: 6-10, 11-15, 16-20, 21-25 and 26-30 comments.
 \item {Step 3:} Perform proportionate random stratified sampling to obtain 100 random issues from the filtered dataset in step 2 for each of the three projects. 
 \end{itemize}
 
@@ -871,7 +872,27 @@ The second step of this annotation task was to keep all the complete agreements 
 \end{table}
 
 \section{Annotation Results}
-The results of manual annotation from both the annotators are presented in this section. Table \ref{tab:distroBinaryRationale} gives a detailed overview with both, number and percentages, for all three projects. It can be inferred that Apache Lucene had the highest ratio between sentences with rationale to ones without any rationale whereas Mozilla Thunderbird and Ubuntu appear to be having a healthy ratio between both, rationale and no rationale. Ubuntu is the only project though where the number of sentences with rationale has been outnumbered marginally by the number of sentences not containing any kind of rationale in it. Figure \ref{fig:distroBinaryRationale} shows the proportion of messages for all three projects. 
+The results of manual annotation from both the annotators are presented in this section. Table \ref{tab:rationaleExample} shows examples of some sentences and their corresponding labels. Table \ref{tab:distroBinaryRationale} gives a detailed overview with both, number and percentages, for all three projects. It can be inferred that Apache Lucene had the highest ratio between sentences with rationale to ones without any rationale whereas Mozilla Thunderbird and Ubuntu appear to be having a healthy ratio between both, rationale and no rationale. Ubuntu is the only project though where the number of sentences with rationale has been outnumbered marginally by the number of sentences not containing any kind of rationale in it. Figure \ref{fig:distroBinaryRationale} shows the proportion of messages for all three projects. 
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{10cm} p{5cm}}
+        \toprule
+        \textbf{Sentence} & \textbf{Label}\\
+        \midrule
+			\textit{How do I go about limiting the search window as well as the number of matches?} & issue\\
+			\textit{I found the way to remove a news server account} & alternative \\ 
+			\textit{It is well possible that that will work} & pro-argument \\ 
+			\textit{This is inconsistent and unneccesarily difficult to use} & con-argument \\ 
+			\textit{This bug was fixed in the package snapcraft - 2.8.8+16.10} & decision \\ 
+			\textit{Yes, the build passes for me with only the two additional changes in WordDictionary and SimpleServer.} & alternative, pro-argument \\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Example sentences containing rationale elements}
+    \label{tab:rationaleExample}
+\end{table}
 \newline \newline
 Similarly, Table \ref{tab:distroMultiRationale} presents complete overview with numbers and percetage for fine grained rationale found in the dataset. Apache Lucene (11\%) had the least percentage of issues compared to Mozilla Thunderbird (24\%) and Ubuntu (25\%). However, higher percentage of decisions were made in Apache Lucene (8\%) than Mozilla Thunderbird (3\%) or Ubuntu (4\%). The numbers look very similar even in the case of alternatives, pro-arguments and con-arguments, where Apache Lucene outnumbers Mozilla Thunderbird and Ubuntu. 
 \newline \newline
@@ -931,7 +952,7 @@ The following numbers can also lead to the inference that due to lesser number o
 
 \chapter{Automatic Classification}
 
-In this section, automatic classification of rationale using numerous preprocessing techniques and classification models is performed. The classification is divided into two categories: binary and fine-grained. In binary classification, a sentence is classified as whether it contains rationale or not; in other words, a given sentence can only belong to one class. However, in fine-grained classification, a given sentence may belong to more than one class. Hence, the classifier would aim to classify them into any of the classes such as issue, alternative, pro-argument, con-argument and decision. Both kinds of classifications have been performed using the preprocessing methods that have been described in Section 2.3.1. These preprocessing methods act as configurations that are supplied to the classification models whose results are later described in the sections to follow. Table \ref{tab:configurationNames} describes the name of the configuration and its corresponding preprocessing methods. The five classifiers that have been used to carry out the classification tasks are Multinomial Naive Bayes (\acs{MNB}), Logistic Regression (\acs{LR}), Support Vector Machine (\acs{SVM}), Decision Tree (\acs{DT}) and Random Forest (\acs{RF}). In the case of multi-class classification, transformation methods such as Binary Relevance (\acs{BR}) and Label Powerset (\acs{LP}) were used in addition to the five classifiers mentioned earlier. 
+In this section, automatic classification of rationale using different preprocessing techniques and classification models is performed. The classification is divided into two categories: binary and fine-grained. In binary classification, a sentence is classified as whether it contains rationale or not; in other words, a given sentence can only belong to one class. However, in fine-grained classification, a given sentence may belong to more than one class. Hence, the classifier would aim to classify them into any of the classes such as issue, alternative, pro-argument, con-argument and decision. Both kinds of classifications have been performed using the preprocessing methods that have been described in Section 2.3.1. These preprocessing methods act as configurations that are supplied to the classification models whose results are later described in the sections to follow. Table \ref{tab:configurationNames} describes the name of the configuration and its corresponding preprocessing methods. The five classifiers that have been used to carry out the classification tasks are Multinomial Naive Bayes (\acs{MNB}), Logistic Regression (\acs{LR}), Support Vector Machine (\acs{SVM}), Decision Tree (\acs{DT}) and Random Forest (\acs{RF}). In the case of multi-class classification, transformation methods such as Binary Relevance (\acs{BR}) and Label Powerset (\acs{LP}) were used in addition to the five classifiers mentioned earlier. 
 \newline \newline
 Besides binary and fine grained classification, the results of topic modeling are also presented in Section 5.3 for each of the three datasets of issue trackers: Apache Lucene, Mozilla Thunderbird and Ubuntu. In addition, keywords were extracted from each comment of \acs{ITS} and each message of \acs{IRC} to find similarity between and link them. Section 5.4 presents the results of linking comments and messages from \acs{ITS} and \acs{IRC} together. 
 
@@ -1041,7 +1062,7 @@ When predicting rationale, \acs{MNB} has an F1 score of 0.884 for Config 2 and C
 \end{table}
 
 \subsection{Support Vector Machine}
-Unlike other classifiers, recall score of 1.000 was achieved while predicting rationale on Apache Lucene dataset for all configurations but Config 1. The highest F1 score attained was 0.839 using Config 2 for predicting rationale while the top score was 0.682 using Config 1 for predicting non-rationale sentences. In the case of Mozilla Thunderbird dataset, highest precision, recall and F1 scores were achieved using Config 6 for predicting rationale with the F1 score being 0.758. However, in the case of predicting non-rationale sentences on the same dataset, Config 1 performed the best for precision, recall and F1 score, with the F1 score being 0.683. On applying Config 1 to the Ubuntu dataset, top F1 scores of 0.781 and 0.681 were obtained for both. Recall of 1.000 was also achieved using all configurations but Config 1 when classifying non-rationale sentences. Table \ref{tab:binSVM} demonstrates the results. 
+Unlike other classifiers, recall score of 1 was achieved while predicting rationale on Apache Lucene dataset for all configurations but Config 1. The highest F1 score attained was 0.839 using Config 2 for predicting rationale while the top score was 0.682 using Config 1 for predicting non-rationale sentences. In the case of Mozilla Thunderbird dataset, highest precision, recall and F1 scores were achieved using Config 6 for predicting rationale with the F1 score being 0.758. However, in the case of predicting non-rationale sentences on the same dataset, Config 1 performed the best for precision, recall and F1 score, with the F1 score being 0.683. On applying Config 1 to the Ubuntu dataset, top F1 scores of 0.781 and 0.681 were obtained for both. Recall of 1.000 was also achieved using all configurations but Config 1 when classifying non-rationale sentences. Table \ref{tab:binSVM} demonstrates the results. 
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -1174,7 +1195,7 @@ In this section, the best configurations and classifiers along with their respec
 \end{table}
 
 \section{Fine Grained Classification}
-This section presents the results of the fine grained classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames}, transformation methods from Section 2.4.3 and the algorithms from Section 2.4.4. Unlike  binary classification, all three datasets have used trigram tokenization. The scikit-learn library does not support Binary Relevance and Label Transformation methods and hence scikit-multilearn, a library specific for performing multi-class and multi-label classifications was used. However, the results were not impressive when compared to MEKA. In addition, a lot of classifiers along with certain configurations returned a value of zero. Therefore, the fine-grained classifications were perfomed using MEKA exclusively. Figure \ref{fig:finegrainedClass} illustrates the methodology for fine grained classification. 
+This section presents the results of the fine grained classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames}, transformation methods from Section 2.4.3 and the algorithms from Section 2.4.4. Unlike  binary classification, all three datasets performed the best using unigram tokenization. The scikit-learn library does not support Binary Relevance and Label Transformation methods and hence scikit-multilearn, a library specific for performing multi-class and multi-label classifications was used. However, some measures could not be obtained from scikit-multilearn. In addition, a lot of classifiers along with certain configurations returned a value of zero. Therefore, the fine-grained classifications were perfomed using MEKA exclusively. Figure \ref{fig:finegrainedClass} illustrates the methodology for fine grained classification. 
 
 \begin{figure}[h] %b!]
     \centering
@@ -1950,15 +1971,36 @@ Ubuntu is an operating system and the most spoken topics were predictably about 
 \end{table} 
 
 \section{Linking}
-In this section, the results of linking comments from \acs{ITS} and messages from \acs{IRC} are analysed. Keywords were extracted using topic modeling applied with Config 5 from comments of \acs{ITS} as well as messages of \acs{IRC}. The keywords of each comment from \acs{ITS} and each message of \acs{IRC} were compared and checked for atleast fifty percent similarity using a string matching library. Table \ref{tab:topicLinking} shows the results of how many messages and comments were linked for each dataset. Figure \ref{fig:topiclinkingClass} illustrates the methodology for linking issues to \acs{IRC} messages. 
-\newline \newline
+In this section, the results of linking comments from \acs{ITS} and messages from \acs{IRC} are analysed. Keywords were extracted using topic modeling applied with Config 5 from comments of \acs{ITS} as well as messages of \acs{IRC}. The keywords of each comment from \acs{ITS} and each message of \acs{IRC} were compared and checked for 50\% similarity using a string matching library, fuzzywuzzy based on Levenshtein distance. An issue was linked to its \acs{IRC} message if atleast one comment from the issue had keywords had similarity with keywords of an \acs{IRC} message. Table \ref{tab:exampleLinking} shows examples of comments from issues linked to messages from \acs{IRC}. \ref{tab:topicLinking} shows the results of how many messages and comments were linked for each dataset. Figure \ref{fig:topiclinkingClass} illustrates the methodology for linking issues to \acs{IRC} messages. 
+
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{6cm} p{6cm} p{2cm}}
+        \toprule
+        \textbf{Issue Comment} & \textbf{\acs{IRC} Message} & \textbf{Similarity}\\
+        \midrule
+			\textit{Is that a POP3 server? Are your received messages big?} & \textit{the tags retrieved from a custom server via Ajax} & 54 \\
+			\midrule
+			\textit{This graphics chip doesn't work with Lucid currently (it was fine in earlier versions). On the current kernels (2.6.32-16-generic and 2.6.32-17-generic), I am unable to boot.} & \textit{does anyone know of issues with nvidia/agp drivers in the latest gutsy gibbon kernel 6.22-8-generic} & 51 \\
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Examples of linking comments of issues to messages of \acs{IRC}s}
+    \label{tab:exampleLinking}
+\end{table}
+
 \begin{figure}[h] %b!]
     \centering
     \includegraphics[width=10cm]{topic-linking}
     \caption{Approach to link issues to \acs{IRC} messages illustrated using UML activity diagram}
     \label{fig:topiclinkingClass}
 \end{figure}
-Each of the three datasets had 100 issues and 2,500 \acs{IRC} messages. However, since most of the \acs{IRC} messages did not have any rationale and predominantly consisted of greetings and salutions when introspected manually, only those with rationale were considered to perform the experiment. Around 83 issues out of 100 spanning 255 comments could be linked to 316 \acs{IRC} messages for the dataset of Apache Lucene. As high as 100 percent similarity was attained. For the Mozilla Thunderbird dataset, 81 issues spanning 209 comments were linked to 143 \acs{IRC} messages; almost half as compared to that of messages from Apache Lucene or Ubuntu. In addition, the highest similarity attained was 78 percent. Ubuntu had the maximum number of issues with 94 of them spanning 318 comments linked to 318 \acs{IRC} messages. However, the highest similarity achieved on this dataset was only 71 percent, which was the least when compared to the other datasets of Apache Lucene and Mozilla Thunderbird. 
+
+\leavevmode
+\newline
+Each of the three datasets had 100 issues and 2,500 \acs{IRC} messages. However, since most of the \acs{IRC} messages did not have any rationale and predominantly consisted of greetings and salutations when inspected manually, only those with rationale were considered to perform the experiment. Around 83 issues out of 100 spanning 255 comments could be linked to 316 \acs{IRC} messages for the dataset of Apache Lucene based on similarity of the keywords. For the Mozilla Thunderbird dataset, 81 issues spanning 209 comments were linked to 143 \acs{IRC} messages; almost half as compared to that of messages from Apache Lucene or Ubuntu. In addition, the highest similarity between keywords attained was 78\%. Ubuntu had the maximum number of issues with 94 of them spanning 318 comments linked to 318 \acs{IRC} messages. However, the highest similarity between keywords achieved on this dataset was only 71\%, which was the least when compared to the other datasets of Apache Lucene and Mozilla Thunderbird. 
 \begin{table} %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -1976,8 +2018,9 @@ Each of the three datasets had 100 issues and 2,500 \acs{IRC} messages. However,
     \captionof{table}{Linking based on similarity}
     \label{tab:topicLinking}
 \end{table}
-
-
+\leavevmode
+\newline
+On manual inspection of some comments and messages which attained some similarity, it was observed that some of them were indeed similar and could be linked to each other. However, there were certain instances were the similarity between keywords of comments from issues and messages from \acs{IRC}s made less sense. Hence, better approaches are required to eliminate such anomalies by either opting for string matching algorithms better suited for this task and adding more stopwords to achieve more meaningful results. 
 
 %------- chapter 6 -------
 
@@ -1987,27 +2030,27 @@ In this chapter, the results of this thesis are summarized. The hypotheses formu
 \section{Contribution}
 This thesis examines the frequency with which rationale occurs in the comments of \acs{ITS}s from developers. It also explores ways in which rationale elements can be retrieved automatically. To do this, more than 250,000 comments spanning 40,000 issues were scraped from the issue trackers of three \acs{OSS} projects: Apache Lucene, Mozilla Thunderbird and Ubuntu. Random Stratified Sampling was applied to extract 100 issues from each OSS project. Comments from these issues were decomposed into individual sentences and were labeled manually. Those containing rationale were further categorized into five types: issues, alternative, pro-arguments, con-arguments and decisions. These manual labelings acted as ground truth for training the machine learning algorithms to extract rationale and classify them accordingly. 
 \newline \newline
-Besides machine learning, topic modeling was also performed on each of the dataset to get insights about various kinds of discussions taking place and which topics from each dataset attracted lots of attention. In addition, keywords were extracted comments of \acs{ITS} and messages of \acs{IRC} using topic modeling and similarity between them was computed to link certain issues and their counterpart \acs{IRC} messages. In order to review the results, the hypotheses formulated earlier are revisited:
+Besides machine learning, topic modeling was also performed on each of the dataset to get insights about various kinds of discussions taking place and which topics from each dataset attracted lots of attention. In addition, keywords were extracted from comments of \acs{ITS} and messages of \acs{IRC} using topic modeling and similarity between them was computed to link certain issues and their counterpart \acs{IRC} messages. In order to review the results, the hypotheses formulated earlier are revisited.
 
 \begin{itemize}
 \item[\textbf{RH1}] Comments from \acs{ITS}s of \acs{OSS} projects contain rationale.
 \end{itemize}
-The first hypothesis RH1 can be validated by introspecting the results of manual annotation of comments. From the Apache Lucene dataset, 2,446 sentences spanning 963 comments were checked and 73\% of them were found to contain rationale in them. Although not as high as Apache Lucene, datasets of Mozilla Thunderbird and Ubuntu also showed a healthy percentage of rationale occuring in the comments of their \acs{ITS}s. Of the 3,086 sentences spanning 987 comments, 51\% of them contained rationale in the Mozilla Thunderbird dataset while in the case of Ubuntu dataset, 48\% of 2,782 sentences spanning 813 comments contained rationale in them. It is also to be noted that around 56\% of the sentences across all the datasets contained rationale. On analyzing the rationale elements at an individual level, it can be seen that most of the discussions centered around issues, suggesting alternatives and arguments to support the proposals. Only in the case of Apache Lucene, the number of issues (11\%) were far less compared to alternatives (34\%). However, for all three datasets, decision occured the least followed by con-arguments. 
+The first hypothesis RH1 can be validated by introspecting the results of manual annotation of comments. From the Apache Lucene dataset, 2,446 sentences spanning 963 comments were checked and 73\% of them were found to contain rationale in them. Although not as high as Apache Lucene, datasets of Mozilla Thunderbird and Ubuntu also showed a healthy percentage of rationale occuring in the comments of their \acs{ITS}s. Of the 3,086 sentences spanning 987 comments, 51\% of them contained rationale in the Mozilla Thunderbird dataset while in the case of Ubuntu dataset, 48\% of 2,782 sentences spanning 813 comments contained rationale in them. It is also to be noted that around 56\% of the sentences across all the datasets contained rationale. On analyzing the rationale elements at a fine grained level, it can be seen that most of the discussions centered around issues, suggesting alternatives and arguments to support the proposals. Only in the case of Apache Lucene, the number of issues (11\%) were far less compared to alternatives (34\%). However, for all three datasets, decision occured the least followed by con-arguments. 
 
 \begin{itemize}
-\item[\textbf{RH2}] Rationale can be captured automatically from \acs{ITS}s.
+\item[\textbf{RH2}] Rationale can be extracted automatically from \acs{ITS}s.
 \end{itemize}
-The second hypothesis RH2 proves to be feasible. Sentences manually annotated were trained for the machine learning algorithms to extract rationale and classify them into the most suitable one using various preprocessing methods. Different classifiers coupled with different preprocessing methods fared well. In the case of binary classification, \acs{LR} and \acs{SVM} performed the best on most occasions while \acs{RF} came out at the top on one particular instance. The ideal preprocessing methods for binary classification turned out to be \acs{BOW} model or the \acs{POS} tagging technique on all occasions involving \acs{LR} or \acs{SVM}. In the case of fine grained classification, \acs{MNB} remained the top classifier in almost all cases except one with numerous preprocessing methods and its combinations. Similarly, \acs{BR} transformation method with \acs{MNB} classifier seemed to be the most ideal approach for majority cases when compared to \acs{LP}. 
+The second hypothesis RH2 proves to be feasible. Sentences manually annotated were trained for the machine learning algorithms to extract rationale and classify them into the most suitable one using various preprocessing methods. Different classifiers coupled with different preprocessing methods fared well. In the case of binary classification, \acs{LR} and \acs{SVM} performed the best on most occasions while \acs{RF} came out at the top on one particular instance. The ideal preprocessing methods for binary classification turned out to be \acs{BOW} model or the \acs{POS} tagging technique on all occasions involving \acs{LR} or \acs{SVM}. In the case of fine grained classification, \acs{MNB} remained the top classifier in almost all cases except one with different preprocessing methods and its combinations. Similarly, \acs{BR} transformation method with \acs{MNB} classifier seemed to be the most ideal approach for majority cases when compared to \acs{LP}. 
 
 \begin{itemize}
 \item[\textbf{RH3}] Common topics are discussed on \acs{IRC} as well as \acs{ITS}.
 \end{itemize}
-The third hypothesis RH1 can be endorsed by observing the results after having linked comments from \acs{ITS} to messages from \acs{IRC}. More than 80 out of 100 issues spanning more than 700 comments from all datasets had keywords extracted from comments that could be linked with keywords extracted from \acs{IRC} messages. In the case of Apache Lucene dataset, some keywords from both the ends matched completely there by attaining a similarity of 100\% while the highest similarity attained in the case of Mozilla Thunderbird and Ubuntu datasets are 78\% and 71\% respectively. This proves there exists mutual topics of discussion that takes place in multiple communication media; in this case, \acs{ITS} and \acs{IRC}. 
+The third hypothesis RH3 can be endorsed by observing the results after having linked comments from \acs{ITS} to messages from \acs{IRC}. More than 80 out of 100 issues spanning more than 700 comments from all datasets had keywords extracted from comments that could be linked with keywords extracted from \acs{IRC} messages. In the case of Apache Lucene dataset, some keywords from both ends matched completely by attaining a similarity of 100\% while the highest similarity attained in the case of Mozilla Thunderbird and Ubuntu datasets are 78\% and 71\% respectively. This proves there exists mutual topics of discussion that takes place in multiple communication media; in this case, \acs{ITS} and \acs{IRC}. 
 
 \section{Limitations}
 During different phases of this thesis, various challenges and limitations were encountered. In this section, these limitations and how they were addressed and overcome are discussed. 
 \newline \newline
-The selection of the \acs{OSS} projects were questionable, initially. Commercial projects could have been chosen but \acs{OSS} ones were opted for based on certain reasons. To eliminate bias towards one particular field of software engineering, projects from different domains were chosen. In addition, it was required to have projects that have been actively developed for a long time, typically more than five years, and has a vibrant community of developers and users even today. In addition, for the comments from \acs{ITS} to be linked to messages from \acs{IRC}, same projects with identical time frame had to be chosen. In this case, datasets for messages from \acs{IRC} were already readily available for the three selected \acs{OSS} projects; thereby also leading to significant savings of time and effort. 
+The selection of the \acs{OSS} projects were questionable, initially. Commercial projects could have been chosen but \acs{OSS} ones were opted for the reasons as follows. To eliminate bias towards one particular field of software engineering, projects from different domains were selected. In addition, it was required to have projects that have been actively developed for a long time, typically more than five years, and has a vibrant community of developers and users even today. In addition, for the comments from \acs{ITS} to be linked to messages from \acs{IRC}, same projects with identical time frame had to be chosen. In this case, datasets for messages from \acs{IRC} were already readily available for the three selected \acs{OSS} projects; thereby also leading to significant savings of time and effort. 
 \newline \newline
 While scraping, another issue encountered was that the layout of \acs{HTML}, the names of the classes and its attributes were not consistent and kept changing over the course of entire period for which the data had to be scraped. Hence, every time the scraper failed to gather data, the reason behind it was introspected. On certain occasions, there were downlinks for which nothing could be done but on other occasions, the code for scraping was modified to accommodate any changes in the \acs{HTML} code. In addition, since requests to fetch data were frequently made and the possibility of getting blacklisted was looming, fake user agents were generated every time while making requests in order to overcome the aforementioned limitation. 
 \newline \newline
@@ -2024,33 +2067,31 @@ Besides binary and fine grained classification, carrying out \acs{LDA} based exp
 To compare similarity between keywords of comments from \acs{ITS} and messages from \acs{IRC}, a string matching approach had to be employed. Keywords were extracted using \acs{LDA} and custom stopords lists mentioned earlier were used here as well. A Python library, fuzzywuzzy, based on Levenshtein distance function seemed to have been the most appropriate one to achieve this goal. The minimum threshold for similarity to match an issue to an \acs{IRC} message is debatable. However, choosing a threshold of 50\% seemed ideal considering that two of the projects were able to attain highest similarity in the 70-80\% range. 
 
 \section{Conclusion}
-The means to communicate for developers of various \acs{OSS} projects are many. While face-to-face communications do occur, considering \acs{OSS} projects have developers scattered across the world, numerous digital media such as mailing lists, \acs{IRC}s and \acs{ITS}s become indispensible for discussions and extracting rationale. This thesis focuses on capturing rationale from the comments of issue trackers of three \acs{OSS} projects. Using topic modeling it was found that developers discussed a large range of issues pertaining to their projects. In addition, a large percentage of rationale, more than 50\% across all projects, were recovered and most of them revolved around issues, alternatives and positive arguments to support them. There were also a good amount rationale pertaining to con-arguments and decisions taking although the number was on the lower side compared to other three rationale elements mentioned earlier. 
+The means to communicate for developers of various \acs{OSS} projects are many. While face-to-face communications do occur, considering \acs{OSS} projects have developers scattered across the world, numerous digital media such as mailing lists, \acs{IRC}s and \acs{ITS}s become indispensible for discussions and extracting rationale. This thesis focuses on capturing rationale from the comments of issue trackers of three \acs{OSS} projects. Using topic modeling it was found that developers discussed a large range of issues pertaining to their projects. In addition, a large percentage of rationale, more than 50\% across all projects, were recovered and most of them revolved around issues, alternatives and positive arguments, while approximately 10\% from each dataset contained rationale pertaining to con-arguments and decisions combined.
 \newline \newline
 Manual annotation of more than 8,000 sentences is a time consuming task and is thus not a feasible option when there are large datasets to be examined. With advancement of technology, both software and hardware wise, automatic extraction of rationale using machine learning algorithms seems to be an ideal choice. Validation techniques such as k-fold cross validation also gives insights about how well the classifier has been performing and will perform on unseen data. 
 \newline \newline
-Besides capturing rationale, keywords extracted from comments were also linked to numerous \acs{IRC} messages which shows that similar topics are usually discussed on different communication platforms. Hence, rationale can also be captured from other communication platforms to document more rich information about similar topics. This thesis is therefore a valuable contribution in the domain of mining rationale from developers present on different communication platforms. 
+Besides capturing rationale, keywords extracted from comments were also linked to different \acs{IRC} messages which shows that similar topics are usually discussed on different communication platforms. Hence, rationale can also be captured from other communication platforms to document more rich information about similar topics. This thesis is therefore a valuable contribution in the domain of mining rationale from developers present on different communication platforms. 
 
 \section{Future Work}
 During the course of this thesis, many possible directions towards which research could be steered were contemplated. After having linked messages from \acs{IRC} and comments from \acs{ITS}, logs from commit messages for the same projects could also be linked to know if a given issue was solved and committed. The logs of commit messages were scraped but due to time constraints, this experiment was not carried out. Commit messages are usually short in nature and a special kind of topic modeling named Biterm Topic Modeling could be applied for extracting keywords and topics. Developers commenting on \acs{IRC}s and \acs{ITS}s could also be looked into to know how many of them actively commit changes and contribute to development. Duration over which an issue put forward is realized into a solution and a decision is made can be investigated. Later, average time taken for different class of problems for a given project can be analyzed. For example, on average, how long does a feature take for implementation when compared to resolving a bug. In addition, separating bugs from features can also be looked into. With the domain of deep learning gaining momentum in research and development, deep learning techniques can be applied with state-of-the-art technology to perform classification on large datasets. Using different tools to carry out same experiments also opens up a channel to improve performance metrics. However, as of now, this thesis serves as a good foundation for stakeholders to understand what were the alternatives proposed for a given issue and the arguments to support or criticize them, what decisions were made, and how they were to be realized. 
 
 
-
-\appendix
-
-\chapter{Annotation Guide}
-This study aims at examining the type of rationale elements that are present in the messages of the \acs{ITS}s.
-\bigbreak 
-As part of the annotating task, you will read messages of developers extracted from \acs{ITS}s of three opern sourced projects: Apache Lucene, Mozilla Thunderbird and Ubuntu. Your task is to label and classify these messages as those that contain rationale and those that do not contain any rationale. In addition, those messages that contain any rationale need to be further labeled as the type of rationale element it contains. 
-\bigbreak
+\begin{appendices}
+\chapter{Labeling Guide}
+This study aims at examining the type of rationale elements that are present in the comments of the \acs{ITS}s.
+\newline \newline
+As part of the annotating task, you will read comments of developers extracted from \acs{ITS}s of three opern sourced projects: Apache Lucene, Mozilla Thunderbird and Ubuntu. Your task is to label and classify these messages as those that contain rationale and those that do not contain any rationale. In addition, those messages that contain any rationale need to be further labeled as the type of rationale element it contains. 
+\newline \newline
 This guide describes the instructions you need to follow to successfully conduct the task. To do so, you can use any spreadsheet application such as Microsoft Excel, Libre Office Excel or Google Sheets. It is strongly recommended to use this guide as a reference during the entire duration of annotating task. 
-\bigbreak
-Your task would be to read the messages from the \acs{ITS}s assigned to you. For each of these messages, you are required to identify rationale elements present in them and classify them accordingly. Each of these rationale elements are explained later in this guide. 
-\bigbreak
+\newline \newline
+Your task would be to read the comments from the \acs{ITS}s assigned to you. For each of these comments, you are required to identify rationale elements present in them and classify them accordingly. Each of these rationale elements are explained later in this guide. 
+\newline \newline
 Should you have any queries or doubts that arise during the labeling task, please contact the other project members. 
 \subsubsection{Classify the Issue Tracker Messages}
-A message may contain more than a sentence. You are required to annotate each of these sentences, which will hereby be referred to as a message itself. If the message contains any rationale element, highlight the part of the sentence containing the same and label them appropriately. A message may also be written in a way such that it may contain multiple rationale elements. In such a case, you are required to label all the possible rationale elements that are hidden in the message. The rationale elements are as follows:
+A comment may contain more than a sentence. You are required to annotate each of these sentences, which will hereby be referred to as a comment itself. If the comment contains any rationale element, highlight the part of the sentence containing the same and label them appropriately. A comment may also be written in a way such that it may contain multiple rationale elements. In such a case, you are required to label all the possible rationale elements that are hidden in the comment. The rationale elements are as follows:
 \newline \newline
-You can assign more than one rationale element for each message. The rationale elements are: 
+You can assign more than one rationale element for each comment. The rationale elements are: 
 \newline \newline
 \textbf{Issue:} A problem to be solved. Issues are typically resolved through discussions and negotiation, and are usually phrased as questions. Examples are:
 \newline \newline
@@ -2097,7 +2138,7 @@ You can assign more than one rationale element for each message. The rationale e
 \textit{"We select a text-based display and a keyboard input for the traffic control user interface."}
 
 \subsubsection{What not to classify?}
-Messages that must not be labeled as those containing rationale are listed below. 
+Comments that must not be labeled as those containing rationale are listed below. 
 \newline \newline
 \textbf{Management issues:} Issues that are not discussing the software system being developed. Examples are:
 \newline \newline 
@@ -2115,7 +2156,7 @@ Messages that must not be labeled as those containing rationale are listed below
 \newline \newline 
 \textit{"How to sort any object array by dates on Swift?"}
 \newline \newline 
-\textbf{Social events:} Messages that discuss social aspects of the development teams. For example, arrangement of an icebreaker event or discussing the time and place for a gathering.
+\textbf{Social events:} Comments that discuss social aspects of the development teams. For example, arrangement of an icebreaker event or discussing the time and place for a gathering.
 \newline \newline 
 \textbf{Bugs:} When developers report on bugs/error in the code. Examples are: 
 \newline \newline 
@@ -2129,9 +2170,29 @@ Messages that must not be labeled as those containing rationale are listed below
 \newline \newline 
 \textit{"From my end, I would prioritize the work like this: We implement all the design changes listed in the acceptance. Then, when this is all done, we can come back to design again"}
 \newline \newline 
-\textbf{Non-English messages:} Messages that are in any language other than English. 
+\textbf{Non-English Comments:} Comments that are in any language other than English. 
 
+\chapter{Custom Stopwords List}
+The following characters and words are used as stopwords for topic modeling in addition to the stopwords list provided by \acs{NLP} libraries. 
+
+\subsubsection{Alphabets}
+a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
+
+\subsubsection{Numbers}
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+\subsubsection{Year}
+2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+
+\subsubsection{Actions}
+reply, comment, happen, experience, manage, specify, describe, inform, reveal
+
+\subsubsection{Computer Science}
+git, svn, mercurial, branch, merge, pull, push, origin, status, open, close, repository, issue, commit, rollback, version, release, patch, test, bug, break, code, update, model, maven, fix, control, data, crash, source, code, support, debug, tool, solr, lucene, apache, mozilla, thunderbird, ubuntu, org, com, http, https, www, mail, client, method, true, false, static, dynamic, launchpad
+
+\end{appendices}
 \clearpage
+
 
 \listoffigures
 \clearpage
