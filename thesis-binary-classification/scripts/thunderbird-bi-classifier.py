@@ -22,17 +22,21 @@ import string
 import spacy
 import en_core_web_sm
 
+# To turn off deprecation warnings
 warnings.filterwarnings("ignore")
 
 start_time = time()
 
+# Load dataset as Pandas dataframe
 data = pd.read_csv("c_thunderbird_results.csv")
 
 nlp = en_core_web_sm.load()
 
+# Put all sentences into list
 sentenceList = data['sentence'].tolist()
 posSentenceList = list()
 
+# Create POS tags for all words in sentences
 for i in range(len(sentenceList)):
     doc = nlp(sentenceList[i])
     outStr = ''

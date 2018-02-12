@@ -22,17 +22,21 @@ import string
 import spacy
 import en_core_web_sm
 
+# To turn off deprecation warnings
 warnings.filterwarnings("ignore")
 
 start_time = time()
 
+# Load dataset as Pandas dataframe
 data = pd.read_csv("b_ubuntu_results.csv")
 
 nlp = en_core_web_sm.load()
 
+# Put all sentences into list
 sentenceList = data['sentence'].tolist()
 posSentenceList = list()
 
+# Create POS tags for all words in sentences
 for i in range(len(sentenceList)):
     doc = nlp(sentenceList[i])
     outStr = ''
@@ -73,7 +77,7 @@ data['isRelevant'] = data['isRelevant'].map({0: 1, 1: 0})
 
 logit_pipeline = Pipeline([
     ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', LogisticRegression())
 ])
 
@@ -120,7 +124,7 @@ print(logit_conf_mat)
 
 nb_pipeline = Pipeline([
     ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', MultinomialNB())
 ])
 
@@ -165,7 +169,7 @@ print(nb_conf_mat)
 
 svc_pipeline = Pipeline([
     ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', SVC())
 ])
 
@@ -210,7 +214,7 @@ print(svc_conf_mat)
 
 rf_pipeline = Pipeline([
     ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', RandomForestClassifier())
 ])
 
@@ -255,7 +259,7 @@ print(rf_conf_mat)
 
 dt_pipeline = Pipeline([
     ('vectorizer', CountVectorizer()),
-    #('tfidf_transformer', TfidfTransformer()),
+    ('tfidf_transformer', TfidfTransformer()),
     ('classifier', DecisionTreeClassifier())
 ])
 
