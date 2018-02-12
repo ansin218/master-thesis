@@ -1,7 +1,7 @@
 \documentclass[a4paper,12pt,twoside]{report}
 
 \usepackage{acronym}
-\usepackage{url}
+\usepackage[hyphens]{url}
 \usepackage{cite}
 \usepackage{listings}
 \usepackage[pdftex]{graphicx}
@@ -674,11 +674,11 @@ Scikit-learn\footnote{\url{http://scikit-learn.org/stable/}} is one of the most 
 \newline \newline
 MEKA\footnote{\url{http://meka.sourceforge.net/}}\cite{MEKA2016}, an extension of \acs{WEKA}\footnote{\url{https://www.cs.waikato.ac.nz/ml/weka/}}, has been used to overcome the limitations of scikit-learn and scikit-multilearn. The fine grained classifications using transformation methods such as \acs{BR} and \acs{LP} are supported by MEKA. In addition, MEKA also has a robust range of preprocessing options. This tool has also been used by Lata \cite{Lata2016} and Nonnenmacher \cite{Nonnenmacher2017} in their respective research works.
 \newline \newline
-Topic modeling using \acs{LDA} was performed using a famous library named Gensim\footnote{\url{https://radimrehurek.com/gensim/}}. Rehurek and Sojka \cite{Rehurek2010} published their work on the internal details of how Gensim works as well. Gensim is also capable of supporting other topic modeling techniques such as Hierarchial Dirichlet Process and Latent Semantic Analysis. Keywords generated using \acs{LDA} for comments of \acs{ITS} and messages of \acs{IRC} were linked using a string similarity Python library called fuzzywuzzy\footnote{\url{http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/}} based on Levenshtein distance.
+Topic modeling using \acs{LDA} was performed using a famous library named Gensim\footnote{\url{https://radimrehurek.com/gensim/}}. Rehurek and Sojka \cite{Rehurek2010} published their work on the internal details of how Gensim works as well. Keywords generated using \acs{LDA} for comments of \acs{ITS} and messages of \acs{IRC} were linked using a string similarity Python library called fuzzywuzzy\footnote{\url{http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/}} based on Levenshtein distance.
 \newline \newline
-Topic modeling and classification tasks in Python have been carried with the help of some additional libraries such as NLTK\footnote{\url{http://www.nltk.org/}} and SpaCy\footnote{\url{https://spacy.io/}}. NLTK was used for tokenization and lemmatization while SpaCy was used for \acs{POS} tagging techniques. NLTK and SpaCy were extensively studied by Al Omran and Treude \cite{AlOmran2017} where they explored \acs{NLP} libraries for analyzing software documentation. 
+Topic modeling and classification tasks in Python have been carried with the help of some additional libraries such as NLTK\footnote{\url{http://www.nltk.org/}} and SpaCy\footnote{\url{https://spacy.io/}}. NLTK was used for tokenization and lemmatization while SpaCy was used for \acs{POS} tagging techniques. NLTK and SpaCy were studied by Al Omran and Treude \cite{AlOmran2017} where they explored \acs{NLP} libraries for analyzing software documentation. 
 \newline \newline
-For quick analysis of results and neat data visualizations, R programming language\footnote{\url{https://www.r-project.org/}} was used, a language concentrating on statistical analyses. The graphic libraries offered by R have been claimed to be more pleasing to the eyes when compared to Python\footnote{\url{https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis}}. All the graphs in this thesis has been generated using ggplot2\footnote{\url{http://ggplot2.org/}} library for R. The UML diagrams have been generated using draw.io tool \footnote{\url{http://draw.io/}}.
+For quick analysis of results and neat data visualizations, R programming language\footnote{\url{https://www.r-project.org/}} was used. The graphic libraries offered by R have been claimed to be neater when compared to Python\footnote{\url{https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis}}. All the graphs in this thesis have been generated using ggplot2\footnote{\url{http://ggplot2.org/}} and the UML diagrams using draw.io tool \footnote{\url{http://draw.io/}}.
 
 %------- chapter 3 -------
 
