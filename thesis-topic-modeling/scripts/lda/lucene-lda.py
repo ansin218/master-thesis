@@ -23,6 +23,8 @@ for row in cursor_1:
 
 tokenizer = RegexpTokenizer(r'\w+')
 en_stop = get_stop_words('en')
+
+# Custom stopwords list 
 alphaList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 numList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 customList1 = ['can', 'due', 'jira', 'lucene', 'thunderbird', 'instead', 'org', 'apache', 'hole', 'probably', 'use', 'another', 'created']
@@ -49,6 +51,7 @@ doc_set = lucene_rss_list
 
 texts = []
 
+# Generate topics using LDA
 for i in doc_set:
 
     raw = i.lower()

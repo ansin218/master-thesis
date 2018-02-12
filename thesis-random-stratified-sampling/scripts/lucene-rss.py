@@ -23,6 +23,9 @@ insert_cursor_8 = conn.cursor()
 insert_cursor_9 = conn.cursor()
 insert_cursor_10 = conn.cursor()
 
+# Load dataset based on issue number
+# These numbers correspond to relevant time frame
+
 cursor_1 = conn.cursor()
 cursor_1.execute("SELECT * FROM lucene_issues WHERE issue_id < 5188 AND comments_count > 5 AND comments_count <= 10")
 cursor_2 = conn.cursor()
@@ -64,6 +67,7 @@ prob3 = int(round(len(lucene_rs_list_3)/total_len, 2) * 100)
 prob4 = int(round(len(lucene_rs_list_4)/total_len, 2) * 100)
 prob5 = int(round(len(lucene_rs_list_5)/total_len, 2) * 100)
 
+# Stratified Sampling Based on Ratios
 random.shuffle(lucene_rs_list_1)
 final_list_1 = lucene_rs_list_1[:prob1]
 print("Number of issues between 5 and 10 comments: ", prob1)
