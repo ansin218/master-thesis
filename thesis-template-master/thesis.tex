@@ -1330,7 +1330,7 @@ For issue and alternative on Apache Lucene dataset, Config 2 returns the best pr
 \subsection{Multinomial Naive Bayes}
 
 \subsubsection{Binary Relevance}
-Config 1 has best precision for all five rationale elements when applied on the Apache Lucene dataset while Config 6 had best recall in three occasions. Config 1 has top F1 score of 0.768 for predicting alternative, Config 4 has F1 score of 0.860 to classify decision, Config 4 has F1 score of 0.525 in case of predicting issue while Config 6 have F1 scores of 0.750 and 0.664 for pro-argument and con-argument prediction. Precision on Mozilla Thunderbird dataset is the same as that on Apache Lucene dataset; Config 1 attains highest precision scores for all five rationale elements. Config 4 does its best in predicting pro-argument and decision with F1 scores of 0.619 and 0.648 while Config 6 achieves F1 scores of 0.673, 0.703 and 0.644 with respect to issue, alternative and con-argument respectively. In case of the Ubuntu dataset, Config 4 gives the best recall while predicting all five rationale elements. With F1 scores of 0.749, 0.713 and 0.784 in the case of issue, alternative and decision, Config 2 performs the best while Config 4 does the best with scores of 0.622 and 0.664 for predicting pro-argument and con-argument. Table \ref{tab:fgcBRMNB} shows all the values in detail.
+Config 1 has best precision for all five rationale elements when applied on the Apache Lucene dataset while Config 6 had best recall in three occasions. Config 1 has top F1 score of 0.768 for predicting alternative, Config 4 has F1 score of 0.860 to classify decision, Config 4 has F1 score of 0.525 in case of predicting issue while Config 6 have F1 scores of 0.750 and 0.664 for pro-argument and con-argument prediction. Precision on Mozilla Thunderbird dataset is the same as that on Apache Lucene; Config 1 attains highest precision for all rationale elements. Config 4 does its best in predicting pro-argument and decision with F1 scores of 0.619 and 0.648 while Config 6 achieves F1 scores of 0.673, 0.703 and 0.644 with respect to issue, alternative and con-argument. In case of the Ubuntu dataset, Config 4 gives the best recall while predicting all rationale elements. With F1 scores of 0.749, 0.713 and 0.784 in the case of issue, alternative and decision, Config 2 performs the best while Config 4 does the best with scores of 0.622 and 0.664 for predicting pro-argument and con-argument. Table \ref{tab:fgcBRMNB} shows all the values in detail.
 
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
@@ -2020,7 +2020,7 @@ Each of the three datasets had 100 issues and 2,500 \acs{IRC} messages. However,
     \label{tab:topicLinking}
 \end{table}
 \leavevmode
-\newline
+\newline \newline
 On manual inspection of some comments and messages which attained some similarity, it was observed that some of them were indeed similar and could be linked to each other. However, there were certain instances were the similarity between keywords of comments from issues and messages from \acs{IRC}s made less sense. Hence, better approaches are required to eliminate such anomalies by either opting for string matching algorithms better suited for this task and adding more stopwords to achieve more meaningful results. 
 
 %------- chapter 6 -------
