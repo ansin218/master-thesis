@@ -137,11 +137,6 @@ Rationales Wissen ist besonders wichtig während der Softwarewartung und evoluti
 \acro{RSS}{Random Stratified Sampling}
 \acro{BR}{Binary Relevance}
 \acro{LP}{Label Powerset}
-\acro{TP}{True Positive}
-\acro{FP}{False Positive}
-\acro{TN}{True Negative}
-\acro{FN}{False Negative}
-\acro{UML}{Unified Modeling Language}
 
 \end{acronym}
 
@@ -626,7 +621,7 @@ Due to their nature of running the same algorithm multiple times over different 
 \end{algorithm}
 
 \subsection{Performance Metrics}
-Performance metrics of a classifier is imperative to know how accurate the model is. A confusion matrix can hence be plotted which comprises of True Positive (\acs{TP}), True Negative (\acs{TN}), False Positive (\acs{FP}) and False Negative (\acs{FN}) as depicted in Figure \ref{fig:confusion-matrix}.
+Performance metrics of a classifier is imperative to know how accurate the model is. A confusion matrix can hence be plotted which comprises of True Positive (TP), True Negative (TN), False Positive (FP) and False Negative (FN) as depicted in Figure \ref{fig:confusion-matrix}.
 \begin{figure}[h] %b!]
     \centering
     \includegraphics[width=5cm]{confusion_matrix}
@@ -641,19 +636,19 @@ Given a positive class, $P_C$, and a negative class, $N_C$, the following can be
 True Positive Rate is the proportion of correctly classified $P_C$. True Negative Rate is the proportion of correctly classified $N_C$. False Positive Rate is the proportion of incorrectly classified $N_C$, classified as $P_C$. False Negative Rate is the proportion of incorrectly classified $P_C$, classified as $N_C$. The four components of the confusion matrix defined earlier can now be used to define the following subsections.
 
 \subsubsection{Accuracy} 
-Accuracy is the ratio of sum of \acs{TP} and \acs{TN} to the entire number of samples in the dataset.
+Accuracy is the ratio of sum of TP and TN to the entire number of samples in the dataset.
 \begin{align*}
 Accuracy &= \frac{ TP + TN}{TP + TN + FP + FN}
 \end{align*}
 
 \subsubsection{Precision} 
-Precision is the ratio of \acs{TP} to the sum of \acs{TP} and \acs{FP}.
+Precision is the ratio of TP to the sum of TP and FP.
 \begin{align*}
 Precision &= \frac{TP}{TP + FP}
 \end{align*}
 
 \subsubsection{Recall} 
-Recall is the ratio of \acs{TP} to the sum of \acs{TP} and \acs{FN}. Recall is also known as hit rate, true positive rate or sensitivity.
+Recall is the ratio of TP to the sum of TP and FN. Recall is also known as hit rate, true positive rate or sensitivity.
 \begin{align*}
 Recall &= \frac{TP}{TP +FN}
 \end{align*}
