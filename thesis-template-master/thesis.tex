@@ -31,6 +31,8 @@
 \usepackage{algpseudocode}
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
+\usepackage{rotating}
+\usepackage{tikz}
 \usepackage{multirow}
 \usepackage[toc,page]{appendix}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit Breitenangabe
@@ -699,7 +701,21 @@ The next actor of the rationale miner system is the \textit{annotator}. After ha
 The third actor of the system is the \textit{rationale manager}. The data labeled manually acts as the groundtruth for machine learning experiments. The rationale manager is thus given the responsibility of carrying out classification using different supervised learning algorithms to extract various rationale elements automatically. In addition, the rationale manager is expected to link mutual rationale elements appear from the keywords of comments from issue tracking systems and the messages of \acs{IRC}s. Linking different rationale elements are done by the rationale manager using string based similarity between keywords obtained from \acs{LDA} based topic modeling approach. 
 
 \section{Rationale Miner Structure}
-
+In this section, the use cases are realized into a structure with classes and its relevant attributes and methods. Figure \ref{fig:overallClassDiagram} depicts the overall structure of this thesis using a UML class diagram. 
+\newline \newline
+The \textit{CommunicationDataset} class comprises of datasets from different projects and communication media obtained by the \textit{data collector}. In addition to attributes such as \textit{sentences}, \textit{annotations} and \textit{keywords}, the \textit{CommunicationDataset} class has a method \textit{usesDataset()} to allow classes such as \textit{ContentAnalysis}, \textit{AutomatedRationaleExtraction} and \textit{RationaleLinkage} to perform any operation on a dataset. In addition, the \textit{CommunicationDataset} consists of comments with rationale elements and comments without any rationale elements; these are denoted by the classes \textit{CommentWithRationale} and \textit{IrrelevantComment}. The class \textit{CommentWithRationale} consists of child classes where each child class corresponds to a rationale element. The child classes of \textit{CommentWithRationale} are: \textit{Issue}, \textit{Alternative}, \textit{Argument} and \textit{Decision} where \textit{Argument} is the parent class of \textit{Pro-Argument} and \textit{Con-Argument}. 
+\newline \newline
+The \textit{ContentAnalysis} class deals with labeling data after performing sampling on the raw dataset. The labeling is performed by actor called \textit{annotator} as mentioned in the previous section. The \textit{ContentAnalysis} class can use any \textit{LabelingTool} for annotating any kind of text data. Labels are assigned by annotators for the comments from the issue tracking system. These labels act as groundtruth for machine learning experiments to perform automatic extraction of rationale. 
+\newline \newline
+The \textit{rationale manager} is responsible for extraction and linking rationale elements. For automatic extraction of rationale elements, the \textit{AutomaticRationaleExtraction} class uses different tools for classification provided by \textit{ClassificationTool} class. The \textit{ClassificationTool} consists of \textit{MLDataPreprocessor} for feature selection using preprocessing methods and \textit{TransformationMethod} such as binary relevance or label powerset for multi-label classification. In addition, it also has a class named \textit{ClassifierModel} comprising of attribute like \textit{learningMethod} which is the concerned supervised learning algorithm, and methods such as \textit{Train} and \textit{Validate} to train and validate the respective classifier model. 
+\newline \newline
+For linking rationale elements from different communication media, \textit{RationaleLinkage} class makes use of the \textit{TopicModelingTool} class. The \textit{TopicModelingTool} class assists in performing topic modeling using \acs{LDA}. Topics are generated for the entire dataset as well as individual comments or messages using the \textit{TopicGenerator} class. Preprocessing methods are applied before generating topics or keywords with \textit{TMDataPreprocessor} class. After having extracted the keywords from different communication media, keywords are linked based on similarity using the \textit{RationaleElementsLinkage} class with methods such as \textit{generateOverallTopics}, \textit{generateIssueKeywords}, \textit{generateIrcKeywords} and \textit{linkIssuesIrc}.
+\begin{sidewaysfigure}[h] %b!]
+    \centering
+    \includegraphics[width=20cm]{Overall-Class-Diagram}
+    \caption{Overall Structure using UML Class Diagram}
+    \label{fig:overallClassDiagram}
+\end{sidewaysfigure}
 
 \chapter{System Design}
 This chapter describes the system design and the subsystem decomposition architecture for this thesis. Section 4.1 describes the data management module in which the data is stored and managed in a database. Section 4.2 presents the data preprocessor module which performs feature selection on the labeled data. Automated rationale extractor responsible for performing classification and keywords extraction using topic modeling is described in Section 4. The final module, evaluation manager, dealing with presenting results from the operations performed in automated rationale extractor module is explained in Section 4.4. Figure \ref{fig:systemDecomposition} shows the system design architecture using UML component diagram. 
