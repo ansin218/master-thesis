@@ -742,8 +742,14 @@ The evaluation manager module aids in obtaining different metrics from the resul
 
 \chapter{Data Collection}
 
-This chapter describes the datasets used to carry out the research and the collection of data from the \acs{OSS} projects. Section 3.1 describes the issue trackers dataset while Section 3.2 summarises the \acs{IRC} messages dataset. The \acs{OSS} projects are: Apache Lucene, Mozilla Thunderbird and Ubuntu. All three sources mentioned use different issue trackers. Apache Lucene uses JIRA owned by Atlassian Inc., Mozilla Thunderbird uses Bugzilla by Mozilla Foundation and Ubuntu uses Launchpad created by Canonical Ltd. 
-\newline \newline
+This chapter describes the datasets used to carry out the research and the collection of data from the \acs{OSS} projects. Figure \ref{fig:dataObject} illustrates instances of data collection approach using a UML object diagram derived from the class diagram in Figure \ref{fig:overallClassDiagram}. Section 5.1 describes the issue trackers dataset while Section 5.2 summarises the \acs{IRC} messages dataset. The \acs{OSS} projects are: Apache Lucene, Mozilla Thunderbird and Ubuntu. All three sources mentioned use different issue trackers. Apache Lucene uses JIRA owned by Atlassian Inc., Mozilla Thunderbird uses Bugzilla by Mozilla Foundation and Ubuntu uses Launchpad created by Canonical Ltd. 
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=13cm]{data-collection-object-diagram}
+    \caption{Data collection approach illustrated using UML object diagram}
+    \label{fig:dataObject}
+\end{figure}
+\noindent \newline
 There are multiple reasons why these projects have specifically been chosen. First of all, the projects chosen are all completely open sourced. Studying and analysing the data from open sourced projects, especially the ones from Apache Software Foundation (ASF) has been a common practice in the research community. In the past, Bacchelli et al.\cite{Bacchelli2012} used data from Apache Mina to classify development emails. Ortu et al.\cite{Ortu2015} studied the JIRA repository dataset of ASF. Panichella et al. \cite{Panichella2014} roped in the datasets from Apache HTTPD, CXF and Lucene. Besides datasets from ASF, the same authors mentioned in this paragraph have also used other projects such as JBoss, Spring and Hibernate. Additionally, these projects also have been around for quite a long time, have a large community that is active, and have been making releases from time to time. Another reason for choosing such projects is that while scraping data, the author of the scraper needs to respect the rules of the website. Besides the aforementioned reasons, the datasets of these \acs{OSS} projects were publicly available. The final reason for choosing these projects is also to continue a research work done by \cite{Nonnenmacher2017} in his master thesis where he extracted rationale from \acs{IRC} messages. This master thesis also uses his dataset which is described in Section 3.2. 
 
 \section{Issue Trackers Dataset}
