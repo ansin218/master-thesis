@@ -742,7 +742,7 @@ The evaluation manager module aids in obtaining different metrics from the resul
 
 \chapter{Data Collection}
 
-This chapter describes the datasets used to carry out the research and the collection of data from the \acs{OSS} projects. Figure \ref{fig:dataObject} illustrates instances of data collection approach using a UML object diagram derived from the class diagram in Figure \ref{fig:overallClassDiagram}. Section 5.1 describes the issue trackers dataset while Section 5.2 summarises the \acs{IRC} messages dataset. The \acs{OSS} projects are: Apache Lucene, Mozilla Thunderbird and Ubuntu. All three sources mentioned use different issue trackers. Apache Lucene uses JIRA owned by Atlassian Inc., Mozilla Thunderbird uses Bugzilla by Mozilla Foundation and Ubuntu uses Launchpad created by Canonical Ltd. 
+This chapter describes the datasets used to carry out the research and the collection of data from the \acs{OSS} projects. Figure \ref{fig:dataObject} illustrates instances of data collection approach using UML object diagram. Section 5.1 describes the issue trackers dataset while Section 5.2 summarises the \acs{IRC} messages dataset. The \acs{OSS} projects are: Apache Lucene, Mozilla Thunderbird and Ubuntu. All three sources mentioned use different issue trackers. Apache Lucene uses JIRA owned by Atlassian Inc., Mozilla Thunderbird uses Bugzilla by Mozilla Foundation and Ubuntu uses Launchpad created by Canonical Ltd. 
 \begin{figure}[h] %b!]
     \centering
     \includegraphics[width=13cm]{data-collection-object-diagram}
@@ -836,7 +836,14 @@ The \acs{IRC} messages dataset has been scraped by Nonnenmacher \cite{Nonnenmach
 
 \chapter{Content Analysis}
 
-This chapter dives into the procedure of manual content analysis and the formation of ground truth for machine learning experiments to be carried out later. Section 4.1 describes how samples were obtained from raw datasets. Section 4.2 presents how the manual annotations were carried out. The results from the manual annotation are later discussed in Section 4.3.
+This chapter dives into the procedure of manual content analysis and the formation of ground truth for machine learning experiments to be carried out later. Section 4.1 describes how samples were obtained from raw datasets. Section 4.2 presents how the manual annotations were carried out. The results from the manual annotation are later discussed in Section 4.3. Figure  \ref{fig:contentObject} presents instances of content analysis approach using UML object diagram. 
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=13cm]{content-analysis-object-diagram}
+    \caption{Content analysis approach illustrated using UML object diagram}
+    \label{fig:contentObject}
+\end{figure}
 
 \section{Random Stratified Sampling}
 For the main content analysis, two annotators, the author and his advisor, individually read through each sentence of all comments spanning 100 issues from each of the three projects. Although the number of issues fetched for each of them were much higher, only 100 of them were attained for each project using Random Stratified Sampling (RSS) due to time constraints of the research. RSS can be of two types: proportionate random stratified sampling and disproportionate random stratified sampling. In proportionate random stratified sampling\footnote{\url{http://www.oxfordreference.com/view/10.1093/oi/authority.20110803100349910}}, the parent dataset is divided into multiple strata and the child dataset sampled randomly must have the strata in the same proportion as the parent dataset. Contrary to proportionate random stratified sampling, the case of disproportionate random stratified sampling\footnote{\url{http://www.oxfordreference.com/view/10.1093/oi/authority.20110803095722568}} has the parent dataset divided into multiple strate but the child dataset sampled randomly may not have its strata in the same proportion as the parent dataset. There are, however, three steps carried out sequentially to obtain the sample which are as follows.
@@ -935,7 +942,7 @@ The second step of this annotation task was to keep all the complete agreements 
 \end{table}
 
 \section{Annotation Results}
-The results of manual annotation from both the annotators are presented in this section. Table \ref{tab:rationaleExample} shows examples of some sentences and their corresponding labels. Table \ref{tab:distroBinaryRationale} gives a detailed overview with both, number and percentages, for all three projects. It can be inferred that Apache Lucene had the highest ratio between sentences with rationale to ones without any rationale whereas Mozilla Thunderbird and Ubuntu appear to be having a healthy ratio between both, rationale and no rationale. Ubuntu is the only project though where the number of sentences with rationale has been outnumbered marginally by the number of sentences not containing any kind of rationale in it. Figure \ref{fig:distroBinaryRationale} shows the proportion of messages for all three projects. 
+The results of manual annotation from both the annotators are presented in this section. Table \ref{tab:rationaleExample} shows examples of some sentences and their corresponding labels. Table \ref{tab:distroBinaryRationale} gives a detailed overview with both, number and percentages, for all three projects. It can be inferred that Apache Lucene had the highest ratio between sentences with rationale to ones without any rationale whereas Mozilla Thunderbird and Ubuntu appear to be having a healthy ratio between both, rationale and no rationale. Ubuntu is the only project though where the number of sentences with rationale has been outnumbered marginally by the number of sentences not containing any kind of rationale in it. Figure \ref{fig:distroBinaryRationale} shows the proportion of messages for all projects. 
 \begin{table} %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
