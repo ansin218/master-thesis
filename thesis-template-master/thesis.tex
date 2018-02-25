@@ -627,7 +627,7 @@ Performance metrics of a classifier is imperative to know how accurate the model
     \centering
     \includegraphics[width=5cm]{confusion_matrix}
     \caption{Confusion Matrix}
-    \small Image adapted MLXTEND\footnotemark.
+    \small Image adapted from MLXTEND\footnotemark.
     \label{fig:confusion-matrix}
 \end{figure}
 \footnotetext{\url{https://rasbt.github.io/mlxtend/user_guide/evaluate/confusion_matrix/}}
@@ -680,12 +680,26 @@ Topic modeling and classification tasks in Python have been carried with the hel
 For quick analysis of results and neat data visualizations, R programming language\footnote{\url{https://www.r-project.org/}} was used. The graphic libraries offered by R have been claimed to be neater when compared to Python\footnote{\url{https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis}}. All the graphs in this thesis have been generated using ggplot2\footnote{\url{http://ggplot2.org/}} and the UML diagrams using draw.io tool \footnote{\url{http://draw.io/}}.
 
 \chapter{Analysis}
+This chapter aims at providing a model for this thesis that is complete, consistent and comprehensible. Section 3.1 presents the use case scenarios with different actors involved and the corresponding actions they need to perform. Section 3.2 describes the structure by transforming the use cases into classes with relevant attributes and methods. 
+
+\section{Rationale Miner Use Cases}
+Use cases aid in requirements elicitation and analysis to depict the functionality of the entire system \cite{Bruegge2009}. The purpose of use cases is to provide an overview of different actors involved in the system and the actions they need to perform during certain scenarios to define a boundary for the system. The actors are present outside the boundary of the system while their uses cases are present within the boundary of the system. The use case model this thesis is illustrated by Figure \ref{fig:usecaseModel} using a UML use case diagram. 
+
 \begin{figure}[h] %b!]
     \centering
-    \includegraphics[width=7cm]{thesis-use-case}
-    \caption{Use Case Model using UML Diagram}
+    \includegraphics[width=8cm]{thesis-use-case}
+    \caption{Use Case Model using UML Use Case Diagram}
     \label{fig:usecaseModel}
 \end{figure}
+\noindent \newline
+There are three actors involved in the system as shown in Figure \ref{fig:usecaseModel}. The first actor is the \textit{data collector}. The data collector is responsible for collecting communication data from different sources. The sources with respect to this thesis include comments from issue tracking systems and messages from \acs{IRC}s. While the messages from \acs{IRC}s were obtained from a data collector of another thesis \cite{Nonnenmacher2017}, the comments of issue tracking systems still had to be scraped from the websites of aforementioned \acs{OSS} projects for this thesis. 
+\newline \newline
+The next actor of the rationale miner system is the \textit{annotator}. After having colected the datasets from different communication media, the data had to be sampled and then labeled manually by following an annotation guide. The manually labeled data acts as groundtruth for machine learning experiments to be performed later on during the course of this research.
+\newline \newline
+The third actor of the system is the \textit{rationale manager}. The data labeled manually acts as the groundtruth for machine learning experiments. The rationale manager is thus given the responsibility of carrying out classification using different supervised learning algorithms to extract various rationale elements automatically. In addition, the rationale manager is expected to link mutual rationale elements appear from the keywords of comments from issue tracking systems and the messages of \acs{IRC}s. Linking different rationale elements are done by the rationale manager using string based similarity between keywords obtained from \acs{LDA} based topic modeling approach. 
+
+\section{Rationale Miner Structure}
+
 
 \chapter{System Design}
 This chapter describes the system design and the subsystem decomposition architecture for this thesis. Section 4.1 describes the data management module in which the data is stored and managed in a database. Section 4.2 presents the data preprocessor module which performs feature selection on the labeled data. Automated rationale extractor responsible for performing classification and keywords extraction using topic modeling is described in Section 4. The final module, evaluation manager, dealing with presenting results from the operations performed in automated rationale extractor module is explained in Section 4.4. Figure \ref{fig:systemDecomposition} shows the system design architecture using UML component diagram. 
