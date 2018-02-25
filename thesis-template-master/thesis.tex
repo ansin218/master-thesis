@@ -213,7 +213,7 @@ There exists different representational models for rationale. Issue Based Inform
 Taking a leaf out of the works of Bruegge and Dutoit\cite{Bruegge2009}, five types of rationale elements are taken into consideration for this research based on the IBIS model. The five rationale elements are: issues, alternatives, pro-arguments, con-arguments and decisions. Figure \ref{fig:thesisClassModel} shows the adapted model for the this thesis based on the IBIS model. 
 \begin{figure}[h] %b!]
     \centering
-    \includegraphics[width=9cm]{ibis-model}
+    \includegraphics[width=8cm]{ibis-model}
     \caption{UML class diagram of IBIS model \cite{Kunz1970}}
     \label{fig:ibisModel}
 \end{figure}
@@ -750,7 +750,7 @@ This chapter describes the datasets used to carry out the research and the colle
     \label{fig:dataObject}
 \end{figure}
 \noindent \newline
-There are multiple reasons why these projects have specifically been chosen. First of all, the projects chosen are all completely open sourced. Studying and analysing the data from open sourced projects, especially the ones from Apache Software Foundation (ASF) has been a common practice in the research community. In the past, Bacchelli et al.\cite{Bacchelli2012} used data from Apache Mina to classify development emails. Ortu et al.\cite{Ortu2015} studied the JIRA repository dataset of ASF. Panichella et al. \cite{Panichella2014} roped in the datasets from Apache HTTPD, CXF and Lucene. Besides datasets from ASF, the same authors mentioned in this paragraph have also used other projects such as JBoss, Spring and Hibernate. Additionally, these projects also have been around for quite a long time, have a large community that is active, and have been making releases from time to time. Another reason for choosing such projects is that while scraping data, the author of the scraper needs to respect the rules of the website. Besides the aforementioned reasons, the datasets of these \acs{OSS} projects were publicly available. The final reason for choosing these projects is also to continue a research work done by \cite{Nonnenmacher2017} in his master thesis where he extracted rationale from \acs{IRC} messages. This master thesis also uses his dataset which is described in Section 3.2. 
+There are multiple reasons why these projects have specifically been chosen. First of all, the projects chosen are all completely open sourced. Studying and analysing the data from open sourced projects, especially the ones from Apache Software Foundation (ASF) has been a common practice in the research community. In the past, Bacchelli et al.\cite{Bacchelli2012} used data from Apache Mina to classify development emails. Ortu et al.\cite{Ortu2015} studied the JIRA repository dataset of ASF. Panichella et al. \cite{Panichella2014} roped in the datasets from Apache HTTPD, CXF and Lucene. Besides datasets from ASF, the same authors mentioned in this paragraph have also used other projects such as JBoss, Spring and Hibernate. Additionally, these projects also have been around for quite a long time, have a large community that is active, and have been making releases from time to time. Another reason for choosing such projects is that while scraping data, the author of the scraper needs to respect the rules of the website. Besides the aforementioned reasons, the datasets of these \acs{OSS} projects were publicly available. The final reason for choosing these projects is also to continue a research work done by \cite{Nonnenmacher2017} in his master thesis where he extracted rationale from \acs{IRC} messages. This master thesis also uses his dataset described in Section 3.2. 
 
 \section{Issue Trackers Dataset}
 This section investigates how data was obtained from issue trackers of Apache Lucene, Mozilla Thunderbird and Ubuntu. In addition, Table \ref{tab:rawIssueTrackers} shows the figures of the raw dataset. 
@@ -780,7 +780,7 @@ In JIRA, each issue gives us an option to export all the data needed for the res
 
 \begin{figure}[h] %b!]
     \centering
-    \includegraphics[width=13cm]{lucene-comment-distribution-raw}
+    \includegraphics[width=12cm]{lucene-comment-distribution-raw}
     \caption{Overview of distribution of comments for Apache Lucene}
     \label{fig:luceneRawDistro}
 \end{figure}
@@ -792,7 +792,7 @@ As mentioned earlier, JIRA gave us the option to get all the data needed for upt
 
 \begin{figure}[h] %b!]
     \centering
-    \includegraphics[width=13cm]{thunderbird-comment-distribution-raw}
+    \includegraphics[width=12cm]{thunderbird-comment-distribution-raw}
     \caption{Overview of distribution of comments for Mozilla Thunderbird}
     \label{fig:thunderbirdRawDistro}
 \end{figure}
@@ -804,7 +804,7 @@ Launchpad did not have its export option to fetch mass number of issues and its 
 
 \begin{figure}[h] %b!]
     \centering
-    \includegraphics[width=13cm]{ubuntu-comment-distribution-raw}
+    \includegraphics[width=12cm]{ubuntu-comment-distribution-raw}
     \caption{Overview of distribution of comments for Ubuntu}
     \label{fig:ubuntuRawDistro}
 \end{figure}
@@ -813,7 +813,7 @@ Launchpad did not have its export option to fetch mass number of issues and its 
 \section{IRC Messages Dataset}
 
 The \acs{IRC} messages dataset has been scraped by Nonnenmacher \cite{Nonnenmacher2017} for his thesis where he has extracted rationale out of the same. For other details regarding \acs{IRC} messages, the work of Nonnenmacher \cite{Nonnenmacher2017} is referred to. The data in Table \ref{tab:rawIRCMessages} are the statistics of the raw data collected by Nonnenmacher. 
-
+\noindent \newline
 \begin{table} %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
