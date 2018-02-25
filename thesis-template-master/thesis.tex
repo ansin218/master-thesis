@@ -679,7 +679,33 @@ Topic modeling and classification tasks in Python have been carried with the hel
 \newline \newline
 For quick analysis of results and neat data visualizations, R programming language\footnote{\url{https://www.r-project.org/}} was used. The graphic libraries offered by R have been claimed to be neater when compared to Python\footnote{\url{https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis}}. All the graphs in this thesis have been generated using ggplot2\footnote{\url{http://ggplot2.org/}} and the UML diagrams using draw.io tool \footnote{\url{http://draw.io/}}.
 
-%------- chapter 3 -------
+\chapter{Analysis}
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=7cm]{thesis-use-case}
+    \caption{Use Case Model using UML Diagram}
+    \label{fig:usecaseModel}
+\end{figure}
+
+\chapter{System Design}
+This chapter describes the system design and the subsystem decomposition architecture for this thesis. Section 4.1 describes the data management module in which the data is stored and managed in a database. Section 4.2 presents the data preprocessor module which performs feature selection on the labeled data. Automated rationale extractor responsible for performing classification and keywords extraction using topic modeling is described in Section 4. The final module, evaluation manager, dealing with presenting results from the operations performed in automated rationale extractor module is explained in Section 4.4. Figure \ref{fig:systemDecomposition} shows the system design architecture using UML component diagram. 
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=14cm]{system-decomposition}
+    \caption{System Design using UML Component Diagram}
+    \label{fig:systemDecomposition}
+\end{figure}
+
+\section{Data Management Module}
+The data management module acts as the starting point for the architecture. It consists of a SQL \textit{database} artifact which stores raw data such as comments of issue tracking systems scraped from different sources besides \acs{IRC} messages. The DataScraper is responsible for scraping data while the DataLabeler aids in sampling data and then labeling it. 
+
+\section{Data Preprocessor Module}
+
+\section{Automated Rationale Extractor Module}
+
+\section{Evaluation Manager Module}
+
+%------- chapter 5 -------
 
 \chapter{Data Collection}
 
