@@ -942,32 +942,7 @@ The second step of this annotation task was to keep all the complete agreements 
 \end{table}
 
 \section{Annotation Results}
-The results of manual annotation from both the annotators are presented in this section. Table \ref{tab:rationaleExample} shows examples of some sentences and their corresponding labels. Table \ref{tab:distroBinaryRationale} gives a detailed overview with both, number and percentages, for all three projects. It can be inferred that Apache Lucene had the highest ratio between sentences with rationale to ones without any rationale whereas Mozilla Thunderbird and Ubuntu appear to be having a healthy ratio between both, rationale and no rationale. Ubuntu is the only project though where the number of sentences with rationale has been outnumbered marginally by the number of sentences not containing any kind of rationale in it. Figure \ref{fig:distroBinaryRationale} shows the proportion of messages for all projects. 
-\begin{table} %[hb!]
-    \centering
-    \begin{adjustbox}{max width=\columnwidth}
-    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
-    \begin{tabular}{p{10cm} p{5cm}}
-        \toprule
-        \textbf{Sentence} & \textbf{Label}\\
-        \midrule
-			\textit{How do I go about limiting the search window as well as the number of matches?} & issue\\
-			\textit{I found the way to remove a news server account} & alternative \\ 
-			\textit{It is well possible that that will work} & pro-argument \\ 
-			\textit{This is inconsistent and unneccesarily difficult to use} & con-argument \\ 
-			\textit{This bug was fixed in the package snapcraft - 2.8.8+16.10} & decision \\ 
-			\textit{Yes, the build passes for me with only the two additional changes in WordDictionary and SimpleServer.} & alternative, pro-argument \\
-        \midrule
-    \end{tabular}
-    \end{adjustbox}
-    \captionof{table}{Example sentences containing rationale elements}
-    \label{tab:rationaleExample}
-\end{table}
-\newline \newline
-Similarly, Table \ref{tab:distroMultiRationale} presents complete overview with numbers and percetage for fine grained rationale found in the dataset. Apache Lucene (11\%) had the least percentage of issues compared to Mozilla Thunderbird (24\%) and Ubuntu (25\%). However, higher percentage of decisions were made in Apache Lucene (8\%) than Mozilla Thunderbird (3\%) or Ubuntu (4\%). The numbers look very similar even in the case of alternatives, pro-arguments and con-arguments, where Apache Lucene outnumbers Mozilla Thunderbird and Ubuntu. 
-\newline \newline
-The following numbers can also lead to the inference that due to lesser number of issues, more number of final decisions were reached in case of Apache Lucene. This leads to another observation that lesser decisions were made in the case of Mozilla Thunderbird and Ubuntu because the numbers for alternatives, pro-argument and con-argument are also low, which are crucial to reach a final conclusion. Figure \ref{fig:distroMultiRationale} shows the distribution of fine-grained rationale in the dataset across all three projects. 
-
+The results of manual annotation from both the annotators are presented in this section. Table \ref{tab:distroBinaryRationale} gives a detailed overview with both, number and percentages, for all three projects. It can be inferred that Apache Lucene had the highest ratio between sentences with rationale to ones without any rationale whereas Mozilla Thunderbird and Ubuntu appear to be having a healthy ratio between both, rationale and no rationale. Ubuntu is the only project though where the number of sentences with rationale has been outnumbered marginally by the number of sentences not containing any kind of rationale in it. Figure \ref{fig:distroBinaryRationale} shows the proportion of messages with rationale for all projects. 
 \begin{table} %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -988,11 +963,14 @@ The following numbers can also lead to the inference that due to lesser number o
 
 \begin{figure}[h] %b!]
     \centering
-    \includegraphics[width=14cm]{binary-distro-rationale}
+    \includegraphics[width=12cm]{binary-distro-rationale}
     \caption{Distribution of Rationale Frequency}
     \label{fig:distroBinaryRationale}
 \end{figure}
-
+\noindent \newline
+Similarly, Table \ref{tab:distroMultiRationale} presents complete overview with numbers and percentage for fine grained rationale. Apache Lucene (11\%) had the least percentage of issues compared to Mozilla Thunderbird (24\%) and Ubuntu (25\%). However, higher percentage of decisions were made in Apache Lucene (8\%) than Mozilla Thunderbird (3\%) or Ubuntu (4\%). The numbers look very similar even in the case of alternatives, pro-arguments and con-arguments, where Apache Lucene outnumbers Mozilla Thunderbird and Ubuntu. 
+\newline \newline
+The following numbers can also lead to the inference that due to lesser number of issues, more number of final decisions were reached in case of Apache Lucene. This leads to another observation that lesser decisions were made in the case of Mozilla Thunderbird and Ubuntu because the numbers for alternatives, pro-argument and con-argument are also low, which are crucial to reach a final conclusion. Figure \ref{fig:distroMultiRationale} shows the distribution of fine-grained rationale in the dataset across all three projects. 
 \begin{table} %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -1010,12 +988,69 @@ The following numbers can also lead to the inference that due to lesser number o
     \captionof{table}{Distribution of Fine Grained Rationale in Sentences}
     \label{tab:distroMultiRationale}
 \end{table}
-
-\begin{figure}[h] %b!]
+\noindent \newline
+\begin{figure}[H] %b!]
     \centering
     \includegraphics[width=14cm]{multi-distro-rationale}
     \caption{Distribution of Fine Grained Rationale Frequency}
     \label{fig:distroMultiRationale}
+\end{figure}
+\noindent \newline
+During the content analysis phase, instances of rationale completeness was observed. In other words, there existed some issues which had alternatives with pro-argument and con-arguments before leading to a decision. An example of a conversation between developers with rationale completeness is shown in Table \ref{tab:rationaleExample}. Figure \ref{fig:rationaleComplete} shows an instance of rationale completeness. 
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{10cm} p{5cm}}
+        \toprule
+        \textbf{Sentence} & \textbf{Label}\\
+        \midrule
+			\textit{Each of those causes a lot of errors that I'd like to see eventually followed up on.} & issue\\
+			\midrule
+			\textit{Yes, the build passes for me with only the two additional changes in WordDictionary and SimpleServer.} & alternative, pro-argument \\ 
+			\midrule
+			\textit{I am not sure if the warning exclusions are really needed, because we no longer have the general -Xlint.} & alternative, con-argument \\ 
+			\midrule
+			\textit{Keep it as it is (it overrides to do no Xlint warnings at all and don't fail on warning).} & decision \\ 
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Example of a conversation that is rationale complete}
+    \label{tab:rationaleExample}
+\end{table}
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=9cm]{rationale-complete}
+    \caption{UML object diagram of conversations with rationale completeness}
+    \label{fig:rationaleComplete}
+\end{figure}
+\noindent \newline
+Similar to rationale completeness, instances of the opposite were also encountered. Some issues had alternatives and arguments but no decision. It could be possible that the decision could be found from other development artifacts. However, this is beyond the scope of this thesis. An example of a conversation between developers with no rationale completeness is shown in Table \ref{tab:incompleterationaleExample}. Figure \ref{fig:rationaleInComplete} shows an instance of rationale incompleteness. 
+\begin{table} %[hb!]
+    \centering
+    \begin{adjustbox}{max width=\columnwidth}
+    \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
+    \begin{tabular}{p{10cm} p{5cm}}
+        \toprule
+        \textbf{Sentence} & \textbf{Label}\\
+        \midrule
+			\textit{In the patch of 2 Jan 2017 the term contexts are extracted twice, once in SynonymWeight and once to create the SpanSynonymWeight.} & issue\\
+			\midrule
+			\textit{Implementation: SynonymQuery exposes new methods getField() and SynonymWeight.getSimScorer() for use in SpanSynonymQuery.} & alternative \\ 
+			\midrule
+			\textit{I think this improves span scoring somewhat, see the tests and the test output} & pro-argument \\ 
+        \midrule
+    \end{tabular}
+    \end{adjustbox}
+    \captionof{table}{Example of a conversation that is not rationale complete}
+    \label{tab:incompleterationaleExample}
+\end{table}
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=9cm]{rationale-complete}
+    \caption{UML object diagram of conversations with rationale completeness}
+    \label{fig:rationaleInComplete}
 \end{figure}
 
 %------- chapter 7 -------
