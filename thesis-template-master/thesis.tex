@@ -832,11 +832,11 @@ The \acs{IRC} messages dataset has been scraped by Nonnenmacher \cite{Nonnenmach
     \label{tab:rawIRCMessages}
 \end{table}
 
-%------- chapter 4 -------
+%------- chapter 6 -------
 
 \chapter{Content Analysis}
 
-This chapter dives into the procedure of manual content analysis and the formation of ground truth for machine learning experiments to be carried out later. Section 4.1 describes how samples were obtained from raw datasets. Section 4.2 presents how the manual annotations were carried out. The results from the manual annotation are later discussed in Section 4.3. Figure  \ref{fig:contentObject} presents instances of content analysis approach using UML object diagram. 
+This chapter dives into the procedure of manual content analysis and the formation of ground truth for machine learning experiments to be carried out later. Section 6.1 describes how samples were obtained from raw datasets. Section 6.2 presents how the manual annotations were carried out. The results from the manual annotation are later discussed in Section 6.3. Figure  \ref{fig:contentObject} presents instances of content analysis approach using UML object diagram. 
 
 \begin{figure}[h] %b!]
     \centering
@@ -1049,13 +1049,20 @@ Besides binary and fine grained classification, the results of topic modeling ar
 \end{table} 
 
 \section{Binary Classification}
-This section presents the results of the binary classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames} and the algorithms from Section 2.4.4. It is to be noted that in the case of Lucene dataset, unigram results have been presented while trigram results in the cases of Thunderbird and Ubuntu have been shown, since these combinations have given the best results. The experiments have been carried out using scikit-learn Python library. For \acs{POS} tagging mechanism, Spacy, another \acs{NLP} library was used. Figure \ref{fig:binaryClass} illustrates the methodology for binary classification. 
+This section presents the results of the binary classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames} and the algorithms from Section 2.4.4. It is to be noted that in the case of Lucene dataset, unigram results have been presented while trigram results in the cases of Thunderbird and Ubuntu have been shown, since these combinations have given the best results. The experiments have been carried out using scikit-learn Python library. For \acs{POS} tagging mechanism, Spacy, another \acs{NLP} library was used. Figure \ref{fig:binaryClass} illustrates the methodology and Figure \ref{fig:instanceBinary} presents the instances for binary classification. 
 
 \begin{figure}[h] %b!]
     \centering
     \includegraphics[width=12cm]{binary-classification}
     \caption{Binary classification illustrated using UML activity diagram}
     \label{fig:binaryClass}
+\end{figure}
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=13cm]{binary-object-diagram}
+    \caption{Binary classification instances illustrated using UML object diagram}
+    \label{fig:instanceBinary}
 \end{figure}
 
 \subsection{Logistic Regression}
@@ -1266,13 +1273,20 @@ In this section, the best configurations and classifiers along with their respec
 \end{table}
 
 \section{Fine Grained Classification}
-This section presents the results of the fine grained classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames}, transformation methods from Section 2.4.3 and the algorithms from Section 2.4.4. Unlike  binary classification, all three datasets performed the best using unigram tokenization. The scikit-learn library does not support Binary Relevance and Label Transformation methods and hence scikit-multilearn, a library specific for performing multi-class and multi-label classifications was used. However, some measures could not be obtained from scikit-multilearn. In addition, a lot of classifiers along with certain configurations returned a value of zero. Therefore, the fine-grained classifications were perfomed using MEKA exclusively. Figure \ref{fig:finegrainedClass} illustrates the methodology for fine grained classification. 
+This section presents the results of the fine grained classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames}, transformation methods from Section 2.4.3 and the algorithms from Section 2.4.4. Unlike  binary classification, all three datasets performed the best using unigram tokenization. The scikit-learn library does not support Binary Relevance and Label Transformation methods and hence scikit-multilearn, a library specific for performing multi-class and multi-label classifications was used. However, some measures could not be obtained from scikit-multilearn. In addition, a lot of classifiers along with certain configurations returned a value of zero. Therefore, the fine-grained classifications were perfomed using MEKA exclusively. Figure \ref{fig:finegrainedClass} illustrates the methodology and Figure \ref{fig:instanceFine} presents the instances for fine grained classification. 
 
 \begin{figure}[h] %b!]
     \centering
     \includegraphics[width=12cm]{fine-grained-classification}
     \caption{Fine grained classification illustrated using UML activity diagram}
     \label{fig:finegrainedClass}
+\end{figure}
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=13cm]{fine-object-diagram}
+    \caption{Fine grained classification instances illustrated using UML object diagram}
+    \label{fig:instanceFine}
 \end{figure}
 
 \subsection{Logistic Regression}
@@ -2042,7 +2056,21 @@ Ubuntu is an operating system and the most spoken topics were predictably about 
 \end{table} 
 
 \section{Linking}
-In this section, the results of linking comments from issue tracking system and messages from \acs{IRC} are analysed. Keywords were extracted using topic modeling applied with Config 5 from comments of issue tracking system as well as messages of \acs{IRC}. The keywords of each comment from issue tracking system and each message of \acs{IRC} were compared and checked for 50\% similarity using a string matching library, fuzzywuzzy based on Levenshtein distance. An issue was linked to its \acs{IRC} message if atleast one comment from the issue had keywords had similarity with keywords of an \acs{IRC} message. Table \ref{tab:exampleLinking} shows examples of comments from issues linked to messages from \acs{IRC}. \ref{tab:topicLinking} shows the results of how many messages and comments were linked for each dataset. Figure \ref{fig:topiclinkingClass} illustrates the methodology for linking issues to \acs{IRC} messages. 
+In this section, the results of linking comments from issue tracking system and messages from \acs{IRC} are analysed. Keywords were extracted using topic modeling applied with Config 5 from comments of issue tracking system as well as messages of \acs{IRC}. The keywords of each comment from issue tracking system and each message of \acs{IRC} were compared and checked for 50\% similarity using a string matching library, fuzzywuzzy based on Levenshtein distance. An issue was linked to its \acs{IRC} message if atleast one comment from the issue had keywords had similarity with keywords of an \acs{IRC} message. Table \ref{tab:exampleLinking} shows examples of comments from issues linked to messages from \acs{IRC}. Table \ref{tab:topicLinking} shows the results of how many messages and comments were linked for each dataset. Figure \ref{fig:topiclinkingClass} illustrates the methodology for linking issues to \acs{IRC} messages. Figure \ref{fig:instanceLink} presents the instances for linking rationale together.
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=10cm]{topic-linking}
+    \caption{Approach to link issues to \acs{IRC} messages illustrated using UML activity diagram}
+    \label{fig:topiclinkingClass}
+\end{figure}
+
+\begin{figure}[h] %b!]
+    \centering
+    \includegraphics[width=13cm]{rationale-linkage-object}
+    \caption{Instances of linking rationale illustrated using UML object diagram}
+    \label{fig:instanceLink}
+\end{figure}
 
 \begin{table} %[hb!]
     \centering
@@ -2061,14 +2089,6 @@ In this section, the results of linking comments from issue tracking system and 
     \captionof{table}{Examples of linking comments of issues to messages of \acs{IRC}s}
     \label{tab:exampleLinking}
 \end{table}
-
-\begin{figure}[h] %b!]
-    \centering
-    \includegraphics[width=10cm]{topic-linking}
-    \caption{Approach to link issues to \acs{IRC} messages illustrated using UML activity diagram}
-    \label{fig:topiclinkingClass}
-\end{figure}
-
 \leavevmode
 \newline
 Each of the three datasets had 100 issues and 2,500 \acs{IRC} messages. However, since most of the \acs{IRC} messages did not have any rationale and predominantly consisted of greetings and salutations when inspected manually, only those with rationale were considered to perform the experiment. Around 83 issues out of 100 spanning 255 comments could be linked to 316 \acs{IRC} messages for the dataset of Apache Lucene based on similarity of the keywords. For the Mozilla Thunderbird dataset, 81 issues spanning 209 comments were linked to 143 \acs{IRC} messages; almost half as compared to that of messages from Apache Lucene or Ubuntu. In addition, the highest similarity between keywords attained was 78\%. Ubuntu had the maximum number of issues with 94 of them spanning 318 comments linked to 318 \acs{IRC} messages. However, the highest similarity between keywords achieved on this dataset was only 71\%, which was the least when compared to the other datasets of Apache Lucene and Mozilla Thunderbird. 
