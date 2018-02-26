@@ -210,7 +210,7 @@ The problems or issues to be tackled, more often than not, do not have path towa
 \newline \newline
 There exists different representational models for rationale. Issue Based Information System (IBIS) model was introduced by Rittel and Kunz \cite{Kunz1970} to address wicked problems. Figure \ref{fig:ibisModel} shows the IBIS model. Many other models have been introduced based on the IBIS model. SIBYL was a knowledge based system made by Lee \cite{Lee1990} to support group decision making. It focused on managing the qualitative aspects of decision making processes such as the alternatives, the arguments to evaluate alternatives, and the goals. MacLean et al. \cite{Maclean1991} introduced an approach called design space analysis to represent design rationale. It uses a semi-formal notation such as Questions, Options, Criteria (QOC) where questions corresponds to key design issues, options relates to possible alternatives, and criteria deals with conditions to assess the options. Hesse and Paech \cite{Hesse2013} proposed a documentation model for decisions to support collaborative development for requirements engineers and system architects by providing documentation elements addressing both the disciplines.
 \newline \newline
-Taking a leaf out of the works of Bruegge and Dutoit\cite{Bruegge2009}, five types of rationale elements are taken into consideration for this research based on the IBIS model. The five rationale elements are: issues, alternatives, pro-arguments, con-arguments and decisions. Figure \ref{fig:thesisClassModel} shows the adapted model for the this thesis based on the IBIS model. 
+Taking a leaf out of the works of Bruegge and Dutoit\cite{Bruegge2009}, five types of rationale elements are taken into consideration for this research based on the IBIS model. The five rationale elements are: issues, alternatives, pro-arguments, con-arguments and decisions. Figure \ref{fig:thesisClassModel} shows the adapted model for this thesis based on the IBIS model. 
 \begin{figure}[h] %b!]
     \centering
     \includegraphics[width=8cm]{ibis-model}
@@ -268,12 +268,12 @@ Bachelli et al.\cite{Bacchelli2012} used a dataset of around 1,500 emails from m
 \newline \newline
 Hesse et al.\cite{Hesse2016} conducted an analysis on decision-making process on Firefox issue reports. They studied two types decision-making strategies: rationale decision-making and naturalistic-decision making. Rationale decision-making dealt with all possible alternatives for an issue examined carefully while naturalistic decision-making was comparison of current and former scenarios and situations to solve a given problem in stipulated time. They concluded that majority of the strategies were naturalistic in nature. 
 \newline \newline
-Bhat et al.\cite{Bhat2017} carried out research to extract different kinds of design decisions from issue management systems. They captured more than 19,000 issues from two \acs{OSS} projects: Apache Spark and Apache Hadoop Common, and performed their experiments using Support Vector Machine, Naive Bayes, Decision Tree and Logistic Regression. It was concluded that Support Vector Machine classifier performed the best of all in classifying the design decisions. 
+Bhat et al.\cite{Bhat2017} carried out research to extract different kinds of design decisions from issue management systems. They captured more than 19,000 issues from two open source projects: Apache Spark and Apache Hadoop Common, and performed their experiments using Support Vector Machine, Naive Bayes, Decision Tree and Logistic Regression. It was concluded that Support Vector Machine classifier performed the best of all in classifying the design decisions. 
 
 
 \section{Natural Language Processing}
 
-Natural Language Processing (\acs{NLP}) is a popular branch of computer science to extract meaningful features from natural language texts that are comprehensible to humans \cite{Al-ghamdi2017}, \cite{Suhaimin2017}. Categorization and classification of natural language texts can also be done using \acs{NLP} based algorithms. In the past, \acs{NLP} has been used for various purposes in numerous domains. Malware detection studies have been conducted using \acs{NLP} based approaches by Karbab et al. \cite{Karbab2017} and Tran et al.\cite{Tran2017}. Sentiment classification of twitter texts and hotel reviews were carried out by Kanakaraj et al.\cite{Kanakaraj2015} and Ghorpade et al.\cite{Ghorpade2012} respectively. The branch of \acs{NLP} and its algorithms have grown and are being implemented in many languages such as Persian\cite{Ri}, Arabic\cite{Abuleil2007}, Chinese\cite{Liu2008}, German\cite{Metzmacher2017} and Italian\cite{Damiano2017}. 
+Natural Language Processing (\acs{NLP}) is a branch of computer science to extract meaningful features from natural language texts that are comprehensible to humans \cite{Al-ghamdi2017}, \cite{Suhaimin2017}. Categorization and classification of natural language texts can also be done using \acs{NLP} based algorithms. In the past, \acs{NLP} has been used for various purposes in numerous domains. Malware detection studies have been conducted using \acs{NLP} based approaches by Karbab et al. \cite{Karbab2017} and Tran et al.\cite{Tran2017}. Sentiment classification of twitter texts and hotel reviews were carried out by Kanakaraj et al.\cite{Kanakaraj2015} and Ghorpade et al.\cite{Ghorpade2012} respectively. The branch of \acs{NLP} and its algorithms have grown and are being implemented in many languages such as Persian\cite{Ri}, Arabic\cite{Abuleil2007}, Chinese\cite{Liu2008}, German\cite{Metzmacher2017} and Italian\cite{Damiano2017}. 
 \newline \newline
 In addition, some methodologies under \acs{NLP} can also be used for data preprocessing while performing machine learning tasks. Some of the most popular methods and techniques from \acs{NLP} and their pertinent works are discussed below. 
 
@@ -299,7 +299,7 @@ After applying punctuations removal, the sentence would then look like: \textit{
 Like stopwords removal, Kurtanovic et al.\cite{Kurtanovic2017} also performed punctuation removal as well for retrieving rationale from software reviews. However, Bacchelli et al.\cite{Bacchelli2012} and Guzman\cite{Guzman2015} used the emphasis of punctuations for their research. 
 
 \subsubsection{Stemming}
-Stemming is a popular preprocessing technique of mapping similar words with different variations to one single word by truncation. One of the most popular stemmers out there in the field of research is the Porter Stemmer \cite{Porter}. Manning et al.\cite{Manning2009} state that stemming increases recall but harms precision. An example of stemming would be that words like \textit{operational, operative, operations} would all get mapped to \textit{oper}. However, there are cases were words also get mapped to a single word which may not have an exact dictionary meaning. An example of such a case can be \textit{calculation, calculative} getting mapped to \textit{calculat} instead of \textit{calculate}\cite{Toman2006}. Stemming has been used as a preprocessing step in the works of Fan et al.\cite{Fan2017}, Murgia et al.\cite{Murgia2016} and Panichella et al.\cite{Panichella2014} to mention a few.
+Stemming is a preprocessing technique of mapping similar words with different variations to one single word by truncation. One of the most popular stemmers out there in the field of research is the Porter Stemmer \cite{Porter}. Manning et al.\cite{Manning2009} state that stemming increases recall but harms precision. An example of stemming would be that words like \textit{operational, operative, operations} would all get mapped to \textit{oper}. However, there are cases were words also get mapped to a single word which may not have an exact dictionary meaning. An example of such a case can be \textit{calculation, calculative} getting mapped to \textit{calculat} instead of \textit{calculate}\cite{Toman2006}. Stemming has been used as a preprocessing step in the works of Fan et al.\cite{Fan2017}, Murgia et al.\cite{Murgia2016} and Panichella et al.\cite{Panichella2014} to mention a few.
 
 \subsubsection{Lemmatization}
 Another preprocessing technique, but rather a better replacement of stemming, is lemmatization. In this technique, words of different variations are not truncated but rather are mapped to a root word. This root word is identical to a word found in the dictionary. Toman et al.\cite{Toman2006} state that lemmatization is a difficult and expensive process but is more beneficial. An example of lemmatization would be that words like \textit{is} and \textit{are} would be mapped to \textit{be}, which is an actual word found in the dictionary. Lemmatization has been performed by Guzman et al.\cite{Guzman2014}, Toman et al. \cite{Toman2006} and Kurtanovic et al.\cite{Kurtanovic2017} as part of preprocessing technique in their research. 
@@ -313,7 +313,7 @@ Sentence 2: \textit{Munich is a very beautiful place compared to Berlin.}
 \newline \newline
 Sentence 3: \textit{Berlin has more startups than Munich}
 \newline \newline
-Applying the preprocessing techniques such as stopwords removal, punctuations removal, stemming and lemmatization, the \acs{BOW} would look like as in \ref{tab:bowExample}. Nonnenmacher\cite{Nonnenmacher2017} and Goel \cite{Goel2017} both have used \acs{BOW} model in their research on extraction of rationale and topic modeling using Latent Dirichlet Allocation (\acs{LDA}), respectively. Additionally, Somasundaram et al. \cite{Somasundaram2012} took advantage of the same for performing categorization of bug reports.
+Applying the preprocessing techniques such as stopwords removal, punctuations removal, stemming and lemmatization, the Bag Of Words would look like as in \ref{tab:bowExample}. Nonnenmacher\cite{Nonnenmacher2017} and Goel \cite{Goel2017} both have used Bag Of Words model in their research on extraction of rationale and topic modeling using Latent Dirichlet Allocation (\acs{LDA}), respectively. Additionally, Somasundaram et al. \cite{Somasundaram2012} took advantage of the same for performing categorization of bug reports.
 \begin{table} %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -332,7 +332,7 @@ Applying the preprocessing techniques such as stopwords removal, punctuations re
         \midrule
     \end{tabular}
     \end{adjustbox}
-    \captionof{table}{Example for Bag-of-Words Model}
+    \captionof{table}{Example for Bag Of Words Model}
     \label{tab:bowExample}
 \end{table}
 
@@ -363,9 +363,9 @@ It can be seen clearly from Table \ref{tab:ngramExample} that the results of 2-g
 
 \subsubsection{Term Frequency - Inverse Document Frequency}
 
-Term Frequency - Inverse Document Frequency (\acs{TFIDF}) is the product of two values, term frequency and inverse document frequency\footnote{\url{http://www.tfidf.com/}}. Term Frequency (\acs{TF}) can be defined as the number of times a given term occurs in a document. Inverse Document Frequency (\acs{IDF}), on the other hand, checks for strength of frequency of a given word. 
+Term Frequency - Inverse Document Frequency (\acs{TFIDF}) is the product of two values, term frequency and inverse document frequency\footnote{\url{http://www.tfidf.com/}}. Term Frequency (TF) can be defined as the number of times a given term occurs in a document. Inverse Document Frequency (IDF), on the other hand, checks for strength of frequency of a given word. 
 \newline \newline
-Consider the following documents to form a Document Term Matrix\footnote{\url{https://janav.wordpress.com/2013/10/27/tf-idf-and-cosine-similarity/}}. A document term matrix converts the corpus of documents into a matrix of documents and the count of indivual words occuring in each of the document. 
+Consider the following documents to form a document term matrix\footnote{\url{https://janav.wordpress.com/2013/10/27/tf-idf-and-cosine-similarity/}}. A document term matrix converts the corpus of documents into a matrix of documents and the count of indivual words occuring in each of the document. 
 \newline 
 Document 1: \textit{I learn machine} 
 \newline \newline
@@ -393,14 +393,14 @@ A simple example of document term matrix is illustrated using Table \ref{tab:dtm
 \end{table}
 Given a set of documents \textit{D}, \textit{$t_x$} is the term in the document \textit{$d_i$}, for which \acs{TFIDF} is to be computed, \textit{$t_n$} is the total number of words occuring in document \textit{$d_i$}.
 \newline \newline
-The formula for \acs{TF} is as follows:
+The formula for term frequency is as follows:
 \newline
 \begin{equation}
 \label{eq:tfidf1}
     TF(t, d_i) = \frac{t_x}{t_n}
 \end{equation}
 \newline
-And, the formula for \acs{IDF} is as follows:
+And, the formula for inverse document frequency is as follows:
 \newline
 \begin{equation}
 \label{eq:tfidf2}
@@ -438,15 +438,15 @@ The \acs{TFIDF} using equations 2.4 and 2.5 is thus:
 Guzman et al.\cite{Guzman2017}, Fan et al.\cite{Fan2017}, Nonnenmacher\cite{Nonnenmacher2017} and Goel \cite{Goel2017} are some of the few who have used \acs{TFIDF} mechanism in their works.
   
 \subsection{Topic Modeling}
-Topic modeling is an approach in the domain of \acs{NLP} to extract a specific number of topics from a large text corpus. The topics are retrieved by computing the probabilities of frequently occurring words that constitute the text corpus \cite{Zou2017}, \cite{Linstead2007}. Preprocessing techniques mentioned earlier can be applied before generating all the topics depending on the insights being looked for to make the final results more meaningful. It is to be noted that the name of the topics are not given by the algorithm but the end users themselves; the algorithm will only give the frequently occurred words for every given topic \cite{Goel2017}.
+Topic modeling is an approach in the domain of natural language processing to extract a specific number of topics from a large text corpus. The topics are retrieved by computing the probabilities of frequently occurring words that constitute the text corpus \cite{Zou2017}, \cite{Linstead2007}. Preprocessing techniques mentioned earlier can be applied before generating all the topics depending on the insights being looked for to make the final results more meaningful. It is to be noted that the name of the topics are not given by the algorithm but the end users themselves; the algorithm will only give the frequently occurred words for every given topic \cite{Goel2017}.
 \newline \newline
 Mathematically, topic modeling is a kind of a Bayesian inference model where every document in the text corpus is associated with a probability distribution over topics and these topics are nothing but probability distribution over words \cite{Goel2017}. Many topic modeling algorithms exists such as Latent Semantic Analysis \cite{Agung2017}, \cite{Tu2017}, Latent Dirichlet Allocation (\acs{LDA}) \cite{Katsumata2016}, \cite{Chen2016}, and Hierarchial Dirichlet Process \cite{Li2018}, \cite{Hu2017} to mention a few. This thesis performs topic modeling using \acs{LDA} since many related works have incorporated the same. Some of these works are mentioned in the paragraphs to come. 
 \newline \newline
-Guzman at al. \cite{Guzman2015}, \cite{Guzman2014} used \acs{LDA} along with sentiment analysis to visualize user feedback and fine grained sentiments of app reviews from users. For automatic categorization of bug reports, Somasundaram et al. \cite{Somasundaram2012} used \acs{LDA} and Support Vector Machine (\acs{SVM}) separately to achieve the same. Additionally, they also tried to achieved their goal of categorizing bug reports by combining \acs{LDA} with \acs{SVM}. Pagano and Maalej\cite{Pagano2011} applied \acs{LDA} to study topics discussed by developers in development blogs. 
+Guzman at al. \cite{Guzman2015}, \cite{Guzman2014} used \acs{LDA} along with sentiment analysis to visualize user feedback and fine grained sentiments of app reviews from users. For automatic categorization of bug reports, Somasundaram et al. \cite{Somasundaram2012} used \acs{LDA} and support vector machine separately to achieve the same. Additionally, they also tried to achieved their goal of categorizing bug reports by combining \acs{LDA} with support vector machine. Pagano and Maalej\cite{Pagano2011} applied \acs{LDA} to study topics discussed by developers in development blogs. 
 
 % Write it as pseudocode if possible
 \subsubsection{Latent Dirichlet Allocation}
-Latent Dirichilet Allocation (\acs{LDA}) is a topic modeling algorithm introduced by Blei at al. \cite{Blei2003}, where topics are formed using a generative process. The pseudocode of \acs{LDA} has been adapted from Goel \cite{Goel2017} and is described as follows.
+Latent Dirichlet Allocation (\acs{LDA}) is a topic modeling algorithm introduced by Blei at al. \cite{Blei2003}, where topics are formed using a generative process. The pseudocode of \acs{LDA}\cite{Goel2017} is described in Algorithm 1.
 
 \begin{algorithm}
 \caption{Latent Dirichlet Allocation Pseudocode}
@@ -464,9 +464,9 @@ Latent Dirichilet Allocation (\acs{LDA}) is a topic modeling algorithm introduce
 \end{algorithm}
 
 \subsection{Parts Of Speech Tagging}
-Parts Of Speech tagging, also known as \acs{POS} tagging, is a \acs{NLP} technique where a sentence is broken into individual components and the PoS for each of those components are assigned \cite{Jurafsky2017}. A sentence may contain words as well as punctuations. \acs{POS} tagging technique can also be used as a preprocessing technique for classification where features would be extracted based on the pattern and types of PoS used in every sentence. It is to be noted that this tagging can be coarse grained such as noun, verb, adjective, and others, or even fine grained where the tagging could be something like comparative adjective or superlative adjective, personal pronoun, past tense or past participle. This thesis uses the Penn Treebank Project from the University of Pennsylvania\footnote{\url{https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html}} used by Spacy\footnote{\url{https://spacy.io/usage/linguistic-features}} library for its \acs{POS} tagging related experiments.
+Parts Of Speech tagging, also known as \acs{POS} tagging, is a natural language processing technique where a sentence is broken into individual components and the parts of speech for each of those components are assigned \cite{Jurafsky2017}. A sentence may contain words as well as punctuations. Parts of speech tagging technique can also be used as a preprocessing technique for classification where features would be extracted based on the pattern and types of parts of speech used in every sentence. It is to be noted that this tagging can be coarse grained such as noun, verb, adjective, and others, or even fine grained where the tagging could be something like comparative adjective or superlative adjective, personal pronoun, past tense or past participle. This thesis uses the Penn Treebank Project from the University of Pennsylvania\footnote{\url{https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html}} used by Spacy\footnote{\url{https://spacy.io/usage/linguistic-features}} library for its parts of speech tagging related experiments.
 \newline \newline
-Kurtanovic and Maalej \cite{Kurtanovic2017} used \acs{POS} tagging techniques in their quest to mine rationale from software reviews. Guzman et al.\cite{Guzman2015} took advantage of the same to perform fine grained sentiment analysis of app reviews. To perform sentiment analysis on twitter data, \acs{POS} tagging was used as a preprocessing step by Kanakaraj and Guddeti \cite{Kanakaraj2015}.
+Kurtanovic and Maalej \cite{Kurtanovic2017} used \acs{POS} tagging techniques in their quest to mine rationale from software reviews. Guzman et al.\cite{Guzman2015} took advantage of the same to perform fine grained sentiment analysis of app reviews. To perform sentiment analysis on twitter data, parts of speech tagging was used as a preprocessing step by Kanakaraj and Guddeti \cite{Kanakaraj2015}.
 
 
 \section{Machine Learning}
@@ -506,12 +506,12 @@ Models may be biased if they are being tested on a specific set of data. To impr
 Transformation methods are applied to multi-class or multi-label problems. Multi-class problems are those that have more than two classes but at a given instance may belong only to one class. For example, one can classify a group of animals based on some images such as lions, tigers, dogs and cats, but for each given sample, an animal may belong only to one class. Multi-label problems are those where a given sample may have multiple labels at the same time. For example, a movie may belong to multiple genres such as comedy and romance at the same time. 
 
 \subsubsection{Binary Relevance} 
-Binary Relevance (\acs{BR}) is a kind of problem transformation method applied to multi-class or multi-label classification problems. Using this approach, a multi-class problem is decomposed into multiple binary classification problems. For example, if there are five classes, the problem would be decomposed into five binary classification problems where the classifier runs independently on each of the class using the input features\footnote{\url{https://www.analyticsvidhya.com/blog/2017/08/introduction-to-multi-label-classification/}}. 
+Binary Relevance (\acs{BR}) is a transformation method applied to multi-class or multi-label problems. Using this approach, a multi-class problem is decomposed into multiple binary classification problems. For example, if there are five classes, the problem would be decomposed into five binary classification problems where the classifier runs independently on each of the class.\footnote{\url{https://www.analyticsvidhya.com/blog/2017/08/introduction-to-multi-label-classification/}}. 
 
 \subsubsection{Label Powerset} 
 Label Powerset (\acs{LP}) is another form of problem transformation method applied to multi-class or multi-label classification problems. In the case of label powerset, one single multi-class classifier is used to train all unique combinations of labels from the training dataset.
 \newline \newline
-Both Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017} have used \acs{BR} and \acs{LP} transformation methods to perform multi-label/multi-class text classification to extract rationale from chat messages and \acs{IRC} messages, respectively. 
+Both Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017} have used binary relevance and label powerset to perform multi-label/multi-class text classification to extract rationale from chat messages and \acs{IRC} messages, respectively. 
 
 \subsection{Supervised Learning Algorithms}
 Many algorithms exist in the domain of machine learning to perform different kinds of classification. The scope of this thesis, however, is text classification using supervised learning techniques. The algorithms that will be looked into are mentioned in this section.
@@ -519,17 +519,17 @@ Many algorithms exist in the domain of machine learning to perform different kin
 \subsubsection{Logistic Regression}
 Given a set of independent variables, $x_1$, $x_2$,.., $x_n$, Logistic Regression (\acs{LR}) is an algorithm that predicts the outcome, $Y$, that is a binary or categorical variable \cite{Peng2002}, \cite{Strombergsson2009} . It is a special form of linear regression except that probability is calculated by using the ratio of logarithm of odds. The data is fit into a logit function for the prediction of outcomes. Binary logistic model predicts the outcomes of two classes, Class A (0) and Class B (1), whereas multinomial logistic model is capable of predicting more than two classes, for example, Class A, Class B and Class C\cite{Jurafsky2017}. 
 \newline \newline
-Given $b$ the co-efficient of $x_1$ and $a$ the bias term, log of odds ratio is given as:
+Given $b$ the co-efficient of $x_1$, $a$ the bias term, log of odds ratio is:
 \begin{align*}
 log\frac{Y}{1-Y} &= a + bx_1
 \end{align*}
-\newline \newline
+\newline 
 Transforming the above log of odds ratio to get the value of $Y$:
 \begin{align*}
 Y &=  \frac{e^{a + bx_1}}{1 + e^{a + bx_1}}
 \end{align*}
-\newline \newline
-Rogers et al.\cite{Rogers2012} and Kurtanovic et al.\cite{Kurtanovic2017} have used \acs{LR} for extracting rationale and performing classification on their respective datasets of software reviews and bug reports. 
+\newline 
+Rogers et al.\cite{Rogers2012} and Kurtanovic et al.\cite{Kurtanovic2017} have used logistic regression for extracting rationale and performing classification on their respective datasets of software reviews and bug reports. 
 
 \subsubsection{Multinomial Naive Bayes}
 Naive Bayes belongs to the class of algorithms that are predominantly based on the Bayes Theorem. Algorithms of this group have a common notion that features that contribute to the predicition of an outcome are all independent of each other. However, in real world, this assumption contradict the hypothesis based on which these algorithms function. Naive Bayes, though, is considered to be easy, fast and efficient \cite{Rennie2003}. 
@@ -545,15 +545,12 @@ Given a class $c$ and features $f_1$, $f_2$,.., $f_n$, the formula under NB is:
 \begin{align*}
 p(c|f_1,...,f_n) \propto p(c) \times p(f_1|c) \times ... \times p(f_n|c)
 \end{align*}
-\newline \newline
-When $p(c|f_i)$ is said to have a multinomial distribution, it is said to be using \acs{MNB} model.  
-\newline \newline
-Both Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017} have used \acs{MNB} model to perform text classification to extract rationale from chat messages and \acs{IRC} messages respectively. 
+When $p(c|f_i)$ has multinomial distribution, it is said to be using \acs{MNB} model. Both Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017} have used \acs{MNB} model to perform text classification to extract rationale from chat messages and \acs{IRC} messages respectively. 
 
-\subsubsection{Support Vector Machines}
-Support Vector Machine (\acs{SVM}) is a popular supervised machine learning algorithm that can be used for regression as well as classification\footnote{\url{https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/}}. In \acs{SVM}, items from a dataset are plotted as points in an n-dimensional space where n equals the number of features in consideration to perform the classification. The value of each feature corresponds to the value of coordinate. A hyperplane is then used to segregate the classes into two. To increase the confidence of correctly classifying a data point to the right class, the margin between the hyperplane and the data point must not be close; more the distance between them better the likelihood of proper classification\cite{Joachims1998a}.  
+\subsubsection{Support Vector Machine}
+Support Vector Machine (\acs{SVM}) is a popular supervised machine learning algorithm that can be used for regression as well as classification\footnote{\url{https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/}}. In support vector machines, items from a dataset are plotted as points in an n-dimensional space where n equals the number of features in consideration to perform the classification. The value of each feature corresponds to the value of coordinate. A hyperplane is then used to segregate the classes into two. To increase the confidence of correctly classifying a data point to the right class, the margin between the hyperplane and the data point must not be close; more the distance between them better the likelihood of proper classification\cite{Joachims1998a}.  
 \newline \newline
-In real world, datasets can rarely be linearly separable. In such a scenario, kernels come to rescue when more than two dimensions are involved. To separate the classes, the low dimensional input dimensional space is therefore mapped to a higher dimensional space \cite{Tong2001}. The demerit of this approach, although inevitable, is that is results in longer training time while running the classifier. An illustration of \acs{SVM} is shown in Figure \ref{fig:svm}. 
+In real world, datasets can rarely be linearly separable. In such a scenario, kernels come to rescue when more than two dimensions are involved. To separate the classes, the low dimensional input dimensional space is therefore mapped to a higher dimensional space \cite{Tong2001}. The demerit of this approach, although inevitable, is that is results in longer training time while running the classifier. Figure \ref{fig:svm} is an illustration of support vector machine. 
 \begin{figure}[h] %b!]
     \centering
     \includegraphics[width=5cm]{optimal-hyperplane}
@@ -563,28 +560,12 @@ In real world, datasets can rarely be linearly separable. In such a scenario, ke
 \end{figure}
 \footnotetext{\url{https://docs.opencv.org/2.4/doc/tutorials/ml/introduction_to_svm/introduction_to_svm.html}}
 \newline \newline
-\acs{SVM} has been used in the past for various text classification projects. In addition to the thesis, works of Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017}, Fan et al.\cite{Fan2017}, Guzman et al.\cite{Guzman2016} and Bacchelli et al.\cite{Bacchelli2012} have also used \acs{SVM} for text classification tasks. 
+Support vector machines have been used in the past for various text classification projects. In addition to the thesis, works of Lata \cite{Lata2016} and Nonnenmacher\cite{Nonnenmacher2017}, Fan et al.\cite{Fan2017}, Guzman et al.\cite{Guzman2016} and Bacchelli et al.\cite{Bacchelli2012} have also used support vector machines for text classification tasks. 
 
 \subsubsection{Decision Trees}
 Decision tools predominantly used for classification and regression are Decision Trees (\acs{DT}). At the top most level, there exists one node from where decision needs to be made at every level going downwards based on some rules pertaining to the attribute in consideration, until the final goal is reached\cite{Jain2017}. 
 \newline \newline
-At every level, for each node, there exists an attribute that is chosen to split based on the samples provided. This split is done using a goodness function such as information gain. Information gain is the change in entropy which is the impurity in the dataset. Information gain results in decrease in entropy after dataset is split based on some attribute\footnote{\url{http://www.saedsayad.com/decision_tree.htm}}. The highest information gain is chosen after computing the information gain for each of the attribute. Splitting process occurs repeatedly until the scenario where data cannot be split any further\cite{Jain2017}. 
-\newline \newline
-Given a set of attributes \textit{$x_1$, $x_2$, .. , $x_m$}, and target attribute \textit{Y} comprising of \textit{n} classes, entropy of \textit{Y} is:
-\begin{equation}
-	E(Y) = \sum\limits_{i=1}^n -p_i log_2 p_i
-\end{equation}
-\newline
-Entropy of attribute $x_m$ is given by:
-\begin{equation}
-E(Y, x_m) = \sum\limits_{n \in x_m} P(n) \times E(n)
-\end{equation}
-\newline
-Based on 2.7 and 2.8, information gain would therefore be:
-\begin{equation}
-IG(Y, x_m) = E(Y) - E(Y, x_m)
-\end{equation}
-The pseudocode of \acs{DT} is described as follows. 
+At every level, for each node, there exists an attribute that is chosen to split based on the samples provided. This split is done using a goodness function such as information gain. Information gain is the change in entropy which is the impurity in the dataset. Information gain results in decrease in entropy after dataset is split based on some attribute\footnote{\url{http://www.saedsayad.com/decision_tree.htm}}. The highest information gain is chosen after computing the information gain for each of the attribute. Splitting process occurs repeatedly until the scenario where data cannot be split any further\cite{Jain2017}. The pseudocode of decision tree is shown in Algorithm 2. 
 \begin{algorithm}
 \caption{Decision Tree Pseudocode}
 \begin{algorithmic}[1]
@@ -600,13 +581,29 @@ The pseudocode of \acs{DT} is described as follows.
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
-\newline 
-In addition to \acs{SVM}, Nonnenmacher\cite{Nonnenmacher2017}, Fan et al.\cite{Fan2017} and Guzman et al.\cite{Guzman2016} have also used \acs{DT} for text classification tasks in their respective works.
+\newline
+Given a set of attributes \textit{$x_1$, $x_2$, .. , $x_m$}, and target attribute \textit{Y} comprising of \textit{n} classes, entropy of \textit{Y} is:
+\begin{equation}
+	E(Y) = \sum\limits_{i=1}^n -p_i log_2 p_i
+\end{equation}
+\newline
+Entropy of attribute $x_m$ is given by:
+\begin{equation}
+E(Y, x_m) = \sum\limits_{n \in x_m} P(n) \times E(n)
+\end{equation}
+\newline
+Based on 2.7 and 2.8, information gain would therefore be:
+\begin{equation}
+IG(Y, x_m) = E(Y) - E(Y, x_m)
+\end{equation}
+In addition to support vector machines, Nonnenmacher\cite{Nonnenmacher2017}, Fan et al.\cite{Fan2017} and Guzman et al.\cite{Guzman2016} have also used decision trees for text classification tasks in their respective works.
 
 \subsubsection{Random Forest}
 Random Forest (\acs{RF}) belong to a special class of learning algorithms known as the ensemble learning algorithm. This methodology believes individual classifiers are weak and are not having high accuracy. Hence, random forests use techniques such as bagging to overcome this limitation. Random forests thus creates different subsets from the dataset and decision tree classifier is run on each of these subsets. Bagging, or bootstrap aggregating, is then used to combine the results of all the individual classifier run on different subsets to perform the final classification\cite{Jain2017}. 
 \newline \newline
-Due to their nature of running the same algorithm multiple times over different subsets, random forests can be completely parallelized as well. Random forests have more advantages since it aggregates many weak classifiers to make the final classification. Thanks to its ensemble learning approach, it prevents overfitting and gives better accuracy. In addition to handling data without any kinds of preprocessing, random forests are also considered to be resitant to outliers and over-training\cite{Jain2017}. In addition to \acs{MNB}, \acs{SVM} and \acs{DT}, Nonnenmacher\cite{Nonnenmacher2017} performed the experiements using Random Forest model as well. The pseudocode of \acs{RF} is as follows. 
+Due to their nature of running the same algorithm multiple times over different subsets, random forests can be completely parallelized as well. Random forests have more advantages since it aggregates many weak classifiers to make the final classification. Thanks to its ensemble learning approach, it prevents overfitting and gives better accuracy. In addition to handling data without any kinds of preprocessing, random forests are also considered to be resitant to outliers and over-training\cite{Jain2017}. 
+\newline \newline
+Besides multinomial naive bayes, support vector machines and decision trees, Nonnenmacher\cite{Nonnenmacher2017} performed the experiments using random forest model as well. The pseudocode of random forest model is presented in Algorithm 3 below. 
 \begin{algorithm}
 \caption{Random Forest Pseudocode}
 \begin{algorithmic}[1]
@@ -634,9 +631,7 @@ Performance metrics of a classifier is imperative to know how accurate the model
 \end{figure}
 \footnotetext{\url{https://rasbt.github.io/mlxtend/user_guide/evaluate/confusion_matrix/}}
 \newline \newline
-Given a positive class, $P_C$, and a negative class, $N_C$, the following can be defined:
-\newline \newline
-True Positive Rate is the proportion of correctly classified $P_C$. True Negative Rate is the proportion of correctly classified $N_C$. False Positive Rate is the proportion of incorrectly classified $N_C$, classified as $P_C$. False Negative Rate is the proportion of incorrectly classified $P_C$, classified as $N_C$. The four components of the confusion matrix defined earlier can now be used to define the following subsections.
+Given a positive class, $P_C$, and a negative class, $N_C$, the following can be defined: True Positive Rate is the proportion of correctly classified $P_C$. True Negative Rate is the proportion of correctly classified $N_C$. False Positive Rate is the proportion of incorrectly classified $N_C$, classified as $P_C$. False Negative Rate is the proportion of incorrectly classified $P_C$, classified as $N_C$. The four components of the confusion matrix defined earlier can now be used to define the following subsections.
 
 \subsubsection{Accuracy} 
 Accuracy is the ratio of sum of TP and TN to the entire number of samples in the dataset.
@@ -667,17 +662,17 @@ There are a wide range of tools to accomplish the tasks that have been carried o
 \newline \newline
 For the annotation tasks, spreadsheet application such as Libre Office\footnote{\url{https://www.libreoffice.org/}} has been used although many have used other tools in the past \cite{Lata2016}\cite{Nonnenmacher2017}. The reason for using Libre Office was that it catered well to the needs of accomplishing the task of manual labeling. 
 \newline \newline
-To carry out tasks such as scraping, classification and \acs{NLP}, Python\footnote{\url{https://www.python.org/}} was used. Python is a programming language that can cater to the needs of the tasks needed to be accomplish in this thesis. In addition, Python can be installed across any operating system. Python has an extensive list of libraries for scraping. This thesis uses BeautifulSoup\footnote{\url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}} and Requests\footnote{\url{http://docs.python-requests.org/en/master/}} to scrape data from different websites. While Requests was used to request and get responses from the URL to be scraped, BeautifulSoup was used to achieve the final goal of fetching the content. In addition, BeautifulSoup also has its own parsers that was used to extract the content needed.
+To carry out tasks such as scraping, classification and natural language processing, Python\footnote{\url{https://www.python.org/}} was used. Python is a programming language that can cater to the needs of the tasks needed to be accomplish in this thesis. In addition, Python can be installed across any operating system. Python has an extensive list of libraries for scraping. This thesis uses BeautifulSoup\footnote{\url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}} and Requests\footnote{\url{http://docs.python-requests.org/en/master/}} to scrape data from different websites. While Requests was used to request and get responses from the URL to be scraped, BeautifulSoup was used to achieve the final goal of fetching the content. In addition, BeautifulSoup has its own parsers that was used to extract the content needed.
 \newline \newline
-Results of scraping and final annotations were stored in a MySQL\footnote{\url{https://www.mysql.com/}} database. As stated by themselves, MySQL is also the world's most popular open sourced database. Like Python, MySQL is free and can also be installed across different platforms and hence was used by both, the author as well as his advisor for the tasks pertaining for scraping and manual labeling. 
+Results of scraping and final annotations were stored in a MySQL\footnote{\url{https://www.mysql.com/}} database. As stated by its makers, MySQL is also the world's most popular open sourced database. Like Python, MySQL is free and can also be installed across different platforms and hence was used by both, the author as well as his advisor for the tasks pertaining for scraping and manual labeling. 
 \newline \newline
-Scikit-learn\footnote{\url{http://scikit-learn.org/stable/}} is one of the most sought after machine learning libraries for Python \cite{Pedregosa2012}. It supports multiple machine learning methodologies such as classification, regression, clustering, dimensionality reduction, to mention a few. All the binary classification tasks in this thesis has been carried out using \acs{LR}, \acs{MNB}, \acs{SVM}, \acs{DT} and \acs{RF}, which come packaged with the scikit-learn library. Kurtanovic and Maleej \cite{Kurtanovic2017} have also used this library for their work on mining rationale from software reviews. However, at the time of writing this thesis, scikit-learn did not provide transformation methods such as Binary Relevance and Label Powerset for multi-class and multi-label classifications. Hence, an extension of scikit-learn called scikit-multilearn\footnote{\url{http://scikit.ml/}} was used. However, the library did not yield proper results for a lot of configurations and algorithms. 
+Scikit-learn\footnote{\url{http://scikit-learn.org/stable/}} is one of the most sought after machine learning libraries for Python \cite{Pedregosa2012}. It supports multiple machine learning methodologies such as classification, regression, clustering, dimensionality reduction, to mention a few. All the binary classification tasks in this thesis has been carried out using logistic regression, multinomial naive bayes, support vector machines, decision trees and random forest, which come packaged with the scikit-learn library. Kurtanovic and Maleej \cite{Kurtanovic2017} have also used this library for their work on mining rationale from software reviews. However, at the time of writing this thesis, scikit-learn did not provide transformation methods such as binary relevance and label powerset for multi-class and multi-label classifications. Hence, an extension of scikit-learn called scikit-multilearn\footnote{\url{http://scikit.ml/}} was used. However, the library did not yield proper results for a lot of configurations and algorithms. 
 \newline \newline
-MEKA\footnote{\url{http://meka.sourceforge.net/}}\cite{MEKA2016}, an extension of \acs{WEKA}\footnote{\url{https://www.cs.waikato.ac.nz/ml/weka/}}, has been used to overcome the limitations of scikit-learn and scikit-multilearn. The fine grained classifications using transformation methods such as \acs{BR} and \acs{LP} are supported by MEKA. In addition, MEKA also has a robust range of preprocessing options. This tool has also been used by Lata \cite{Lata2016} and Nonnenmacher \cite{Nonnenmacher2017} in their respective research works.
+MEKA\footnote{\url{http://meka.sourceforge.net/}}\cite{MEKA2016}, an extension of Waikato Environment for Knowledge Analysis Tool (WEKA)\footnote{\url{https://www.cs.waikato.ac.nz/ml/weka/}}, has been used to overcome the limitations of scikit-learn and scikit-multilearn. The fine grained classifications using transformation methods such as binary relevance and label powerset are supported by MEKA. In addition, MEKA also has a robust range of preprocessing options. This tool has also been used by Lata \cite{Lata2016} and Nonnenmacher \cite{Nonnenmacher2017} in their respective research works.
 \newline \newline
-Topic modeling using \acs{LDA} was performed using a famous library named Gensim\footnote{\url{https://radimrehurek.com/gensim/}}. Rehurek and Sojka \cite{Rehurek2010} published their work on the internal details of how Gensim works as well. Keywords generated using \acs{LDA} for comments of issue tracking system and messages of \acs{IRC} were linked using a string similarity Python library called fuzzywuzzy\footnote{\url{http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/}} based on Levenshtein distance.
-\newline \newline
-Topic modeling and classification tasks in Python have been carried with the help of some additional libraries such as NLTK\footnote{\url{http://www.nltk.org/}} and SpaCy\footnote{\url{https://spacy.io/}}. NLTK was used for tokenization and lemmatization while SpaCy was used for \acs{POS} tagging techniques. NLTK and SpaCy were studied by Al Omran and Treude \cite{AlOmran2017} where they explored \acs{NLP} libraries for analyzing software documentation. 
+Topic modeling using \acs{LDA} was performed using a famous library named Gensim\footnote{\url{https://radimrehurek.com/gensim/}}. Rehurek and Sojka \cite{Rehurek2010} published their work on the internal details of how Gensim works. Keywords generated using \acs{LDA} for comments of issue tracking system and messages of \acs{IRC} were linked using a string similarity Python library called fuzzywuzzy\footnote{\url{http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/}} based on Levenshtein distance.
+\newline
+Topic modeling and classification tasks in Python have been carried with the help of some additional libraries such as NLTK\footnote{\url{http://www.nltk.org/}} and SpaCy\footnote{\url{https://spacy.io/}}. NLTK was used for tokenization and lemmatization while SpaCy was used for \acs{POS} tagging techniques. NLTK and SpaCy were studied by Al Omran and Treude \cite{AlOmran2017} where they explored natural language processing libraries for analyzing software documentation. 
 \newline \newline
 For quick analysis of results and neat data visualizations, R programming language\footnote{\url{https://www.r-project.org/}} was used. The graphic libraries offered by R have been claimed to be neater when compared to Python\footnote{\url{https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis}}. All the graphs in this thesis have been generated using ggplot2\footnote{\url{http://ggplot2.org/}} and the UML diagrams using draw.io tool \footnote{\url{http://draw.io/}}.
 
