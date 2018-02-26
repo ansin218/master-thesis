@@ -737,20 +737,20 @@ The evaluation manager module aids in obtaining different metrics from the resul
 
 \chapter{Data Collection}
 
-This chapter describes the datasets used to carry out the research and the collection of data from the \acs{OSS} projects. Figure \ref{fig:dataObject} illustrates instances of data collection approach using UML object diagram. Section 5.1 describes the issue trackers dataset while Section 5.2 summarises the \acs{IRC} messages dataset. The \acs{OSS} projects are: Apache Lucene, Mozilla Thunderbird and Ubuntu. All three sources mentioned use different issue trackers. Apache Lucene uses JIRA owned by Atlassian Inc., Mozilla Thunderbird uses Bugzilla by Mozilla Foundation and Ubuntu uses Launchpad created by Canonical Ltd. 
+This chapter describes the datasets used to carry out the research and the collection of data from the open source  projects. Figure \ref{fig:dataObject} illustrates instances of data collection approach using UML object diagram. Section 5.1 describes the issue trackers dataset while Section 5.2 summarises the \acs{IRC} messages dataset. The selected open source projects are: Apache Lucene, Mozilla Thunderbird and Ubuntu. All three sources mentioned use different issue trackers. Apache Lucene uses JIRA owned by Atlassian Inc., Mozilla Thunderbird uses Bugzilla by Mozilla Foundation and Ubuntu uses Launchpad created by Canonical Ltd. 
 \begin{figure}[h] %b!]
     \centering
-    \includegraphics[width=13cm]{data-collection-object-diagram}
-    \caption{Data collection approach illustrated using UML object diagram}
+    \includegraphics[width=12cm]{data-collection-object-diagram}
+    \caption{Collected communication data illustrated using UML object diagram}
     \label{fig:dataObject}
 \end{figure}
 \noindent \newline
-There are multiple reasons why these projects have specifically been chosen. First of all, the projects chosen are all completely open sourced. Studying and analysing the data from open sourced projects, especially the ones from Apache Software Foundation (ASF) has been a common practice in the research community. In the past, Bacchelli et al.\cite{Bacchelli2012} used data from Apache Mina to classify development emails. Ortu et al.\cite{Ortu2015} studied the JIRA repository dataset of ASF. Panichella et al. \cite{Panichella2014} roped in the datasets from Apache HTTPD, CXF and Lucene. Besides datasets from ASF, the same authors mentioned in this paragraph have also used other projects such as JBoss, Spring and Hibernate. Additionally, these projects also have been around for quite a long time, have a large community that is active, and have been making releases from time to time. Another reason for choosing such projects is that while scraping data, the author of the scraper needs to respect the rules of the website. Besides the aforementioned reasons, the datasets of these \acs{OSS} projects were publicly available. The final reason for choosing these projects is also to continue a research work done by \cite{Nonnenmacher2017} in his master thesis where he extracted rationale from \acs{IRC} messages. This master thesis also uses his dataset described in Section 3.2. 
+There are multiple reasons why these projects have specifically been chosen. First of all, the projects chosen are all completely open sourced. Studying and analysing the data from open sourced projects, especially the ones from Apache Software Foundation has been a common practice in the research community. In the past, Bacchelli et al.\cite{Bacchelli2012} used data from Apache Mina to classify development emails. Ortu et al.\cite{Ortu2015} studied the JIRA repository dataset of Apache Software Foundation. Panichella et al. \cite{Panichella2014} roped in the datasets from Apache HTTPD, CXF and Lucene. Besides datasets from Apache Software Foundation, the same authors mentioned in this paragraph have also used other projects such as JBoss, Spring and Hibernate. Additionally, these projects also have been around for quite a long time, have a large community that is active, and have been making releases from time to time. Another reason for choosing such projects is that while scraping data, the author of the scraper needs to respect the rules of the website. Besides the aforementioned reasons, the datasets of these open source projects were publicly available. The final reason for choosing these projects is also to continue a research work done by \cite{Nonnenmacher2017} in his master thesis where he extracted rationale from \acs{IRC} messages. This master thesis also uses his dataset described in Section 3.2. 
 
 \section{Issue Trackers Dataset}
 This section investigates how data was obtained from issue trackers of Apache Lucene, Mozilla Thunderbird and Ubuntu. In addition, Table \ref{tab:rawIssueTrackers} shows the figures of the raw dataset. 
 
-\begin{table} %[hb!]
+\begin{table}[H] %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
     \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
@@ -771,18 +771,16 @@ This section investigates how data was obtained from issue trackers of Apache Lu
 \subsubsection{Apache Lucene}
 Apache Lucene\footnote{\url{https://lucene.apache.org/}} is an open sourced high performance text search engine written in Java by Doug Cutting in 1999. The project was donated to Apache Foundation\footnote{\url{https://www.apache.org/}} in the year 2001. To develop and maintain the software, the issue tracker called JIRA\footnote{\url{https://www.atlassian.com/software/jira}} developed by Atlassian\footnote{\url{https://www.atlassian.com}} is used. At the time of conducting this research, the total number of issues were 7,940. However, only 7,932 issues were fetched since some issues could have been deleted by the moderators, contained non-English characters or had no comments.
 \newline \newline
-In JIRA, each issue gives us an option to export all the data needed for the research in XML, JSON or Word. However, JIRA also provides a link to get all these information needed for upto 1,000 issues in XML. This link was altered 8 times to cover 7,932 issues. The XML data from the links were saved locally as XML files. The XML ElementTree API available for Python was used to parse the XML files to extract necessary data. Figure \ref{fig:luceneRawDistro} shows the distribution of number of comments per issue for Apache Lucene dataset. 
-
+In JIRA, each issue gives us an option to export all the data needed for the research in XML. However, JIRA also provides a link to get all these information needed for upto 1,000 issues in XML. This link was altered 8 times to cover 7,932 issues. The XML data from the links were saved locally as XML files. Figure \ref{fig:luceneRawDistro} shows the distribution of number of comments per issue for Apache Lucene dataset. 
 \begin{figure}[h] %b!]
     \centering
     \includegraphics[width=12cm]{lucene-comment-distribution-raw}
     \caption{Overview of distribution of comments for Apache Lucene}
     \label{fig:luceneRawDistro}
 \end{figure}
-
 \subsubsection{Mozilla Thunderbird}
 Mozilla Thunderbird\footnote{\url{https://www.mozilla.org/en-US/thunderbird/}} is an open sourced cross platform email client developed by Mozilla Foundation\footnote{\url{https://www.mozilla.org/en-US/}} with initial release dating back to 2003. The issue tracker used by Mozilla Thunderbird is Bugzilla\footnote{\url{https://bugzilla.mozilla.org/}} which was developed by Mozilla Foundation itself. The oldest issue, however, dates back to June 2007 and the number of issues fetched were 4,367. Like Apache Lucene, issues with no comments were ignored. 
-\newline \newline
+\newline
 As mentioned earlier, JIRA gave us the option to get all the data needed for upto 1,000 issues on each request. However, Bugzilla did not have any option that was similar. In the case of Bugzilla, data for each issue had to be accessed individually. Another drawback of Bugzilla when compared to JIRA was that the data when exported did not have the comments for the relevant issues. Hence, all the necessary data, including the comments, for the issues in Bugzilla were scraped using BeautifulSoup, a library for Python to scrape data from the web. Figure \ref{fig:thunderbirdRawDistro} shows the distribution of number of comments per issue for Mozilla Thunderbird dataset. 
 
 \begin{figure}[h] %b!]
@@ -791,11 +789,10 @@ As mentioned earlier, JIRA gave us the option to get all the data needed for upt
     \caption{Overview of distribution of comments for Mozilla Thunderbird}
     \label{fig:thunderbirdRawDistro}
 \end{figure}
-
 \subsubsection{Ubuntu}
 Ubuntu\footnote{\url{https://www.ubuntu.com/}} is an open sourced operating system developed by Canonical Ltd.\footnote{\url{https://www.canonical.com/}} in the year 2004. The same team is also responsible for having their own issue tracking system known as Launchpad\footnote{\url{https://launchpad.net/}} which also houses the issues of Ubuntu. The number of issues fetched since the beginning of the project are 28,429. Issues with no comments were not scraped, just like in the case of Apache Lucene and Mozilla Thunderbird. Additionally, a major problem faced while scraping data from Launchpad was that there were abundant number of downlinks. When these links were accessed manually, they kept loading until getting timed out and returned 404 error while scraping.
-\newline \newline
-Launchpad did not have its export option to fetch mass number of issues and its comments. Hence, each and every issue had to be scraped one at a time. In addition, not all the issues had the same \acs{HTML} tags and attributes for the comments section. Launchpad provides individual link for each of the comment of the pertinent issue and hence comments were scraped by obtaining the individual links. All the links were requested and the necessary data was retrieved using BeautifulSoup. Figure \ref{fig:ubuntuRawDistro} shows the distribution of number of comments per issue for Ubuntu dataset. 
+\newline
+Launchpad did not have its export option to fetch mass number of issues and its comments. Hence, each and every issue had to be scraped one at a time. Launchpad provides individual link for each of the comment of the pertinent issue and hence comments were scraped by obtaining the individual links. All the links were requested and the necessary data was retrieved using BeautifulSoup. Figure \ref{fig:ubuntuRawDistro} shows the distribution of number of comments per issue for Ubuntu dataset. 
 
 \begin{figure}[h] %b!]
     \centering
@@ -807,9 +804,9 @@ Launchpad did not have its export option to fetch mass number of issues and its 
 
 \section{IRC Messages Dataset}
 
-The \acs{IRC} messages dataset has been scraped by Nonnenmacher \cite{Nonnenmacher2017} for his thesis where he has extracted rationale out of the same. For other details regarding \acs{IRC} messages, the work of Nonnenmacher \cite{Nonnenmacher2017} is referred to. The data in Table \ref{tab:rawIRCMessages} are the statistics of the raw data collected by Nonnenmacher. 
+The \acs{IRC} messages dataset has been scraped by Nonnenmacher \cite{Nonnenmacher2017} for his thesis where he has extracted rationale out of the same. For other details regarding \acs{IRC} messages, the work of Nonnenmacher \cite{Nonnenmacher2017} is referred to. Table \ref{tab:rawIRCMessages} presents the statistics of the raw data collected by Nonnenmacher. 
 \noindent \newline
-\begin{table} %[hb!]
+\begin{table}[H] %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
     \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
