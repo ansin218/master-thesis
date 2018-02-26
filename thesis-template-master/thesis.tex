@@ -1075,18 +1075,18 @@ Besides binary and fine grained classification, the results of topic modeling ar
 \section{Binary Classification}
 This section presents the results of the binary classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames} and the algorithms from Section 2.4.4. It is to be noted that in the case of Lucene dataset, unigram results have been presented while trigram results in the cases of Thunderbird and Ubuntu have been shown, since these combinations have given the best results. The experiments have been carried out using scikit-learn Python library. For parts of speech tagging mechanism, Spacy, another natural language processing library was used. Figure \ref{fig:binaryClass} illustrates the methodology and Figure \ref{fig:instanceBinary} presents the instances for binary classification. 
 
-\begin{figure}[h] %b!]
-    \centering
-    \includegraphics[width=12cm]{binary-classification}
-    \caption{Binary classification illustrated using UML activity diagram}
-    \label{fig:binaryClass}
-\end{figure}
-
-\begin{figure}[h] %b!]
+\begin{figure}[H] %b!]
     \centering
     \includegraphics[width=13cm]{binary-object-diagram}
     \caption{Binary classification instances illustrated using UML object diagram}
     \label{fig:instanceBinary}
+\end{figure}
+
+\begin{figure}[H] %b!]
+    \centering
+    \includegraphics[width=11cm]{binary-classification}
+    \caption{Binary classification illustrated using UML activity diagram}
+    \label{fig:binaryClass}
 \end{figure}
 
 \subsection{Logistic Regression}
@@ -1129,7 +1129,7 @@ In case of Lucene dataset, logistic regression does its best to predict rational
 \subsection{Multinomial Naive Bayes}
 When predicting rationale, multinomial naive bayes has an F1 score of 0.884 for Config 2 and Config 3 for the dataset of Lucene. However, Config 2, bag of words with \acs{TFIDF}, would be a better choice since Config 3 is nothing but Config 2 with n-gram preprocessing method, and hence Config 2 is marginally faster. Like in the case of Logistic Regression, Config 1 gives the best result when predicting non-rationale sentences with an F1 score of 0.448. The Thunderbird dataset gives an F1 score of 0.699 with Config 3 when predicting rationale but an F1 score of 0.658 when otherwise. The Ubuntu dataset, with an F1 score of 0.754 performs the best when parts of speech tagging technique is applied whereas Config 2 and 3 get the highest F1 score of 0.697 when trying to predict non-rationale sentences. Table \ref{tab:binMNB} demonstrates the results in detail. 
 
-\begin{table}[h] %[hb!]
+\begin{table}[H] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -1165,7 +1165,7 @@ When predicting rationale, multinomial naive bayes has an F1 score of 0.884 for 
 
 \subsection{Support Vector Machine}
 Unlike other classifiers, recall score of 1 was achieved while predicting rationale on Apache Lucene dataset for all configurations but Config 1. The highest F1 score attained was 0.839 using Config 2 for predicting rationale while the top score was 0.682 using Config 1 for predicting non-rationale sentences. In the case of Mozilla Thunderbird dataset, highest precision, recall and F1 scores were achieved using Config 6 for predicting rationale with the F1 score being 0.758. However, in the case of predicting non-rationale sentences on the same dataset, Config 1 performed the best for precision, recall and F1 score, with the F1 score being 0.683. On applying Config 1 to the Ubuntu dataset, top F1 scores of 0.781 and 0.681 were obtained for both. Recall of 1.000 was also achieved using all configurations but Config 1 when classifying non-rationale sentences. Table \ref{tab:binSVM} demonstrates the results. 
-\begin{table}[h] %[hb!]
+\begin{table} %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -1297,27 +1297,25 @@ In this section, the best configurations and classifiers along with their respec
 \end{table}
 
 \section{Fine Grained Classification}
-This section presents the results of the fine grained classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames}, transformation methods from Section 2.4.3 and the algorithms from Section 2.4.4. Unlike  binary classification, all three datasets performed the best using unigram tokenization. The scikit-learn library does not support binary relevance and label powerset transformation methods and hence scikit-multilearn, a library specific for performing multi-class and multi-label classifications was used. However, some measures could not be obtained from scikit-multilearn. In addition, a lot of classifiers along with certain configurations returned a value of zero. Therefore, the fine-grained classifications were perfomed using MEKA exclusively. Figure \ref{fig:finegrainedClass} illustrates the methodology and Figure \ref{fig:instanceFine} presents the instances for fine grained classification. 
-
-\begin{figure}[h] %b!]
-    \centering
-    \includegraphics[width=12cm]{fine-grained-classification}
-    \caption{Fine grained classification illustrated using UML activity diagram}
-    \label{fig:finegrainedClass}
-\end{figure}
-
-\begin{figure}[h] %b!]
+This section presents the results of the fine grained classification experiments performed using the configurations mentioned in Table \ref{tab:configurationNames}, transformation methods from Section 2.4.3 and the algorithms from Section 2.4.4. Unlike  binary classification, all three datasets performed the best using unigram tokenization. The scikit-learn library does not support binary relevance and label powerset transformation methods and hence scikit-multilearn was used. However, some measures could not be obtained from scikit-multilearn. In addition, a lot of classifiers along with certain configurations returned a value of 0. Therefore, the fine-grained classifications were perfomed using MEKA exclusively. Figure \ref{fig:finegrainedClass} illustrates the methodology and Figure \ref{fig:instanceFine} presents the instances for fine grained classification. 
+\begin{figure}[H] %b!]
     \centering
     \includegraphics[width=13cm]{fine-object-diagram}
     \caption{Fine grained classification instances illustrated using UML object diagram}
     \label{fig:instanceFine}
+\end{figure}
+\begin{figure}[H] %b!]
+    \centering
+    \includegraphics[width=11cm]{fine-grained-classification}
+    \caption{Fine grained classification illustrated using UML activity diagram}
+    \label{fig:finegrainedClass}
 \end{figure}
 
 \subsection{Logistic Regression}
 
 \subsubsection{Binary Relevance}
 When binary relevance transformation method is applied with logistic regression classifier on the dataset of Apache Lucene, Config 2 performs the best to predict decision element in terms of precision, recall and F1 score with the numbers being 0.879, 0.594 and 0.743 respectively. Config 4, similarly, has highest scores in all three departments when predicting pro-argument in a sentence with scores of 0.734, 0.370 and 0.535 respectively. However, when parts of speech  tagging configuration, Config 6, is applied, the best F1 scores for predicting issue, alternative and decision is achieved with scores of 0.457, 0.666 and 0.480 respectively. For the Mozilla Thunderbird dataset, top F1 scores were observed in three instances of classifying issue, alternative and decision with scores of 0.488, 0.410 and 0.416 when using Config 1. Additionally, Config 3 had the best F1 score of 0.512 to classify con-argument while pro-argument had an F1 score of 0.478 with Config 6. The best precision and recall scores were scattered across different configurations for all three datasets. Issue and decision had F1 scores of 0.582 and 0.748 when Config 2 was applied on the Ubuntu dataset; pro-argument and con-argument had scores of 0.471 and 0.297 when Config 3 was used and Config 6 provided an F1 score of 0.556 when classifying alternative related sentences. Table \ref{tab:fgcBRLR} presents the results in detail.
-\begin{table}[h] %[hb!]
+\begin{table}[H] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -1376,7 +1374,6 @@ When binary relevance transformation method is applied with logistic regression 
 \end{table}
 
 \subsubsection{Label Powerset}
-For issue and alternative on Apache Lucene dataset, Config 2 returns the best precision of 0.371 and 0.657 as well as F1 scores of 0.430 and 0.736. With regards to classifying decision, recall of 0.676 and F1 score of 0.800 were achieved using Config 4. Config 6 topped all three metrics of precision, recall and F1 score when predicting pro-argument and con-argument with the F1 scores being 0.682 and 0.513. In case of the Mozilla Thunderbird dataset, Config 1 does the best in precision, recall as well as F1 when predicting alternative in a sentence with F1 score of 0.522. In addition, the same configuration also tops with an F1 score of 0.616 in case of classifying issues correctly. However, for other three rational elements, pro-argument, con-argument and decision, Config 2 gets the best F1 scores of 0.314, 0.352 and 0.490 respectively. Config 2 also attains top recall scores for all elements but alternative. In case of Ubuntu dataset, Config 2 yet again achieves best F1 scores on three occasions of issue, con-argument and decision with the numbers being 0.692, 0.431 and 0.772 respectively. Config 1 with an F1 score of 0.568 and Config 4 with an F1 score of 0.416 perform well in cases of alternative and pro-argument. Table \ref{tab:fgcLPLR} demonstrates the results in detail.
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -1434,13 +1431,13 @@ For issue and alternative on Apache Lucene dataset, Config 2 returns the best pr
     \captionof{table}{\acs{LP} transformation method with \acs{LR} classifier and 10-fold CV}
     \label{tab:fgcLPLR}
 \end{table}
+For issue and alternative on Apache Lucene dataset, Config 2 returns the best precision of 0.371 and 0.657 as well as F1 scores of 0.430 and 0.736. With regards to classifying decision, recall of 0.676 and F1 score of 0.800 were achieved using Config 4. Config 6 topped all three metrics of precision, recall and F1 score when predicting pro-argument and con-argument with the F1 scores being 0.682 and 0.513. In case of the Mozilla Thunderbird dataset, Config 1 does the best in precision, recall as well as F1 when predicting alternative in a sentence with F1 score of 0.522. In addition, the same configuration also tops with an F1 score of 0.616 in case of classifying issues correctly. However, for other three rational elements, pro-argument, con-argument and decision, Config 2 gets the best F1 scores of 0.314, 0.352 and 0.490 respectively. Config 2 also attains top recall scores for all elements but alternative. In case of Ubuntu dataset, Config 2 yet again achieves best F1 scores on three occasions of issue, con-argument and decision with the numbers being 0.692, 0.431 and 0.772 respectively. Config 1 with an F1 score of 0.568 and Config 4 with an F1 score of 0.416 perform well in cases of alternative and pro-argument. Table \ref{tab:fgcLPLR} demonstrates the results in detail.
+
 
 \subsection{Multinomial Naive Bayes}
 
 \subsubsection{Binary Relevance}
-Config 1 has best precision for all five rationale elements when applied on the Apache Lucene dataset while Config 6 had best recall in three occasions. Config 1 has top F1 score of 0.768 for predicting alternative, Config 4 has F1 score of 0.860 to classify decision, Config 4 has F1 score of 0.525 in case of predicting issue while Config 6 have F1 scores of 0.750 and 0.664 for pro-argument and con-argument prediction. Precision on Mozilla Thunderbird dataset is the same as that on Apache Lucene; Config 1 attains highest precision for all rationale elements. Config 4 does its best in predicting pro-argument and decision with F1 scores of 0.619 and 0.648 while Config 6 achieves F1 scores of 0.673, 0.703 and 0.644 with respect to issue, alternative and con-argument. In case of the Ubuntu dataset, Config 4 gives the best recall while predicting all rationale elements. With F1 scores of 0.749, 0.713 and 0.784 in the case of issue, alternative and decision, Config 2 performs the best while Config 4 does the best with scores of 0.622 and 0.664 for predicting pro-argument and con-argument. Table \ref{tab:fgcBRMNB} shows all the values in detail.
-
-\begin{table}[h] %[hb!]
+\begin{table} %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -1498,10 +1495,9 @@ Config 1 has best precision for all five rationale elements when applied on the 
     \label{tab:fgcBRMNB}
 \end{table}
 
-\subsubsection{Label Powerset}
-For the Apache Lucene dataset, top recall and F1 scores are achieved using Config 2 for issue, pro-argument and con-argument; the F1 scores are 0.430, 0.712 and 0.604 respectively. While Config 6 helps attaining an F1 score of 0.750 in predicting alternative, Config 4 helps in predicting decision with an F1 score of 0.842. Unlike previous instances, Mozilla Thunderbird has F1 scores of 0.690 in applying Config 1 to predict issue, 0.683, 0.524 and 0.602 in applying Config 2 to predict alternative, pro-argument and con-argument, 0.610 with Config 4 to predict decision. Config 1 and Config 2 also tops for similar rationale elements in the case of Ubuntu dataset with scores of 0.771, 0.706 and 0.552 for issue, alternative and con-argument. Config 3 predicts decision the best with an F1 score of 0.733 while Config 5 classified pro-argument well with an F1 score of 0.556. Table \ref{tab:fgcLPMNB} gives a summary of all the scores in detail.
+Config 1 has best precision for all five rationale elements when applied on the Apache Lucene dataset while Config 6 had best recall in three occasions. Config 1 has top F1 score of 0.768 for predicting alternative, Config 4 has F1 score of 0.860 to classify decision, Config 4 has F1 score of 0.525 in case of predicting issue while Config 6 have F1 scores of 0.750 and 0.664 for pro-argument and con-argument prediction. Precision on Mozilla Thunderbird dataset is the same as that on Apache Lucene; Config 1 attains highest precision for all rationale elements. Config 4 does its best in predicting pro-argument and decision with F1 scores of 0.619 and 0.648 while Config 6 achieves F1 scores of 0.673, 0.703 and 0.644 with respect to issue, alternative and con-argument. In case of the Ubuntu dataset, Config 4 gives the best recall while predicting all rationale elements. With F1 scores of 0.749, 0.713 and 0.784 in the case of issue, alternative and decision, Config 2 performs the best while Config 4 does the best with scores of 0.622 and 0.664 for predicting pro-argument and con-argument. Table \ref{tab:fgcBRMNB} shows all the values in detail.
 
-\begin{table}[h] %[hb!]
+\begin{table}[H] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -1558,6 +1554,11 @@ For the Apache Lucene dataset, top recall and F1 scores are achieved using Confi
     \captionof{table}{\acs{LP} transformation method with \acs{MNB} classifier and 10-fold CV}
     \label{tab:fgcLPMNB}
 \end{table}
+
+\subsubsection{Label Powerset}
+For the Apache Lucene dataset, top recall and F1 scores are achieved using Config 2 for issue, pro-argument and con-argument; the F1 scores are 0.430, 0.712 and 0.604 respectively. While Config 6 helps attaining an F1 score of 0.750 in predicting alternative, Config 4 helps in predicting decision with an F1 score of 0.842. Unlike previous instances, Mozilla Thunderbird has F1 scores of 0.690 in applying Config 1 to predict issue, 0.683, 0.524 and 0.602 in applying Config 2 to predict alternative, pro-argument and con-argument, 0.610 with Config 4 to predict decision. Config 1 and Config 2 also tops for similar rationale elements in the case of Ubuntu dataset with scores of 0.771, 0.706 and 0.552 for issue, alternative and con-argument. Config 3 predicts decision the best with an F1 score of 0.733 while Config 5 classified pro-argument well with an F1 score of 0.556. Table \ref{tab:fgcLPMNB} gives a summary of all the scores in detail.
+
+
 
 \subsection{Support Vector Machine}
 
@@ -1685,7 +1686,7 @@ For the dataset of Apache Lucene, Config 1 gives best F1 scores of 0.397 and 0.7
 \subsection{Decision Tree}
 
 \subsubsection{Binary Relevance}
-On the Apache Lucene dataset, Config 2 gives the top F1 scores of 0.162 and 0.667 for con-argument and decision while Config 4 helps getting the best F1 scores of 0.067, 0.635 and 0.519 for issue, alternative and pro-argument. It also gives the top recall scores for similar rationale elements. For Mozilla Thunderbird dataset, scores of 0.252 and 0.043 were attained using Config 3 for alternative and con-argument while scores of 0.413, 0.077 and 0.280 were achieved in the case of issue, pro-argument and decision with Config 4. On the Ubuntu dataset, Config 3 helped attain an F1 score of 0.165 for predicting pro-argument element, Config 4 for issue and con-argument with scores of 0.509 and 0.076, and Config 6 for alternative and decision with scores of 0.232 and 0.714 respectively. Table \ref{tab:fgcBRDT} demonstrates all the values of the metrics in detail.
+On the Apache Lucene dataset, Config 2 gives the top F1 scores of 0.162 and 0.667 for con-argument and decision while Config 4 helps getting the best F1 scores of 0.067, 0.635 and 0.519 for issue, alternative and pro-argument. It also gives the top recall scores for similar rationale elements such as issue, alternative and pro-argument with scores of 0.035, 0.507 and 0.355 respectively using Config 4. For Mozilla Thunderbird dataset, scores of 0.252 and 0.043 were attained using Config 3 for alternative and con-argument. Scores of 0.413, 0.077 and 0.280 were achieved in the case of issue, pro-argument and decision with Config 4 on the Mozilla Thunderbird dataset. On the Ubuntu dataset, Config 3 helped attain an F1 score of 0.165 for predicting pro-argument element,  and Config 4 for issue and con-argument with F1  scores of 0.509 and 0.076 respectively. Config 6 gave scores of 0.232 and 0.714 for alternative and decision respectively. Table \ref{tab:fgcBRDT} demonstrates all the values of the metrics in detail. 
 \begin{table}[h] %[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
@@ -1867,8 +1868,8 @@ For all three datasets, precision of 1.000 was achieved using different configur
 \end{table}
 
 \subsubsection{Label Powerset}
-Precision of 1.000 was achieved but in the case of decision and pro-argument only for Mozilla Thunderbird and Ubuntu dataset with Config 1 and Config 2 respectively. Config 1 helps achieving the best F1 score of 0.775 and 0.357 in the case of Apache Lucene dataset. However, Config 4 performs the best for other rationale elements with scores of 0.363, 0.603 and 0.807 for issue, pro-argument and decision. For Mozilla Thunderbird dataset, once again Config 1 does well with F1 scores of 0.467 and 0.491 but for issue and decision unlike in the case of Apache Lucene dataset. Similarly, Config 4 performs the best for all the other rationale elements with scores of 0.455, 0.263 and 0.317 for alternative, pro-argument and con-argument. In the case of Ubuntu dataset, Config 2 helps classifying issue the best with an F1 score of 0.662 while Config 4 has scores of 0.432, 0.250, 0.301 and 0.774 for alternative, pro-argument, con-argument and decision respectively. Table \ref{tab:fgcLPRF} presents all the metrics and its values in detail.
-\begin{table}[h] %[hb!]
+
+\begin{table}%[hb!]
     %\resizebox{\textwidth}{!}{%
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -1925,9 +1926,9 @@ Precision of 1.000 was achieved but in the case of decision and pro-argument onl
     \captionof{table}{\acs{LP} transformation method with \acs{RF} classifier and 10-fold CV}
     \label{tab:fgcLPRF}
 \end{table}
+Precision of 1 was achieved but in the case of decision and pro-argument only for Mozilla Thunderbird and Ubuntu dataset with Config 1 and Config 2 respectively. Config 1 helps achieving the best F1 score of 0.775 and 0.357 in the case of Apache Lucene dataset. However, Config 4 performs the best for other rationale elements with scores of 0.363, 0.603 and 0.807 for issue, pro-argument and decision. For Mozilla Thunderbird dataset, once again Config 1 does well with F1 scores of 0.467 and 0.491 but for issue and decision unlike in the case of Apache Lucene dataset. Similarly, Config 4 performs the best for all the other rationale elements with scores of 0.455, 0.263 and 0.317 for alternative, pro-argument and con-argument. In the case of Ubuntu dataset, Config 2 helps classifying issue the best with an F1 score of 0.662 while Config 4 has scores of 0.432, 0.250, 0.301 and 0.774 for alternative, pro-argument, con-argument and decision respectively. Table \ref{tab:fgcLPRF} presents all the metrics and its values in detail.
 
 \subsection{Summary}
-This section presents the best configurations, classifiers and transformation methods along with their respective F1 scores as shown in Table \ref{tab:summaryFGC}. For the Apache Lucene dataset, multinomial naive bayes is the best classifier and binary relevance is the ideal transformation method in predicting any kind of rationale element. Config 4 is suitable to classify issue and decision with F1 scores of 0.525 and 0.860, Config 1 is suitable for classifying alternative with a score of 0.768 and Config 6 is the best for any kind of arguments with scores of 0.750 and 0.664 for pro-argument and con-argument respectively. Multinomial naive bayes turns out to be the best classifier for predicting any rationale element even in the case of Mozilla Thunderbird. Binary relevance is the most suitable transformation method for all cases except issue for which label powerset happens to be the best. Config 4 gives F1 scores of 0.619, 0.644 abd 0.648 for pro-argument, con-argument and decision while Config 1 gives 0.690 for issue and Config 6 gives 0.703 for alternative. A slight change is observed in the case of Ubuntu dataset where classifying decision turns out to be the best using Config 1, support vector machine and label powerset with an F1 score of 0.821. For all the other rationale elements, multinomial naive bayes once again turns out be the top performing classifier. Label powersetis yet again the ideal transformation method with Config 1 and an F1 score of 0.771 to classify issue in a sentence. Binary relevance with Config 2 gives a score of 0.712 while Config 4 again is the suitable one for pro-argument and con-arugment with scores of 0.622 and 0.664 respectively. 
 \begin{table} %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
@@ -1959,21 +1960,21 @@ This section presents the best configurations, classifiers and transformation me
     \captionof{table}{Summary of fine grained classification}
     \label{tab:summaryFGC}
 \end{table}
+This section presents the best configurations, classifiers and transformation methods along with their respective F1 scores as shown in Table \ref{tab:summaryFGC}. For the Apache Lucene dataset, multinomial naive bayes is the best classifier and binary relevance is the ideal transformation method in predicting any kind of rationale element. Config 4 is suitable to classify issue and decision with F1 scores of 0.525 and 0.860, Config 1 is suitable for classifying alternative with a score of 0.768 and Config 6 is the best for any kind of arguments with scores of 0.750 and 0.664 for pro-argument and con-argument respectively. Multinomial naive bayes turns out to be the best classifier for predicting any rationale element even in the case of Mozilla Thunderbird. Binary relevance is the most suitable transformation method for all cases except issue for which label powerset happens to be the best. Config 4 gives F1 scores of 0.619, 0.644 abd 0.648 for pro-argument, con-argument and decision while Config 1 gives 0.690 for issue and Config 6 gives 0.703 for alternative. A slight change is observed in the case of Ubuntu dataset where classifying decision turns out to be the best using Config 1, support vector machine and label powerset with an F1 score of 0.821. For all the other rationale elements, multinomial naive bayes once again turns out be the top performing classifier. Label powerset is yet again the ideal transformation method with Config 1 and an F1 score of 0.771 to classify issue in a sentence. Binary relevance with Config 2 gives a score of 0.712 while Config 4 again is the suitable one for pro-argument and con-arugment with scores of 0.622 and 0.664 respectively. 
+
 
 \section{Topic Modeling}
 In this section, the results of topic modeling applied on each of the dataset of issue trackers, namely, Apache Lucene, Mozilla Thunderbird and Ubuntu are discussed. The experiments were conducted using Gensim library for Python. The best results were obtained using Config 5. The optimum number of topics when limited to 5 gave less insights compared to 10, 15 and 20 which seemed ideal. However, the optimum number chosen was 10 compared to 15 or 20 despite producing similar results because when the number of topics to be generated is lower, the program gives results faster. Figure \ref{fig:topicmodelClass} illustrates the methodology for topic modeling. 
 
-\begin{figure}[h] %b!]
+\begin{figure}[H] %b!]
     \centering
-    \includegraphics[width=12cm]{topic-modeling}
+    \includegraphics[width=11cm]{topic-modeling}
     \caption{Topic modeling using \acs{LDA} illustrated using UML activity diagram}
     \label{fig:topicmodelClass}
 \end{figure}
 
 \subsubsection{Apache Lucene} 
-Given that Apache Lucene is an information retrieval library, majority of the topics revolved around indexing, parsing and file formats which form the backbone of information retrieval mechanisms. Bytes Reference\footnote{\url{https://lucene.apache.org/core/4_2_0/core/org/apache/lucene/util/BytesRef.html}}, or BytesRef, is a Java class used by Lucene to represent terms using a particular character encoding format such as UTF8. Lucene 7.0\footnote{\url{https://lucene.apache.org/core/7_1_0/benchmark/org/apache/lucene/benchmark/byTask/package-summary.html}} is an indexing file format used by Lucene itself. Another topic ByTask Benchmarking\footnote{\url{https://lucene.apache.org/core/7_1_0/benchmark/org/apache/lucene/benchmark/byTask/package-summary.html}} revolves around a package that provides mechanisms to perform task based benchmarking of Lucene. Pulsing\footnote{\url{https://lucene.apache.org/core/4_2_0/codecs/org/apache/lucene/codecs/pulsing/package-summary.html}}, the fourth topic, is a technique that helps inlining terms of low frequency and its pertinent postings into terms dictionary. Compared to others, one of the most unique topics encountered was that of Robert Muir\footnote{\url{https://github.com/rmuir}}, an active developer of Apache Lucene. The sixth topic, Nexus Indexer\footnote{\url{https://repository.sonatype.org/nexus-indexer-lucene-plugin/default/docs/index.html}} is an API based on REST model to provide access through a fixed set of operations to a set of resources. One of the most important topics, presumably predictable, was that of Query Parser\footnote{\url{http://lucene.apache.org/core/6_6_2/queryparser/org/apache/lucene/queryparser/classic/QueryParser.html}}. The eighth and ninth topics deal with factory constructors\footnote{\url{https://lucene.apache.org/core/6_1_0/analyzers-common/org/apache/lucene/analysis/util/AbstractAnalysisFactory.html}} required by Lucene whereas the final topic focuses on spatial search using parameters such as latitude and longitude\footnote{\url{https://lucene.apache.org/solr/guide/6_6/spatial-search.html}}. Table \ref{tab:tmLucene} presents all the topics, its keywords and probabilities associated with it. 
-
-\begin{table} %[hb!]
+\begin{table}[ht!] %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
     \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
@@ -2006,10 +2007,10 @@ Given that Apache Lucene is an information retrieval library, majority of the to
     \captionof{table}{Topic modeling of Apache Lucene dataset}
     \label{tab:tmLucene}
 \end{table} 
+Given that Apache Lucene is an information retrieval library, majority of the topics revolved around indexing, parsing and file formats which form the backbone of information retrieval mechanisms. Bytes Reference\footnote{\url{https://lucene.apache.org/core/4_2_0/core/org/apache/lucene/util/BytesRef.html}}, or BytesRef, is a Java class used by Lucene to represent terms using a particular character encoding format such as UTF8. Lucene 7.0\footnote{\url{https://lucene.apache.org/core/7_1_0/benchmark/org/apache/lucene/benchmark/byTask/package-summary.html}} is an indexing file format used by Lucene itself. Another topic ByTask Benchmarking\footnote{\url{https://lucene.apache.org/core/7_1_0/benchmark/org/apache/lucene/benchmark/byTask/package-summary.html}} revolves around a package that provides mechanisms to perform task based benchmarking of Lucene. Pulsing\footnote{\url{https://lucene.apache.org/core/4_2_0/codecs/org/apache/lucene/codecs/pulsing/package-summary.html}}, the fourth topic, is a technique that helps inlining terms of low frequency and its pertinent postings into terms dictionary. Compared to others, one of the most unique topics encountered was that of Robert Muir\footnote{\url{https://github.com/rmuir}}, an active developer of Apache Lucene. The sixth topic, Nexus Indexer\footnote{\url{https://repository.sonatype.org/nexus-indexer-lucene-plugin/default/docs/index.html}} is an API based on REST model to provide access through a fixed set of operations to a set of resources. One of the most important topics, presumably predictable, was that of Query Parser\footnote{\url{http://lucene.apache.org/core/6_6_2/queryparser/org/apache/lucene/queryparser/classic/QueryParser.html}}. The eighth and ninth topics deal with factory constructors\footnote{\url{https://lucene.apache.org/core/6_1_0/analyzers-common/org/apache/lucene/analysis/util/AbstractAnalysisFactory.html}} required by Lucene whereas the final topic focuses on spatial search using parameters such as latitude and longitude\footnote{\url{https://lucene.apache.org/solr/guide/6_6/spatial-search.html}}. Table \ref{tab:tmLucene} presents all the topics, its keywords and probabilities associated with it.
 
 \subsubsection{Mozilla Thunderbird}
-The topics in the case of Mozilla Thunderbird comprised of layout engine, settings, testing tools, to mention a few. Global database, or Gloda\footnote{\url{https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/gloda}} as termed by Mozilla, is the database used to perform indexing and searching. Given that Thunderbird is an email client, encountering topics along the lines of calendar, IMAP and authentication settings is not surprising. Gecko\footnote{\url{https://developer.mozilla.org/en-US/docs/Mozilla/Gecko}} is a layout engine developed by Mozilla and is also used in their other products such as Firefox. An extension of Thunderbird for Chrome web browser was another topic unearthed from the dataset. MozMill\footnote{\url{https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Mozmill}} is a testing tool and framework to perform automated tests on applications based on Gecko. However, Mozmill is currenly deprecated and has been replaced by Marionette. Content Tabs\footnote{\url{https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Content_Tabs}} is a feature introduced in Thunderbird to enable users to browse remote contents in a tab similar to that of a web browser. Packages for Debian based systems were one amongst the many other topics as well. Fixes for numerous DLL files seemed to be source of worry for Thunderbird developers. Table \ref{tab:tmThunderbird} presents all the topics, its keywords and probabilities associated with it. 
-\begin{table} %[hb!]
+\begin{table}[ht!] %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
     \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
@@ -2042,10 +2043,12 @@ The topics in the case of Mozilla Thunderbird comprised of layout engine, settin
     \captionof{table}{Topic modeling of Mozilla Thunderbird dataset}
     \label{tab:tmThunderbird}
 \end{table} 
+The topics in the case of Mozilla Thunderbird comprised of layout engine, settings, testing tools, to mention a few. Global database, or Gloda\footnote{\url{https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/gloda}} as termed by Mozilla, is the database used to perform indexing and searching. Given that Thunderbird is an email client, encountering topics along the lines of calendar, IMAP and authentication settings is not surprising. Gecko\footnote{\url{https://developer.mozilla.org/en-US/docs/Mozilla/Gecko}} is a layout engine developed by Mozilla and is also used in their other products such as Firefox. An extension of Thunderbird for Chrome web browser was another topic unearthed from the dataset. MozMill\footnote{\url{https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Mozmill}} is a testing tool and framework to perform automated tests on applications based on Gecko. However, Mozmill is currenly deprecated and has been replaced by Marionette. Content Tabs\footnote{\url{https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Content_Tabs}} is a feature introduced in Thunderbird to enable users to browse remote contents in a tab similar to that of a web browser. Packages for Debian based systems were one amongst the many other topics as well. Fixes for numerous DLL files seemed to be source of worry for Thunderbird developers. Table \ref{tab:tmThunderbird} presents all the topics, its keywords and probabilities associated with it. 
+
 
 \subsubsection{Ubuntu}
-Ubuntu is an operating system and the most spoken topics were predictably about various drivers and graphics. IEEE-1275\footnote{\url{https://standards.ieee.org/findstds/standard/1275-1994.html}} along with GRUB\footnote{\url{https://www.gnu.org/software/grub/}} shows that the first discussed topic was about boot firmware. Topics such as Gecko, Mir\footnote{\url{https://wiki.ubuntu.com/Mir/Spec}} and cx18\footnote{\url{https://linuxtv.org/downloads/v4l-dvb-apis/v4l-drivers/cx18.html}} reveals that graphical displays were one of the majorly spoken about topics for Ubuntu developers. Another topic of discussion was Phablet Tools\footnote{\url{https://packages.ubuntu.com/trusty/admin/phablet-tools}}, which is package for Ubuntu based touch operating system. Since operating systems are prone to crashes, a crash reporter named Apport\footnote{\url{https://wiki.ubuntu.com/Apport}} also caught the attention of many developers. Other topics from the Ubuntu dataset includes USB PCI card, RAID management utility and cloud services. Table \ref{tab:tmUbuntu} presents all the topics, its keywords and probabilities associated with it. 
-\begin{table} %[hb!]
+The most spoken topics under Ubuntu were about drivers and graphics. IEEE-1275\footnote{\url{https://standards.ieee.org/findstds/standard/1275-1994.html}} shows that the first discussed topic was about boot firmware. Gecko, Mir\footnote{\url{https://wiki.ubuntu.com/Mir/Spec}} and cx18 reveals that graphical displays were one of the majorly discussed topics. Another topic of discussion was Phablet Tools\footnote{\url{https://packages.ubuntu.com/trusty/admin/phablet-tools}}, which is package for Ubuntu based touch operating system. Other topics include a crash reporter named Apport\footnote{\url{https://wiki.ubuntu.com/Apport}}, USB PCI card, RAID management utility and cloud services. Table \ref{tab:tmUbuntu} presents all the topics with probabilities. 
+\begin{table}[H] %[hb!]
     \centering
     \begin{adjustbox}{max width=\columnwidth}
     \def\arraystretch{1} % 1 is the default, change whatever you need (line spacing)
@@ -2080,7 +2083,7 @@ Ubuntu is an operating system and the most spoken topics were predictably about 
 \end{table} 
 
 \section{Linking}
-In this section, the results of linking comments from issue tracking system and messages from \acs{IRC} are analysed. Keywords were extracted using topic modeling applied with Config 5 from comments of issue tracking system as well as messages of \acs{IRC}. The keywords of each comment from issue tracking system and each message of \acs{IRC} were compared and checked for 50\% similarity using a string matching library, fuzzywuzzy based on Levenshtein distance. An issue was linked to its \acs{IRC} message if atleast one comment from the issue had keywords had similarity with keywords of an \acs{IRC} message. Table \ref{tab:exampleLinking} shows examples of comments from issues linked to messages from \acs{IRC}. Table \ref{tab:topicLinking} shows the results of how many messages and comments were linked for each dataset. Figure \ref{fig:topiclinkingClass} illustrates the methodology for linking issues to \acs{IRC} messages. Figure \ref{fig:instanceLink} presents the instances for linking rationale together.
+In this section, the results of linking comments from issue tracking system and messages from \acs{IRC} are analysed. Keywords were extracted using topic modeling applied with Config 5 from comments of issue tracking system as well as messages of \acs{IRC}. The keywords of each comment from issue tracking system and each message of \acs{IRC} were compared and checked for 50\% similarity using a string matching library, fuzzywuzzy based on Levenshtein distance. An issue was linked to its \acs{IRC} message if atleast one comment from the issue had keywords had similarity with keywords of an \acs{IRC} message. Table \ref{tab:exampleLinking} shows examples of comments from issues linked to messages from \acs{IRC}. Table \ref{tab:topicLinking} presents the results of how many messages and comments were linked for each dataset. Figure \ref{fig:topiclinkingClass} illustrates the methodology for linking issues to \acs{IRC} messages. Figure \ref{fig:instanceLink} presents the instances for linking rationale together.
 
 \begin{figure}[h] %b!]
     \centering
