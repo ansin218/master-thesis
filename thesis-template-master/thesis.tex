@@ -193,7 +193,7 @@ The thesis is structured as follows: Chapter 2 presents information about ration
 
 %------- chapter 2 -------
 \chapter{Foundation}
-This chapter explores the foundation of this thesis. Section 2.1 describes about rationale in software development and the model used for this thesis. Section 2.2 dives into the works related to this thesis done by others in the past. Section 2.3 presents the different Natural Language Processing paradigms used during different phases of research. Machine learning teachniques, pipelines, transformation methods, supervised learning algorithms and performance metrics are discussed in Section 2.4. Finally, Section 2.5 summarises the various tools used to accomplish the tasks for this thesis.
+This chapter explores the foundation of this thesis. Section 2.1 describes rationale in software development and the model used for this thesis. Section 2.2 dives into the works related to this thesis done by others in the past. Section 2.3 presents the different Natural Language Processing paradigms used during different phases of research. Machine learning teachniques, pipelines, transformation methods, supervised learning algorithms and performance metrics are discussed in Section 2.4. Finally, Section 2.5 summarises the various tools used to accomplish the tasks for this thesis.
 
 \section{Rationale in Software Development}
 
@@ -708,7 +708,7 @@ For linking rationale elements from different communication media, \textit{Ratio
 \end{sidewaysfigure}
 
 \chapter{System Design}
-This chapter describes the system design and the subsystem decomposition architecture for the \textit{rationale miner} system. Section 4.1 describes the data management module in which the data is stored and managed in a database. Section 4.2 presents the data preprocessor module which performs feature selection on the labeled data. Automated rationale extractor responsible for performing classification and keywords extraction using topic modeling is described in Section 4. The final module, evaluation manager, dealing with presenting the results from the operations performed in automated rationale extractor module is explained in Section 4.4. Figure \ref{fig:systemDecomposition} shows the system design architecture using UML component diagram. 
+This chapter describes the system design and the subsystem decomposition architecture for the \textit{rationale miner} system. Section 4.1 describes the data management module in which the data is stored and managed in a database. Section 4.2 presents the data preprocessor module which performs feature selection on the labeled data. Automated rationale extractor responsible for performing classification and keywords extraction using topic modeling is described in Section 4.3. The final module, evaluation manager, dealing with presenting the results from the operations performed in automated rationale extractor module is explained in Section 4.4. Figure \ref{fig:systemDecomposition} shows the system design architecture using UML component diagram. 
 \begin{figure}[h] %b!]
     \centering
     \includegraphics[width=14cm]{system-decomposition}
@@ -753,9 +753,9 @@ This section investigates how data was obtained from issue trackers of Apache Lu
         \toprule
         \textbf{Project} & \textbf{Timeline} & \textbf{Issues} & \textbf{Comments}\\
         \midrule
-			Apache Lucene & 2001 - 2017 (until August) & 7,932 & 74,012\\
-			Mozilla Thunderbird & 2008 - 2017 (until August) & 4,367 & 26,587\\ 
-			Ubuntu & 2004 - 2017 (until August) & 28,429 & 150,008\\
+			Apache Lucene & 2001 - 2017 (until August) & 7,239 & 74,012\\
+			Mozilla Thunderbird & 2008 - 2017 (until August) & 4,368 & 26,587\\ 
+			Ubuntu & 2004 - 2017 (until August) & 28,615 & 150,008\\
         \midrule
     \end{tabular}
     \end{adjustbox}
@@ -940,7 +940,7 @@ The results of manual annotation from both the annotators are presented in this 
         \textbf{Project} & \textbf{Sentences} & \textbf{Rationale} & \textbf{No Rationale}\\
         \midrule
 			Apache Lucene & 2,446 & 1,780 (73\%) & 666 (27\%)\\
-			Mozilla Thunderbird & 3,086 & 1,577 (51\%) & 1,509 (49\%)\\ 
+			Mozilla Thunderbird & 3,086 & 1,509 (49\%) & 1,577 (51\%)\\ 
 			Ubuntu & 2,782 & 1,349 (48\%) & 1,433 (52\%)\\
         \midrule
     \end{tabular}
